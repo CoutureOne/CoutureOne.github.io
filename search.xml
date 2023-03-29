@@ -1,6 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker基础操作（二）</title>
+    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<p>安装指定版本</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
+
+<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
+<p>————————–Dockerfile参考配置———————————</p>
+<p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker基础操作（一）</title>
+    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
+<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
+<p>参考：<a href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>如果已安装，可以先删除</p>
+<p>[root@localhost ~]# yum -y remove docker-ce</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
+<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
+<p>依然采用yum的方式安装</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
+<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：关闭防火墙之后docker需要重启</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<blockquote>
+<ul>
+<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+</li>
+<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
+<p><a href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
+<p><a href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
+</li>
+<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
+<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+</li>
+</ul>
+</blockquote>
+<p>json</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
+<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
+<p>从中央仓库拉取镜像到本地</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
+<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
+<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
+<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
+<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506070809101112<span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
+<p>查看全部正在运行的容器信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
+<p>查看容器日志，以查看容器运行的信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
+<p>可以进入容器内部进行操作</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
+<p>将宿主机的文件复制到容器内部的指定目录</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
+<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于网络打印机教程（二）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
+</blockquote>
+<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
+<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
+<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
+<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
+<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>打印机</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>打印机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于网络打印机教程（一）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="关于网络打印机教程（一）"><a href="#关于网络打印机教程（一）" class="headerlink" title="关于网络打印机教程（一）"></a>关于网络打印机教程（一）</h1><blockquote>
+<p>注意：本教程只适合网络打印机且同一局域网打印机</p>
+</blockquote>
+<h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p>
+<h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p>
+<h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p>
+<h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p>
+<blockquote>
+<p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
+<p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p>
+</blockquote>
+<h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p>
+<p>下载安装即可。</p>
+<h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p>
+<ul>
+<li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p>
+<ul>
+<li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p>
+<ul>
+<li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
+</ul>
+<p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>打印机</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>打印机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nginx</title>
     <url>/2023/03/29/Nginx/</url>
     <content><![CDATA[<hr>
@@ -368,24 +571,6 @@
     <title>Test</title>
     <url>/2023/03/29/Test/</url>
     <content><![CDATA[<p>仅仅作为测试用</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/03/29/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
 </search>

@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Hello World |  Couture&#39;s Blog</title>
+      <title>Docker基础操作（二） |  Couture&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -67,7 +67,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-hello-world"
+  id="post-Docker基础操作（二）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -78,7 +78,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  Docker基础操作（二）
 </h1>
  
 
@@ -86,15 +86,19 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/29/hello-world/" class="article-date">
-  <time datetime="2023-03-29T08:24:33.427Z" itemprop="datePublished">2023-03-29</time>
-</a>   
+      <a href="/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2023-03-29T12:12:15.000Z" itemprop="datePublished">2023-03-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">75</span>
+            <span class="post-count">351</span>
         </span>
     </span>
 
@@ -118,19 +122,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+  <h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>安装指定版本</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
+<p>————————–Dockerfile参考配置———————————</p>
+<p>FROM <a target="_blank" rel="noopener" href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
  
       <!-- reward -->
       
@@ -195,26 +197,24 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2023/03/29/Test/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Test
-          
-        </div>
-      </a>
     
+      <a href="/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Docker基础操作（一）</div>
+      </a>
     
   </nav>
 

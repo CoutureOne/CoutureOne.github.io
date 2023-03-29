@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="好记性不如烂笔头" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Docker基础操作（一） |  Couture&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Docker基础操作（一）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Docker基础操作（一）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2023-03-29T12:11:08.000Z" itemprop="datePublished">2023-03-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
+<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>如果已安装，可以先删除</p>
+<p>[root@localhost ~]# yum -y remove docker-ce</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
+<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
+<p>依然采用yum的方式安装</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
+<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：关闭防火墙之后docker需要重启</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<blockquote>
+<ul>
+<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+</li>
+<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
+<p><a target="_blank" rel="noopener" href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
+<p><a target="_blank" rel="noopener" href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
+</li>
+<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
+<p><a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+</li>
+</ul>
+</blockquote>
+<p>json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
+<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
+<p>从中央仓库拉取镜像到本地</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
+<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
+<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
+<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
+<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">010203040506070809101112<span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
+<p>查看全部正在运行的容器信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0102030405docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
+<p>查看容器日志，以查看容器运行的信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
+<p>可以进入容器内部进行操作</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">010203040506docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
+<p>将宿主机的文件复制到容器内部的指定目录</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
+<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Docker基础操作（二）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">关于网络打印机教程（二）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2023
+        <i class="ri-heart-fill heart_icon"></i> Couture
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Couture&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
