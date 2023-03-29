@@ -1,518 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Docker基础操作（一）</title>
-    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
-<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
-<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
-<p>参考：<a href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
-<p>如果已安装，可以先删除</p>
-<p>[root@localhost ~]# yum -y remove docker-ce</p>
-</blockquote>
-<span id="more"></span>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
-<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
-<p>依然采用yum的方式安装</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
-<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：关闭防火墙之后docker需要重启</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
-<blockquote>
-<ul>
-<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
-<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-</li>
-<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
-<p><a href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
-<p><a href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
-</li>
-<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
-<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
-</li>
-</ul>
-</blockquote>
-<p>json</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
-<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
-<p>从中央仓库拉取镜像到本地</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
-<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
-<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
-<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
-<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506070809101112<span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
-<p>查看全部正在运行的容器信息</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
-<p>查看容器日志，以查看容器运行的信息</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
-<p>可以进入容器内部进行操作</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
-<p>将宿主机的文件复制到容器内部的指定目录</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
-<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker基础操作（二）</title>
-    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
-
-<p>安装指定版本</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
-<p>————————–Dockerfile参考配置———————————</p>
-<p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx</title>
-    <url>/2023/03/29/Nginx/</url>
-    <content><![CDATA[<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023641.png" alt="1586499306778"></p>
-<p>[TOC]</p>
-<h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><hr>
-<h4 id="1-1-代理问题"><a href="#1-1-代理问题" class="headerlink" title="1.1 代理问题"></a>1.1 代理问题</h4><blockquote>
-<p>客户端到底要将请求发送给哪台服务器。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">发送给服务器1还是服务器2</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023267.png" alt="1589264952529"></td>
-</tr>
-</tbody></table>
-<h4 id="1-2-负载均衡问题"><a href="#1-2-负载均衡问题" class="headerlink" title="1.2 负载均衡问题"></a>1.2 负载均衡问题</h4><blockquote>
-<p>如果所有客户端的请求都发送给了服务器1，那么服务器2将没有任何意义</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">负载均衡问题</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024949.png" alt="1589265005701"></td>
-</tr>
-</tbody></table>
-<h4 id="1-3-资源优化"><a href="#1-3-资源优化" class="headerlink" title="1.3 资源优化"></a>1.3 资源优化</h4><blockquote>
-<p>客户端发送的请求可能是申请动态资源的，也有申请静态资源，但是都是去Tomcat中获取的</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">静态资源访问</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024993.png" alt="1589265063451"></td>
-</tr>
-</tbody></table>
-<h4 id="1-4-Nginx处理"><a href="#1-4-Nginx处理" class="headerlink" title="1.4 Nginx处理"></a>1.4 Nginx处理</h4><table>
-<thead>
-<tr>
-<th align="center">在搭建集群后，使用Nginx</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024840.png" alt="1589265181473"></td>
-</tr>
-</tbody></table>
-<h3 id="二、Nginx概述"><a href="#二、Nginx概述" class="headerlink" title="二、Nginx概述"></a>二、Nginx概述</h3><hr>
-<blockquote>
-<p>Nginx是由俄罗斯人研发的，应对Rambler的网站，并且2004年发布的第一个版本。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">Nginx之父</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024237.png" alt="1586502874584"></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>Nginx的特点：</p>
-<ul>
-<li>稳定性极强。 7*24小时不间断运行。</li>
-<li>Nginx提供了非常丰富的配置实例。</li>
-<li>占用内存小，并发能力强。</li>
-</ul>
-</blockquote>
-<h3 id="三、Nginx的安装"><a href="#三、Nginx的安装" class="headerlink" title="三、Nginx的安装"></a>三、Nginx的安装</h3><hr>
-<h4 id="3-1-安装Nginx"><a href="#3-1-安装Nginx" class="headerlink" title="3.1 安装Nginx"></a>3.1 安装Nginx</h4><blockquote>
-<p>使用Docker-Compose安装，创建docker-compose.yml写入以下内容：</p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 ~]<span class="comment"># cd /opt</span></span><br><span class="line">[root@192 opt]<span class="comment"># mkdir docker_nginx</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Pulling nginx (daocloud.io/library/nginx:latest)...</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">45b42c59be33: Pull complete</span><br><span class="line">d0d9e9ea897e: Pull complete</span><br><span class="line">66e650438339: Pull complete</span><br><span class="line">76a3dfe4406b: Pull complete</span><br><span class="line">410ff9d97480: Pull complete</span><br><span class="line">Digest: sha256:1a53eb723d17523512bd25c27299046cfa034cce309f4ed330c943a304513f59</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> daocloud.io/library/nginx:latest</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>浏览器访问即可（80端口可以省略不写，云服务器记得去开放80端口）</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024665.png"></p>
-<h4 id="3-2-Nginx的配置文件"><a href="#3-2-Nginx的配置文件" class="headerlink" title="3.2 Nginx的配置文件"></a>3.2 Nginx的配置文件</h4><blockquote>
-<p>关于Nginx的核心配置文件nginx.conf</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                               NAMES</span><br><span class="line">617da0b0dbbb   daocloud.io/library/nginx:latest   <span class="string">&quot;/docker-entrypoint.…&quot;</span>   8 minutes ago   Up 8 minutes   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker exec -it 617 bash</span></span><br><span class="line">root@617da0b0dbbb:/<span class="comment"># cd /etc/nginx</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cat nginx.conf </span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看nginx.conf 配置文件</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># 以上统称为全局块， </span></span><br><span class="line"><span class="comment"># worker_processes的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"><span class="comment"># error_log 代表Nginx的错误日志存放的位置</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># events块</span></span><br><span class="line"><span class="comment"># worker_connections的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># http块</span></span><br><span class="line"><span class="comment"># include代表引入一个外部的文件 -&gt; /mime.types中放着大量的媒体类型</span></span><br><span class="line"><span class="comment"># include /etc/nginx/conf.d/*.conf; -&gt; 引入了conf.d目录下的以.conf为结尾的配置文件</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>nginx.conf 配置文件中发现，最后一行引入了conf.d目录下的*.conf文件</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cd conf.d/</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># cat default.conf </span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看default.conf 配置文件</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># server块</span></span><br><span class="line"><span class="comment"># listen： 代表Nginx监听的端口号</span></span><br><span class="line"><span class="comment"># localhost：代表Nginx接收请求的ip</span></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line">    <span class="comment">#access_log  /var/log/nginx/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 参数说明</span></span><br><span class="line">    <span class="comment"># location块</span></span><br><span class="line">	<span class="comment"># root：将接收到的请求根据/usr/share/nginx/html去查找静态资源</span></span><br><span class="line">	<span class="comment"># index： 默认去上述的路径中找到index.html或者index.htm</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    root           html;</span></span><br><span class="line">    <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">    <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">    <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">    <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># deny access to .htaccess files, if Apache&#x27;s document root</span></span><br><span class="line">    <span class="comment"># concurs with nginx&#x27;s one</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">    <span class="comment">#    deny  all;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-配置数据卷操作Nginx"><a href="#3-3-配置数据卷操作Nginx" class="headerlink" title="3.3 配置数据卷操作Nginx"></a>3.3 配置数据卷操作Nginx</h4><blockquote>
-<p>为了方便修改Nginx配置，修改docker-compose.yml文件，设置 volumes ，重新启动</p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># exit </span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>此时再使用浏览器访问则无法访问nginx.html页面了，此时需要在conf.d目录下创建default.conf文件，配置一个server，再重新启动即可</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="四、Nginx的反向代理【重点】"><a href="#四、Nginx的反向代理【重点】" class="headerlink" title="四、Nginx的反向代理【重点】"></a>四、Nginx的反向代理【<code>重点</code>】</h3><hr>
-<h4 id="4-1-正向代理和反向代理介绍"><a href="#4-1-正向代理和反向代理介绍" class="headerlink" title="4.1 正向代理和反向代理介绍"></a>4.1 正向代理和反向代理介绍</h4><blockquote>
-<p>正向代理：</p>
-<ul>
-<li>正向代理服务是由客户端设立的。</li>
-<li>客户端了解代理服务器和目标服务器都是谁。</li>
-<li>帮助咱们实现突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址。</li>
-</ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">正向代理</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025691.png" alt="1586512751639"></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>反向代理：</p>
-<ul>
-<li>反向代理服务器是配置在服务端的。</li>
-<li>客户端是不知道访问的到底是哪一台服务器。</li>
-<li>达到负载均衡，并且可以隐藏服务器真正的ip地址。</li>
-</ul>
-</blockquote>
-<p><img src="/Pictures/1586513061851.png" alt="1586513061851"></p>
-<h4 id="4-2-基于Nginx实现反向代理"><a href="#4-2-基于Nginx实现反向代理" class="headerlink" title="4.2 基于Nginx实现反向代理"></a>4.2 基于Nginx实现反向代理</h4><blockquote>
-<p>创建三个Tomcat，通过数据卷映射，在映射目录下创建ROOT目录，在对应的ROOT目录下再创建index.html（需要创建三个ROOT目录和三个index.html，index.html内容不要相同，用于测试）</p>
-</blockquote>
-<blockquote>
-<p>docker-compose.yml内容如下：</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  tomcat1:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8081</span><br><span class="line">    ports:</span><br><span class="line">      - 8081:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8081:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat2:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8082</span><br><span class="line">    ports:</span><br><span class="line">      - 8082:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8082:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat3:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8083</span><br><span class="line">    ports:</span><br><span class="line">      - 8083:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8083:/usr/local/tomcat/webapps</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>具体步骤如下：</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># mkdir docker_tomcats</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_tomcats/</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_tomcats_default&quot;</span> with the default driver</span><br><span class="line">Creating tomcat8082 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8081 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8083 ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># ls</span></span><br><span class="line">docker-compose.yml  tomcat_webapps8081  tomcat_webapps8082  tomcat_webapps8083</span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8081</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8082</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8083</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>然后修改nginx的default.conf配置文件，使其通过Nginx访问到tomcat服务器。</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 基于反向代理访问到Tomcat服务器</span></span><br><span class="line">    location / &#123;</span><br><span class="line">      proxy_pass http://192.168.25.132:8081/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>再次访问时，nginx主页直接显示到对应tomcat的页面了</p>
-</blockquote>
-<h4 id="4-3-关于Nginx的location路径映射"><a href="#4-3-关于Nginx的location路径映射" class="headerlink" title="4.3 关于Nginx的location路径映射"></a>4.3 关于Nginx的location路径映射</h4><blockquote>
-<p>优先级关系如下：</p>
-</blockquote>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"># <span class="number">1.</span> 直接匹配</span><br><span class="line">location = / <span class="punctuation">&#123;</span></span><br><span class="line">  # 精准匹配，主机名后面不能带任何的字符串</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span> 通用匹配</span><br><span class="line">location /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span> 正则匹配</span><br><span class="line">location ~ /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">4.</span> 匹配开头路径</span><br><span class="line">location ^~ /images/ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/images开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">5.</span> 匹配后缀</span><br><span class="line">location ~* \.(gif|jpg|png)$ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配以gif或者jpg或者png为结尾的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">6.</span> 全部通配</span><br><span class="line">location / <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配全部路径  </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="五、Nginx负载均衡【重点】"><a href="#五、Nginx负载均衡【重点】" class="headerlink" title="五、Nginx负载均衡【重点】"></a>五、Nginx负载均衡【<code>重点</code>】</h3><hr>
-<blockquote>
-<p>Nginx为我们默认提供了三种负载均衡的策略：</p>
-<p>​	轮询：将客户端发起的请求，平均的分配给每一台服务器。</p>
-<p>​	权重：会将客户端的请求，根据服务器的权重值不同，分配不同的数量。</p>
-<p>​	ip_hash：基于当前发起请求的客户端的ip地址，如果ip地址不变，始终会将请求发送到当前的服务器上。</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025043.png"></p>
-<h4 id="5-1-轮询"><a href="#5-1-轮询" class="headerlink" title="5.1 轮询"></a>5.1 轮询</h4><blockquote>
-<p>想实现Nginx轮询负载均衡机制需要修改default.conf配置文件中的内容：</p>
-</blockquote>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  <span class="punctuation">[</span><span class="punctuation">:</span><span class="punctuation">:</span><span class="punctuation">]</span><span class="punctuation">:</span><span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>例如：（注意：upstream的名字不要使用下划线）</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8081</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8082</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8083</span>;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  [::]:<span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http:<span class="comment">//my-server/;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：若轮询无法实现，把nginx.conf核心配置文件中的 keepalive_timeout  65 改为 keepalive_timeout  0 即可！</p>
-</blockquote>
-<h4 id="5-2-权重"><a href="#5-2-权重" class="headerlink" title="5.2 权重"></a>5.2 权重</h4><blockquote>
-<p>实现权重的方式</p>
-</blockquote>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>例如：</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server 47.100.241.89:8081 weight=10;</span><br><span class="line">  server 47.100.241.89:8082 weight=5;</span><br><span class="line">  server 47.100.241.89:80 weight=1;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="5-3-ip-hash"><a href="#5-3-ip-hash" class="headerlink" title="5.3 ip_hash"></a>5.3 ip_hash</h4><blockquote>
-<p>ip_hash实现，只需要添加一个  ip_hash 配置即可，在暂时不使用的服务器后面添加down即可</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream 名字 &#123;</span><br><span class="line">  ip_hash; <span class="comment"># 配置ip_hash</span></span><br><span class="line">  server ip:port down;</span><br><span class="line">  server ip:port;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://upstream的名字/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>例如：</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  ip_hash;</span><br><span class="line">  server 192.168.25.140:8081;</span><br><span class="line">  server 192.168.25.140:8082 down;</span><br><span class="line">  server 192.168.25.140:8083 down;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="六、Nginx动静分离【重点】"><a href="#六、Nginx动静分离【重点】" class="headerlink" title="六、Nginx动静分离【重点】"></a>六、Nginx动静分离【<code>重点</code>】</h3><hr>
-<blockquote>
-<p>Nginx的并发能力公式：</p>
-<p>worker_processes * worker_connections &#x2F; 4 | 2 &#x3D; Nginx最终的并发能力</p>
-<p>动态资源需要&#x2F;4，静态资源需要&#x2F;2.</p>
-<p>Nginx通过动静分离，来提升Nginx的并发能力，更快的给用户响应。</p>
-</blockquote>
-<h4 id="6-1-动态资源代理"><a href="#6-1-动态资源代理" class="headerlink" title="6.1 动态资源代理"></a>6.1 动态资源代理</h4><blockquote>
-<p>使用proxy_pass动态代理</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  proxy_pass 路径;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="6-2-静态资源代理"><a href="#6-2-静态资源代理" class="headerlink" title="6.2 静态资源代理"></a>6.2 静态资源代理</h4><blockquote>
-<p>使用root静态代理</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  root 静态资源路径;</span><br><span class="line">  index 默认访问路径下的什么资源;</span><br><span class="line">  autoindex on; <span class="comment"># 代表展示静态资源全的全部内容，以列表的形式展开。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 先修改docker，添加一个数据卷，映射到Nginx服务器的一个目录</span></span><br><span class="line"><span class="comment"># 添加了index.html和1.jpg静态资源</span></span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>修改docker-compose.yml为如下内容：</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  nginx:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/nginx:latest</span><br><span class="line">    container_name: nginx</span><br><span class="line">    ports:</span><br><span class="line">      - 80:80</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span><br><span class="line">      - /opt/docker_nginx/img/:/data/img</span><br><span class="line">      - /opt/docker_nginx/html/:/data/html</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>重启再查看，目录已经创建</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml  html  img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>分别在 html 以及 img 目录中拷贝对应的 html 页面和图片即可，然后修改 Nginx 的 default.conf 配置文件</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到html的静态资源</span></span><br><span class="line">  location /html &#123;</span><br><span class="line">    root /data;   <span class="comment">#由于location后面写的是/html，所以root后的路径就不用写成/data/html，/html会默认放在/data后面</span></span><br><span class="line">    index student.html;<span class="comment">#默认访问student.html</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到img的静态资源</span></span><br><span class="line">  location /img &#123;</span><br><span class="line">    root /data;</span><br><span class="line">    autoindex on;<span class="comment">#以列表的形式展开</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>浏览器分别访问以下地址进行测试：</p>
-<p>​		<a href="http://39.98.132.196/html/">http://39.98.132.196/html/</a> （查看之前拷贝的student.html页面）</p>
-<p>​		<a href="http://39.98.132.196/img/2.jpg">http://39.98.132.196/img/2.jpg</a> （注：2.jpg是拷贝的图片名称）</p>
-<p>​		<a href="http://39.98.132.196/img/">http://39.98.132.196/img/</a> （注：可以看到当前目录下的所有文件）</p>
-</blockquote>
-<h3 id="七、Nginx集群"><a href="#七、Nginx集群" class="headerlink" title="七、Nginx集群"></a>七、Nginx集群</h3><hr>
-<blockquote>
-<p>单点故障，避免nginx的宕机，导致整个程序的崩溃</p>
-<p>准备多台Nginx。</p>
-<p>准备keepalived，监听nginx的健康情况。</p>
-<p>准备haproxy，提供一个虚拟的路径，统一的去接收用户得请求。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">Nginx集群</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025764.png" alt="1588755548570"></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>后端学习</category>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Test</title>
-    <url>/2023/03/29/Test/</url>
-    <content><![CDATA[<p>仅仅作为测试用</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>关于Windows一些常用Command</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/</url>
-    <content><![CDATA[<h3 id="关机、重启、注销、休眠、定时"><a href="#关机、重启、注销、休眠、定时" class="headerlink" title="关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3><ul>
-<li>关机：<code>shutdown /s</code></li>
-<li>重启：<code>shutdown /r</code></li>
-<li>注销：<code>shutdown /l</code></li>
-<li>休眠：<code>shutdown /h /f</code></li>
-<li>取消关机：<code>shutdown /a</code></li>
-<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）<span id="more"></span></li>
-</ul>
-<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p><strong>切换目录，进入指定文件夹：</strong></p>
-<ul>
-<li>切换磁盘：<code>d:</code>（进入 d 盘）</li>
-<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘 <code>test</code> 文件夹）</li>
-<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code> 文件夹）</li>
-<li>返回根目录：<code>cd \</code></li>
-<li>回到上级目录：<code>cd ..</code></li>
-<li>新建文件夹：<code>md test</code></li>
-</ul>
-<p><strong>显示目录内容：</strong></p>
-<ul>
-<li>显示目录中文件列表：<code>dir</code></li>
-<li>显示目录结构：<code>tree d:\test</code>（d 盘 test 目录）</li>
-<li>显示当前目录位置：<code>cd</code></li>
-<li>显示指定磁盘的当前目录位置：<code>cd d:</code></li>
-</ul>
-<h3 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a><strong>网络操作</strong></h3><ul>
-<li>延迟和丢包率：<code>ping ip/域名</code></li>
-<li>Ping 测试 5 次：<code>ping ip/域名 -n 5</code></li>
-<li>清除本地 DNS 缓存：<code>ipconfig /flushdns</code></li>
-<li>路由追踪：<code>tracert ip/域名</code></li>
-</ul>
-<h3 id="进程-x2F-服务操作"><a href="#进程-x2F-服务操作" class="headerlink" title="进程&#x2F;服务操作"></a><strong>进程&#x2F;服务操作</strong></h3><p><strong>进程管理：</strong></p>
-<ul>
-<li>显示当前正在运行的进程：<code>tasklist</code></li>
-<li>运行程序或命令：<code>start 程序名</code></li>
-<li>结束进程，按名称：<code>taskkill /im notepad.exe</code>（关闭记事本）</li>
-<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234 的进程）</li>
-</ul>
-<p><strong>服务管理：</strong></p>
-<ul>
-<li>显示当前正在运行的服务：<code>net start</code></li>
-<li>启动指定服务：<code>net start 服务名</code></li>
-<li>停止指定服务：<code>net stop 服务名</code></li>
-</ul>
-<h3 id="保存为-bat-可执行文件"><a href="#保存为-bat-可执行文件" class="headerlink" title="保存为 .bat 可执行文件"></a>保存为 .bat 可执行文件</h3><p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code> 的可执行文件。</p>
-<p>以后只要双击该文件即可执行指定命令；将文件放入系统【启动】目录中，可以实现开机自动运行。</p>
-<h3 id="使用的案例"><a href="#使用的案例" class="headerlink" title="使用的案例"></a>使用的案例</h3><p><strong>使用示例 1：</strong></p>
-<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code> 命令重启。将下面命令保存为 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开 CMD 运行命令也可以。</p>
-<p>text</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">01taskkill /f /im explorer.exe &amp; start explorer.exe</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用示例 2：</strong></p>
-<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和 <code>XLServicePlatform</code> 服务，如果当前没有使用迅雷的话显然没必要。</p>
-<p>我们可以将如下代码保存为 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
-<p>text</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">0102net stop XLServicePlatform</span><br><span class="line">taskkill /F /im ThunderPlatform.exe</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>Spring（一）</title>
     <url>/2023/03/29/Spring%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><blockquote>
@@ -895,6 +383,196 @@
       </tags>
   </entry>
   <entry>
+    <title>新装的Windows10,11 系统和Office 2016激活教程</title>
+    <url>/2023/03/29/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<hr>
+<h1 id="新装的Windows10-11系统和Office-2016激活教程"><a href="#新装的Windows10-11系统和Office-2016激活教程" class="headerlink" title="新装的Windows10,11系统和Office 2016激活教程"></a>新装的<code>Windows10,11</code>系统和<code>Office 2016</code>激活教程</h1><h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：<a href="https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0">https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png" alt="image-20221102093603191"></p>
+<p>标志的压缩包就是要下载的软件，解压即可用，解压密码也在图中有展示。</p>
+<span id="more"></span>
+<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>下载并解压这个软件：</p>
+<p>双击运行此软件！</p>
+<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>打开这个软件，对电脑系统和office进行激活即可</p>
+<p>运行上面的 <code>HEU_KMS_Activator_v26.0.0.exe</code>如图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png" alt="image-20221102094027301"></p>
+<p>然后就是点击开始就行了，耐心等待进度条走完，激活完成即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png" alt="image-20221102094233468"></p>
+<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>等百分之百的时候会有弹窗出来，即激活完毕。</p>
+]]></content>
+      <categories>
+        <category>Windows教程 运维</category>
+      </categories>
+      <tags>
+        <tag>Windows10&amp;Windows11</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker基础操作（二）</title>
+    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<p>安装指定版本</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
+<p>————————–Dockerfile参考配置———————————</p>
+<p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker基础操作（一）</title>
+    <url>/2023/03/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
+<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
+<p>参考：<a href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>如果已安装，可以先删除</p>
+<p>[root@localhost ~]# yum -y remove docker-ce</p>
+</blockquote>
+<span id="more"></span>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
+<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
+<p>依然采用yum的方式安装</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
+<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：关闭防火墙之后docker需要重启</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<blockquote>
+<ul>
+<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+</li>
+<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
+<p><a href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
+<p><a href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
+</li>
+<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
+<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+</li>
+</ul>
+</blockquote>
+<p>json</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
+<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
+<p>从中央仓库拉取镜像到本地</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
+<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
+<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
+<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
+<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506070809101112<span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
+<p>查看全部正在运行的容器信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
+<p>查看容器日志，以查看容器运行的信息</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
+<p>可以进入容器内部进行操作</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203040506docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
+<p>将宿主机的文件复制到容器内部的指定目录</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
+<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于网络打印机教程（二）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
+</blockquote>
+<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
+<span id="more"></span>
+<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
+<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
+<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
+<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>打印机</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>打印机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于网络打印机教程（一）</title>
     <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="关于网络打印机教程（一）"><a href="#关于网络打印机教程（一）" class="headerlink" title="关于网络打印机教程（一）"></a>关于网络打印机教程（一）</h1><blockquote>
@@ -935,50 +613,374 @@
       </tags>
   </entry>
   <entry>
-    <title>关于网络打印机教程（二）</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
+    <title>Nginx</title>
+    <url>/2023/03/29/Nginx/</url>
+    <content><![CDATA[<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023641.png" alt="1586499306778"></p>
+<p>[TOC]</p>
+<h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><hr>
+<h4 id="1-1-代理问题"><a href="#1-1-代理问题" class="headerlink" title="1.1 代理问题"></a>1.1 代理问题</h4><blockquote>
+<p>客户端到底要将请求发送给哪台服务器。</p>
 </blockquote>
-<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
-<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
-<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
-<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
-<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
+<table>
+<thead>
+<tr>
+<th align="center">发送给服务器1还是服务器2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023267.png" alt="1589264952529"></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h4 id="1-2-负载均衡问题"><a href="#1-2-负载均衡问题" class="headerlink" title="1.2 负载均衡问题"></a>1.2 负载均衡问题</h4><blockquote>
+<p>如果所有客户端的请求都发送给了服务器1，那么服务器2将没有任何意义</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">负载均衡问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024949.png" alt="1589265005701"></td>
+</tr>
+</tbody></table>
+<h4 id="1-3-资源优化"><a href="#1-3-资源优化" class="headerlink" title="1.3 资源优化"></a>1.3 资源优化</h4><blockquote>
+<p>客户端发送的请求可能是申请动态资源的，也有申请静态资源，但是都是去Tomcat中获取的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">静态资源访问</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024993.png" alt="1589265063451"></td>
+</tr>
+</tbody></table>
+<h4 id="1-4-Nginx处理"><a href="#1-4-Nginx处理" class="headerlink" title="1.4 Nginx处理"></a>1.4 Nginx处理</h4><table>
+<thead>
+<tr>
+<th align="center">在搭建集群后，使用Nginx</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024840.png" alt="1589265181473"></td>
+</tr>
+</tbody></table>
+<h3 id="二、Nginx概述"><a href="#二、Nginx概述" class="headerlink" title="二、Nginx概述"></a>二、Nginx概述</h3><hr>
+<blockquote>
+<p>Nginx是由俄罗斯人研发的，应对Rambler的网站，并且2004年发布的第一个版本。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Nginx之父</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024237.png" alt="1586502874584"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Nginx的特点：</p>
+<ul>
+<li>稳定性极强。 7*24小时不间断运行。</li>
+<li>Nginx提供了非常丰富的配置实例。</li>
+<li>占用内存小，并发能力强。</li>
+</ul>
+</blockquote>
+<h3 id="三、Nginx的安装"><a href="#三、Nginx的安装" class="headerlink" title="三、Nginx的安装"></a>三、Nginx的安装</h3><hr>
+<h4 id="3-1-安装Nginx"><a href="#3-1-安装Nginx" class="headerlink" title="3.1 安装Nginx"></a>3.1 安装Nginx</h4><blockquote>
+<p>使用Docker-Compose安装，创建docker-compose.yml写入以下内容：</p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 ~]<span class="comment"># cd /opt</span></span><br><span class="line">[root@192 opt]<span class="comment"># mkdir docker_nginx</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Pulling nginx (daocloud.io/library/nginx:latest)...</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">45b42c59be33: Pull complete</span><br><span class="line">d0d9e9ea897e: Pull complete</span><br><span class="line">66e650438339: Pull complete</span><br><span class="line">76a3dfe4406b: Pull complete</span><br><span class="line">410ff9d97480: Pull complete</span><br><span class="line">Digest: sha256:1a53eb723d17523512bd25c27299046cfa034cce309f4ed330c943a304513f59</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> daocloud.io/library/nginx:latest</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>浏览器访问即可（80端口可以省略不写，云服务器记得去开放80端口）</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024665.png"></p>
+<h4 id="3-2-Nginx的配置文件"><a href="#3-2-Nginx的配置文件" class="headerlink" title="3.2 Nginx的配置文件"></a>3.2 Nginx的配置文件</h4><blockquote>
+<p>关于Nginx的核心配置文件nginx.conf</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                               NAMES</span><br><span class="line">617da0b0dbbb   daocloud.io/library/nginx:latest   <span class="string">&quot;/docker-entrypoint.…&quot;</span>   8 minutes ago   Up 8 minutes   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker exec -it 617 bash</span></span><br><span class="line">root@617da0b0dbbb:/<span class="comment"># cd /etc/nginx</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cat nginx.conf </span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看nginx.conf 配置文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># 以上统称为全局块， </span></span><br><span class="line"><span class="comment"># worker_processes的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"><span class="comment"># error_log 代表Nginx的错误日志存放的位置</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># events块</span></span><br><span class="line"><span class="comment"># worker_connections的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># http块</span></span><br><span class="line"><span class="comment"># include代表引入一个外部的文件 -&gt; /mime.types中放着大量的媒体类型</span></span><br><span class="line"><span class="comment"># include /etc/nginx/conf.d/*.conf; -&gt; 引入了conf.d目录下的以.conf为结尾的配置文件</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>nginx.conf 配置文件中发现，最后一行引入了conf.d目录下的*.conf文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cd conf.d/</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># cat default.conf </span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看default.conf 配置文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># server块</span></span><br><span class="line"><span class="comment"># listen： 代表Nginx监听的端口号</span></span><br><span class="line"><span class="comment"># localhost：代表Nginx接收请求的ip</span></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line">    <span class="comment">#access_log  /var/log/nginx/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 参数说明</span></span><br><span class="line">    <span class="comment"># location块</span></span><br><span class="line">	<span class="comment"># root：将接收到的请求根据/usr/share/nginx/html去查找静态资源</span></span><br><span class="line">	<span class="comment"># index： 默认去上述的路径中找到index.html或者index.htm</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    root           html;</span></span><br><span class="line">    <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">    <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">    <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">    <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># deny access to .htaccess files, if Apache&#x27;s document root</span></span><br><span class="line">    <span class="comment"># concurs with nginx&#x27;s one</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">    <span class="comment">#    deny  all;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-配置数据卷操作Nginx"><a href="#3-3-配置数据卷操作Nginx" class="headerlink" title="3.3 配置数据卷操作Nginx"></a>3.3 配置数据卷操作Nginx</h4><blockquote>
+<p>为了方便修改Nginx配置，修改docker-compose.yml文件，设置 volumes ，重新启动</p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># exit </span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此时再使用浏览器访问则无法访问nginx.html页面了，此时需要在conf.d目录下创建default.conf文件，配置一个server，再重新启动即可</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="四、Nginx的反向代理【重点】"><a href="#四、Nginx的反向代理【重点】" class="headerlink" title="四、Nginx的反向代理【重点】"></a>四、Nginx的反向代理【<code>重点</code>】</h3><hr>
+<h4 id="4-1-正向代理和反向代理介绍"><a href="#4-1-正向代理和反向代理介绍" class="headerlink" title="4.1 正向代理和反向代理介绍"></a>4.1 正向代理和反向代理介绍</h4><blockquote>
+<p>正向代理：</p>
+<ul>
+<li>正向代理服务是由客户端设立的。</li>
+<li>客户端了解代理服务器和目标服务器都是谁。</li>
+<li>帮助咱们实现突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">正向代理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025691.png" alt="1586512751639"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>反向代理：</p>
+<ul>
+<li>反向代理服务器是配置在服务端的。</li>
+<li>客户端是不知道访问的到底是哪一台服务器。</li>
+<li>达到负载均衡，并且可以隐藏服务器真正的ip地址。</li>
+</ul>
+</blockquote>
+<p><img src="/Pictures/1586513061851.png" alt="1586513061851"></p>
+<h4 id="4-2-基于Nginx实现反向代理"><a href="#4-2-基于Nginx实现反向代理" class="headerlink" title="4.2 基于Nginx实现反向代理"></a>4.2 基于Nginx实现反向代理</h4><blockquote>
+<p>创建三个Tomcat，通过数据卷映射，在映射目录下创建ROOT目录，在对应的ROOT目录下再创建index.html（需要创建三个ROOT目录和三个index.html，index.html内容不要相同，用于测试）</p>
+</blockquote>
+<blockquote>
+<p>docker-compose.yml内容如下：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  tomcat1:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8081</span><br><span class="line">    ports:</span><br><span class="line">      - 8081:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8081:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat2:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8082</span><br><span class="line">    ports:</span><br><span class="line">      - 8082:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8082:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat3:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8083</span><br><span class="line">    ports:</span><br><span class="line">      - 8083:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8083:/usr/local/tomcat/webapps</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>具体步骤如下：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># mkdir docker_tomcats</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_tomcats/</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_tomcats_default&quot;</span> with the default driver</span><br><span class="line">Creating tomcat8082 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8081 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8083 ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># ls</span></span><br><span class="line">docker-compose.yml  tomcat_webapps8081  tomcat_webapps8082  tomcat_webapps8083</span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8081</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8082</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8083</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>然后修改nginx的default.conf配置文件，使其通过Nginx访问到tomcat服务器。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 基于反向代理访问到Tomcat服务器</span></span><br><span class="line">    location / &#123;</span><br><span class="line">      proxy_pass http://192.168.25.132:8081/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>再次访问时，nginx主页直接显示到对应tomcat的页面了</p>
+</blockquote>
+<h4 id="4-3-关于Nginx的location路径映射"><a href="#4-3-关于Nginx的location路径映射" class="headerlink" title="4.3 关于Nginx的location路径映射"></a>4.3 关于Nginx的location路径映射</h4><blockquote>
+<p>优先级关系如下：</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"># <span class="number">1.</span> 直接匹配</span><br><span class="line">location = / <span class="punctuation">&#123;</span></span><br><span class="line">  # 精准匹配，主机名后面不能带任何的字符串</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span> 通用匹配</span><br><span class="line">location /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span> 正则匹配</span><br><span class="line">location ~ /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">4.</span> 匹配开头路径</span><br><span class="line">location ^~ /images/ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/images开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">5.</span> 匹配后缀</span><br><span class="line">location ~* \.(gif|jpg|png)$ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配以gif或者jpg或者png为结尾的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">6.</span> 全部通配</span><br><span class="line">location / <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配全部路径  </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="五、Nginx负载均衡【重点】"><a href="#五、Nginx负载均衡【重点】" class="headerlink" title="五、Nginx负载均衡【重点】"></a>五、Nginx负载均衡【<code>重点</code>】</h3><hr>
+<blockquote>
+<p>Nginx为我们默认提供了三种负载均衡的策略：</p>
+<p>​	轮询：将客户端发起的请求，平均的分配给每一台服务器。</p>
+<p>​	权重：会将客户端的请求，根据服务器的权重值不同，分配不同的数量。</p>
+<p>​	ip_hash：基于当前发起请求的客户端的ip地址，如果ip地址不变，始终会将请求发送到当前的服务器上。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025043.png"></p>
+<h4 id="5-1-轮询"><a href="#5-1-轮询" class="headerlink" title="5.1 轮询"></a>5.1 轮询</h4><blockquote>
+<p>想实现Nginx轮询负载均衡机制需要修改default.conf配置文件中的内容：</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  <span class="punctuation">[</span><span class="punctuation">:</span><span class="punctuation">:</span><span class="punctuation">]</span><span class="punctuation">:</span><span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例如：（注意：upstream的名字不要使用下划线）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8081</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8082</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8083</span>;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  [::]:<span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http:<span class="comment">//my-server/;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：若轮询无法实现，把nginx.conf核心配置文件中的 keepalive_timeout  65 改为 keepalive_timeout  0 即可！</p>
+</blockquote>
+<h4 id="5-2-权重"><a href="#5-2-权重" class="headerlink" title="5.2 权重"></a>5.2 权重</h4><blockquote>
+<p>实现权重的方式</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例如：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server 47.100.241.89:8081 weight=10;</span><br><span class="line">  server 47.100.241.89:8082 weight=5;</span><br><span class="line">  server 47.100.241.89:80 weight=1;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-3-ip-hash"><a href="#5-3-ip-hash" class="headerlink" title="5.3 ip_hash"></a>5.3 ip_hash</h4><blockquote>
+<p>ip_hash实现，只需要添加一个  ip_hash 配置即可，在暂时不使用的服务器后面添加down即可</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream 名字 &#123;</span><br><span class="line">  ip_hash; <span class="comment"># 配置ip_hash</span></span><br><span class="line">  server ip:port down;</span><br><span class="line">  server ip:port;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://upstream的名字/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例如：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  ip_hash;</span><br><span class="line">  server 192.168.25.140:8081;</span><br><span class="line">  server 192.168.25.140:8082 down;</span><br><span class="line">  server 192.168.25.140:8083 down;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六、Nginx动静分离【重点】"><a href="#六、Nginx动静分离【重点】" class="headerlink" title="六、Nginx动静分离【重点】"></a>六、Nginx动静分离【<code>重点</code>】</h3><hr>
+<blockquote>
+<p>Nginx的并发能力公式：</p>
+<p>worker_processes * worker_connections &#x2F; 4 | 2 &#x3D; Nginx最终的并发能力</p>
+<p>动态资源需要&#x2F;4，静态资源需要&#x2F;2.</p>
+<p>Nginx通过动静分离，来提升Nginx的并发能力，更快的给用户响应。</p>
+</blockquote>
+<h4 id="6-1-动态资源代理"><a href="#6-1-动态资源代理" class="headerlink" title="6.1 动态资源代理"></a>6.1 动态资源代理</h4><blockquote>
+<p>使用proxy_pass动态代理</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  proxy_pass 路径;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-2-静态资源代理"><a href="#6-2-静态资源代理" class="headerlink" title="6.2 静态资源代理"></a>6.2 静态资源代理</h4><blockquote>
+<p>使用root静态代理</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  root 静态资源路径;</span><br><span class="line">  index 默认访问路径下的什么资源;</span><br><span class="line">  autoindex on; <span class="comment"># 代表展示静态资源全的全部内容，以列表的形式展开。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 先修改docker，添加一个数据卷，映射到Nginx服务器的一个目录</span></span><br><span class="line"><span class="comment"># 添加了index.html和1.jpg静态资源</span></span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改docker-compose.yml为如下内容：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  nginx:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/nginx:latest</span><br><span class="line">    container_name: nginx</span><br><span class="line">    ports:</span><br><span class="line">      - 80:80</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span><br><span class="line">      - /opt/docker_nginx/img/:/data/img</span><br><span class="line">      - /opt/docker_nginx/html/:/data/html</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>重启再查看，目录已经创建</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml  html  img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>分别在 html 以及 img 目录中拷贝对应的 html 页面和图片即可，然后修改 Nginx 的 default.conf 配置文件</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到html的静态资源</span></span><br><span class="line">  location /html &#123;</span><br><span class="line">    root /data;   <span class="comment">#由于location后面写的是/html，所以root后的路径就不用写成/data/html，/html会默认放在/data后面</span></span><br><span class="line">    index student.html;<span class="comment">#默认访问student.html</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到img的静态资源</span></span><br><span class="line">  location /img &#123;</span><br><span class="line">    root /data;</span><br><span class="line">    autoindex on;<span class="comment">#以列表的形式展开</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>浏览器分别访问以下地址进行测试：</p>
+<p>​		<a href="http://39.98.132.196/html/">http://39.98.132.196/html/</a> （查看之前拷贝的student.html页面）</p>
+<p>​		<a href="http://39.98.132.196/img/2.jpg">http://39.98.132.196/img/2.jpg</a> （注：2.jpg是拷贝的图片名称）</p>
+<p>​		<a href="http://39.98.132.196/img/">http://39.98.132.196/img/</a> （注：可以看到当前目录下的所有文件）</p>
+</blockquote>
+<h3 id="七、Nginx集群"><a href="#七、Nginx集群" class="headerlink" title="七、Nginx集群"></a>七、Nginx集群</h3><hr>
+<blockquote>
+<p>单点故障，避免nginx的宕机，导致整个程序的崩溃</p>
+<p>准备多台Nginx。</p>
+<p>准备keepalived，监听nginx的健康情况。</p>
+<p>准备haproxy，提供一个虚拟的路径，统一的去接收用户得请求。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Nginx集群</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025764.png" alt="1588755548570"></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
-        <category>运维</category>
-        <category>打印机</category>
+        <category>后端学习</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>运维</tag>
-        <tag>打印机</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
-    <title>新装的Windows10,11 系统和Office 2016激活教程</title>
-    <url>/2023/03/29/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<hr>
-<h1 id="新装的Windows10-11系统和Office-2016激活教程"><a href="#新装的Windows10-11系统和Office-2016激活教程" class="headerlink" title="新装的Windows10,11系统和Office 2016激活教程"></a>新装的<code>Windows10,11</code>系统和<code>Office 2016</code>激活教程</h1><h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：<a href="https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0">https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png" alt="image-20221102093603191"></p>
-<p>标志的压缩包就是要下载的软件，解压即可用，解压密码也在图中有展示。</p>
-<span id="more"></span>
-<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>下载并解压这个软件：</p>
-<p>双击运行此软件！</p>
-<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>打开这个软件，对电脑系统和office进行激活即可</p>
-<p>运行上面的 <code>HEU_KMS_Activator_v26.0.0.exe</code>如图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png" alt="image-20221102094027301"></p>
-<p>然后就是点击开始就行了，耐心等待进度条走完，激活完成即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png" alt="image-20221102094233468"></p>
-<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>等百分之百的时候会有弹窗出来，即激活完毕。</p>
+    <title>关于Windows一些常用Command</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/</url>
+    <content><![CDATA[<h3 id="关机、重启、注销、休眠、定时"><a href="#关机、重启、注销、休眠、定时" class="headerlink" title="关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3><ul>
+<li>关机：<code>shutdown /s</code></li>
+<li>重启：<code>shutdown /r</code></li>
+<li>注销：<code>shutdown /l</code></li>
+<li>休眠：<code>shutdown /h /f</code></li>
+<li>取消关机：<code>shutdown /a</code></li>
+<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）<span id="more"></span></li>
+</ul>
+<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p><strong>切换目录，进入指定文件夹：</strong></p>
+<ul>
+<li>切换磁盘：<code>d:</code>（进入 d 盘）</li>
+<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘 <code>test</code> 文件夹）</li>
+<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code> 文件夹）</li>
+<li>返回根目录：<code>cd \</code></li>
+<li>回到上级目录：<code>cd ..</code></li>
+<li>新建文件夹：<code>md test</code></li>
+</ul>
+<p><strong>显示目录内容：</strong></p>
+<ul>
+<li>显示目录中文件列表：<code>dir</code></li>
+<li>显示目录结构：<code>tree d:\test</code>（d 盘 test 目录）</li>
+<li>显示当前目录位置：<code>cd</code></li>
+<li>显示指定磁盘的当前目录位置：<code>cd d:</code></li>
+</ul>
+<h3 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a><strong>网络操作</strong></h3><ul>
+<li>延迟和丢包率：<code>ping ip/域名</code></li>
+<li>Ping 测试 5 次：<code>ping ip/域名 -n 5</code></li>
+<li>清除本地 DNS 缓存：<code>ipconfig /flushdns</code></li>
+<li>路由追踪：<code>tracert ip/域名</code></li>
+</ul>
+<h3 id="进程-x2F-服务操作"><a href="#进程-x2F-服务操作" class="headerlink" title="进程&#x2F;服务操作"></a><strong>进程&#x2F;服务操作</strong></h3><p><strong>进程管理：</strong></p>
+<ul>
+<li>显示当前正在运行的进程：<code>tasklist</code></li>
+<li>运行程序或命令：<code>start 程序名</code></li>
+<li>结束进程，按名称：<code>taskkill /im notepad.exe</code>（关闭记事本）</li>
+<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234 的进程）</li>
+</ul>
+<p><strong>服务管理：</strong></p>
+<ul>
+<li>显示当前正在运行的服务：<code>net start</code></li>
+<li>启动指定服务：<code>net start 服务名</code></li>
+<li>停止指定服务：<code>net stop 服务名</code></li>
+</ul>
+<h3 id="保存为-bat-可执行文件"><a href="#保存为-bat-可执行文件" class="headerlink" title="保存为 .bat 可执行文件"></a>保存为 .bat 可执行文件</h3><p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code> 的可执行文件。</p>
+<p>以后只要双击该文件即可执行指定命令；将文件放入系统【启动】目录中，可以实现开机自动运行。</p>
+<h3 id="使用的案例"><a href="#使用的案例" class="headerlink" title="使用的案例"></a>使用的案例</h3><p><strong>使用示例 1：</strong></p>
+<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code> 命令重启。将下面命令保存为 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开 CMD 运行命令也可以。</p>
+<p>text</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">01taskkill /f /im explorer.exe &amp; start explorer.exe</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用示例 2：</strong></p>
+<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和 <code>XLServicePlatform</code> 服务，如果当前没有使用迅雷的话显然没必要。</p>
+<p>我们可以将如下代码保存为 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
+<p>text</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">0102net stop XLServicePlatform</span><br><span class="line">taskkill /F /im ThunderPlatform.exe</span><br></pre></td></tr></table></figure>
+
 ]]></content>
-      <categories>
-        <category>Windows教程 运维</category>
-      </categories>
-      <tags>
-        <tag>Windows10&amp;Windows11</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>Test</title>
+    <url>/2023/03/29/Test/</url>
+    <content><![CDATA[<p>仅仅作为测试用</p>
+]]></content>
   </entry>
 </search>
