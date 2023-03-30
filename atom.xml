@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-29T23:51:29.084Z</updated>
+  <updated>2023-03-30T12:38:21.379Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>必读</title>
+    <link href="http://example.com/2023/03/30/%E5%BF%85%E8%AF%BB/"/>
+    <id>http://example.com/2023/03/30/%E5%BF%85%E8%AF%BB/</id>
+    <published>2023-03-30T12:34:53.000Z</published>
+    <updated>2023-03-30T12:38:21.379Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="必读"><a href="#必读" class="headerlink" title="必读"></a>必读</h1><p>物来顺应，未来不迎,当时不杂，即过不恋</p><p>​——— 蔡锷</p><p>​好记性不如烂笔头，有时候我自己也不知道自己是为什么做了这个博客，更多的是对于自己遗忘的记录。对于自己工作上面遇到的一些问题也会在博客中体现，希望我的博客也是对你有些许的帮助那将是我的万分荣幸~</p><p>​对于博客中的内容不足之处，请批评指正，共同进步，我的邮箱：<code>couturecome@163.com</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;必读&quot;&gt;&lt;a href=&quot;#必读&quot; class=&quot;headerlink&quot; title=&quot;必读&quot;&gt;&lt;/a&gt;必读&lt;/h1&gt;&lt;p&gt;物来顺应，未来不迎,当时不杂，即过不恋&lt;/p&gt;
+&lt;p&gt;​																		——— 蔡锷&lt;/p&gt;
+&lt;p&gt;​	好记性不如烂笔头</summary>
+      
+    
+    
+    
+    
+    <category term="关于自己" scheme="http://example.com/tags/%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>新装的Windows10,11 系统和Office 2016激活教程</title>
