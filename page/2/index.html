@@ -163,7 +163,7 @@
     
     
     <article
-  id="post-Redis"
+  id="post-Docker基础操作（二）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -174,8 +174,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/07/05/Redis/"
-    >Redis</a> 
+  <a class="article-title" href="/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/"
+    >Docker基础操作（二）</a> 
 </h2>
  
 
@@ -183,47 +183,25 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/07/05/Redis/" class="article-date">
-  <time datetime="2022-07-05T00:02:39.000Z" itemprop="datePublished">2022-07-05</time>
+      <a href="/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2022-04-30T12:12:15.000Z" itemprop="datePublished">2022-04-30</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/redis/">redis</a>
+    <a class="article-category-link" href="/categories/docker/">docker</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238373.jfif" alt="1586740065742"></p>
-<p>[TOC]</p>
-<h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><hr>
-<h4 id="1-1-数据库压力过大"><a href="#1-1-数据库压力过大" class="headerlink" title="1.1 数据库压力过大"></a>1.1 数据库压力过大</h4><blockquote>
-<p>由于用户量增大，请求数量也随之增大，数据压力过大</p>
-</blockquote>
-<h4 id="1-2-数据不同步"><a href="#1-2-数据不同步" class="headerlink" title="1.2 数据不同步"></a>1.2 数据不同步</h4><blockquote>
-<p>多台服务器之间，数据不同步</p>
-</blockquote>
-<h4 id="1-3-传统锁失效"><a href="#1-3-传统锁失效" class="headerlink" title="1.3 传统锁失效"></a>1.3 传统锁失效</h4><blockquote>
-<p>多台服务器之间的锁，已经不存在互斥性了。</p>
-</blockquote>
-<h3 id="二、Redis介绍"><a href="#二、Redis介绍" class="headerlink" title="二、Redis介绍"></a>二、Redis介绍</h3><hr>
-<h4 id="2-1-关于关系型数据库和NOSQL数据库（键值对存储）"><a href="#2-1-关于关系型数据库和NOSQL数据库（键值对存储）" class="headerlink" title="2.1 关于关系型数据库和NOSQL数据库（键值对存储）"></a>2.1 关于关系型数据库和NOSQL数据库（键值对存储）</h4><blockquote>
-<p>关系型数据库是基于关系表的数据库，最终会将数据持久化到磁盘上，而nosql数据库是基于特殊的结构，并将数据存储到内存的数据库。从性能上而言，nosql数据库要优于关系型数据库，从安全性上而言关系型数据库要优于nosql数据库，所以在实际开发中一个项目中nosql和关系型数据库会一起使用，达到性能和安全性的双保证。</p>
-<p>NOSQL产品: redis，mongodb，memcached…</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>Redis就是一款NoSQL</li>
-<li>NoSQL -&gt; 非关系型数据库 -&gt; Not Only SQL。</li>
-<li>Key-Value：Redis …</li>
-<li>文档型：ElasticSearch，Solr，Mongodb …</li>
-<li>面向列：Hbase，Cassandra …</li>
-<li>图形化：Neo4j …</li>
-<li>除了关系型数据库都是非关系型数据库</li>
-<li>NoSQL只是一种概念，泛指非关系型数据库，和关系型数据库做一个区分</li>
-</ul>
-</blockquote> 
-      <a class="article-more-link" href="/2022/07/05/Redis/"
+  <h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<p>安装指定版本</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure> 
+      <a class="article-more-link" href="/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/"
         >阅读更多...</a
       >
        
@@ -236,7 +214,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
 
     </footer>
   </div>
@@ -248,7 +226,7 @@
 
     
     <article
-  id="post-RabbitMQ"
+  id="post-Docker基础操作（一）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -259,8 +237,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/06/30/RabbitMQ/"
-    >RabbitMQ</a> 
+  <a class="article-title" href="/2022/04/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/"
+    >Docker基础操作（一）</a> 
 </h2>
  
 
@@ -268,58 +246,25 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/06/30/RabbitMQ/" class="article-date">
-  <time datetime="2022-06-30T00:05:07.000Z" itemprop="datePublished">2022-06-30</time>
+      <a href="/2022/04/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2022-04-29T12:11:08.000Z" itemprop="datePublished">2022-04-29</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/docker/">docker</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <hr>
-<p>title: RabbitMQ<br>date: 2022-06-20 13:06:01.0<br>updated: 2022-11-07 13:06:51.224<br>url: &#x2F;archives&#x2F;rabbitmq<br>categories:</p>
-<ul>
-<li>RabbitMQ<br>tags:</li>
-<li>后端</li>
-<li>RabbitMQ</li>
-</ul>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256767.png" alt="1587640966654"></p>
-<p>[TOC]</p>
-<h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><blockquote>
-<p>模块之间的耦合度过高，一旦一个模块宕机后，全部功能都不能用了，并且同步通讯的成本过高，用户体验差。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">RabbitMQ引言</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png" alt="1587650344256"></td>
-</tr>
-</tbody></table>
-<h3 id="二、RabbitMQ介绍"><a href="#二、RabbitMQ介绍" class="headerlink" title="二、RabbitMQ介绍"></a>二、RabbitMQ介绍</h3><hr>
-<blockquote>
-<p>市面上比较火爆的几款MQ：</p>
-<p>ActiveMQ，RocketMQ，Kafka，RabbitMQ。</p>
-<ul>
-<li><p>语言的支持：ActiveMQ，RocketMQ只支持Java语言，Kafka可以支持多门语言，RabbitMQ支持多种语言。</p>
-</li>
-<li><p>效率方面：ActiveMQ，RocketMQ，Kafka效率都是毫秒级别，RabbitMQ是微秒级别的。</p>
-</li>
-<li><p>消息丢失，消息重复问题： RabbitMQ针对消息的持久化，和重复问题都有比较成熟的解决方案。</p>
-</li>
-<li><p>学习成本：RabbitMQ非常简单。</p>
-</li>
-</ul>
-<p>RabbitMQ是由Rabbit公司去研发和维护的，最终是在Pivotal，由Erlang语言开发（并发的编程语言）</p>
-<p>RabbitMQ严格的遵循AMQP协议，高级消息队列协议，帮助我们在进程之间传递异步消息。</p>
+  <h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
+<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>如果已安装，可以先删除</p>
+<p>[root@localhost ~]# yum -y remove docker-ce</p>
 </blockquote> 
-      <a class="article-more-link" href="/2022/06/30/RabbitMQ/"
+      <a class="article-more-link" href="/2022/04/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/"
         >阅读更多...</a
       >
        
@@ -332,7 +277,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
 
     </footer>
   </div>
@@ -344,7 +289,7 @@
 
     
     <article
-  id="post-Shiro"
+  id="post-Spring（一）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -355,8 +300,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/05/30/Shiro/"
-    >Shiro</a> 
+  <a class="article-title" href="/2022/03/29/Spring%EF%BC%88%E4%B8%80%EF%BC%89/"
+    >Spring（一）</a> 
 </h2>
  
 
@@ -364,28 +309,27 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/05/30/Shiro/" class="article-date">
-  <time datetime="2022-05-30T00:59:23.000Z" itemprop="datePublished">2022-05-30</time>
+      <a href="/2022/03/29/Spring%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2022-03-29T12:29:32.000Z" itemprop="datePublished">2022-03-29</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/">java</a>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/">java</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/Spring/">Spring</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071249775.png" alt="1587372890081"></p>
-<p>[TOC]</p>
-<h3 id="一、RBAC介绍"><a href="#一、RBAC介绍" class="headerlink" title="一、RBAC介绍"></a>一、RBAC介绍</h3><hr>
-<h4 id="1-1-RBAC简介"><a href="#1-1-RBAC简介" class="headerlink" title="1.1 RBAC简介"></a>1.1 RBAC简介</h4><blockquote>
-<p>RBAC是基于角色的访问控制（Role-Based Access Control ）在 RBAC 中，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。这就极大地简化了权限的管理。这样管理都是层级相互依赖的，权限赋予给角色，而把角色又赋予用户，这样的权限设计很清楚，管理起来很方便。</p>
+  <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><blockquote>
+<p>官网：<a target="_blank" rel="noopener" href="https://spring.io/">https://spring.io/</a></p>
 </blockquote>
 <blockquote>
-<p>在RBAC模型里面，有3个基础组成部分，分别是：用户、角色和权限。</p>
-<p>RBAC通过定义角色的权限，并对用户授予某个角色从而来控制用户的权限，实现了用户和权限的逻辑分离，极大地方便了权限的管理，在讲解之前，先介绍一些名词：</p>
+<p>Spring 让每个人都可以更快、更轻松、更安全地编写 Java。Spring 对速度、简单性和生产力的关注使其成为<a target="_blank" rel="noopener" href="https://snyk.io/blog/jvm-ecosystem-report-2018-platform-application/">世界上最受欢迎的</a>Java 框架。</p>
+</blockquote>
+<blockquote>
+<p>我们使用了 Spring 框架附带的许多工具，并获得了许多开箱即用的解决方案所带来的好处，并且不必担心编写大量额外的代码——这确实为我们节省了一些时间和能量。</p>
 </blockquote> 
-      <a class="article-more-link" href="/2022/05/30/Shiro/"
+      <a class="article-more-link" href="/2022/03/29/Spring%EF%BC%88%E4%B8%80%EF%BC%89/"
         >阅读更多...</a
       >
        
@@ -398,7 +342,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li></ul>
 
     </footer>
   </div>
