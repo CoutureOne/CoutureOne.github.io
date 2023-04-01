@@ -4,6 +4,8 @@
     <title>Windows修改固定IP和网络</title>
     <url>/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
+<span id="more"></span>
+
 <p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" alt="image-20230401161930369"></p>
 <p>​	<strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code> -&gt;<code>点击属性</code></strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" alt="image-20230401162239432"></p>
@@ -35,7 +37,9 @@
   <entry>
     <title>查询Windows IP</title>
     <url>/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
-    <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p>
+    <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><span id="more"></span>
+
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p>
 <h4 id="第二步：然后在打开这个选项中输入cmd-然后回车"><a href="#第二步：然后在打开这个选项中输入cmd-然后回车" class="headerlink" title="第二步：然后在打开这个选项中输入cmd,然后回车"></a>第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" alt="image-20230401155900762"></p>
 <h4 id="第三步：输入命令：ipconfig-然后进行回车"><a href="#第三步：输入命令：ipconfig-然后进行回车" class="headerlink" title="第三步：输入命令：ipconfig,然后进行回车"></a>第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" alt="image-20230401160113210"></p>
 <blockquote>
