@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows修改固定IP和网络</title>
+    <url>/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" alt="image-20230401161930369"></p>
+<p>​	<strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code> -&gt;<code>点击属性</code></strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" alt="image-20230401162239432"></p>
+<p>​	<strong>双击下图标注的<code>IPv4</code></strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162323793-20230401163312323.png"></p>
+<p>​	<strong>双击以后会出现下面的这种情况</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png" alt="image-20230401163413779"></p>
+<p><strong>通常情况下都是自动获取<code>DHCP</code>，双击以后也就是空白的，如果你需要固定IP，需要给对应的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>填写即可。</strong></p>
+<h2 id="重置网络"><a href="#重置网络" class="headerlink" title="重置网络"></a>重置网络</h2><blockquote>
+<p>注：再非必要情况下最好不要进行网络重置</p>
+</blockquote>
+<p><strong>搜索<code>cmd</code>,然后右键<code>管理员</code>运行</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401164745531.png" alt="image-20230401164745531"></p>
+<p><strong>打开以后输入<code>netsh winsock reset</code>,然后进行回车即可。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401165032282.png" alt="image-20230401165032282"></p>
+<p><strong>出现上面这种情况也就代表你的网络重置成功，这时候电脑需要重启，然后将电脑重启即可。</strong></p>
+]]></content>
+      <categories>
+        <category>IP</category>
+        <category>Windows</category>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>IP</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查询Windows IP</title>
+    <url>/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
+    <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p>
+<h4 id="第二步：然后在打开这个选项中输入cmd-然后回车"><a href="#第二步：然后在打开这个选项中输入cmd-然后回车" class="headerlink" title="第二步：然后在打开这个选项中输入cmd,然后回车"></a>第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" alt="image-20230401155900762"></p>
+<h4 id="第三步：输入命令：ipconfig-然后进行回车"><a href="#第三步：输入命令：ipconfig-然后进行回车" class="headerlink" title="第三步：输入命令：ipconfig,然后进行回车"></a>第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" alt="image-20230401160113210"></p>
+<blockquote>
+<p>注意这时候我标注出来的IPv4的地址就是一般所需要的地址</p>
+</blockquote>
+<h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="第一步：搜索控制面板，然后进行回车"><a href="#第一步：搜索控制面板，然后进行回车" class="headerlink" title="第一步：搜索控制面板，然后进行回车"></a>第一步：搜索控制面板，然后进行回车</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png" alt="image-20230401160747545"></p>
+<h4 id="第二步：选择网络和Internet"><a href="#第二步：选择网络和Internet" class="headerlink" title="第二步：选择网络和Internet"></a>第二步：选择<code>网络和Internet</code></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png" alt="image-20230401160937333"></p>
+<h4 id="第三步：点击网络共享中心"><a href="#第三步：点击网络共享中心" class="headerlink" title="第三步：点击网络共享中心"></a>第三步：点击网络共享中心</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png" alt="image-20230401161048431"></p>
+<p>​	第四步：点击<code>更改适配器</code>-&gt;<code>双击以太网</code>-&gt;点开<code>详细信息</code>就可以看到IP地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png" alt="image-20230401161421970"></p>
+<blockquote>
+<p>以上就是如何查看电脑IP的方式，当然查看的IP的方式不仅仅是这这两种，也可以在设置网络里面进行直接的查看，还有其他方式等等…</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>IP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac Console连接交换机</title>
     <url>/2023/04/01/Mac-Console%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA/</url>
     <content><![CDATA[<h3 id="一、Mac使用console连接交换机"><a href="#一、Mac使用console连接交换机" class="headerlink" title="一、Mac使用console连接交换机"></a>一、Mac使用console连接交换机</h3><p>首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A</p>
