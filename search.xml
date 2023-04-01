@@ -1,168 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C# windows 环境搭建</title>
-    <url>/2022/10/02/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<blockquote>
-<p>注：本次学习开发使用的软件<code>jetbrians Rider</code></p>
-</blockquote>
-<h3 id="C-语言，其实也叫做-net语言，所有我们准备必要的开发环境，下载链接-https-dotnet-microsoft-com-zh-cn-download"><a href="#C-语言，其实也叫做-net语言，所有我们准备必要的开发环境，下载链接-https-dotnet-microsoft-com-zh-cn-download" class="headerlink" title="C# 语言，其实也叫做.net语言，所有我们准备必要的开发环境，下载链接: https://dotnet.microsoft.com/zh-cn/download"></a>C# 语言，其实也叫做.net语言，所有我们准备必要的开发环境，下载链接: <a href="https://dotnet.microsoft.com/zh-cn/download">https://dotnet.microsoft.com/zh-cn/download</a></h3><span id="more"></span>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120647988.png" alt="image-20221112064702881"></p>
-<h3 id="上面两者软件都可以，更推荐长期版本，兼容性比较好。"><a href="#上面两者软件都可以，更推荐长期版本，兼容性比较好。" class="headerlink" title="上面两者软件都可以，更推荐长期版本，兼容性比较好。"></a>上面两者软件都可以，更推荐长期版本，兼容性比较好。</h3><h3 id="下载完成以后双击安装即可："><a href="#下载完成以后双击安装即可：" class="headerlink" title="下载完成以后双击安装即可："></a>下载完成以后双击安装即可：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120649963.png" alt="image-20221112064939901"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120648869.png" alt="image-20221112064846821"></p>
-<h3 id="当进度条走完时，代表已经安装成功。"><a href="#当进度条走完时，代表已经安装成功。" class="headerlink" title="当进度条走完时，代表已经安装成功。"></a>当进度条走完时，代表已经安装成功。</h3><p>安装成功</p>
-<h3 id="验证自己有没有安装成功，在cmd中，输入命令"><a href="#验证自己有没有安装成功，在cmd中，输入命令" class="headerlink" title="验证自己有没有安装成功，在cmd中，输入命令"></a>验证自己有没有安装成功，在<code>cmd</code>中，输入命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dotnet --list-sdks</span><br></pre></td></tr></table></figure>
+    <title>Windows修改固定IP和网络</title>
+    <url>/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
+<span id="more"></span>
 
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120809434.png" alt="image-20221112080948275"></p>
-<h3 id="出现这个即代表安装成功，环境搭建完成。"><a href="#出现这个即代表安装成功，环境搭建完成。" class="headerlink" title="出现这个即代表安装成功，环境搭建完成。"></a>出现这个即代表安装成功，环境搭建完成。</h3><p><strong>然后安装 <code>Jerbetbrians Rider</code></strong></p>
-<p><strong>官网下载：</strong><a href="https://www.jetbrains.com/rider/">https://www.jetbrains.com/rider/</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120814198.png" alt="image-20221112081423053"></p>
-<p><strong>下载以后双击：</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131101754.png" alt="image-20221113110130585"></p>
-<p><strong>当出现这个界面的时候，即软件代表安装成功！</strong></p>
-<p><strong>然后就是新建项目</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104971.png" alt="image-20221113110407910"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104951.png" alt="image-20221113110443839"></p>
-<p><strong>运行：</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131106148.png" alt="image-20221113110613050"></p>
-<p><strong>运行结果<code>Hello, World！</code></strong></p>
-<p><strong>环境搭建结束</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" alt="image-20230401161930369"></p>
+<p>​	<strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code> -&gt;<code>点击属性</code></strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" alt="image-20230401162239432"></p>
+<p>​	<strong>双击下图标注的<code>IPv4</code></strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162323793-20230401163312323.png"></p>
+<p>​	<strong>双击以后会出现下面的这种情况</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png" alt="image-20230401163413779"></p>
+<p><strong>通常情况下都是自动获取<code>DHCP</code>，双击以后也就是空白的，如果你需要固定IP，需要给对应的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>填写即可。</strong></p>
+<h2 id="重置网络"><a href="#重置网络" class="headerlink" title="重置网络"></a>重置网络</h2><blockquote>
+<p>注：再非必要情况下最好不要进行网络重置</p>
+</blockquote>
+<p><strong>搜索<code>cmd</code>,然后右键<code>管理员</code>运行</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401164745531.png" alt="image-20230401164745531"></p>
+<p><strong>打开以后输入<code>netsh winsock reset</code>,然后进行回车即可。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401165032282.png" alt="image-20230401165032282"></p>
+<p><strong>出现上面这种情况也就代表你的网络重置成功，这时候电脑需要重启，然后将电脑重启即可。</strong></p>
 ]]></content>
       <categories>
-        <category>C#</category>
+        <category>IP</category>
+        <category>Windows</category>
+        <category>网络</category>
       </categories>
       <tags>
-        <tag>后端</tag>
-        <tag>C#</tag>
+        <tag>Windows</tag>
+        <tag>IP</tag>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
-    <title>Docker基础操作（一）</title>
-    <url>/2022/04/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
-<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
-<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
-<p>参考：<a href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
-<p>如果已安装，可以先删除</p>
-<p>[root@localhost ~]# yum -y remove docker-ce</p>
-</blockquote>
-<span id="more"></span>
+    <title>查询Windows IP</title>
+    <url>/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
+    <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><span id="more"></span>
 
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
-<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
-<p>依然采用yum的方式安装</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
-<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
-
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p>
+<h4 id="第二步：然后在打开这个选项中输入cmd-然后回车"><a href="#第二步：然后在打开这个选项中输入cmd-然后回车" class="headerlink" title="第二步：然后在打开这个选项中输入cmd,然后回车"></a>第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" alt="image-20230401155900762"></p>
+<h4 id="第三步：输入命令：ipconfig-然后进行回车"><a href="#第三步：输入命令：ipconfig-然后进行回车" class="headerlink" title="第三步：输入命令：ipconfig,然后进行回车"></a>第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" alt="image-20230401160113210"></p>
 <blockquote>
-<p>注：关闭防火墙之后docker需要重启</p>
+<p>注意这时候我标注出来的IPv4的地址就是一般所需要的地址</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="第一步：搜索控制面板，然后进行回车"><a href="#第一步：搜索控制面板，然后进行回车" class="headerlink" title="第一步：搜索控制面板，然后进行回车"></a>第一步：搜索控制面板，然后进行回车</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png" alt="image-20230401160747545"></p>
+<h4 id="第二步：选择网络和Internet"><a href="#第二步：选择网络和Internet" class="headerlink" title="第二步：选择网络和Internet"></a>第二步：选择<code>网络和Internet</code></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png" alt="image-20230401160937333"></p>
+<h4 id="第三步：点击网络共享中心"><a href="#第三步：点击网络共享中心" class="headerlink" title="第三步：点击网络共享中心"></a>第三步：点击网络共享中心</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png" alt="image-20230401161048431"></p>
+<p>​	第四步：点击<code>更改适配器</code>-&gt;<code>双击以太网</code>-&gt;点开<code>详细信息</code>就可以看到IP地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png" alt="image-20230401161421970"></p>
 <blockquote>
-<ul>
-<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
-<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-</li>
-<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
-<p><a href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
-<p><a href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
-</li>
-<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
-<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
-</li>
-</ul>
+<p>以上就是如何查看电脑IP的方式，当然查看的IP的方式不仅仅是这这两种，也可以在设置网络里面进行直接的查看，还有其他方式等等…</p>
 </blockquote>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
-<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
-<p>从中央仓库拉取镜像到本地</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
-<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
-<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
-<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
-<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
-<p>查看全部正在运行的容器信息</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
-<p>查看容器日志，以查看容器运行的信息</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
-<p>可以进入容器内部进行操作</p>
-</blockquote>
-<p>sh</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
-<p>将宿主机的文件复制到容器内部的指定目录</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
-<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
-        <category>docker</category>
+        <category>运维</category>
+        <category>Windows</category>
       </categories>
       <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker基础操作（二）</title>
-    <url>/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
-
-<p>安装指定版本</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
-<p>————————–Dockerfile参考配置———————————</p>
-<p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
+        <tag>Windows</tag>
+        <tag>IP</tag>
       </tags>
   </entry>
   <entry>
@@ -259,6 +157,92 @@
       <tags>
         <tag>Mac</tag>
         <tag>Switch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新装的Windows10,11系统和Office激活教程</title>
+    <url>/2023/03/29/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：<a href="https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0">https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0</a></p>
+<span id="more"></span>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png" alt="image-20221102093603191"><br>标志的压缩包就是要下载的软件，解压即可用，解压密码也在图中有展示。</p>
+<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>下载并解压这个软件：</p>
+<p>双击运行此软件！</p>
+<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>打开这个软件，对电脑系统和office进行激活即可</p>
+<p>运行上面的 <code>HEU_KMS_Activator_v26.0.0.exe</code>如图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png" alt="image-20221102094027301"></p>
+<p>然后就是点击开始就行了，耐心等待进度条走完，激活完成即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png" alt="image-20221102094233468"></p>
+<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>等百分之百的时候会有弹窗出来，即激活完毕。</p>
+]]></content>
+      <categories>
+        <category>Windows教程 运维</category>
+      </categories>
+      <tags>
+        <tag>Windows10&amp;Windows11</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于网络打印机教程（二）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
+</blockquote>
+<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
+<span id="more"></span>
+<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
+<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
+<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
+<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>打印机</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>打印机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于网络打印机教程（一）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>注意：本教程只适合网络打印机且同一局域网打印机</p>
+</blockquote>
+<h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><span id="more"></span>
+<h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p>
+<h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p>
+<h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p>
+<h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p>
+<blockquote>
+<p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
+<p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p>
+</blockquote>
+<h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p>
+<p>下载安装即可。</p>
+<h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p>
+<ul>
+<li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p>
+<ul>
+<li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p>
+<ul>
+<li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
+</ul>
+<p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+        <category>打印机</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>打印机</tag>
       </tags>
   </entry>
   <entry>
@@ -563,6 +547,184 @@
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于Windows一些常用Command</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/</url>
+    <content><![CDATA[<h3 id="关机、重启、注销、休眠、定时"><a href="#关机、重启、注销、休眠、定时" class="headerlink" title="关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3><ul>
+<li>关机：<code>shutdown /s</code></li>
+<li>重启：<code>shutdown /r</code></li>
+<li>注销：<code>shutdown /l</code></li>
+<li>休眠：<code>shutdown /h /f</code></li>
+<li>取消关机：<code>shutdown /a</code></li>
+<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）<span id="more"></span></li>
+</ul>
+<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p><strong>切换目录，进入指定文件夹：</strong></p>
+<ul>
+<li>切换磁盘：<code>d:</code>（进入 d 盘）</li>
+<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘 <code>test</code> 文件夹）</li>
+<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code> 文件夹）</li>
+<li>返回根目录：<code>cd \</code></li>
+<li>回到上级目录：<code>cd ..</code></li>
+<li>新建文件夹：<code>md test</code></li>
+</ul>
+<p><strong>显示目录内容：</strong></p>
+<ul>
+<li>显示目录中文件列表：<code>dir</code></li>
+<li>显示目录结构：<code>tree d:\test</code>（d 盘 test 目录）</li>
+<li>显示当前目录位置：<code>cd</code></li>
+<li>显示指定磁盘的当前目录位置：<code>cd d:</code></li>
+</ul>
+<h3 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a><strong>网络操作</strong></h3><ul>
+<li>延迟和丢包率：<code>ping ip/域名</code></li>
+<li>Ping 测试 5 次：<code>ping ip/域名 -n 5</code></li>
+<li>清除本地 DNS 缓存：<code>ipconfig /flushdns</code></li>
+<li>路由追踪：<code>tracert ip/域名</code></li>
+</ul>
+<h3 id="进程-x2F-服务操作"><a href="#进程-x2F-服务操作" class="headerlink" title="进程&#x2F;服务操作"></a><strong>进程&#x2F;服务操作</strong></h3><p><strong>进程管理：</strong></p>
+<ul>
+<li>显示当前正在运行的进程：<code>tasklist</code></li>
+<li>运行程序或命令：<code>start 程序名</code></li>
+<li>结束进程，按名称：<code>taskkill /im notepad.exe</code>（关闭记事本）</li>
+<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234 的进程）</li>
+</ul>
+<p><strong>服务管理：</strong></p>
+<ul>
+<li>显示当前正在运行的服务：<code>net start</code></li>
+<li>启动指定服务：<code>net start 服务名</code></li>
+<li>停止指定服务：<code>net stop 服务名</code></li>
+</ul>
+<h3 id="保存为-bat-可执行文件"><a href="#保存为-bat-可执行文件" class="headerlink" title="保存为 .bat 可执行文件"></a>保存为 .bat 可执行文件</h3><p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code> 的可执行文件。</p>
+<p>以后只要双击该文件即可执行指定命令；将文件放入系统【启动】目录中，可以实现开机自动运行。</p>
+<h3 id="使用的案例"><a href="#使用的案例" class="headerlink" title="使用的案例"></a>使用的案例</h3><p><strong>使用示例 1：</strong></p>
+<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code> 命令重启。将下面命令保存为 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开 CMD 运行命令也可以。</p>
+<p>text</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">01taskkill /f /im explorer.exe &amp; start explorer.exe</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用示例 2：</strong></p>
+<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和 <code>XLServicePlatform</code> 服务，如果当前没有使用迅雷的话显然没必要。</p>
+<p>我们可以将如下代码保存为 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
+<p>text</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">0102net stop XLServicePlatform</span><br><span class="line">taskkill /F /im ThunderPlatform.exe</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows Command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于Rider引入nuget无法加载包依赖解方式</title>
+    <url>/2022/11/22/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
+</blockquote>
+<span id="more"></span>
+<p>首先看图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" alt="image-20221122082335814"></p>
+<p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
+<p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
+<p>在默认配置中：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" alt="image-20221122082848339"></p>
+<p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
+<p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- defaultPushSource key works like the &#x27;defaultPushSource&#x27; key of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This can be used by administrators to prevent accidental publishing of packages to nuget.org. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;defaultPushSource&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources; works like the &#x27;packageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This collection cannot be deleted or modified but can be disabled/enabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;Contoso Package Source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://api.nuget.org/v3/index.json&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">packageSources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources that are disabled by default. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Works like the &#x27;disabledPackageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Sources cannot be modified or deleted either but can be enabled/disabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要给这些enable都勾选上</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" alt="image-20221122083314091"></p>
+<p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" alt="image-20221122083437031"></p>
+<p>这时候代表已经添加成功。</p>
+<p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" alt="image-20221122083626412"></p>
+<p>这时候说明已经成功！！！</p>
+<blockquote>
+<p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>C#</category>
+        <category>后端学习</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器（一）</title>
+    <url>/2022/10/07/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="1-服务器的概述"><a href="#1-服务器的概述" class="headerlink" title="1.服务器的概述"></a>1.服务器的概述</h3><h4 id="1-什么是服务器"><a href="#1-什么是服务器" class="headerlink" title="1.什么是服务器"></a>1.什么是服务器</h4><blockquote>
+<p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、长时间的可靠运行、强大的V&#x2F;O外部数据吞吐能力以及更好的扩展性。根据服务器所提供的服务，一般来说服务器都具备承担响应服务请求、承担服务、保障服务的能力。服务器作为电子设备，其内部的结构十分的复杂，但与普通的计算机内部结构相差不大，如：cpu、硬盘、内存，系统、系统总线等。</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="2-服务器的作用"><a href="#2-服务器的作用" class="headerlink" title="2.服务器的作用"></a>2.服务器的作用</h3><blockquote>
+<p>通俗的说，服务器主要是用来响应终端的服务请求：并进行处理，我们在上网的时候是不可能直接将网客接人互联网的，我们都需要通过服务器米连接网络，真有服务器响应你的联网请求，并且进行处理以后才可以联网：存储的功能，服务器的存储空间一般比较充足，可以存储非常多的信息。</p>
+</blockquote>
+<h3 id="3-服务器的分类"><a href="#3-服务器的分类" class="headerlink" title="3.服务器的分类"></a>3.服务器的分类</h3><h5 id="3-1-按物理形态："><a href="#3-1-按物理形态：" class="headerlink" title="3.1 按物理形态："></a>3.1 <strong>按物理形态：</strong></h5><p><strong>服务器：</strong>服务器可以理解为放在远程机房的独立计算机，和我们所用的台式机（没有显示器、键微、鼠标）除了外观和配置外，功能上没有差异，你可以通过远程控制自己安装系统及其他软件，同时可以解析和绑定城名，并通过城名或<code>IP</code>访问服务器上的网站。</p>
+<p><strong>ECS服务器：</strong>云服务器<code>(Elastic Compute Service)</code>，通常用户可以根据自己的需要选定主机容量、<code>CPU</code>能力、内存大小、带宽及购买时常等，因此也称之为弹性计算服务器，<code>ECS</code>在使用上和独立的服务器没有区别，且可以让企业节省自行购买和维护服务器硬件的成本，<code>ECS</code>已被中小企业广泛使用。</p>
+<p><strong>VPS服务器：</strong>虚拟专用服务器<code>(Virtual Private Server)</code>，即将一台独立服务器迎过虚拟技术分割为若干个處拟服务器，每个<code>VPS</code>可以独立安装系统，拥有独立的<code>IP</code>，实现不同<code>VPS</code>间磁盘空问、内存、<code>CPU</code>资源、进程和系统配置的隔商，为用户和应用程序模拟出“独占”使用计算资源的体验。<code>VPS</code>可以像独立服务器一样，重装操作系统，安裝程序，单独重启服务器，形式上和<code>ECS</code>没有区別，但总体性能和付费灵活性不如<code>ECS</code></p>
+<p><strong>虚拟主机：</strong>即将一台己安装樣作系统和安全防范的服务器通过技术手段分制为若千个独立的空间，分配给用户独立使用，用户只需要上传网站程序，解析和绑定域名即可使用。虚拟主机不同于服务器，用户无法安装操作系统和操作软件，只能运行网站脚本语言、<code>html</code>文件、图片及其他静态文件等。虚拟主机相当于着干个用户一起租用一台服务器，价格实惠，简单易用，因此大多数企业网站选择了虚拟主机，而自助建站及云建站使用的也是虚拟主机。</p>
+<h5 id="3-2-按物理位置："><a href="#3-2-按物理位置：" class="headerlink" title="3.2 按物理位置："></a>3.2 按物理位置：</h5><p><strong>国内主机</strong><br><strong>国外主机（美国、德国等地区的主机）</strong><br>1、备案方而：国内主机必须备案因外主机不需要提交备案资料的。<br>2、访问速度：国内主机国内访问快，海外主机海外访问快。<br>3、线路：国内主机有线路限制，海外主机没有，因内主机线路以联通和电信为主，相同的线路访问不存在速度限制，但相互访问就有点问题了</p>
+<h3 id="4-服务器的关键参数指标"><a href="#4-服务器的关键参数指标" class="headerlink" title="4.服务器的关键参数指标"></a>4.服务器的关键参数指标</h3><h5 id="4-1-操作系统："><a href="#4-1-操作系统：" class="headerlink" title="4.1 操作系统："></a>4.1 操作系统：</h5><p><strong>Windows Server：</strong><br>重要版本<code>Windows NT Server 4.0</code>、 <code>Windows 2000 Server</code>、 <code>Windows Server 2003</code>、 <code>Windows Server 2003 R2</code>、<code>Windows Server 2008</code> 、 <code>Windows Server 2008 R2 </code>、 <code>Windows Server 2012</code>。<code> Windows</code>服务器操作系统派应用，结<br>合<code>.NET</code>开发环境，为微软企业用户提供了良好的应用框架。<br><strong>Netware：</strong><br>在一些特定行业和事业单位中，NetWare优秀的批处理功能和安全、稳定的系统性能也有很大的生存空间。NetWare常<br>用的版本有<code>Novell</code>的<code>3.11</code>、 <code>3.12</code>、 <code>4.10</code>、<code>5.0</code>等中英文版。<br><strong>Unix：</strong><br><code>Unix</code>服务器操作系统由<code>AT&amp;T</code>公司和<code>SCO</code>公司共同推出，主要支持大型的文件系统服务、数据服务等应用。市面上流传的<br>主要有<code>SCO SVR</code>、<code> BSD Unix</code>、 <code>SUN Solaris</code>、 <code>IBM-AIX</code>、 <code>HP-U</code>、 <code>FreeBSDX</code>。<br><strong>Linux：</strong><br><code>Linux</code>操作系统虽然与<code>UNIX</code>操作系统类似，但是它不是<code>UNIX</code>操作系统的变种。<code>Torvald</code>从开始编写内核代码时就仿效<code>UNIX</code>，<br>几乎所有<code>UNIX</code>的工具与外壳都可以运行在<code>LINUX</code>上。(linux系统相比windows更安全，运行效率更高）</p>
+<h5 id="4-2-支持脚本："><a href="#4-2-支持脚本：" class="headerlink" title="4.2 支持脚本："></a>4.2 支持脚本：</h5><p>即是否网站程序常见的开发语言，主要有<code>asp</code>及<code>.net</code>、<code> php</code>、<code> jsp</code>, -般需要根据网站程序所使用的开发语言选择，支持的开发语言越少主机越安全和高效</p>
+<h5 id="4-3-空间容量："><a href="#4-3-空间容量：" class="headerlink" title="4.3 空间容量："></a><strong>4.3 空间容量：</strong></h5><p>存放文件的空间大小，企业网站一般可以根据图片和视频文件大小来选择，以及主机使用的年限，一般1-5G就够用了</p>
+<h5 id="4-4主机带宽："><a href="#4-4主机带宽：" class="headerlink" title="4.4主机带宽："></a><strong>4.4主机带宽：</strong></h5><p>主机支持的最大下行访问速度，即直接影响网站访问速度，但虚拟主机并不是带宽越大访问就会越快，还需要考虑同一台服务器上有多少个网站和其他网站是否会消耗带宽资源。</p>
+<h5 id="4-5-访问流量："><a href="#4-5-访问流量：" class="headerlink" title="4.5 访问流量："></a>4.5 访问流量：</h5><p>当一台服务器分割的虚拟主机超过一定数量（如100，很多主机商一台服务器放置了数百个虚拟主机）时，为了限制因某个虚拟主机的网站大量消耗访问带宽（流量）资源，主机提供商不得不在成本和大多数用户的访问速度中找一个平衡点，所以就使用了限制访问流量这个指标。而对于用户来说，当然是不限制流量才没有后顾之忧。</p>
+<h5 id="4-6-并发量："><a href="#4-6-并发量：" class="headerlink" title="4.6 并发量："></a>4.6 并发量：</h5><p>即同一时刻请求访问网站的用户数量，虚拟主机提供商为尽可能保障每个虚拟主机用户的网站稳定和公平性，不得己设置了并发量参数，从而可以在一定程度上确保一台服务器上的其他虚拟主机能稳定的访问。对于小型网站来说，同一时刻在线并动态请求的用户数量并不会太大，因此一般的用户感觉不出来自己的网站访问受限。</p>
+<h5 id="4-7-CPU和内存："><a href="#4-7-CPU和内存：" class="headerlink" title="4.7 CPU和内存："></a>4.7 CPU和内存：</h5><p>和普通电脑一样，代表服务器的运行计算能力，也就是对网站程序的响应速度和效率，如果在不考虑成本的情况下，当然是CPU多核、内存越大性能越高，但企业网站的数据量是有限的，一般双核、4G就可以满足基本使用。</p>
+<h5 id="4-8-服务器ip类型：独立ip和共享ip："><a href="#4-8-服务器ip类型：独立ip和共享ip：" class="headerlink" title="4.8 服务器ip类型：独立ip和共享ip："></a>4.8 服务器ip类型：独立ip和共享ip：</h5><p>首先，两者的概念不一样，独立<code>IP</code>是指一个服务器拥有自己独立的<code>IP</code>地址，共享<code>IP</code>是指多个服务器共用一个公网IP地址，<br>群英把两者的优缺点简单概述如下几点：<br>1.价格方面：共享<code>IP</code>要比独立<code>IP</code>便宜.<br>2.风险问题：共享<code>IP</code>易受到外来网络攻击，且其中一个网站出现问题就会波及其他站点，而独立<code>IP</code>就不会受到这种连带的<br>波及问题.<br>3.收永影响：独立<code>IP</code>更有利于被搜素引擎收录，权重更高.<br>4.城名绑定区别：独立<code>IP</code>可以实现泛域名绑定，而共享<code>IP</code>无法实现泛域名绑定.<br>5.能香直接使用<code>IP</code>访问：独立IP可以直接使用<code>IP</code>访问，共享<code>IP</code>不能，若访问就会收到报错的提示。</p>
+<h5 id="4-9-扩展性能："><a href="#4-9-扩展性能：" class="headerlink" title="4.9 扩展性能："></a>4.9 扩展性能：</h5><p>支持语言，是否支持伪静态、字体</p>
+<h3 id="5-管理服务器"><a href="#5-管理服务器" class="headerlink" title="5. 管理服务器"></a>5. 管理服务器</h3><h5 id="5-1-FTP是什么？"><a href="#5-1-FTP是什么？" class="headerlink" title="5.1 FTP是什么？"></a>5.1 <strong>FTP是什么？</strong></h5><blockquote>
+<p><code>FTP</code> <code>(File Transfer Protocol</code>，文件传输协议）是 <code>TCPAP</code> 协议组中的协议之一。<code>FTP</code>协议包括两个组成部分，其一为<br><code>FTP</code>服务器，其二为<code>FTP</code>客户端。<br>作用:<br>对于客户端：是为了客户端链接主机来管理自己的主机文件<br>对于主机商：可以用<code>FTP</code>可以用来实现限制不同虚拟主机分配给用户对服务器的管理权限</p>
+</blockquote>
+<h5 id="5-2-FTP链接模式："><a href="#5-2-FTP链接模式：" class="headerlink" title="5.2 FTP链接模式："></a>5.2 FTP链接模式：</h5><p>主动模式（<code>port</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>墙口，一般是默认设置为<code>21</code>，然后服务器的数据端口主动去连接用户的客户蠲<code>n+1</code>的数据端口<br>被动模式（ <code>passive</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>端口，一般是默认设置为<code>21</code>，客服躅的数据端口<code>n+1</code>端口，主动链接的服务器的数据<code>20</code>端口</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C# windows 环境搭建</title>
+    <url>/2022/10/02/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<blockquote>
+<p>注：本次学习开发使用的软件<code>jetbrians Rider</code></p>
+</blockquote>
+<h3 id="C-语言，其实也叫做-net语言，所有我们准备必要的开发环境，下载链接-https-dotnet-microsoft-com-zh-cn-download"><a href="#C-语言，其实也叫做-net语言，所有我们准备必要的开发环境，下载链接-https-dotnet-microsoft-com-zh-cn-download" class="headerlink" title="C# 语言，其实也叫做.net语言，所有我们准备必要的开发环境，下载链接: https://dotnet.microsoft.com/zh-cn/download"></a>C# 语言，其实也叫做.net语言，所有我们准备必要的开发环境，下载链接: <a href="https://dotnet.microsoft.com/zh-cn/download">https://dotnet.microsoft.com/zh-cn/download</a></h3><span id="more"></span>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120647988.png" alt="image-20221112064702881"></p>
+<h3 id="上面两者软件都可以，更推荐长期版本，兼容性比较好。"><a href="#上面两者软件都可以，更推荐长期版本，兼容性比较好。" class="headerlink" title="上面两者软件都可以，更推荐长期版本，兼容性比较好。"></a>上面两者软件都可以，更推荐长期版本，兼容性比较好。</h3><h3 id="下载完成以后双击安装即可："><a href="#下载完成以后双击安装即可：" class="headerlink" title="下载完成以后双击安装即可："></a>下载完成以后双击安装即可：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120649963.png" alt="image-20221112064939901"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120648869.png" alt="image-20221112064846821"></p>
+<h3 id="当进度条走完时，代表已经安装成功。"><a href="#当进度条走完时，代表已经安装成功。" class="headerlink" title="当进度条走完时，代表已经安装成功。"></a>当进度条走完时，代表已经安装成功。</h3><p>安装成功</p>
+<h3 id="验证自己有没有安装成功，在cmd中，输入命令"><a href="#验证自己有没有安装成功，在cmd中，输入命令" class="headerlink" title="验证自己有没有安装成功，在cmd中，输入命令"></a>验证自己有没有安装成功，在<code>cmd</code>中，输入命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dotnet --list-sdks</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120809434.png" alt="image-20221112080948275"></p>
+<h3 id="出现这个即代表安装成功，环境搭建完成。"><a href="#出现这个即代表安装成功，环境搭建完成。" class="headerlink" title="出现这个即代表安装成功，环境搭建完成。"></a>出现这个即代表安装成功，环境搭建完成。</h3><p><strong>然后安装 <code>Jerbetbrians Rider</code></strong></p>
+<p><strong>官网下载：</strong><a href="https://www.jetbrains.com/rider/">https://www.jetbrains.com/rider/</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120814198.png" alt="image-20221112081423053"></p>
+<p><strong>下载以后双击：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131101754.png" alt="image-20221113110130585"></p>
+<p><strong>当出现这个界面的时候，即软件代表安装成功！</strong></p>
+<p><strong>然后就是新建项目</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104971.png" alt="image-20221113110407910"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104951.png" alt="image-20221113110443839"></p>
+<p><strong>运行：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131106148.png" alt="image-20221113110613050"></p>
+<p><strong>运行结果<code>Hello, World！</code></strong></p>
+<p><strong>环境搭建结束</strong></p>
+]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>后端</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -2294,141 +2456,132 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows修改固定IP和网络</title>
-    <url>/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
-<span id="more"></span>
+    <title>Docker基础操作（二）</title>
+    <url>/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" alt="image-20230401161930369"></p>
-<p>​	<strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code> -&gt;<code>点击属性</code></strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" alt="image-20230401162239432"></p>
-<p>​	<strong>双击下图标注的<code>IPv4</code></strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162323793-20230401163312323.png"></p>
-<p>​	<strong>双击以后会出现下面的这种情况</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png" alt="image-20230401163413779"></p>
-<p><strong>通常情况下都是自动获取<code>DHCP</code>，双击以后也就是空白的，如果你需要固定IP，需要给对应的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>填写即可。</strong></p>
-<h2 id="重置网络"><a href="#重置网络" class="headerlink" title="重置网络"></a>重置网络</h2><blockquote>
-<p>注：再非必要情况下最好不要进行网络重置</p>
-</blockquote>
-<p><strong>搜索<code>cmd</code>,然后右键<code>管理员</code>运行</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401164745531.png" alt="image-20230401164745531"></p>
-<p><strong>打开以后输入<code>netsh winsock reset</code>,然后进行回车即可。</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401165032282.png" alt="image-20230401165032282"></p>
-<p><strong>出现上面这种情况也就代表你的网络重置成功，这时候电脑需要重启，然后将电脑重启即可。</strong></p>
+<p>安装指定版本</p>
+<p>shell</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
+<p>————————–Dockerfile参考配置———————————</p>
+<p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
 ]]></content>
       <categories>
-        <category>IP</category>
-        <category>Windows</category>
-        <category>网络</category>
+        <category>docker</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
-        <tag>IP</tag>
-        <tag>网络</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
-    <title>关于Windows一些常用Command</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/</url>
-    <content><![CDATA[<h3 id="关机、重启、注销、休眠、定时"><a href="#关机、重启、注销、休眠、定时" class="headerlink" title="关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3><ul>
-<li>关机：<code>shutdown /s</code></li>
-<li>重启：<code>shutdown /r</code></li>
-<li>注销：<code>shutdown /l</code></li>
-<li>休眠：<code>shutdown /h /f</code></li>
-<li>取消关机：<code>shutdown /a</code></li>
-<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）<span id="more"></span></li>
-</ul>
-<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p><strong>切换目录，进入指定文件夹：</strong></p>
-<ul>
-<li>切换磁盘：<code>d:</code>（进入 d 盘）</li>
-<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘 <code>test</code> 文件夹）</li>
-<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code> 文件夹）</li>
-<li>返回根目录：<code>cd \</code></li>
-<li>回到上级目录：<code>cd ..</code></li>
-<li>新建文件夹：<code>md test</code></li>
-</ul>
-<p><strong>显示目录内容：</strong></p>
-<ul>
-<li>显示目录中文件列表：<code>dir</code></li>
-<li>显示目录结构：<code>tree d:\test</code>（d 盘 test 目录）</li>
-<li>显示当前目录位置：<code>cd</code></li>
-<li>显示指定磁盘的当前目录位置：<code>cd d:</code></li>
-</ul>
-<h3 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a><strong>网络操作</strong></h3><ul>
-<li>延迟和丢包率：<code>ping ip/域名</code></li>
-<li>Ping 测试 5 次：<code>ping ip/域名 -n 5</code></li>
-<li>清除本地 DNS 缓存：<code>ipconfig /flushdns</code></li>
-<li>路由追踪：<code>tracert ip/域名</code></li>
-</ul>
-<h3 id="进程-x2F-服务操作"><a href="#进程-x2F-服务操作" class="headerlink" title="进程&#x2F;服务操作"></a><strong>进程&#x2F;服务操作</strong></h3><p><strong>进程管理：</strong></p>
-<ul>
-<li>显示当前正在运行的进程：<code>tasklist</code></li>
-<li>运行程序或命令：<code>start 程序名</code></li>
-<li>结束进程，按名称：<code>taskkill /im notepad.exe</code>（关闭记事本）</li>
-<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234 的进程）</li>
-</ul>
-<p><strong>服务管理：</strong></p>
-<ul>
-<li>显示当前正在运行的服务：<code>net start</code></li>
-<li>启动指定服务：<code>net start 服务名</code></li>
-<li>停止指定服务：<code>net stop 服务名</code></li>
-</ul>
-<h3 id="保存为-bat-可执行文件"><a href="#保存为-bat-可执行文件" class="headerlink" title="保存为 .bat 可执行文件"></a>保存为 .bat 可执行文件</h3><p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code> 的可执行文件。</p>
-<p>以后只要双击该文件即可执行指定命令；将文件放入系统【启动】目录中，可以实现开机自动运行。</p>
-<h3 id="使用的案例"><a href="#使用的案例" class="headerlink" title="使用的案例"></a>使用的案例</h3><p><strong>使用示例 1：</strong></p>
-<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code> 命令重启。将下面命令保存为 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开 CMD 运行命令也可以。</p>
-<p>text</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">01taskkill /f /im explorer.exe &amp; start explorer.exe</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用示例 2：</strong></p>
-<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和 <code>XLServicePlatform</code> 服务，如果当前没有使用迅雷的话显然没必要。</p>
-<p>我们可以将如下代码保存为 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
-<p>text</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">0102net stop XLServicePlatform</span><br><span class="line">taskkill /F /im ThunderPlatform.exe</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Windows</category>
-      </categories>
-      <tags>
-        <tag>Windows Command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于Rider引入nuget无法加载包依赖解方式</title>
-    <url>/2022/11/22/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
+    <title>Docker基础操作（一）</title>
+    <url>/2022/04/29/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
+<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
+<p>参考：<a href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>如果已安装，可以先删除</p>
+<p>[root@localhost ~]# yum -y remove docker-ce</p>
 </blockquote>
 <span id="more"></span>
-<p>首先看图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" alt="image-20221122082335814"></p>
-<p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
-<p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
-<p>在默认配置中：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" alt="image-20221122082848339"></p>
-<p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
-<p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- defaultPushSource key works like the &#x27;defaultPushSource&#x27; key of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This can be used by administrators to prevent accidental publishing of packages to nuget.org. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;defaultPushSource&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources; works like the &#x27;packageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This collection cannot be deleted or modified but can be disabled/enabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;Contoso Package Source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://api.nuget.org/v3/index.json&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">packageSources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources that are disabled by default. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Works like the &#x27;disabledPackageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Sources cannot be modified or deleted either but can be enabled/disabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>要给这些enable都勾选上</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" alt="image-20221122083314091"></p>
-<p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" alt="image-20221122083437031"></p>
-<p>这时候代表已经添加成功。</p>
-<p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" alt="image-20221122083626412"></p>
-<p>这时候说明已经成功！！！</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost <span class="built_in">local</span>]<span class="comment"># yum -y install yum-utils device-mapper-persistent-data lvm2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
+<p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
+<p>依然采用yum的方式安装</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102[root@localhost ~]<span class="comment"># yum makecache fast</span></span><br><span class="line">[root@localhost ~]<span class="comment"># yum -y install docker-ce</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
+<p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304<span class="comment"># 启动Docker服务</span></span><br><span class="line">[root@localhost ~]<span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># 测试 hello-world</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run hello-world</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
+<p>注：关闭防火墙之后docker需要重启</p>
 </blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment">#service docker restart</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<blockquote>
+<ul>
+<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+</li>
+<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
+<p><a href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
+<p><a href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
+</li>
+<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
+<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ip:port&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"># 重启两个服务</span><br><span class="line">systemctl daemon-rd9oeload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
+<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
+<p>从中央仓库拉取镜像到本地</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker pull 镜像名称[:tag]</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
+<p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01[root@localhost ~]<span class="comment"># docker images</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
+<p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rmi b8dfe9ade316</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
+<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
+<p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单操作</span></span><br><span class="line">docker run 镜像的标识|镜像名称[:tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用的参数</span></span><br><span class="line">docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]</span><br><span class="line"><span class="comment"># -d：代表后台运行容器</span></span><br><span class="line"><span class="comment"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span><br><span class="line"><span class="comment"># --name 容器名称：指定容器的名称(自定义)</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
+<p>查看全部正在运行的容器信息</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker ps [-qa]</span><br><span class="line"><span class="comment"># -a：查看全部的容器，包括没有运行</span></span><br><span class="line"><span class="comment"># -q：只查看容器的标识</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
+<p>查看容器日志，以查看容器运行的信息</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304docker logs -f 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># -f：可以滚动查看日志的最后几行</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker logs -f 4411f56f1fbb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
+<p>可以进入容器内部进行操作</p>
+</blockquote>
+<p>sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># docker exec -it 4411f56f1fbb bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前容器 exit</span></span><br><span class="line">root@4411f56f1fbb:/usr/local/tomcat<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
+<p>将宿主机的文件复制到容器内部的指定目录</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">01020304050607docker <span class="built_in">cp</span> 文件名称 容器<span class="built_in">id</span>:容器内部路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp /root/a.txt 441:/usr/local/tomcat/temp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-重启-amp-启动-amp-停止-amp-删除容器"><a href="#4-6-重启-amp-启动-amp-停止-amp-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
+<p>容器的启动，停止，删除等操作，后续经常会使用到</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0102030405060708091011121314151617<span class="comment"># 重新启动容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker restart 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动停止运行的容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker start 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止指定的容器（删除容器前，需要先停止容器）</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker stop $(docker ps -qa)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm 容器id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除全部容器</span></span><br><span class="line">[root@localhost ~]<span class="comment"># docker rm $(docker ps -qa)</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
-        <category>C#</category>
-        <category>后端学习</category>
+        <category>docker</category>
       </categories>
       <tags>
-        <tag>C#</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -2811,158 +2964,6 @@
         <tag>java</tag>
         <tag>spring</tag>
         <tag>ssm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于网络打印机教程（一）</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<p>注意：本教程只适合网络打印机且同一局域网打印机</p>
-</blockquote>
-<h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><span id="more"></span>
-<h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p>
-<h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p>
-<h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p>
-<h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p>
-<blockquote>
-<p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
-<p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p>
-</blockquote>
-<h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p>
-<p>下载安装即可。</p>
-<h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p>
-<ul>
-<li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p>
-<ul>
-<li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p>
-<ul>
-<li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
-</ul>
-<p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-        <category>打印机</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-        <tag>打印机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于网络打印机教程（二）</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
-</blockquote>
-<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
-<span id="more"></span>
-<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
-<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
-<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
-<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-        <category>打印机</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-        <tag>打印机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新装的Windows10,11系统和Office激活教程</title>
-    <url>/2023/03/29/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：<a href="https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0">https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0</a></p>
-<span id="more"></span>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png" alt="image-20221102093603191"><br>标志的压缩包就是要下载的软件，解压即可用，解压密码也在图中有展示。</p>
-<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>下载并解压这个软件：</p>
-<p>双击运行此软件！</p>
-<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>打开这个软件，对电脑系统和office进行激活即可</p>
-<p>运行上面的 <code>HEU_KMS_Activator_v26.0.0.exe</code>如图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png" alt="image-20221102094027301"></p>
-<p>然后就是点击开始就行了，耐心等待进度条走完，激活完成即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png" alt="image-20221102094233468"></p>
-<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>等百分之百的时候会有弹窗出来，即激活完毕。</p>
-]]></content>
-      <categories>
-        <category>Windows教程 运维</category>
-      </categories>
-      <tags>
-        <tag>Windows10&amp;Windows11</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器（一）</title>
-    <url>/2022/10/07/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h3 id="1-服务器的概述"><a href="#1-服务器的概述" class="headerlink" title="1.服务器的概述"></a>1.服务器的概述</h3><h4 id="1-什么是服务器"><a href="#1-什么是服务器" class="headerlink" title="1.什么是服务器"></a>1.什么是服务器</h4><blockquote>
-<p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、长时间的可靠运行、强大的V&#x2F;O外部数据吞吐能力以及更好的扩展性。根据服务器所提供的服务，一般来说服务器都具备承担响应服务请求、承担服务、保障服务的能力。服务器作为电子设备，其内部的结构十分的复杂，但与普通的计算机内部结构相差不大，如：cpu、硬盘、内存，系统、系统总线等。</p>
-</blockquote>
-<h3 id="2-服务器的作用"><a href="#2-服务器的作用" class="headerlink" title="2.服务器的作用"></a>2.服务器的作用</h3><blockquote>
-<p>通俗的说，服务器主要是用来响应终端的服务请求：并进行处理，我们在上网的时候是不可能直接将网客接人互联网的，我们都需要通过服务器米连接网络，真有服务器响应你的联网请求，并且进行处理以后才可以联网：存储的功能，服务器的存储空间一般比较充足，可以存储非常多的信息。</p>
-</blockquote>
-<h3 id="3-服务器的分类"><a href="#3-服务器的分类" class="headerlink" title="3.服务器的分类"></a>3.服务器的分类</h3><h5 id="3-1-按物理形态："><a href="#3-1-按物理形态：" class="headerlink" title="3.1 按物理形态："></a>3.1 <strong>按物理形态：</strong></h5><p><strong>服务器：</strong>服务器可以理解为放在远程机房的独立计算机，和我们所用的台式机（没有显示器、键微、鼠标）除了外观和配置外，功能上没有差异，你可以通过远程控制自己安装系统及其他软件，同时可以解析和绑定城名，并通过城名或<code>IP</code>访问服务器上的网站。</p>
-<p><strong>ECS服务器：</strong>云服务器<code>(Elastic Compute Service)</code>，通常用户可以根据自己的需要选定主机容量、<code>CPU</code>能力、内存大小、带宽及购买时常等，因此也称之为弹性计算服务器，<code>ECS</code>在使用上和独立的服务器没有区别，且可以让企业节省自行购买和维护服务器硬件的成本，<code>ECS</code>已被中小企业广泛使用。</p>
-<p><strong>VPS服务器：</strong>虚拟专用服务器<code>(Virtual Private Server)</code>，即将一台独立服务器迎过虚拟技术分割为若干个處拟服务器，每个<code>VPS</code>可以独立安装系统，拥有独立的<code>IP</code>，实现不同<code>VPS</code>间磁盘空问、内存、<code>CPU</code>资源、进程和系统配置的隔商，为用户和应用程序模拟出“独占”使用计算资源的体验。<code>VPS</code>可以像独立服务器一样，重装操作系统，安裝程序，单独重启服务器，形式上和<code>ECS</code>没有区別，但总体性能和付费灵活性不如<code>ECS</code></p>
-<p><strong>虚拟主机：</strong>即将一台己安装樣作系统和安全防范的服务器通过技术手段分制为若千个独立的空间，分配给用户独立使用，用户只需要上传网站程序，解析和绑定域名即可使用。虚拟主机不同于服务器，用户无法安装操作系统和操作软件，只能运行网站脚本语言、<code>html</code>文件、图片及其他静态文件等。虚拟主机相当于着干个用户一起租用一台服务器，价格实惠，简单易用，因此大多数企业网站选择了虚拟主机，而自助建站及云建站使用的也是虚拟主机。</p>
-<h5 id="3-2-按物理位置："><a href="#3-2-按物理位置：" class="headerlink" title="3.2 按物理位置："></a>3.2 按物理位置：</h5><p><strong>国内主机</strong><br><strong>国外主机（美国、德国等地区的主机）</strong><br>1、备案方而：国内主机必须备案因外主机不需要提交备案资料的。<br>2、访问速度：国内主机国内访问快，海外主机海外访问快。<br>3、线路：国内主机有线路限制，海外主机没有，因内主机线路以联通和电信为主，相同的线路访问不存在速度限制，但相互访问就有点问题了</p>
-<h3 id="4-服务器的关键参数指标"><a href="#4-服务器的关键参数指标" class="headerlink" title="4.服务器的关键参数指标"></a>4.服务器的关键参数指标</h3><h5 id="4-1-操作系统："><a href="#4-1-操作系统：" class="headerlink" title="4.1 操作系统："></a>4.1 操作系统：</h5><p><strong>Windows Server：</strong><br>重要版本<code>Windows NT Server 4.0</code>、 <code>Windows 2000 Server</code>、 <code>Windows Server 2003</code>、 <code>Windows Server 2003 R2</code>、<code>Windows Server 2008</code> 、 <code>Windows Server 2008 R2 </code>、 <code>Windows Server 2012</code>。<code> Windows</code>服务器操作系统派应用，结<br>合<code>.NET</code>开发环境，为微软企业用户提供了良好的应用框架。<br><strong>Netware：</strong><br>在一些特定行业和事业单位中，NetWare优秀的批处理功能和安全、稳定的系统性能也有很大的生存空间。NetWare常<br>用的版本有<code>Novell</code>的<code>3.11</code>、 <code>3.12</code>、 <code>4.10</code>、<code>5.0</code>等中英文版。<br><strong>Unix：</strong><br><code>Unix</code>服务器操作系统由<code>AT&amp;T</code>公司和<code>SCO</code>公司共同推出，主要支持大型的文件系统服务、数据服务等应用。市面上流传的<br>主要有<code>SCO SVR</code>、<code> BSD Unix</code>、 <code>SUN Solaris</code>、 <code>IBM-AIX</code>、 <code>HP-U</code>、 <code>FreeBSDX</code>。<br><strong>Linux：</strong><br><code>Linux</code>操作系统虽然与<code>UNIX</code>操作系统类似，但是它不是<code>UNIX</code>操作系统的变种。<code>Torvald</code>从开始编写内核代码时就仿效<code>UNIX</code>，<br>几乎所有<code>UNIX</code>的工具与外壳都可以运行在<code>LINUX</code>上。(linux系统相比windows更安全，运行效率更高）</p>
-<h5 id="4-2-支持脚本："><a href="#4-2-支持脚本：" class="headerlink" title="4.2 支持脚本："></a>4.2 支持脚本：</h5><p>即是否网站程序常见的开发语言，主要有<code>asp</code>及<code>.net</code>、<code> php</code>、<code> jsp</code>, -般需要根据网站程序所使用的开发语言选择，支持的开发语言越少主机越安全和高效</p>
-<h5 id="4-3-空间容量："><a href="#4-3-空间容量：" class="headerlink" title="4.3 空间容量："></a><strong>4.3 空间容量：</strong></h5><p>存放文件的空间大小，企业网站一般可以根据图片和视频文件大小来选择，以及主机使用的年限，一般1-5G就够用了</p>
-<h5 id="4-4主机带宽："><a href="#4-4主机带宽：" class="headerlink" title="4.4主机带宽："></a><strong>4.4主机带宽：</strong></h5><p>主机支持的最大下行访问速度，即直接影响网站访问速度，但虚拟主机并不是带宽越大访问就会越快，还需要考虑同一台服务器上有多少个网站和其他网站是否会消耗带宽资源。</p>
-<h5 id="4-5-访问流量："><a href="#4-5-访问流量：" class="headerlink" title="4.5 访问流量："></a>4.5 访问流量：</h5><p>当一台服务器分割的虚拟主机超过一定数量（如100，很多主机商一台服务器放置了数百个虚拟主机）时，为了限制因某个虚拟主机的网站大量消耗访问带宽（流量）资源，主机提供商不得不在成本和大多数用户的访问速度中找一个平衡点，所以就使用了限制访问流量这个指标。而对于用户来说，当然是不限制流量才没有后顾之忧。</p>
-<h5 id="4-6-并发量："><a href="#4-6-并发量：" class="headerlink" title="4.6 并发量："></a>4.6 并发量：</h5><p>即同一时刻请求访问网站的用户数量，虚拟主机提供商为尽可能保障每个虚拟主机用户的网站稳定和公平性，不得己设置了并发量参数，从而可以在一定程度上确保一台服务器上的其他虚拟主机能稳定的访问。对于小型网站来说，同一时刻在线并动态请求的用户数量并不会太大，因此一般的用户感觉不出来自己的网站访问受限。</p>
-<h5 id="4-7-CPU和内存："><a href="#4-7-CPU和内存：" class="headerlink" title="4.7 CPU和内存："></a>4.7 CPU和内存：</h5><p>和普通电脑一样，代表服务器的运行计算能力，也就是对网站程序的响应速度和效率，如果在不考虑成本的情况下，当然是CPU多核、内存越大性能越高，但企业网站的数据量是有限的，一般双核、4G就可以满足基本使用。</p>
-<h5 id="4-8-服务器ip类型：独立ip和共享ip："><a href="#4-8-服务器ip类型：独立ip和共享ip：" class="headerlink" title="4.8 服务器ip类型：独立ip和共享ip："></a>4.8 服务器ip类型：独立ip和共享ip：</h5><p>首先，两者的概念不一样，独立<code>IP</code>是指一个服务器拥有自己独立的<code>IP</code>地址，共享<code>IP</code>是指多个服务器共用一个公网IP地址，<br>群英把两者的优缺点简单概述如下几点：<br>1.价格方面：共享<code>IP</code>要比独立<code>IP</code>便宜.<br>2.风险问题：共享<code>IP</code>易受到外来网络攻击，且其中一个网站出现问题就会波及其他站点，而独立<code>IP</code>就不会受到这种连带的<br>波及问题.<br>3.收永影响：独立<code>IP</code>更有利于被搜素引擎收录，权重更高.<br>4.城名绑定区别：独立<code>IP</code>可以实现泛域名绑定，而共享<code>IP</code>无法实现泛域名绑定.<br>5.能香直接使用<code>IP</code>访问：独立IP可以直接使用<code>IP</code>访问，共享<code>IP</code>不能，若访问就会收到报错的提示。</p>
-<h5 id="4-9-扩展性能："><a href="#4-9-扩展性能：" class="headerlink" title="4.9 扩展性能："></a>4.9 扩展性能：</h5><p>支持语言，是否支持伪静态、字体</p>
-<h3 id="5-管理服务器"><a href="#5-管理服务器" class="headerlink" title="5. 管理服务器"></a>5. 管理服务器</h3><h5 id="5-1-FTP是什么？"><a href="#5-1-FTP是什么？" class="headerlink" title="5.1 FTP是什么？"></a>5.1 <strong>FTP是什么？</strong></h5><blockquote>
-<p><code>FTP</code> <code>(File Transfer Protocol</code>，文件传输协议）是 <code>TCPAP</code> 协议组中的协议之一。<code>FTP</code>协议包括两个组成部分，其一为<br><code>FTP</code>服务器，其二为<code>FTP</code>客户端。<br>作用:<br>对于客户端：是为了客户端链接主机来管理自己的主机文件<br>对于主机商：可以用<code>FTP</code>可以用来实现限制不同虚拟主机分配给用户对服务器的管理权限</p>
-</blockquote>
-<h5 id="5-2-FTP链接模式："><a href="#5-2-FTP链接模式：" class="headerlink" title="5.2 FTP链接模式："></a>5.2 FTP链接模式：</h5><p>主动模式（<code>port</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>墙口，一般是默认设置为<code>21</code>，然后服务器的数据端口主动去连接用户的客户蠲<code>n+1</code>的数据端口<br>被动模式（ <code>passive</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>端口，一般是默认设置为<code>21</code>，客服躅的数据端口<code>n+1</code>端口，主动链接的服务器的数据<code>20</code>端口</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>服务器</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>查询Windows IP</title>
-    <url>/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
-    <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><span id="more"></span>
-
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p>
-<h4 id="第二步：然后在打开这个选项中输入cmd-然后回车"><a href="#第二步：然后在打开这个选项中输入cmd-然后回车" class="headerlink" title="第二步：然后在打开这个选项中输入cmd,然后回车"></a>第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" alt="image-20230401155900762"></p>
-<h4 id="第三步：输入命令：ipconfig-然后进行回车"><a href="#第三步：输入命令：ipconfig-然后进行回车" class="headerlink" title="第三步：输入命令：ipconfig,然后进行回车"></a>第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" alt="image-20230401160113210"></p>
-<blockquote>
-<p>注意这时候我标注出来的IPv4的地址就是一般所需要的地址</p>
-</blockquote>
-<h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="第一步：搜索控制面板，然后进行回车"><a href="#第一步：搜索控制面板，然后进行回车" class="headerlink" title="第一步：搜索控制面板，然后进行回车"></a>第一步：搜索控制面板，然后进行回车</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png" alt="image-20230401160747545"></p>
-<h4 id="第二步：选择网络和Internet"><a href="#第二步：选择网络和Internet" class="headerlink" title="第二步：选择网络和Internet"></a>第二步：选择<code>网络和Internet</code></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png" alt="image-20230401160937333"></p>
-<h4 id="第三步：点击网络共享中心"><a href="#第三步：点击网络共享中心" class="headerlink" title="第三步：点击网络共享中心"></a>第三步：点击网络共享中心</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png" alt="image-20230401161048431"></p>
-<p>​	第四步：点击<code>更改适配器</code>-&gt;<code>双击以太网</code>-&gt;点开<code>详细信息</code>就可以看到IP地址</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png" alt="image-20230401161421970"></p>
-<blockquote>
-<p>以上就是如何查看电脑IP的方式，当然查看的IP的方式不仅仅是这这两种，也可以在设置网络里面进行直接的查看，还有其他方式等等…</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>运维</category>
-        <category>Windows</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>IP</tag>
       </tags>
   </entry>
 </search>
