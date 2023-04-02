@@ -5,7 +5,7 @@
     <url>/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</url>
     <content><![CDATA[<p>安装命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure>
-
+<span id="more"></span>
 <p>打印报错信息：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fatal: not in a git directory</span><br><span class="line"></span><br><span class="line">Error: Command failed with exit 128: git</span><br></pre></td></tr></table></figure>
 

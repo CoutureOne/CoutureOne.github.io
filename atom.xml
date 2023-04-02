@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-02T00:04:30.123Z</updated>
+  <updated>2023-04-02T00:07:19.691Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="http://example.com/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/"/>
     <id>http://example.com/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</id>
     <published>2023-04-02T00:03:36.000Z</published>
-    <updated>2023-04-02T00:04:30.123Z</updated>
+    <updated>2023-04-02T00:07:19.691Z</updated>
     
-    <content type="html"><![CDATA[<p>安装命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure><p>打印报错信息：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fatal: not in a git directory</span><br><span class="line"></span><br><span class="line">Error: Command failed with exit 128: git</span><br></pre></td></tr></table></figure><p>解决方式：</p><p>首先执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure><p>然后执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure><p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>]]></content>
+    <content type="html"><![CDATA[<p>安装命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure><span id="more"></span><p>打印报错信息：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fatal: not in a git directory</span><br><span class="line"></span><br><span class="line">Error: Command failed with exit 128: git</span><br></pre></td></tr></table></figure><p>解决方式：</p><p>首先执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure><p>然后执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure><p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>]]></content>
     
     
-      
-      
     <summary type="html">&lt;p&gt;安装命令：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;</summary>
-      
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install telnet&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
