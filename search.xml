@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Homebrew安装报错Error:Command failed with exit 128: git</title>
+    <url>/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</url>
+    <content><![CDATA[<p>安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure>
+
+<p>打印报错信息：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fatal: not in a git directory</span><br><span class="line"></span><br><span class="line">Error: Command failed with exit 128: git</span><br></pre></td></tr></table></figure>
+
+<p>解决方式：</p>
+<p>首先执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">unset HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+
+<p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>homebrew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows修改固定IP和网络</title>
     <url>/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
