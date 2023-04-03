@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows10&amp;11官方系统盘制作教程</title>
+    <url>/2023/04/03/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<blockquote>
+<p>本次做系统盘，采用官方的方式制作：</p>
+<p>注意：U盘最少要<code>8G</code>及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="第一步：去微软镜像官方下载网站"><a href="#第一步：去微软镜像官方下载网站" class="headerlink" title="第一步：去微软镜像官方下载网站"></a>第一步：去微软镜像官方下载网站</h3><h4 id="Window10镜像-https-www-microsoft-com-zh-cn-software-download-windows10"><a href="#Window10镜像-https-www-microsoft-com-zh-cn-software-download-windows10" class="headerlink" title="Window10镜像: https://www.microsoft.com/zh-cn/software-download/windows10/"></a><code>Window10</code>镜像: <a href="https://www.microsoft.com/zh-cn/software-download/windows10/">https://www.microsoft.com/zh-cn/software-download/windows10/</a></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022123.png" alt="image-20230403102222753"></p>
+<h4 id="Window11镜像-https-www-microsoft-com-zh-cn-software-download-windows11"><a href="#Window11镜像-https-www-microsoft-com-zh-cn-software-download-windows11" class="headerlink" title="Window11镜像:https://www.microsoft.com/zh-cn/software-download/windows11/"></a><code>Window11镜像</code>:<a href="https://www.microsoft.com/zh-cn/software-download/windows11/">https://www.microsoft.com/zh-cn/software-download/windows11/</a></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022354.png" alt="image-20230403102242020"></p>
+<h3 id="第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具"><a href="#第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具" class="headerlink" title="第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具"></a>第二步：以<code>Windows10</code>为例，开始制作系统盘，下载制作工具，点击<code>立即下载工具</code></h3><p>​	<img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031025068.png" alt="image-20230403102511706"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031027631.png" alt="image-20230403102712343"></p>
+<h3 id="第三步：下载好以后双击打开运行，会出现下图界面"><a href="#第三步：下载好以后双击打开运行，会出现下图界面" class="headerlink" title="第三步：下载好以后双击打开运行，会出现下图界面"></a>第三步：下载好以后双击打开运行，会出现下图界面</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031028052.png" alt="image-20230403102836981"></p>
+<h4 id="第四步：选择接受-gt-再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-gt-下一步-gt-下一步"><a href="#第四步：选择接受-gt-再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-gt-下一步-gt-下一步" class="headerlink" title="第四步：选择接受-&gt;再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-&gt;下一步-&gt;下一步"></a>第四步：选择<code>接受</code>-&gt;再选择<code>为另一台电脑创建安装介质（U盘、DVD、或ISO文件）</code>-&gt;下一步-&gt;下一步</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031029150.png" alt="image-20230403102942082"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034181.png" alt="image-20230403103408109"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034314.png" alt="image-20230403103447243"></p>
+<h3 id="第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成"><a href="#第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成" class="headerlink" title="第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成"></a>第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031037842.png" alt="image-20230403103728772"></p>
+<h3 id="第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成"><a href="#第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成" class="headerlink" title="第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成~"></a>第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成~</h3><blockquote>
+<p>注意在U盘写入过程中，不要对U盘进行插拔或者是弹出操作，不然会写入不成功，不成功则需要重新操作</p>
+<p>上诉过程中截图的是<code>Windows10</code>的制作过程，<code>Windows11</code>也是一模一样，没有差别</p>
+</blockquote>
+<p>以上就是<code>Windows10&amp;11</code>官方系统盘制作过程，当然系统盘的制作不仅仅是这一种，但是这种是最傻瓜式的，希望小白也都能看懂~</p>
+]]></content>
+      <categories>
+        <category>Windows10</category>
+        <category>系统安装</category>
+      </categories>
+      <tags>
+        <tag>Windows 10</tag>
+        <tag>Windows 11</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Homebrew安装报错Error:Command failed with exit 128: git</title>
     <url>/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</url>
     <content><![CDATA[<p>安装命令：</p>
