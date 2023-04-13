@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-08T06:38:51.055Z</updated>
+  <updated>2023-04-13T05:54:58.595Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac（M1Pro安装Redis）</title>
+    <link href="http://example.com/2023/04/13/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/"/>
+    <id>http://example.com/2023/04/13/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/</id>
+    <published>2023-04-13T05:53:29.000Z</published>
+    <updated>2023-04-13T05:54:58.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~ brew install redis <span class="comment"># 执行这个命令来安装Redis</span></span><br><span class="line">Running `brew update --auto-update`...</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Fetching redis</span><br><span class="line">==&gt; Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span><br><span class="line">==&gt; Running `brew cleanup redis`...</span><br><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br><span class="line">➜  ~ brew services start redis</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="comment">##O=#  #</span></span><br><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ redis-cli <span class="comment"># 启动redis</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name couture</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;couture&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; shutdown <span class="comment"># 关闭</span></span><br><span class="line">not connected&gt; quit  <span class="comment"># 退出</span></span><br></pre></td></tr></table></figure><p>在<code>homebrew</code>安装的时候也出现一个问题</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure><p>需要修复什么东西</p><p>然后只需要执行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">unset</span> HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure><p>问题解决~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;采用&lt;code&gt;homebrew&lt;/code&gt;安装Redis，前提是Mac已经安装Redis&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1</summary>
+      
+    
+    
+    
+    <category term="redis" scheme="http://example.com/categories/redis/"/>
+    
+    <category term="Mac" scheme="http://example.com/categories/redis/Mac/"/>
+    
+    <category term="Homebrew" scheme="http://example.com/categories/redis/Mac/Homebrew/"/>
+    
+    
+    <category term="redis" scheme="http://example.com/tags/redis/"/>
+    
+    <category term="Homebrew" scheme="http://example.com/tags/Homebrew/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS 8 字符集报错解决方法</title>
@@ -532,33 +563,6 @@
     <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/"/>
     
     <category term="java" scheme="http://example.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker基础操作（二）</title>
-    <link href="http://example.com/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://example.com/2022/04/30/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
-    <published>2022-04-30T12:12:15.000Z</published>
-    <updated>2023-03-30T00:30:46.900Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p><p>shell</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure><p>安装指定版本</p><p>shell</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure><span id="more"></span><p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p><p>————————–Dockerfile参考配置———————————</p><p>FROM <a href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Docker基础操作和配置&quot;&gt;&lt;a href=&quot;#Docker基础操作和配置&quot; class=&quot;headerlink&quot; title=&quot;Docker基础操作和配置&quot;&gt;&lt;/a&gt;Docker基础操作和配置&lt;/h2&gt;&lt;p&gt;配置阿里云Docker Yum源&lt;/p&gt;
-&lt;p&gt;shell&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;yum install -y yum-utils device-mapper-persistent-data lvm2 git&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;安装指定版本&lt;/p&gt;
-&lt;p&gt;shell&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  查看Docker版本：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;yum list docker-ce --showduplicates&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="docker" scheme="http://example.com/categories/docker/"/>
-    
-    
-    <category term="docker" scheme="http://example.com/tags/docker/"/>
     
   </entry>
   

@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mac（M1Pro安装Redis）</title>
+    <url>/2023/04/13/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/</url>
+    <content><![CDATA[<p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ brew install redis <span class="comment"># 执行这个命令来安装Redis</span></span><br><span class="line">Running `brew update --auto-update`...</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Fetching redis</span><br><span class="line">==&gt; Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span><br><span class="line">==&gt; Running `brew cleanup redis`...</span><br><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br><span class="line">➜  ~ brew services start redis</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="comment">##O=#  #</span></span><br><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ redis-cli <span class="comment"># 启动redis</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name couture</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;couture&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; shutdown <span class="comment"># 关闭</span></span><br><span class="line">not connected&gt; quit  <span class="comment"># 退出</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在<code>homebrew</code>安装的时候也出现一个问题</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure>
+
+<p>需要修复什么东西</p>
+<p>然后只需要执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ <span class="built_in">unset</span> HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure>
+
+<p>问题解决~</p>
+]]></content>
+      <categories>
+        <category>redis</category>
+        <category>Mac</category>
+        <category>Homebrew</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>Homebrew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS 8 字符集报错解决方法</title>
     <url>/2023/04/08/CentOS-8-%E5%AD%97%E7%AC%A6%E9%9B%86%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h5 id="首先是错误如下："><a href="#首先是错误如下：" class="headerlink" title="首先是错误如下："></a>首先是错误如下：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum install -y yum-utils</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8     <span class="comment"># 这里是出现了 UTF-8字符集的问题</span></span><br><span class="line">Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span><br></pre></td></tr></table></figure>
