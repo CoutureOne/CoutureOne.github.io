@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-25T11:05:13.165Z</updated>
+  <updated>2023-04-25T11:12:57.308Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2023/04/25/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/"/>
     <id>http://example.com/2023/04/25/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</id>
     <published>2023-04-25T07:16:20.000Z</published>
-    <updated>2023-04-25T11:05:13.165Z</updated>
+    <updated>2023-04-25T11:12:57.308Z</updated>
     
-    <content type="html"><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p><blockquote><p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p></blockquote><span id="more"></span><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obbe\bypasssnro</span><br></pre></td></tr></table></figure><p>执行以后回车，等待加载即可！</p>]]></content>
+    <content type="html"><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p><blockquote><p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p></blockquote><span id="more"></span><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obbe\bypasssnro</span><br></pre></td></tr></table></figure><p>执行以后回车，等待加载即可！！</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;这时候在激活界面调出&lt;code&gt;CMD&lt;/code&gt;界面,输入命令：&lt;/p&gt;
@@ -45,9 +45,9 @@
     <link href="http://example.com/2023/04/25/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/"/>
     <id>http://example.com/2023/04/25/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/</id>
     <published>2023-04-25T00:38:33.000Z</published>
-    <updated>2023-04-25T00:40:32.325Z</updated>
+    <updated>2023-04-25T11:12:57.312Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>注意：本次设备是MacBookPro M1Pro版本</p></blockquote><p>打开终端应用</p><p>如果过启动关闭MySQL，输入以下命令：</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">disable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>系统会提示输入管理员密码，输入密码后按下回车键。</p><p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p><p>如果想要启动自动开机MySQL，可以使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">enable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>这样可以启动MySQL并开始运行。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>注意：本次设备是MacBookPro M1Pro版本</p></blockquote><p>打开终端应用</p><p>如果过启动关闭MySQL，输入以下命令：</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">disable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>系统会提示输入管理员密码，输入密码后按下回车键。</p><p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p><p>如果想要启动自动开机MySQL，可以使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">enable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>这样可以启动MySQL并开始运行~</p>]]></content>
     
     
     <summary type="html">&lt;blockquote&gt;
