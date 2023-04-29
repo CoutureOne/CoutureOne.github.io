@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker 优化</title>
+    <url>/2023/04/29/Docker-%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱， <code>Docker</code>优化方案解决</p>
+</blockquote>
+<span id="more"></span>
+
+
+<p>Docker的缓存会随着时间的推移不断增长，清理缓存可以减小磁盘占用，提高系统性能。以下是清理Docker缓存的方法：</p>
+<ol>
+<li>清理没有使用的镜像和容器。这些未使用的镜像和容器会占用系统的空间，可以使用以下命令来清理：</li>
+</ol>
+<ul>
+<li>清理未运行的容器：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker container prune -f</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>清理未使用的镜像：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker image prune -a -f</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>清理未使用的数据卷。在使用数据卷的情况下，可以使用以下命令来清理没有关联容器的数据卷：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume prune -f</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>改变Docker的镜像存储位置。可以在Docker守护进程启动时设置<code>--data-root</code>参数，指定Docker镜像存储的位置，或者通过软链接等方法来改变Docker镜像目录。</p>
+</li>
+<li><p>定期清理Docker镜像缓存。可以通过以下命令来清理Docker镜像缓存：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker system prune -a -f --volumes</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会清理Docker镜像、容器、网络和数据卷等不再使用的资源。</p>
+<p>清理Docker缓存是一个健壮的管理实践，可以帮助系统保持最佳性能，减少磁盘占用</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows11跳过开机联网</title>
     <url>/2023/04/25/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</url>
     <content><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p>
