@@ -429,6 +429,7 @@
         
         
             
+            
         
         <article class="index-post">
             <a class="abstract-title" href="/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
@@ -436,33 +437,9 @@
                 <span class="abstract-title-text">Ubuntu卸载Nginx和替换配置文件</span>
             </a>
             <div class="abstract-content">
-                1、卸载Nginx
-停止 Nginx 服务：
-
-1sudo systemctl stop nginx
-
-
-删除 Nginx：
-
-1sudo apt-get remove nginx
-
-
-删除 Nginx 配置文件：
-
-1sudo rm -rf /etc/nginx/
-
-
-删除 Nginx 日志文件：
-
-1sudo rm -rf /var/log/nginx/
-
-
-最后，删除 Nginx 用户和用户组：
-
-12sudo deluser --remove-home nginxsudo delgroup nginx
-
-完成以上步骤后，就成功卸载 Nginx。
-2、配置文件替换（重置配置文件）1...
+                <h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
+<li>停止 Nginx 服务：</li>
+</ol>
             </div>
             <!-- read more -->
             

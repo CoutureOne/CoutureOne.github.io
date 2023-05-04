@@ -6,6 +6,7 @@
     <content><![CDATA[<h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
 <li>停止 Nginx 服务：</li>
 </ol>
+<span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
 
 <ol>
