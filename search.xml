@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu使用ssh连接有输入命令有提示</title>
+    <url>/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</url>
+    <content><![CDATA[<p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
+<ol>
+<li>登录到您的远程计算机</li>
+<li>打开您的<code>SSH</code>配置文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将以下行添加到配置文件的末尾：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PermitUserEnvironment <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>保存并关闭文件</p>
+</li>
+<li><p>重新启动<code>SSH</code>服务器</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>创建一个<code>.bashrc</code>文件并添加一些变量</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>添加以下行到文本中：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">&quot;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ &quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这会设置您的提示符。</p>
+<ol start="8">
+<li><p>保存并关闭文件</p>
+</li>
+<li><p>重新加载<code>bashrc</code>文件</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>这能确保让<code>.bashrc</code>的变更生效。</p>
+<p>从现在开始，在使用<code>SSH</code>连接到远程计算机时，您应该会在输入命令时获得提示。</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu - SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu卸载Nginx和替换配置文件</title>
     <url>/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
