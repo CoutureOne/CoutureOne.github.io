@@ -5,7 +5,7 @@
     <url>/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</url>
     <content><![CDATA[<p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
 <ol>
-<li>登录到您的远程计算机</li>
+<li>登录到您的远程计算机<span id="more"></span></li>
 <li>打开您的<code>SSH</code>配置文件</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>

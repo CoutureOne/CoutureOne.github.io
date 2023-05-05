@@ -429,6 +429,7 @@
         
         
             
+            
         
         <article class="index-post">
             <a class="abstract-title" href="/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/">
@@ -436,35 +437,9 @@
                 <span class="abstract-title-text">Ubuntu使用ssh连接有输入命令有提示</span>
             </a>
             <div class="abstract-content">
-                Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：
-
-登录到您的远程计算机
-打开您的SSH配置文件
-
-1sudo nano /etc/ssh/sshd_config
-
-
-将以下行添加到配置文件的末尾：
-
-1PermitUserEnvironment yes
-
-
-保存并关闭文件
-
-重新启动SSH服务器
-
-
-1sudo service ssh restart
-
-
-创建一个.bashrc文件并添加一些变量
-
-1nano ~/.bashrc
-
-
-添加以下行到文本中：
-
-1export PS1=&quot;\[\03...
+                <p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
+<ol>
+<li>登录到您的远程计算机
             </div>
             <!-- read more -->
             
@@ -1407,6 +1382,11 @@
                 Mac
             </span>
         
+            <span class="sidebar-tag-name" data-tags="homebrew">
+                <span class="iconfont-archer">&#xe606;</span>
+                homebrew
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Switch">
                 <span class="iconfont-archer">&#xe606;</span>
                 Switch
@@ -1457,19 +1437,19 @@
                 Ubuntu - SSH
             </span>
         
-            <span class="sidebar-tag-name" data-tags="homebrew">
+            <span class="sidebar-tag-name" data-tags="spring">
                 <span class="iconfont-archer">&#xe606;</span>
-                homebrew
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssm">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssm
             </span>
         
             <span class="sidebar-tag-name" data-tags="Nginx - 运维">
                 <span class="iconfont-archer">&#xe606;</span>
                 Nginx - 运维
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows 11 - 运维">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows 11 - 运维
             </span>
         
             <span class="sidebar-tag-name" data-tags="Windows 10">
@@ -1480,6 +1460,11 @@
             <span class="sidebar-tag-name" data-tags="Windows 11">
                 <span class="iconfont-archer">&#xe606;</span>
                 Windows 11
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Windows 11 - 运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                Windows 11 - 运维
             </span>
         
             <span class="sidebar-tag-name" data-tags="Windows">
@@ -1512,24 +1497,14 @@
                 打印机
             </span>
         
-            <span class="sidebar-tag-name" data-tags="spring">
+            <span class="sidebar-tag-name" data-tags="Windows10&Windows11">
                 <span class="iconfont-archer">&#xe606;</span>
-                spring
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ssm">
-                <span class="iconfont-archer">&#xe606;</span>
-                ssm
+                Windows10&Windows11
             </span>
         
             <span class="sidebar-tag-name" data-tags="服务器">
                 <span class="iconfont-archer">&#xe606;</span>
                 服务器
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows10&Windows11">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows10&Windows11
             </span>
         
     </div>
@@ -1573,14 +1548,19 @@
             Cloud
         </span>
     
-        <span class="sidebar-category-name" data-categories="Switch">
+        <span class="sidebar-category-name" data-categories="macOS">
             <span class="iconfont-archer">&#xe60a;</span>
-            Switch
+            macOS
         </span>
     
         <span class="sidebar-category-name" data-categories="CentOS 8">
             <span class="iconfont-archer">&#xe60a;</span>
             CentOS 8
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Switch">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Switch
         </span>
     
         <span class="sidebar-category-name" data-categories="MySQL">
@@ -1593,14 +1573,14 @@
             redis
         </span>
     
-        <span class="sidebar-category-name" data-categories="后端学习">
-            <span class="iconfont-archer">&#xe60a;</span>
-            后端学习
-        </span>
-    
         <span class="sidebar-category-name" data-categories="DevOps">
             <span class="iconfont-archer">&#xe60a;</span>
             DevOps
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="后端学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            后端学习
         </span>
     
         <span class="sidebar-category-name" data-categories="RabbitMQ">
@@ -1618,19 +1598,9 @@
             Ubuntu
         </span>
     
-        <span class="sidebar-category-name" data-categories="macOS">
-            <span class="iconfont-archer">&#xe60a;</span>
-            macOS
-        </span>
-    
         <span class="sidebar-category-name" data-categories="nginx">
             <span class="iconfont-archer">&#xe60a;</span>
             nginx
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows 11 - 运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows 11 - 运维
         </span>
     
         <span class="sidebar-category-name" data-categories="Windows10">
@@ -1638,24 +1608,29 @@
             Windows10
         </span>
     
+        <span class="sidebar-category-name" data-categories="Windows 11 - 运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Windows 11 - 运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Homebrew">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Homebrew
+        </span>
+    
         <span class="sidebar-category-name" data-categories="IP">
             <span class="iconfont-archer">&#xe60a;</span>
             IP
         </span>
     
-        <span class="sidebar-category-name" data-categories="运维">
+        <span class="sidebar-category-name" data-categories="后端学习">
             <span class="iconfont-archer">&#xe60a;</span>
-            运维
+            后端学习
         </span>
     
         <span class="sidebar-category-name" data-categories="Windows">
             <span class="iconfont-archer">&#xe60a;</span>
             Windows
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="后端学习">
-            <span class="iconfont-archer">&#xe60a;</span>
-            后端学习
         </span>
     
         <span class="sidebar-category-name" data-categories="Linux">
@@ -1666,6 +1641,16 @@
         <span class="sidebar-category-name" data-categories="打印机">
             <span class="iconfont-archer">&#xe60a;</span>
             打印机
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Windows教程 运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Windows教程 运维
         </span>
     
         <span class="sidebar-category-name" data-categories="Windows">
@@ -1683,14 +1668,14 @@
             Mac
         </span>
     
-        <span class="sidebar-category-name" data-categories="java">
-            <span class="iconfont-archer">&#xe60a;</span>
-            java
-        </span>
-    
         <span class="sidebar-category-name" data-categories="Linux">
             <span class="iconfont-archer">&#xe60a;</span>
             Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            java
         </span>
     
         <span class="sidebar-category-name" data-categories="redis">
@@ -1706,11 +1691,6 @@
         <span class="sidebar-category-name" data-categories="SSH">
             <span class="iconfont-archer">&#xe60a;</span>
             SSH
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Homebrew">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Homebrew
         </span>
     
         <span class="sidebar-category-name" data-categories="运维">
@@ -1743,6 +1723,11 @@
             Ubuntu
         </span>
     
+        <span class="sidebar-category-name" data-categories="Spring">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Spring
+        </span>
+    
         <span class="sidebar-category-name" data-categories="Ubuntu">
             <span class="iconfont-archer">&#xe60a;</span>
             Ubuntu
@@ -1751,16 +1736,6 @@
         <span class="sidebar-category-name" data-categories="网络">
             <span class="iconfont-archer">&#xe60a;</span>
             网络
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Spring">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Spring
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows教程 运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows教程 运维
         </span>
     
     </div>
