@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-08T13:15:56.482Z</updated>
+  <updated>2023-05-29T13:05:11.351Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小知识</title>
+    <link href="http://example.com/2023/05/29/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <id>http://example.com/2023/05/29/%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
+    <published>2023-05-29T13:03:15.000Z</published>
+    <updated>2023-05-29T13:05:11.351Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="DTU和RTU是什么："><a href="#DTU和RTU是什么：" class="headerlink" title="DTU和RTU是什么："></a>DTU和RTU是什么：</h3><p>​DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。</p><p>DTU是数据传输单元（Data Transfer Unit）的缩写，是一种远程数据传输设备。它通常是安装在现场设备上的一种小型智能终端，可以采集现场设备的数据，并通过无线通信或有线通信方式将数据传输到远程服务器或云平台。DTU通常具有数据采集、处理、传输和存储等多种功能。</p><p>RTU是远程终端单元（Remote Terminal Unit）的缩写，是一种用于远程监控和控制的设备。它通常是安装在现场设备上的一种小型智能终端，可以采集现场设备的数据，并通过无线通信或有线通信方式将数据传输到远程监控中心。RTU通常具有数据采集、处理、控制和报警等多种功能。</p><h3 id="RS232-x2F-RS485接口："><a href="#RS232-x2F-RS485接口：" class="headerlink" title="RS232&#x2F;RS485接口："></a>RS232&#x2F;RS485接口：</h3><p>​RS232和RS485都是串行通信接口标准，它们用于在计算机和其他设备之间传输数据。</p><p>RS232是一种串行通信标准，用于在计算机和其他设备之间传输数据。它常用于连接调制解调器、打印机、传真机、条形码扫描器等设备。RS232标准规定了数据传输的电气特性、信号格式、数据传输速率等参数。</p><p>RS485也是一种串行通信标准，用于在计算机和其他设备之间传输数据。它通常用于连接多个设备，如传感器、控制器、PLC等。RS485标准规定了数据传输的电气特性、信号格式、数据传输速率等参数，并支持多点通信和差分信号传输，可以实现更远距离的数据传输和更可靠的数据传输。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;DTU和RTU是什么：&quot;&gt;&lt;a href=&quot;#DTU和RTU是什么：&quot; class=&quot;headerlink&quot; title=&quot;DTU和RTU是什么：&quot;&gt;&lt;/a&gt;DTU和RTU是什么：&lt;/h3&gt;&lt;p&gt;​	DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义</summary>
+      
+    
+    
+    
+    <category term="Agreement" scheme="http://example.com/categories/Agreement/"/>
+    
+    
+    <category term="Agreement" scheme="http://example.com/tags/Agreement/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建ChatGPT关闭NGINX缓存实现官方回答效果</title>
@@ -494,34 +518,6 @@
 &lt;p&gt;本次教程主要是针对于&lt;code&gt;Windows11&lt;/code&gt;打印机连接，以及扫描仪的相关问题解答&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在一般情况下，网络打印机带扫描仪功能，对于&lt;code&gt;Windows7&lt;/code&gt;和&lt;code&gt;Windows10&lt;/code&gt;操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是&lt;code&gt;Windows11&lt;/code&gt;有点不太一样。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="运维" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="打印机" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
-    
-    
-    <category term="运维" scheme="http://example.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="打印机" scheme="http://example.com/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于网络打印机教程（一）</title>
-    <link href="http://example.com/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://example.com/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</id>
-    <published>2023-03-29T12:05:42.000Z</published>
-    <updated>2023-04-01T00:31:40.153Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>注意：本教程只适合网络打印机且同一局域网打印机</p></blockquote><h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><span id="more"></span><h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p><h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p><h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p><h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p><blockquote><p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p><p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p></blockquote><h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p><p>下载安装即可。</p><h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p><ul><li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li></ul><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p><ul><li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li></ul><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p><ul><li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li></ul><p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;注意：本教程只适合网络打印机且同一局域网打印机&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;鼠标右键选择个性化&quot;&gt;&lt;a href=&quot;#鼠标右键选择个性化&quot; class=&quot;headerlink&quot; title=&quot;鼠标右键选择个性化&quot;&gt;&lt;/a&gt;鼠标右键选择&lt;code&gt;个性化&lt;/code&gt;&lt;/h3&gt;</summary>
     
     
     
