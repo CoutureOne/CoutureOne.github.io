@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-21T12:25:26.739Z</updated>
+  <updated>2023-07-01T02:37:17.189Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu UFW 防火墙</title>
+    <link href="http://example.com/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <id>http://example.com/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</id>
+    <published>2023-07-01T02:35:36.000Z</published>
+    <updated>2023-07-01T02:37:17.189Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p><h3 id="一、安装UFW"><a href="#一、安装UFW" class="headerlink" title="一、安装UFW"></a>一、安装<code>UFW</code></h3><p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：《》</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ufw</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="二、检查UFW的状态"><a href="#二、检查UFW的状态" class="headerlink" title="二、检查UFW的状态"></a>二、检查<code>UFW</code>的状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure><h3 id="三、防火墙的基本命令"><a href="#三、防火墙的基本命令" class="headerlink" title="三、防火墙的基本命令"></a>三、防火墙的基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span> <span class="comment"># 启用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw <span class="built_in">disable</span> <span class="comment"># 禁用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw status <span class="comment"># 查看防火墙状态</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow &lt;端口号&gt; <span class="comment"># 允许特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny &lt;端口号&gt; <span class="comment"># 禁止特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; <span class="comment"># 允许特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny from &lt;IP地址&gt; <span class="comment"># 禁止特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; to any port &lt;端口号&gt; <span class="comment"># 允许特定IP地址访问特定端口号 </span></span><br><span class="line"></span><br><span class="line">sudo ufw status numbered <span class="comment"># 查看规则编号</span></span><br><span class="line"></span><br><span class="line">sudo ufw delete &lt;规则编号&gt; <span class="comment"># 删除规则</span></span><br></pre></td></tr></table></figure><h3 id="四、校园网的案例"><a href="#四、校园网的案例" class="headerlink" title="四、校园网的案例"></a>四、校园网的案例</h3><p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p><ol><li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p></li><li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将 <code>&lt;校园网公网IP范围&gt;</code> 替换为您实际校园网的公网IP地址范围：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from &lt;校园网公网IP范围&gt; to any</span><br></pre></td></tr></table></figure><p>例如，如果校园网的公网IP地址范围是 203.0.113.0&#x2F;24，可以执行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 203.0.113.0/24 to any</span><br></pre></td></tr></table></figure><p>这将允许来自校园网公网IP范围的流量访问任何端口。</p></li><li><p>添加拒绝规则：为了确保只有校园网的公网IP地址可以访问您的网站，您可以添加一条拒绝规则来阻止其他IP地址的访问。使用以下命令添加拒绝规则：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny from any to any</span><br></pre></td></tr></table></figure><p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p></li><li><p>确认规则设置：您可以使用以下命令确认规则已正确设置：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure><p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p></li><li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p></li></ol><p>请注意，确保在配置之前备份重要的配置文件，并在完成后验证规则已成功设置。同时，了解校园网的公网<code>IP</code>地址范围非常重要，以确保只有受限制的IP地址可以访问您的网站。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;code&gt;Ubuntu&lt;/code&gt;防火墙（&lt;code&gt;Uncomplicated&lt;/code&gt; &lt;code&gt;Firewall&lt;/code&gt;，简称&lt;code&gt;ufw&lt;/code&gt;）是一个用户友好的前端工具，用于配置底层的&lt;code&gt;iptables&lt;/code&gt;防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉&lt;code&gt;iptables&lt;/code&gt;命令的用户。&lt;/p&gt;
+&lt;h3 id=&quot;一、安装UFW&quot;&gt;&lt;a href=&quot;#一、安装UFW&quot; class=&quot;headerlink&quot; title=&quot;一、安装UFW&quot;&gt;&lt;/a&gt;一、安装&lt;code&gt;UFW&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;UFW&lt;/code&gt; 是标准&lt;code&gt; Ubuntu 20.04&lt;/code&gt; 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：《》&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install ufw&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="UFW" scheme="http://example.com/categories/UFW/"/>
+    
+    <category term="Ubuntu UFW 防火墙" scheme="http://example.com/categories/UFW/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+    
+    <category term="ufw - 防火墙" scheme="http://example.com/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
   
   <entry>
     <title>常见网络设备密码</title>
@@ -85,9 +110,9 @@
     <category term="Mac" scheme="http://example.com/categories/MySQL/Mac/"/>
     
     
-    <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
-    
     <category term="Mac" scheme="http://example.com/tags/Mac/"/>
+    
+    <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
     
   </entry>
   
@@ -502,31 +527,6 @@
     <category term="IP" scheme="http://example.com/tags/IP/"/>
     
     <category term="网络" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查询Windows IP</title>
-    <link href="http://example.com/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/"/>
-    <id>http://example.com/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</id>
-    <published>2023-04-01T08:54:10.000Z</published>
-    <updated>2023-04-01T09:00:05.829Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><span id="more"></span><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" alt="image-20230401155701051"></p><h4 id="第二步：然后在打开这个选项中输入cmd-然后回车"><a href="#第二步：然后在打开这个选项中输入cmd-然后回车" class="headerlink" title="第二步：然后在打开这个选项中输入cmd,然后回车"></a>第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" alt="image-20230401155900762"></p><h4 id="第三步：输入命令：ipconfig-然后进行回车"><a href="#第三步：输入命令：ipconfig-然后进行回车" class="headerlink" title="第三步：输入命令：ipconfig,然后进行回车"></a>第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" alt="image-20230401160113210"></p><blockquote><p>注意这时候我标注出来的IPv4的地址就是一般所需要的地址</p></blockquote><h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="第一步：搜索控制面板，然后进行回车"><a href="#第一步：搜索控制面板，然后进行回车" class="headerlink" title="第一步：搜索控制面板，然后进行回车"></a>第一步：搜索控制面板，然后进行回车</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png" alt="image-20230401160747545"></p><h4 id="第二步：选择网络和Internet"><a href="#第二步：选择网络和Internet" class="headerlink" title="第二步：选择网络和Internet"></a>第二步：选择<code>网络和Internet</code></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png" alt="image-20230401160937333"></p><h4 id="第三步：点击网络共享中心"><a href="#第三步：点击网络共享中心" class="headerlink" title="第三步：点击网络共享中心"></a>第三步：点击网络共享中心</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png" alt="image-20230401161048431"></p><p>​第四步：点击<code>更改适配器</code>-&gt;<code>双击以太网</code>-&gt;点开<code>详细信息</code>就可以看到IP地址</p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png" alt="image-20230401161421970"></p><blockquote><p>以上就是如何查看电脑IP的方式，当然查看的IP的方式不仅仅是这这两种，也可以在设置网络里面进行直接的查看，还有其他方式等等…</p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;方式一：&quot;&gt;&lt;a href=&quot;#方式一：&quot; class=&quot;headerlink&quot; title=&quot;方式一：&quot;&gt;&lt;/a&gt;方式一：&lt;/h2&gt;&lt;h3 id=&quot;一、如何知道我们本机的IP地址&quot;&gt;&lt;a href=&quot;#一、如何知道我们本机的IP地址&quot; class=&quot;headerlink&quot; title=&quot;一、如何知道我们本机的IP地址&quot;&gt;&lt;/a&gt;一、如何知道我们本机的IP地址&lt;/h3&gt;&lt;h4 id=&quot;第一步：首先电脑上面的快捷键win-R&quot;&gt;&lt;a href=&quot;#第一步：首先电脑上面的快捷键win-R&quot; class=&quot;headerlink&quot; title=&quot;第一步：首先电脑上面的快捷键win + R&quot;&gt;&lt;/a&gt;第一步：&lt;strong&gt;首先电脑上面的快捷键&lt;code&gt;win&lt;/code&gt; + &lt;code&gt;R&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;</summary>
-    
-    
-    
-    <category term="运维" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="Windows" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/Windows/"/>
-    
-    
-    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
-    
-    <category term="IP" scheme="http://example.com/tags/IP/"/>
     
   </entry>
   
