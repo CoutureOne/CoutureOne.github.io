@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-01T02:47:18.476Z</updated>
+  <updated>2023-07-05T08:02:47.619Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian11 安装 Docker</title>
+    <link href="http://example.com/2023/07/05/Debian11-%E5%AE%89%E8%A3%85-Docker/"/>
+    <id>http://example.com/2023/07/05/Debian11-%E5%AE%89%E8%A3%85-Docker/</id>
+    <published>2023-07-05T08:01:21.000Z</published>
+    <updated>2023-07-05T08:02:47.619Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、安装Docker"><a href="#一、安装Docker" class="headerlink" title="一、安装Docker"></a>一、安装<code>Docker</code></h3><h4 id="1-更新系统软件包"><a href="#1-更新系统软件包" class="headerlink" title="1.更新系统软件包"></a>1.更新系统软件包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure><span id="more"></span><h4 id="2-安装所需的依赖库和工具："><a href="#2-安装所需的依赖库和工具：" class="headerlink" title="2.安装所需的依赖库和工具："></a>2.安装所需的依赖库和工具：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release</span><br></pre></td></tr></table></figure><h3 id="3-添加Docker官方GPT秘钥："><a href="#3-添加Docker官方GPT秘钥：" class="headerlink" title="3.添加Docker官方GPT秘钥："></a>3.添加<code>Docker</code>官方<code>GPT</code>秘钥：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</span><br></pre></td></tr></table></figure><h4 id="4-设置Docker稳定版存储库"><a href="#4-设置Docker稳定版存储库" class="headerlink" title="4.设置Docker稳定版存储库"></a>4.设置<code>Docker</code>稳定版存储库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian <span class="subst">$(lsb_release -cs)</span> stable&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></figure><h4 id="5-更新软件包索引：-这一步可要可不要，因为前面已经执行了"><a href="#5-更新软件包索引：-这一步可要可不要，因为前面已经执行了" class="headerlink" title="5.更新软件包索引：(这一步可要可不要，因为前面已经执行了)"></a>5.更新软件包索引：(这一步可要可不要，因为前面已经执行了)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure><h4 id="6-安装Docker引擎："><a href="#6-安装Docker引擎：" class="headerlink" title="6.安装Docker引擎："></a>6.安装Docker引擎：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure><h4 id="7-添加当前用户到Docker组："><a href="#7-添加当前用户到Docker组：" class="headerlink" title="7.添加当前用户到Docker组："></a>7.添加当前用户到<code>Docker</code>组：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure><h6 id="安装成功以后提示："><a href="#安装成功以后提示：" class="headerlink" title="安装成功以后提示："></a>安装成功以后提示：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># docker version #查看版本</span></span><br><span class="line">Client: Docker Engine - Community</span><br><span class="line"> Version:           24.0.2</span><br><span class="line"> API version:       1.43</span><br><span class="line"> Go version:        go1.20.4</span><br><span class="line"> Git commit:        cb74dfc</span><br><span class="line"> Built:             Thu May 25 21:52:17 2023</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Context:           default</span><br><span class="line"></span><br><span class="line">Server: Docker Engine - Community</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          24.0.2</span><br><span class="line">  API version:      1.43 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.20.4</span><br><span class="line">  Git commit:       659604f</span><br><span class="line">  Built:            Thu May 25 21:52:17 2023</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     <span class="literal">false</span></span><br><span class="line"> containerd:</span><br><span class="line">  Version:          1.6.21</span><br><span class="line">  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8</span><br><span class="line"> runc:</span><br><span class="line">  Version:          1.1.7</span><br><span class="line">  GitCommit:        v1.1.7-0-g860f061</span><br><span class="line"> docker-init:</span><br><span class="line">  Version:          0.19.0</span><br><span class="line">  GitCommit:        de40ad0</span><br></pre></td></tr></table></figure><h3 id="二、安装Docker-Compose"><a href="#二、安装Docker-Compose" class="headerlink" title="二、安装Docker Compose"></a>二、安装<code>Docker Compose</code></h3><p>下载 <code>Docker Compose</code> 二进制文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/latest/download/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><p>添加执行权限：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><p>验证<code>Docker Compose</code>是否安装成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;一、安装Docker&quot;&gt;&lt;a href=&quot;#一、安装Docker&quot; class=&quot;headerlink&quot; title=&quot;一、安装Docker&quot;&gt;&lt;/a&gt;一、安装&lt;code&gt;Docker&lt;/code&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-更新系统软件包&quot;&gt;&lt;a href=&quot;#1-更新系统软件包&quot; class=&quot;headerlink&quot; title=&quot;1.更新系统软件包&quot;&gt;&lt;/a&gt;1.更新系统软件包&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt upgrade&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Debian" scheme="http://example.com/categories/Debian/"/>
+    
+    <category term="Docker" scheme="http://example.com/categories/Debian/Docker/"/>
+    
+    
+    <category term="Debian - Docker" scheme="http://example.com/tags/Debian-Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu UFW 防火墙</title>
@@ -412,11 +435,11 @@
     <category term="Linux" scheme="http://example.com/categories/Docker/DevOps/Linux/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
     <category term="Docker" scheme="http://example.com/tags/Docker/"/>
     
     <category term="DevOps" scheme="http://example.com/tags/DevOps/"/>
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
   </entry>
   
@@ -498,35 +521,6 @@
     <category term="Mac" scheme="http://example.com/tags/Mac/"/>
     
     <category term="homebrew" scheme="http://example.com/tags/homebrew/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows修改固定IP和网络</title>
-    <link href="http://example.com/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/"/>
-    <id>http://example.com/2023/04/01/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</id>
-    <published>2023-04-01T08:56:57.000Z</published>
-    <updated>2023-04-01T09:00:05.825Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="修改固定IP"><a href="#修改固定IP" class="headerlink" title="修改固定IP"></a>修改固定IP</h2><p>​<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p><span id="more"></span><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" alt="image-20230401161930369"></p><p>​<strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code> -&gt;<code>点击属性</code></strong></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" alt="image-20230401162239432"></p><p>​<strong>双击下图标注的<code>IPv4</code></strong></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162323793-20230401163312323.png"></p><p>​<strong>双击以后会出现下面的这种情况</strong></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png" alt="image-20230401163413779"></p><p><strong>通常情况下都是自动获取<code>DHCP</code>，双击以后也就是空白的，如果你需要固定IP，需要给对应的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>填写即可。</strong></p><h2 id="重置网络"><a href="#重置网络" class="headerlink" title="重置网络"></a>重置网络</h2><blockquote><p>注：再非必要情况下最好不要进行网络重置</p></blockquote><p><strong>搜索<code>cmd</code>,然后右键<code>管理员</code>运行</strong></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401164745531.png" alt="image-20230401164745531"></p><p><strong>打开以后输入<code>netsh winsock reset</code>,然后进行回车即可。</strong></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401165032282.png" alt="image-20230401165032282"></p><p><strong>出现上面这种情况也就代表你的网络重置成功，这时候电脑需要重启，然后将电脑重启即可。</strong></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;修改固定IP&quot;&gt;&lt;a href=&quot;#修改固定IP&quot; class=&quot;headerlink&quot; title=&quot;修改固定IP&quot;&gt;&lt;/a&gt;修改固定IP&lt;/h2&gt;&lt;p&gt;​	&lt;strong&gt;修改和固定&lt;code&gt;IP&lt;/code&gt;，就是查找的IP的第二种方式的基础上进行操作&lt;/strong&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="IP" scheme="http://example.com/categories/IP/"/>
-    
-    <category term="Windows" scheme="http://example.com/categories/IP/Windows/"/>
-    
-    <category term="网络" scheme="http://example.com/categories/IP/Windows/%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
-    
-    <category term="IP" scheme="http://example.com/tags/IP/"/>
-    
-    <category term="网络" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
