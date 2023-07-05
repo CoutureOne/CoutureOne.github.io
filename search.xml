@@ -313,6 +313,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac(MacBookPro M1)MySQL无法打开解决方式</title>
+    <url>/2023/06/07/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>1.在mac系统的活动监视器里面找到mysqld的进程选择将它关闭掉，然后打开mac上的命令行去执行命令。</p>
+<span id="more"></span>
+
+<p>2.在命令行之中执行命令去给mysql数据库的安装目录赋予一个可以进行读写和执行任意操作的权限，在服务能够运行的情况下无法启动的原因基本上都是因为权限和配置文件的问题所导致的，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">chown</span> -R mysql /usr/local/mysql/data</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3.命令执行完毕之后再次输入命令去启动mysql数据库，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /usr/local/mysql/support-files/mysql.server start</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.执行完毕成功以后出现：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Starting MySQL</span><br><span class="line">.Logging to <span class="string">&#x27;/usr/local/mysql/data/couturedeMacBook-Pro.local.err&#x27;</span>.</span><br><span class="line"> SUCCESS!</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>MySQL</category>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac Console连接交换机</title>
     <url>/2023/04/01/Mac-Console%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA/</url>
     <content><![CDATA[<h3 id="一、Mac使用console连接交换机"><a href="#一、Mac使用console连接交换机" class="headerlink" title="一、Mac使用console连接交换机"></a>一、Mac使用console连接交换机</h3><p>首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A</p>
@@ -409,35 +438,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac(MacBookPro M1)MySQL无法打开解决方式</title>
-    <url>/2023/06/07/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>1.在mac系统的活动监视器里面找到mysqld的进程选择将它关闭掉，然后打开mac上的命令行去执行命令。</p>
-<span id="more"></span>
-
-<p>2.在命令行之中执行命令去给mysql数据库的安装目录赋予一个可以进行读写和执行任意操作的权限，在服务能够运行的情况下无法启动的原因基本上都是因为权限和配置文件的问题所导致的，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">chown</span> -R mysql /usr/local/mysql/data</span><br></pre></td></tr></table></figure>
-
-
-
-<p>3.命令执行完毕之后再次输入命令去启动mysql数据库，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /usr/local/mysql/support-files/mysql.server start</span><br></pre></td></tr></table></figure>
-
-
-
-<p>4.执行完毕成功以后出现：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Starting MySQL</span><br><span class="line">.Logging to <span class="string">&#x27;/usr/local/mysql/data/couturedeMacBook-Pro.local.err&#x27;</span>.</span><br><span class="line"> SUCCESS!</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>MySQL</category>
-        <category>Mac</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac（M1Pro安装Redis）</title>
     <url>/2023/04/13/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/</url>
     <content><![CDATA[<p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p>
@@ -465,32 +465,6 @@
       <tags>
         <tag>redis</tag>
         <tag>Homebrew</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 设置开机自动（关闭）启动MySQL</title>
-    <url>/2023/04/25/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/</url>
-    <content><![CDATA[<blockquote>
-<p>注意：本次设备是MacBookPro M1Pro版本</p>
-</blockquote>
-<p>打开终端应用</p>
-<p>如果过启动关闭MySQL，输入以下命令：</p>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">disable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure>
-
-<p>系统会提示输入管理员密码，输入密码后按下回车键。</p>
-<p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p>
-<p>如果想要启动自动开机MySQL，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">enable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure>
-
-<p>这样可以启动MySQL并开始运行~</p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL - Mac</tag>
       </tags>
   </entry>
   <entry>
@@ -2161,6 +2135,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu SSH连接MySQL报错</title>
+    <url>/2023/04/17/Ubuntu-SSH%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h3 id="报错内容："><a href="#报错内容：" class="headerlink" title="报错内容："></a>报错内容：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[28000][1698] Access denied <span class="keyword">for</span> user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;10.211.55.22&#x27;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png" alt="v"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png" alt="e92246d9f5d9f15c20b70b597ccb6d2c"></p>
+<h3 id="导致问题出现的原因："><a href="#导致问题出现的原因：" class="headerlink" title="导致问题出现的原因："></a>导致问题出现的原因：</h3><p>​	在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止 <code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL 时选择了默认配置，则在远程主机上使用 <code>root</code> 用户名和密码连接到 MySQL 服务器时将会失败。</p>
+<h3 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h3><p>​	首先你得防火墙规则要放通端口<code>3306</code>,如果是虚拟机内网的情况，也可以直接给防火墙关掉。</p>
+<p>​	然后可以直接新添加一个用户，用来管理MySQL。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27;; # username 你的用户名  password 你要设置的密码</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES; # 刷新</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这时候再次连接就能连接成功了~</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png" alt="image-20230417123523144"></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>运维</category>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu UFW 防火墙</title>
+    <url>/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <content><![CDATA[<p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p>
+<h3 id="一、安装UFW"><a href="#一、安装UFW" class="headerlink" title="一、安装UFW"></a>一、安装<code>UFW</code></h3><p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ufw</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="二、检查UFW的状态"><a href="#二、检查UFW的状态" class="headerlink" title="二、检查UFW的状态"></a>二、检查<code>UFW</code>的状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、防火墙的基本命令"><a href="#三、防火墙的基本命令" class="headerlink" title="三、防火墙的基本命令"></a>三、防火墙的基本命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span> <span class="comment"># 启用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw <span class="built_in">disable</span> <span class="comment"># 禁用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw status <span class="comment"># 查看防火墙状态</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow &lt;端口号&gt; <span class="comment"># 允许特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny &lt;端口号&gt; <span class="comment"># 禁止特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; <span class="comment"># 允许特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny from &lt;IP地址&gt; <span class="comment"># 禁止特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; to any port &lt;端口号&gt; <span class="comment"># 允许特定IP地址访问特定端口号 </span></span><br><span class="line"></span><br><span class="line">sudo ufw status numbered <span class="comment"># 查看规则编号</span></span><br><span class="line"></span><br><span class="line">sudo ufw delete &lt;规则编号&gt; <span class="comment"># 删除规则</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、校园网的案例"><a href="#四、校园网的案例" class="headerlink" title="四、校园网的案例"></a>四、校园网的案例</h3><p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p>
+<ol>
+<li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p>
+</li>
+<li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将 <code>&lt;校园网公网IP范围&gt;</code> 替换为您实际校园网的公网IP地址范围：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from &lt;校园网公网IP范围&gt; to any</span><br></pre></td></tr></table></figure>
+
+<p>例如，如果校园网的公网IP地址范围是 203.0.113.0&#x2F;24，可以执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from 203.0.113.0/24 to any</span><br></pre></td></tr></table></figure>
+
+<p>这将允许来自校园网公网IP范围的流量访问任何端口。</p>
+</li>
+<li><p>添加拒绝规则：为了确保只有校园网的公网IP地址可以访问您的网站，您可以添加一条拒绝规则来阻止其他IP地址的访问。使用以下命令添加拒绝规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw deny from any to any</span><br></pre></td></tr></table></figure>
+
+<p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p>
+</li>
+<li><p>确认规则设置：您可以使用以下命令确认规则已正确设置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+
+<p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p>
+</li>
+<li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p>
+</li>
+</ol>
+<p>请注意，确保在配置之前备份重要的配置文件，并在完成后验证规则已成功设置。同时，了解校园网的公网<code>IP</code>地址范围非常重要，以确保只有受限制的IP地址可以访问您的网站。</p>
+]]></content>
+      <categories>
+        <category>UFW</category>
+        <category>Ubuntu UFW 防火墙</category>
+      </categories>
+      <tags>
+        <tag>ufw - 防火墙</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shiro</title>
     <url>/2022/05/30/Shiro/</url>
     <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071249775.png" alt="1587372890081"></p>
@@ -2523,207 +2571,6 @@
       <tags>
         <tag>后端</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu SSH连接MySQL报错</title>
-    <url>/2023/04/17/Ubuntu-SSH%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h3 id="报错内容："><a href="#报错内容：" class="headerlink" title="报错内容："></a>报错内容：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[28000][1698] Access denied <span class="keyword">for</span> user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;10.211.55.22&#x27;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png" alt="v"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png" alt="e92246d9f5d9f15c20b70b597ccb6d2c"></p>
-<h3 id="导致问题出现的原因："><a href="#导致问题出现的原因：" class="headerlink" title="导致问题出现的原因："></a>导致问题出现的原因：</h3><p>​	在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止 <code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL 时选择了默认配置，则在远程主机上使用 <code>root</code> 用户名和密码连接到 MySQL 服务器时将会失败。</p>
-<h3 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h3><p>​	首先你得防火墙规则要放通端口<code>3306</code>,如果是虚拟机内网的情况，也可以直接给防火墙关掉。</p>
-<p>​	然后可以直接新添加一个用户，用来管理MySQL。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27;; # username 你的用户名  password 你要设置的密码</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES; # 刷新</span><br></pre></td></tr></table></figure>
-
-
-
-<p>这时候再次连接就能连接成功了~</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png" alt="image-20230417123523144"></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>运维</category>
-        <category>Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu UFW 防火墙</title>
-    <url>/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</url>
-    <content><![CDATA[<p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p>
-<h3 id="一、安装UFW"><a href="#一、安装UFW" class="headerlink" title="一、安装UFW"></a>一、安装<code>UFW</code></h3><p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ufw</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="二、检查UFW的状态"><a href="#二、检查UFW的状态" class="headerlink" title="二、检查UFW的状态"></a>二、检查<code>UFW</code>的状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、防火墙的基本命令"><a href="#三、防火墙的基本命令" class="headerlink" title="三、防火墙的基本命令"></a>三、防火墙的基本命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span> <span class="comment"># 启用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw <span class="built_in">disable</span> <span class="comment"># 禁用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw status <span class="comment"># 查看防火墙状态</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow &lt;端口号&gt; <span class="comment"># 允许特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny &lt;端口号&gt; <span class="comment"># 禁止特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; <span class="comment"># 允许特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny from &lt;IP地址&gt; <span class="comment"># 禁止特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; to any port &lt;端口号&gt; <span class="comment"># 允许特定IP地址访问特定端口号 </span></span><br><span class="line"></span><br><span class="line">sudo ufw status numbered <span class="comment"># 查看规则编号</span></span><br><span class="line"></span><br><span class="line">sudo ufw delete &lt;规则编号&gt; <span class="comment"># 删除规则</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="四、校园网的案例"><a href="#四、校园网的案例" class="headerlink" title="四、校园网的案例"></a>四、校园网的案例</h3><p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p>
-<ol>
-<li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p>
-</li>
-<li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将 <code>&lt;校园网公网IP范围&gt;</code> 替换为您实际校园网的公网IP地址范围：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from &lt;校园网公网IP范围&gt; to any</span><br></pre></td></tr></table></figure>
-
-<p>例如，如果校园网的公网IP地址范围是 203.0.113.0&#x2F;24，可以执行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from 203.0.113.0/24 to any</span><br></pre></td></tr></table></figure>
-
-<p>这将允许来自校园网公网IP范围的流量访问任何端口。</p>
-</li>
-<li><p>添加拒绝规则：为了确保只有校园网的公网IP地址可以访问您的网站，您可以添加一条拒绝规则来阻止其他IP地址的访问。使用以下命令添加拒绝规则：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw deny from any to any</span><br></pre></td></tr></table></figure>
-
-<p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p>
-</li>
-<li><p>确认规则设置：您可以使用以下命令确认规则已正确设置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
-
-<p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p>
-</li>
-<li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p>
-</li>
-</ol>
-<p>请注意，确保在配置之前备份重要的配置文件，并在完成后验证规则已成功设置。同时，了解校园网的公网<code>IP</code>地址范围非常重要，以确保只有受限制的IP地址可以访问您的网站。</p>
-]]></content>
-      <categories>
-        <category>UFW</category>
-        <category>Ubuntu UFW 防火墙</category>
-      </categories>
-      <tags>
-        <tag>ufw - 防火墙</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu使用ssh连接有输入命令有提示</title>
-    <url>/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</url>
-    <content><![CDATA[<p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
-<ol>
-<li>登录到您的远程计算机<span id="more"></span>     </li>
-<li>打开您的<code>SSH</code>配置文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>将以下行添加到配置文件的末尾：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PermitUserEnvironment <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新启动<code>SSH</code>服务器</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>创建一个<code>.bashrc</code>文件并添加一些变量</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>添加以下行到文本中：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">&quot;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ &quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>这会设置您的提示符。</p>
-<ol start="8">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新加载<code>bashrc</code>文件</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>这能确保让<code>.bashrc</code>的变更生效。</p>
-<p>从现在开始，在使用<code>SSH</code>连接到远程计算机时，您应该会在输入命令时获得提示。</p>
-]]></content>
-      <categories>
-        <category>Ubuntu</category>
-        <category>SSH</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu - SSH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu卸载Nginx和替换配置文件</title>
-    <url>/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
-<li>停止 Nginx 服务：</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>删除 Nginx：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove nginx</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>删除 Nginx 配置文件：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /etc/nginx/</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>删除 Nginx 日志文件：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /var/log/nginx/</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>最后，删除 Nginx 用户和用户组：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo deluser --remove-home nginx</span><br><span class="line">sudo delgroup nginx</span><br></pre></td></tr></table></figure>
-
-<p>完成以上步骤后，就成功卸载 Nginx。</p>
-<h3 id="2、配置文件替换（重置配置文件）"><a href="#2、配置文件替换（重置配置文件）" class="headerlink" title="2、配置文件替换（重置配置文件）"></a>2、配置文件替换（重置配置文件）</h3><p>1.打开终端，输入以下命令停止NGINX服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
-
-<p>2.备份NGINX的当前配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak</span><br></pre></td></tr></table></figure>
-
-<p>3.恢复默认的NGINX配置文件：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo cp <span class="regexp">/etc/</span>nginx<span class="regexp">/nginx.conf.default /</span>etc<span class="regexp">/nginx/</span>nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>4.检查配置文件是否有错误：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
-
-<p>5.如果没有错误，则重新启动NGINX服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
-
-<p>现在，您的NGINX服务应该已经重置并重新启动。</p>
-<h3 id="3、安装Nginx"><a href="#3、安装Nginx" class="headerlink" title="3、安装Nginx"></a>3、安装Nginx</h3><ol>
-<li>打开命令终端，更新软件仓库信息：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>安装完成后，您可以启动NGINX并将其添加到启动项：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nginx` `sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>检查NGINX是否正在运行：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
-
-<p>如果看到“Active: active (running)”的状态，则说明NGINX已成功安装并正在运行。</p>
-]]></content>
-      <categories>
-        <category>nginx</category>
-        <category>运维</category>
-        <category>Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Nginx - 运维</tag>
       </tags>
   </entry>
   <entry>
@@ -3109,6 +2956,153 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu使用ssh连接有输入命令有提示</title>
+    <url>/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</url>
+    <content><![CDATA[<p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
+<ol>
+<li>登录到您的远程计算机<span id="more"></span>     </li>
+<li>打开您的<code>SSH</code>配置文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将以下行添加到配置文件的末尾：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PermitUserEnvironment <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>保存并关闭文件</p>
+</li>
+<li><p>重新启动<code>SSH</code>服务器</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>创建一个<code>.bashrc</code>文件并添加一些变量</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>添加以下行到文本中：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">&quot;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ &quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这会设置您的提示符。</p>
+<ol start="8">
+<li><p>保存并关闭文件</p>
+</li>
+<li><p>重新加载<code>bashrc</code>文件</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>这能确保让<code>.bashrc</code>的变更生效。</p>
+<p>从现在开始，在使用<code>SSH</code>连接到远程计算机时，您应该会在输入命令时获得提示。</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu - SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu卸载Nginx和替换配置文件</title>
+    <url>/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
+<li>停止 Nginx 服务：</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>删除 Nginx：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove nginx</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>删除 Nginx 配置文件：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /etc/nginx/</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>删除 Nginx 日志文件：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /var/log/nginx/</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>最后，删除 Nginx 用户和用户组：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo deluser --remove-home nginx</span><br><span class="line">sudo delgroup nginx</span><br></pre></td></tr></table></figure>
+
+<p>完成以上步骤后，就成功卸载 Nginx。</p>
+<h3 id="2、配置文件替换（重置配置文件）"><a href="#2、配置文件替换（重置配置文件）" class="headerlink" title="2、配置文件替换（重置配置文件）"></a>2、配置文件替换（重置配置文件）</h3><p>1.打开终端，输入以下命令停止NGINX服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
+
+<p>2.备份NGINX的当前配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak</span><br></pre></td></tr></table></figure>
+
+<p>3.恢复默认的NGINX配置文件：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo cp <span class="regexp">/etc/</span>nginx<span class="regexp">/nginx.conf.default /</span>etc<span class="regexp">/nginx/</span>nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>4.检查配置文件是否有错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>5.如果没有错误，则重新启动NGINX服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
+
+<p>现在，您的NGINX服务应该已经重置并重新启动。</p>
+<h3 id="3、安装Nginx"><a href="#3、安装Nginx" class="headerlink" title="3、安装Nginx"></a>3、安装Nginx</h3><ol>
+<li>打开命令终端，更新软件仓库信息：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>安装完成后，您可以启动NGINX并将其添加到启动项：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nginx` `sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>检查NGINX是否正在运行：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
+
+<p>如果看到“Active: active (running)”的状态，则说明NGINX已成功安装并正在运行。</p>
+]]></content>
+      <categories>
+        <category>nginx</category>
+        <category>运维</category>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Nginx - 运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows11跳过开机联网</title>
+    <url>/2023/04/25/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</url>
+    <content><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p>
+<blockquote>
+<p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p>
+</blockquote>
+<span id="more"></span>
+
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">obbe\bypasssnro</span><br></pre></td></tr></table></figure>
+
+<p>执行以后回车，等待加载即可！！</p>
+]]></content>
+      <categories>
+        <category>Windows 11 - 运维</category>
+      </categories>
+      <tags>
+        <tag>Windows 11 - 运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows10&amp;11官方系统盘制作教程</title>
     <url>/2023/04/03/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<blockquote>
@@ -3138,26 +3132,6 @@
       <tags>
         <tag>Windows 10</tag>
         <tag>Windows 11</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows11跳过开机联网</title>
-    <url>/2023/04/25/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</url>
-    <content><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p>
-<blockquote>
-<p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p>
-</blockquote>
-<span id="more"></span>
-
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">obbe\bypasssnro</span><br></pre></td></tr></table></figure>
-
-<p>执行以后回车，等待加载即可！！</p>
-]]></content>
-      <categories>
-        <category>Windows 11 - 运维</category>
-      </categories>
-      <tags>
-        <tag>Windows 11 - 运维</tag>
       </tags>
   </entry>
   <entry>
@@ -3192,6 +3166,43 @@
         <tag>Windows</tag>
         <tag>IP</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于Rider引入nuget无法加载包依赖解方式</title>
+    <url>/2022/11/22/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
+</blockquote>
+<span id="more"></span>
+<p>首先看图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" alt="image-20221122082335814"></p>
+<p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
+<p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
+<p>在默认配置中：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" alt="image-20221122082848339"></p>
+<p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
+<p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- defaultPushSource key works like the &#x27;defaultPushSource&#x27; key of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This can be used by administrators to prevent accidental publishing of packages to nuget.org. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;defaultPushSource&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources; works like the &#x27;packageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This collection cannot be deleted or modified but can be disabled/enabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;Contoso Package Source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://api.nuget.org/v3/index.json&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">packageSources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources that are disabled by default. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Works like the &#x27;disabledPackageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Sources cannot be modified or deleted either but can be enabled/disabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要给这些enable都勾选上</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" alt="image-20221122083314091"></p>
+<p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" alt="image-20221122083437031"></p>
+<p>这时候代表已经添加成功。</p>
+<p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" alt="image-20221122083626412"></p>
+<p>这时候说明已经成功！！！</p>
+<blockquote>
+<p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>C#</category>
+        <category>后端学习</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -3252,43 +3263,6 @@
       <tags>
         <tag>Switch</tag>
         <tag>交换机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于Rider引入nuget无法加载包依赖解方式</title>
-    <url>/2022/11/22/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
-</blockquote>
-<span id="more"></span>
-<p>首先看图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" alt="image-20221122082335814"></p>
-<p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
-<p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
-<p>在默认配置中：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" alt="image-20221122082848339"></p>
-<p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
-<p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- defaultPushSource key works like the &#x27;defaultPushSource&#x27; key of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This can be used by administrators to prevent accidental publishing of packages to nuget.org. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;defaultPushSource&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources; works like the &#x27;packageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This collection cannot be deleted or modified but can be disabled/enabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;Contoso Package Source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://api.nuget.org/v3/index.json&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">packageSources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources that are disabled by default. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Works like the &#x27;disabledPackageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Sources cannot be modified or deleted either but can be enabled/disabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>要给这些enable都勾选上</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" alt="image-20221122083314091"></p>
-<p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" alt="image-20221122083437031"></p>
-<p>这时候代表已经添加成功。</p>
-<p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" alt="image-20221122083626412"></p>
-<p>这时候说明已经成功！！！</p>
-<blockquote>
-<p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>C#</category>
-        <category>后端学习</category>
-      </categories>
-      <tags>
-        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -3359,19 +3333,35 @@
       </tags>
   </entry>
   <entry>
-    <title>关于网络打印机教程（二）</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <title>关于网络打印机教程（一）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<blockquote>
-<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
+<p>注意：本教程只适合网络打印机且同一局域网打印机</p>
 </blockquote>
-<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
-<span id="more"></span>
-<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
-<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
-<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
-<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
+<h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><span id="more"></span>
+<h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p>
+<h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p>
+<h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p>
+<h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p>
+<blockquote>
+<p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
+<p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p>
+</blockquote>
+<h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p>
+<p>下载安装即可。</p>
+<h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p>
+<ul>
+<li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p>
+<ul>
+<li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p>
+<ul>
+<li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
+</ul>
+<p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
 ]]></content>
       <categories>
         <category>运维</category>
@@ -3402,35 +3392,19 @@
       </tags>
   </entry>
   <entry>
-    <title>关于网络打印机教程（一）</title>
-    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <title>关于网络打印机教程（二）</title>
+    <url>/2023/03/29/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<blockquote>
-<p>注意：本教程只适合网络打印机且同一局域网打印机</p>
+<p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
 </blockquote>
-<h3 id="鼠标右键选择个性化"><a href="#鼠标右键选择个性化" class="headerlink" title="鼠标右键选择个性化"></a>鼠标右键选择<code>个性化</code></h3><span id="more"></span>
-<h3 id="首先选择主页："><a href="#首先选择主页：" class="headerlink" title="首先选择主页："></a>首先选择<code>主页</code>：</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" alt="image-20221121192919409"></p>
-<h3 id="其次选择设备"><a href="#其次选择设备" class="headerlink" title="其次选择设备"></a>其次选择<code>设备</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" alt="image-20221121193024629"></p>
-<h3 id="再选择设备与打印机"><a href="#再选择设备与打印机" class="headerlink" title="再选择设备与打印机"></a>再选择<code>设备与打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" alt="image-20221121193302298"></p>
-<h3 id="然后选择添加打印机"><a href="#然后选择添加打印机" class="headerlink" title="然后选择添加打印机"></a>然后选择<code>添加打印机</code></h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" alt="image-20221121193405923"></p>
-<blockquote>
-<p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
-<p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：<a href="http://www.dyjqd.com/%EF%BC%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E6%97%B6%E5%80%99%E9%80%89%E6%8B%A9%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E8%AF%AF%E3%80%82">http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</a></p>
-</blockquote>
-<h4 id="下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子："><a href="#下面是以惠普HP-LaserJet-M1005-MFP打印机驱动为例子：" class="headerlink" title="下面是以惠普HP LaserJet M1005 MFP打印机驱动为例子："></a>下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" alt="image-20221121194013829"></p>
-<p>下载安装即可。</p>
-<h4 id="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"><a href="#回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？" class="headerlink" title="回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？"></a>回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4><h4 id="手动添加IP："><a href="#手动添加IP：" class="headerlink" title="手动添加IP："></a>手动添加IP：</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" alt="image-20221121194200062"></p>
-<ul>
-<li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" alt="image-20221121194254616"></p>
-<ul>
-<li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" alt="image-20221121194633900"></p>
-<ul>
-<li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
-</ul>
-<p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
+<p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。</p>
+<span id="more"></span>
+<p>首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" alt="win1101"></p>
+<p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" alt="win1102"></p>
+<p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
+<p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
 ]]></content>
       <categories>
         <category>运维</category>
@@ -3549,6 +3523,44 @@
       </tags>
   </entry>
   <entry>
+    <title>服务器（一）</title>
+    <url>/2022/10/07/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="1-服务器的概述"><a href="#1-服务器的概述" class="headerlink" title="1.服务器的概述"></a>1.服务器的概述</h3><h4 id="1-什么是服务器"><a href="#1-什么是服务器" class="headerlink" title="1.什么是服务器"></a>1.什么是服务器</h4><blockquote>
+<p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、长时间的可靠运行、强大的V&#x2F;O外部数据吞吐能力以及更好的扩展性。根据服务器所提供的服务，一般来说服务器都具备承担响应服务请求、承担服务、保障服务的能力。服务器作为电子设备，其内部的结构十分的复杂，但与普通的计算机内部结构相差不大，如：cpu、硬盘、内存，系统、系统总线等。</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="2-服务器的作用"><a href="#2-服务器的作用" class="headerlink" title="2.服务器的作用"></a>2.服务器的作用</h3><blockquote>
+<p>通俗的说，服务器主要是用来响应终端的服务请求：并进行处理，我们在上网的时候是不可能直接将网客接人互联网的，我们都需要通过服务器米连接网络，真有服务器响应你的联网请求，并且进行处理以后才可以联网：存储的功能，服务器的存储空间一般比较充足，可以存储非常多的信息。</p>
+</blockquote>
+<h3 id="3-服务器的分类"><a href="#3-服务器的分类" class="headerlink" title="3.服务器的分类"></a>3.服务器的分类</h3><h5 id="3-1-按物理形态："><a href="#3-1-按物理形态：" class="headerlink" title="3.1 按物理形态："></a>3.1 <strong>按物理形态：</strong></h5><p><strong>服务器：</strong>服务器可以理解为放在远程机房的独立计算机，和我们所用的台式机（没有显示器、键微、鼠标）除了外观和配置外，功能上没有差异，你可以通过远程控制自己安装系统及其他软件，同时可以解析和绑定城名，并通过城名或<code>IP</code>访问服务器上的网站。</p>
+<p><strong>ECS服务器：</strong>云服务器<code>(Elastic Compute Service)</code>，通常用户可以根据自己的需要选定主机容量、<code>CPU</code>能力、内存大小、带宽及购买时常等，因此也称之为弹性计算服务器，<code>ECS</code>在使用上和独立的服务器没有区别，且可以让企业节省自行购买和维护服务器硬件的成本，<code>ECS</code>已被中小企业广泛使用。</p>
+<p><strong>VPS服务器：</strong>虚拟专用服务器<code>(Virtual Private Server)</code>，即将一台独立服务器迎过虚拟技术分割为若干个處拟服务器，每个<code>VPS</code>可以独立安装系统，拥有独立的<code>IP</code>，实现不同<code>VPS</code>间磁盘空问、内存、<code>CPU</code>资源、进程和系统配置的隔商，为用户和应用程序模拟出“独占”使用计算资源的体验。<code>VPS</code>可以像独立服务器一样，重装操作系统，安裝程序，单独重启服务器，形式上和<code>ECS</code>没有区別，但总体性能和付费灵活性不如<code>ECS</code></p>
+<p><strong>虚拟主机：</strong>即将一台己安装樣作系统和安全防范的服务器通过技术手段分制为若千个独立的空间，分配给用户独立使用，用户只需要上传网站程序，解析和绑定域名即可使用。虚拟主机不同于服务器，用户无法安装操作系统和操作软件，只能运行网站脚本语言、<code>html</code>文件、图片及其他静态文件等。虚拟主机相当于着干个用户一起租用一台服务器，价格实惠，简单易用，因此大多数企业网站选择了虚拟主机，而自助建站及云建站使用的也是虚拟主机。</p>
+<h5 id="3-2-按物理位置："><a href="#3-2-按物理位置：" class="headerlink" title="3.2 按物理位置："></a>3.2 按物理位置：</h5><p><strong>国内主机</strong><br><strong>国外主机（美国、德国等地区的主机）</strong><br>1、备案方而：国内主机必须备案因外主机不需要提交备案资料的。<br>2、访问速度：国内主机国内访问快，海外主机海外访问快。<br>3、线路：国内主机有线路限制，海外主机没有，因内主机线路以联通和电信为主，相同的线路访问不存在速度限制，但相互访问就有点问题了</p>
+<h3 id="4-服务器的关键参数指标"><a href="#4-服务器的关键参数指标" class="headerlink" title="4.服务器的关键参数指标"></a>4.服务器的关键参数指标</h3><h5 id="4-1-操作系统："><a href="#4-1-操作系统：" class="headerlink" title="4.1 操作系统："></a>4.1 操作系统：</h5><p><strong>Windows Server：</strong><br>重要版本<code>Windows NT Server 4.0</code>、 <code>Windows 2000 Server</code>、 <code>Windows Server 2003</code>、 <code>Windows Server 2003 R2</code>、<code>Windows Server 2008</code> 、 <code>Windows Server 2008 R2 </code>、 <code>Windows Server 2012</code>。<code> Windows</code>服务器操作系统派应用，结<br>合<code>.NET</code>开发环境，为微软企业用户提供了良好的应用框架。<br><strong>Netware：</strong><br>在一些特定行业和事业单位中，NetWare优秀的批处理功能和安全、稳定的系统性能也有很大的生存空间。NetWare常<br>用的版本有<code>Novell</code>的<code>3.11</code>、 <code>3.12</code>、 <code>4.10</code>、<code>5.0</code>等中英文版。<br><strong>Unix：</strong><br><code>Unix</code>服务器操作系统由<code>AT&amp;T</code>公司和<code>SCO</code>公司共同推出，主要支持大型的文件系统服务、数据服务等应用。市面上流传的<br>主要有<code>SCO SVR</code>、<code> BSD Unix</code>、 <code>SUN Solaris</code>、 <code>IBM-AIX</code>、 <code>HP-U</code>、 <code>FreeBSDX</code>。<br><strong>Linux：</strong><br><code>Linux</code>操作系统虽然与<code>UNIX</code>操作系统类似，但是它不是<code>UNIX</code>操作系统的变种。<code>Torvald</code>从开始编写内核代码时就仿效<code>UNIX</code>，<br>几乎所有<code>UNIX</code>的工具与外壳都可以运行在<code>LINUX</code>上。(linux系统相比windows更安全，运行效率更高）</p>
+<h5 id="4-2-支持脚本："><a href="#4-2-支持脚本：" class="headerlink" title="4.2 支持脚本："></a>4.2 支持脚本：</h5><p>即是否网站程序常见的开发语言，主要有<code>asp</code>及<code>.net</code>、<code> php</code>、<code> jsp</code>, -般需要根据网站程序所使用的开发语言选择，支持的开发语言越少主机越安全和高效</p>
+<h5 id="4-3-空间容量："><a href="#4-3-空间容量：" class="headerlink" title="4.3 空间容量："></a><strong>4.3 空间容量：</strong></h5><p>存放文件的空间大小，企业网站一般可以根据图片和视频文件大小来选择，以及主机使用的年限，一般1-5G就够用了</p>
+<h5 id="4-4主机带宽："><a href="#4-4主机带宽：" class="headerlink" title="4.4主机带宽："></a><strong>4.4主机带宽：</strong></h5><p>主机支持的最大下行访问速度，即直接影响网站访问速度，但虚拟主机并不是带宽越大访问就会越快，还需要考虑同一台服务器上有多少个网站和其他网站是否会消耗带宽资源。</p>
+<h5 id="4-5-访问流量："><a href="#4-5-访问流量：" class="headerlink" title="4.5 访问流量："></a>4.5 访问流量：</h5><p>当一台服务器分割的虚拟主机超过一定数量（如100，很多主机商一台服务器放置了数百个虚拟主机）时，为了限制因某个虚拟主机的网站大量消耗访问带宽（流量）资源，主机提供商不得不在成本和大多数用户的访问速度中找一个平衡点，所以就使用了限制访问流量这个指标。而对于用户来说，当然是不限制流量才没有后顾之忧。</p>
+<h5 id="4-6-并发量："><a href="#4-6-并发量：" class="headerlink" title="4.6 并发量："></a>4.6 并发量：</h5><p>即同一时刻请求访问网站的用户数量，虚拟主机提供商为尽可能保障每个虚拟主机用户的网站稳定和公平性，不得己设置了并发量参数，从而可以在一定程度上确保一台服务器上的其他虚拟主机能稳定的访问。对于小型网站来说，同一时刻在线并动态请求的用户数量并不会太大，因此一般的用户感觉不出来自己的网站访问受限。</p>
+<h5 id="4-7-CPU和内存："><a href="#4-7-CPU和内存：" class="headerlink" title="4.7 CPU和内存："></a>4.7 CPU和内存：</h5><p>和普通电脑一样，代表服务器的运行计算能力，也就是对网站程序的响应速度和效率，如果在不考虑成本的情况下，当然是CPU多核、内存越大性能越高，但企业网站的数据量是有限的，一般双核、4G就可以满足基本使用。</p>
+<h5 id="4-8-服务器ip类型：独立ip和共享ip："><a href="#4-8-服务器ip类型：独立ip和共享ip：" class="headerlink" title="4.8 服务器ip类型：独立ip和共享ip："></a>4.8 服务器ip类型：独立ip和共享ip：</h5><p>首先，两者的概念不一样，独立<code>IP</code>是指一个服务器拥有自己独立的<code>IP</code>地址，共享<code>IP</code>是指多个服务器共用一个公网IP地址，<br>群英把两者的优缺点简单概述如下几点：<br>1.价格方面：共享<code>IP</code>要比独立<code>IP</code>便宜.<br>2.风险问题：共享<code>IP</code>易受到外来网络攻击，且其中一个网站出现问题就会波及其他站点，而独立<code>IP</code>就不会受到这种连带的<br>波及问题.<br>3.收永影响：独立<code>IP</code>更有利于被搜素引擎收录，权重更高.<br>4.城名绑定区别：独立<code>IP</code>可以实现泛域名绑定，而共享<code>IP</code>无法实现泛域名绑定.<br>5.能香直接使用<code>IP</code>访问：独立IP可以直接使用<code>IP</code>访问，共享<code>IP</code>不能，若访问就会收到报错的提示。</p>
+<h5 id="4-9-扩展性能："><a href="#4-9-扩展性能：" class="headerlink" title="4.9 扩展性能："></a>4.9 扩展性能：</h5><p>支持语言，是否支持伪静态、字体</p>
+<h3 id="5-管理服务器"><a href="#5-管理服务器" class="headerlink" title="5. 管理服务器"></a>5. 管理服务器</h3><h5 id="5-1-FTP是什么？"><a href="#5-1-FTP是什么？" class="headerlink" title="5.1 FTP是什么？"></a>5.1 <strong>FTP是什么？</strong></h5><blockquote>
+<p><code>FTP</code> <code>(File Transfer Protocol</code>，文件传输协议）是 <code>TCPAP</code> 协议组中的协议之一。<code>FTP</code>协议包括两个组成部分，其一为<br><code>FTP</code>服务器，其二为<code>FTP</code>客户端。<br>作用:<br>对于客户端：是为了客户端链接主机来管理自己的主机文件<br>对于主机商：可以用<code>FTP</code>可以用来实现限制不同虚拟主机分配给用户对服务器的管理权限</p>
+</blockquote>
+<h5 id="5-2-FTP链接模式："><a href="#5-2-FTP链接模式：" class="headerlink" title="5.2 FTP链接模式："></a>5.2 FTP链接模式：</h5><p>主动模式（<code>port</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>墙口，一般是默认设置为<code>21</code>，然后服务器的数据端口主动去连接用户的客户蠲<code>n+1</code>的数据端口<br>被动模式（ <code>passive</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>端口，一般是默认设置为<code>21</code>，客服躅的数据端口<code>n+1</code>端口，主动链接的服务器的数据<code>20</code>端口</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>查询Windows IP</title>
     <url>/2023/04/01/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
     <content><![CDATA[<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h3 id="一、如何知道我们本机的IP地址"><a href="#一、如何知道我们本机的IP地址" class="headerlink" title="一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3><h4 id="第一步：首先电脑上面的快捷键win-R"><a href="#第一步：首先电脑上面的快捷键win-R" class="headerlink" title="第一步：首先电脑上面的快捷键win + R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4><span id="more"></span>
@@ -3596,41 +3608,29 @@
       </tags>
   </entry>
   <entry>
-    <title>服务器（一）</title>
-    <url>/2022/10/07/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h3 id="1-服务器的概述"><a href="#1-服务器的概述" class="headerlink" title="1.服务器的概述"></a>1.服务器的概述</h3><h4 id="1-什么是服务器"><a href="#1-什么是服务器" class="headerlink" title="1.什么是服务器"></a>1.什么是服务器</h4><blockquote>
-<p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、长时间的可靠运行、强大的V&#x2F;O外部数据吞吐能力以及更好的扩展性。根据服务器所提供的服务，一般来说服务器都具备承担响应服务请求、承担服务、保障服务的能力。服务器作为电子设备，其内部的结构十分的复杂，但与普通的计算机内部结构相差不大，如：cpu、硬盘、内存，系统、系统总线等。</p>
+    <title>Mac 设置开机自动（关闭）启动MySQL</title>
+    <url>/2023/04/25/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/</url>
+    <content><![CDATA[<blockquote>
+<p>注意：本次设备是MacBookPro M1Pro版本</p>
 </blockquote>
+<p>打开终端应用</p>
+<p>如果过启动关闭MySQL，输入以下命令：</p>
 <span id="more"></span>
-<h3 id="2-服务器的作用"><a href="#2-服务器的作用" class="headerlink" title="2.服务器的作用"></a>2.服务器的作用</h3><blockquote>
-<p>通俗的说，服务器主要是用来响应终端的服务请求：并进行处理，我们在上网的时候是不可能直接将网客接人互联网的，我们都需要通过服务器米连接网络，真有服务器响应你的联网请求，并且进行处理以后才可以联网：存储的功能，服务器的存储空间一般比较充足，可以存储非常多的信息。</p>
-</blockquote>
-<h3 id="3-服务器的分类"><a href="#3-服务器的分类" class="headerlink" title="3.服务器的分类"></a>3.服务器的分类</h3><h5 id="3-1-按物理形态："><a href="#3-1-按物理形态：" class="headerlink" title="3.1 按物理形态："></a>3.1 <strong>按物理形态：</strong></h5><p><strong>服务器：</strong>服务器可以理解为放在远程机房的独立计算机，和我们所用的台式机（没有显示器、键微、鼠标）除了外观和配置外，功能上没有差异，你可以通过远程控制自己安装系统及其他软件，同时可以解析和绑定城名，并通过城名或<code>IP</code>访问服务器上的网站。</p>
-<p><strong>ECS服务器：</strong>云服务器<code>(Elastic Compute Service)</code>，通常用户可以根据自己的需要选定主机容量、<code>CPU</code>能力、内存大小、带宽及购买时常等，因此也称之为弹性计算服务器，<code>ECS</code>在使用上和独立的服务器没有区别，且可以让企业节省自行购买和维护服务器硬件的成本，<code>ECS</code>已被中小企业广泛使用。</p>
-<p><strong>VPS服务器：</strong>虚拟专用服务器<code>(Virtual Private Server)</code>，即将一台独立服务器迎过虚拟技术分割为若干个處拟服务器，每个<code>VPS</code>可以独立安装系统，拥有独立的<code>IP</code>，实现不同<code>VPS</code>间磁盘空问、内存、<code>CPU</code>资源、进程和系统配置的隔商，为用户和应用程序模拟出“独占”使用计算资源的体验。<code>VPS</code>可以像独立服务器一样，重装操作系统，安裝程序，单独重启服务器，形式上和<code>ECS</code>没有区別，但总体性能和付费灵活性不如<code>ECS</code></p>
-<p><strong>虚拟主机：</strong>即将一台己安装樣作系统和安全防范的服务器通过技术手段分制为若千个独立的空间，分配给用户独立使用，用户只需要上传网站程序，解析和绑定域名即可使用。虚拟主机不同于服务器，用户无法安装操作系统和操作软件，只能运行网站脚本语言、<code>html</code>文件、图片及其他静态文件等。虚拟主机相当于着干个用户一起租用一台服务器，价格实惠，简单易用，因此大多数企业网站选择了虚拟主机，而自助建站及云建站使用的也是虚拟主机。</p>
-<h5 id="3-2-按物理位置："><a href="#3-2-按物理位置：" class="headerlink" title="3.2 按物理位置："></a>3.2 按物理位置：</h5><p><strong>国内主机</strong><br><strong>国外主机（美国、德国等地区的主机）</strong><br>1、备案方而：国内主机必须备案因外主机不需要提交备案资料的。<br>2、访问速度：国内主机国内访问快，海外主机海外访问快。<br>3、线路：国内主机有线路限制，海外主机没有，因内主机线路以联通和电信为主，相同的线路访问不存在速度限制，但相互访问就有点问题了</p>
-<h3 id="4-服务器的关键参数指标"><a href="#4-服务器的关键参数指标" class="headerlink" title="4.服务器的关键参数指标"></a>4.服务器的关键参数指标</h3><h5 id="4-1-操作系统："><a href="#4-1-操作系统：" class="headerlink" title="4.1 操作系统："></a>4.1 操作系统：</h5><p><strong>Windows Server：</strong><br>重要版本<code>Windows NT Server 4.0</code>、 <code>Windows 2000 Server</code>、 <code>Windows Server 2003</code>、 <code>Windows Server 2003 R2</code>、<code>Windows Server 2008</code> 、 <code>Windows Server 2008 R2 </code>、 <code>Windows Server 2012</code>。<code> Windows</code>服务器操作系统派应用，结<br>合<code>.NET</code>开发环境，为微软企业用户提供了良好的应用框架。<br><strong>Netware：</strong><br>在一些特定行业和事业单位中，NetWare优秀的批处理功能和安全、稳定的系统性能也有很大的生存空间。NetWare常<br>用的版本有<code>Novell</code>的<code>3.11</code>、 <code>3.12</code>、 <code>4.10</code>、<code>5.0</code>等中英文版。<br><strong>Unix：</strong><br><code>Unix</code>服务器操作系统由<code>AT&amp;T</code>公司和<code>SCO</code>公司共同推出，主要支持大型的文件系统服务、数据服务等应用。市面上流传的<br>主要有<code>SCO SVR</code>、<code> BSD Unix</code>、 <code>SUN Solaris</code>、 <code>IBM-AIX</code>、 <code>HP-U</code>、 <code>FreeBSDX</code>。<br><strong>Linux：</strong><br><code>Linux</code>操作系统虽然与<code>UNIX</code>操作系统类似，但是它不是<code>UNIX</code>操作系统的变种。<code>Torvald</code>从开始编写内核代码时就仿效<code>UNIX</code>，<br>几乎所有<code>UNIX</code>的工具与外壳都可以运行在<code>LINUX</code>上。(linux系统相比windows更安全，运行效率更高）</p>
-<h5 id="4-2-支持脚本："><a href="#4-2-支持脚本：" class="headerlink" title="4.2 支持脚本："></a>4.2 支持脚本：</h5><p>即是否网站程序常见的开发语言，主要有<code>asp</code>及<code>.net</code>、<code> php</code>、<code> jsp</code>, -般需要根据网站程序所使用的开发语言选择，支持的开发语言越少主机越安全和高效</p>
-<h5 id="4-3-空间容量："><a href="#4-3-空间容量：" class="headerlink" title="4.3 空间容量："></a><strong>4.3 空间容量：</strong></h5><p>存放文件的空间大小，企业网站一般可以根据图片和视频文件大小来选择，以及主机使用的年限，一般1-5G就够用了</p>
-<h5 id="4-4主机带宽："><a href="#4-4主机带宽：" class="headerlink" title="4.4主机带宽："></a><strong>4.4主机带宽：</strong></h5><p>主机支持的最大下行访问速度，即直接影响网站访问速度，但虚拟主机并不是带宽越大访问就会越快，还需要考虑同一台服务器上有多少个网站和其他网站是否会消耗带宽资源。</p>
-<h5 id="4-5-访问流量："><a href="#4-5-访问流量：" class="headerlink" title="4.5 访问流量："></a>4.5 访问流量：</h5><p>当一台服务器分割的虚拟主机超过一定数量（如100，很多主机商一台服务器放置了数百个虚拟主机）时，为了限制因某个虚拟主机的网站大量消耗访问带宽（流量）资源，主机提供商不得不在成本和大多数用户的访问速度中找一个平衡点，所以就使用了限制访问流量这个指标。而对于用户来说，当然是不限制流量才没有后顾之忧。</p>
-<h5 id="4-6-并发量："><a href="#4-6-并发量：" class="headerlink" title="4.6 并发量："></a>4.6 并发量：</h5><p>即同一时刻请求访问网站的用户数量，虚拟主机提供商为尽可能保障每个虚拟主机用户的网站稳定和公平性，不得己设置了并发量参数，从而可以在一定程度上确保一台服务器上的其他虚拟主机能稳定的访问。对于小型网站来说，同一时刻在线并动态请求的用户数量并不会太大，因此一般的用户感觉不出来自己的网站访问受限。</p>
-<h5 id="4-7-CPU和内存："><a href="#4-7-CPU和内存：" class="headerlink" title="4.7 CPU和内存："></a>4.7 CPU和内存：</h5><p>和普通电脑一样，代表服务器的运行计算能力，也就是对网站程序的响应速度和效率，如果在不考虑成本的情况下，当然是CPU多核、内存越大性能越高，但企业网站的数据量是有限的，一般双核、4G就可以满足基本使用。</p>
-<h5 id="4-8-服务器ip类型：独立ip和共享ip："><a href="#4-8-服务器ip类型：独立ip和共享ip：" class="headerlink" title="4.8 服务器ip类型：独立ip和共享ip："></a>4.8 服务器ip类型：独立ip和共享ip：</h5><p>首先，两者的概念不一样，独立<code>IP</code>是指一个服务器拥有自己独立的<code>IP</code>地址，共享<code>IP</code>是指多个服务器共用一个公网IP地址，<br>群英把两者的优缺点简单概述如下几点：<br>1.价格方面：共享<code>IP</code>要比独立<code>IP</code>便宜.<br>2.风险问题：共享<code>IP</code>易受到外来网络攻击，且其中一个网站出现问题就会波及其他站点，而独立<code>IP</code>就不会受到这种连带的<br>波及问题.<br>3.收永影响：独立<code>IP</code>更有利于被搜素引擎收录，权重更高.<br>4.城名绑定区别：独立<code>IP</code>可以实现泛域名绑定，而共享<code>IP</code>无法实现泛域名绑定.<br>5.能香直接使用<code>IP</code>访问：独立IP可以直接使用<code>IP</code>访问，共享<code>IP</code>不能，若访问就会收到报错的提示。</p>
-<h5 id="4-9-扩展性能："><a href="#4-9-扩展性能：" class="headerlink" title="4.9 扩展性能："></a>4.9 扩展性能：</h5><p>支持语言，是否支持伪静态、字体</p>
-<h3 id="5-管理服务器"><a href="#5-管理服务器" class="headerlink" title="5. 管理服务器"></a>5. 管理服务器</h3><h5 id="5-1-FTP是什么？"><a href="#5-1-FTP是什么？" class="headerlink" title="5.1 FTP是什么？"></a>5.1 <strong>FTP是什么？</strong></h5><blockquote>
-<p><code>FTP</code> <code>(File Transfer Protocol</code>，文件传输协议）是 <code>TCPAP</code> 协议组中的协议之一。<code>FTP</code>协议包括两个组成部分，其一为<br><code>FTP</code>服务器，其二为<code>FTP</code>客户端。<br>作用:<br>对于客户端：是为了客户端链接主机来管理自己的主机文件<br>对于主机商：可以用<code>FTP</code>可以用来实现限制不同虚拟主机分配给用户对服务器的管理权限</p>
-</blockquote>
-<h5 id="5-2-FTP链接模式："><a href="#5-2-FTP链接模式：" class="headerlink" title="5.2 FTP链接模式："></a>5.2 FTP链接模式：</h5><p>主动模式（<code>port</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>墙口，一般是默认设置为<code>21</code>，然后服务器的数据端口主动去连接用户的客户蠲<code>n+1</code>的数据端口<br>被动模式（ <code>passive</code>模式）<br>客户端发送控制链接到服务器的<code>FTP</code>端口，一般是默认设置为<code>21</code>，客服躅的数据端口<code>n+1</code>端口，主动链接的服务器的数据<code>20</code>端口</p>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">disable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure>
+
+<p>系统会提示输入管理员密码，输入密码后按下回车键。</p>
+<p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p>
+<p>如果想要启动自动开机MySQL，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">enable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure>
+
+<p>这样可以启动MySQL并开始运行~</p>
 ]]></content>
       <categories>
-        <category>Linux</category>
-        <category>运维</category>
+        <category>MySQL</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>服务器</tag>
+        <tag>MySQL - Mac</tag>
       </tags>
   </entry>
 </search>
