@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-05T08:02:47.619Z</updated>
+  <updated>2023-07-06T05:44:01.810Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo:pandoc exited with code null</title>
+    <link href="http://example.com/2023/07/06/Hexo-pandoc-exited-with-code-null/"/>
+    <id>http://example.com/2023/07/06/Hexo-pandoc-exited-with-code-null/</id>
+    <published>2023-07-06T05:26:52.000Z</published>
+    <updated>2023-07-06T05:44:01.810Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="在hexo更新文章遇到的问题："><a href="#在hexo更新文章遇到的问题：" class="headerlink" title="在hexo更新文章遇到的问题："></a>在hexo更新文章遇到的问题：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FATAL Something&#x27;</span>s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error:</span><br><span class="line">[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md</span><br><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span><br><span class="line">at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)</span><br><span class="line">at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Hexo.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22</span><br><span class="line">at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)</span><br><span class="line">at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)</span><br><span class="line">at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)</span><br><span class="line">at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)</span><br><span class="line">at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)</span><br><span class="line">at process.processImmediate (node:internal/timers:478:21)</span><br></pre></td></tr></table></figure><span id="more"></span><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><h5 id="重新安装hexo-renderer-pandoc模块"><a href="#重新安装hexo-renderer-pandoc模块" class="headerlink" title="重新安装hexo-renderer-pandoc模块"></a>重新安装<code>hexo-renderer-pandoc</code>模块</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure><h5 id="如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器"><a href="#如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器" class="headerlink" title="如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器"></a>如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure><p><strong>问题解决~</strong></p>]]></content>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;在hexo更新文章遇到的问题：&quot;&gt;&lt;a href=&quot;#在hexo更新文章遇到的问题：&quot; class=&quot;headerlink&quot; title=&quot;在hexo更新文章遇到的问题：&quot;&gt;&lt;/a&gt;在hexo更新文章遇到的问题：&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something&lt;span class=&quot;string&quot;&gt;&amp;#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;FATAL Something&amp;#x27;&lt;/span&gt;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Error:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[ERROR][hexo-renderer-pandoc] pandoc exited with code null.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Hexo.&amp;lt;anonymous&amp;gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;at process.processImmediate (node:internal/timers:478:21)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="hexo" scheme="http://example.com/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Debian11 安装 Docker</title>
@@ -495,32 +516,6 @@
     <category term="Windows 10" scheme="http://example.com/tags/Windows-10/"/>
     
     <category term="Windows 11" scheme="http://example.com/tags/Windows-11/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Homebrew安装报错Error:Command failed with exit 128: git</title>
-    <link href="http://example.com/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/"/>
-    <id>http://example.com/2023/04/02/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</id>
-    <published>2023-04-02T00:03:36.000Z</published>
-    <updated>2023-04-15T05:16:53.913Z</updated>
-    
-    <content type="html"><![CDATA[<p>安装命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure><span id="more"></span><p>打印报错信息：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fatal: not in a git directory</span><br><span class="line"></span><br><span class="line">Error: Command failed with exit 128: git</span><br></pre></td></tr></table></figure><p>解决方式：</p><p>首先执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure><p>然后执行命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure><p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;安装命令：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install telnet&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="macOS" scheme="http://example.com/categories/macOS/"/>
-    
-    <category term="Homebrew" scheme="http://example.com/categories/macOS/Homebrew/"/>
-    
-    
-    <category term="Mac" scheme="http://example.com/tags/Mac/"/>
-    
-    <category term="homebrew" scheme="http://example.com/tags/homebrew/"/>
     
   </entry>
   
