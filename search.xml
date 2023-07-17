@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux常用命令</title>
+    <url>/2023/07/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ol>
+<li><strong>ls</strong>：列出目录内容。</li>
+<li><strong>cd</strong>：切换目录。</li>
+<li><strong>pwd</strong>：显示当前工作目录的路径。</li>
+<li><strong>mkdir</strong>：创建目录。</li>
+<li><strong>rm</strong>：删除文件或目录。</li>
+<li><strong>cp</strong>：复制文件或目录。</li>
+<li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。<span id="more"></span></li>
+<li><strong>cat</strong>：显示文件内容。</li>
+<li><strong>grep</strong>：在文件中搜索指定模式。</li>
+<li><strong>chmod</strong>：修改文件或目录的权限。</li>
+<li><strong>chown</strong>：修改文件或目录的所有者。</li>
+<li><strong>chgrp</strong>：修改文件或目录的所属组。</li>
+<li><strong>sudo</strong>：以超级用户权限执行命令。</li>
+<li><strong>apt-get</strong>（Debian&#x2F;Ubuntu）或 <strong>yum</strong>（CentOS&#x2F;RHEL）：包管理器，用于安装、更新和卸载软件包。</li>
+<li><strong>wget</strong>：从网络下载文件。</li>
+<li><strong>ssh</strong>：远程登录到另一台计算机。</li>
+<li><strong>tar</strong>：打包和解压文件。</li>
+<li><strong>df</strong>：显示文件系统的磁盘使用情况。</li>
+<li><strong>top</strong>：实时显示系统资源的使用情况和运行的进程。</li>
+<li><strong>ps</strong>：显示当前运行的进程。</li>
+<li><strong>kill</strong>：终止正在运行的进程。</li>
+<li><strong>ifconfig</strong>（已被 ip 命令取代）：显示和配置网络接口。</li>
+<li><strong>ping</strong>：发送 ICMP Echo 请求以测试网络连接。</li>
+<li><strong>traceroute</strong>：跟踪数据包在网络中的路径。</li>
+<li><strong>man</strong>：查看命令的手册页。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo:pandoc exited with code null</title>
     <url>/2023/07/06/Hexo-pandoc-exited-with-code-null/</url>
     <content><![CDATA[<h4 id="在hexo更新文章遇到的问题："><a href="#在hexo更新文章遇到的问题：" class="headerlink" title="在hexo更新文章遇到的问题："></a>在hexo更新文章遇到的问题：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FATAL Something&#x27;</span>s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error:</span><br><span class="line">[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md</span><br><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span><br><span class="line">at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)</span><br><span class="line">at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Hexo.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22</span><br><span class="line">at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)</span><br><span class="line">at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)</span><br><span class="line">at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)</span><br><span class="line">at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)</span><br><span class="line">at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)</span><br><span class="line">at process.processImmediate (node:internal/timers:478:21)</span><br></pre></td></tr></table></figure>

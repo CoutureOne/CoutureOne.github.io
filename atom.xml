@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-06T05:44:01.810Z</updated>
+  <updated>2023-07-17T00:30:08.762Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux常用命令</title>
+    <link href="http://example.com/2023/07/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2023/07/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2023-07-17T00:28:22.000Z</published>
+    <updated>2023-07-17T00:30:08.762Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ol><li><strong>ls</strong>：列出目录内容。</li><li><strong>cd</strong>：切换目录。</li><li><strong>pwd</strong>：显示当前工作目录的路径。</li><li><strong>mkdir</strong>：创建目录。</li><li><strong>rm</strong>：删除文件或目录。</li><li><strong>cp</strong>：复制文件或目录。</li><li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。<span id="more"></span></li><li><strong>cat</strong>：显示文件内容。</li><li><strong>grep</strong>：在文件中搜索指定模式。</li><li><strong>chmod</strong>：修改文件或目录的权限。</li><li><strong>chown</strong>：修改文件或目录的所有者。</li><li><strong>chgrp</strong>：修改文件或目录的所属组。</li><li><strong>sudo</strong>：以超级用户权限执行命令。</li><li><strong>apt-get</strong>（Debian&#x2F;Ubuntu）或 <strong>yum</strong>（CentOS&#x2F;RHEL）：包管理器，用于安装、更新和卸载软件包。</li><li><strong>wget</strong>：从网络下载文件。</li><li><strong>ssh</strong>：远程登录到另一台计算机。</li><li><strong>tar</strong>：打包和解压文件。</li><li><strong>df</strong>：显示文件系统的磁盘使用情况。</li><li><strong>top</strong>：实时显示系统资源的使用情况和运行的进程。</li><li><strong>ps</strong>：显示当前运行的进程。</li><li><strong>kill</strong>：终止正在运行的进程。</li><li><strong>ifconfig</strong>（已被 ip 命令取代）：显示和配置网络接口。</li><li><strong>ping</strong>：发送 ICMP Echo 请求以测试网络连接。</li><li><strong>traceroute</strong>：跟踪数据包在网络中的路径。</li><li><strong>man</strong>：查看命令的手册页。</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Linux常用命令&quot;&gt;&lt;a href=&quot;#Linux常用命令&quot; class=&quot;headerlink&quot; title=&quot;Linux常用命令&quot;&gt;&lt;/a&gt;Linux常用命令&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ls&lt;/strong&gt;：列出目录内容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;cd&lt;/strong&gt;：切换目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pwd&lt;/strong&gt;：显示当前工作目录的路径。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mkdir&lt;/strong&gt;：创建目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;rm&lt;/strong&gt;：删除文件或目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;cp&lt;/strong&gt;：复制文件或目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mv&lt;/strong&gt;：移动文件或目录，或重命名文件或目录。</summary>
+    
+    
+    
+    <category term="运维" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo:pandoc exited with code null</title>
@@ -488,34 +516,6 @@
     <category term="Docker" scheme="http://example.com/tags/Docker/"/>
     
     <category term="运维" scheme="http://example.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows10&amp;11官方系统盘制作教程</title>
-    <link href="http://example.com/2023/04/03/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2023/04/03/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/</id>
-    <published>2023-04-03T06:21:44.000Z</published>
-    <updated>2023-04-03T06:23:46.058Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本次做系统盘，采用官方的方式制作：</p><p>注意：U盘最少要<code>8G</code>及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化</p></blockquote><span id="more"></span><h3 id="第一步：去微软镜像官方下载网站"><a href="#第一步：去微软镜像官方下载网站" class="headerlink" title="第一步：去微软镜像官方下载网站"></a>第一步：去微软镜像官方下载网站</h3><h4 id="Window10镜像-https-www-microsoft-com-zh-cn-software-download-windows10"><a href="#Window10镜像-https-www-microsoft-com-zh-cn-software-download-windows10" class="headerlink" title="Window10镜像: https://www.microsoft.com/zh-cn/software-download/windows10/"></a><code>Window10</code>镜像: <a href="https://www.microsoft.com/zh-cn/software-download/windows10/">https://www.microsoft.com/zh-cn/software-download/windows10/</a></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022123.png" alt="image-20230403102222753"></p><h4 id="Window11镜像-https-www-microsoft-com-zh-cn-software-download-windows11"><a href="#Window11镜像-https-www-microsoft-com-zh-cn-software-download-windows11" class="headerlink" title="Window11镜像:https://www.microsoft.com/zh-cn/software-download/windows11/"></a><code>Window11镜像</code>:<a href="https://www.microsoft.com/zh-cn/software-download/windows11/">https://www.microsoft.com/zh-cn/software-download/windows11/</a></h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022354.png" alt="image-20230403102242020"></p><h3 id="第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具"><a href="#第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具" class="headerlink" title="第二步：以Windows10为例，开始制作系统盘，下载制作工具，点击立即下载工具"></a>第二步：以<code>Windows10</code>为例，开始制作系统盘，下载制作工具，点击<code>立即下载工具</code></h3><p>​<img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031025068.png" alt="image-20230403102511706"></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031027631.png" alt="image-20230403102712343"></p><h3 id="第三步：下载好以后双击打开运行，会出现下图界面"><a href="#第三步：下载好以后双击打开运行，会出现下图界面" class="headerlink" title="第三步：下载好以后双击打开运行，会出现下图界面"></a>第三步：下载好以后双击打开运行，会出现下图界面</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031028052.png" alt="image-20230403102836981"></p><h4 id="第四步：选择接受-gt-再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-gt-下一步-gt-下一步"><a href="#第四步：选择接受-gt-再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-gt-下一步-gt-下一步" class="headerlink" title="第四步：选择接受-&gt;再选择为另一台电脑创建安装介质（U盘、DVD、或ISO文件）-&gt;下一步-&gt;下一步"></a>第四步：选择<code>接受</code>-&gt;再选择<code>为另一台电脑创建安装介质（U盘、DVD、或ISO文件）</code>-&gt;下一步-&gt;下一步</h4><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031029150.png" alt="image-20230403102942082"></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034181.png" alt="image-20230403103408109"></p><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034314.png" alt="image-20230403103447243"></p><h3 id="第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成"><a href="#第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成" class="headerlink" title="第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成"></a>第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成</h3><p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031037842.png" alt="image-20230403103728772"></p><h3 id="第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成"><a href="#第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成" class="headerlink" title="第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成~"></a>第六步：等待U盘写入百分之百，成功以后会有提示，U盘制作完成~</h3><blockquote><p>注意在U盘写入过程中，不要对U盘进行插拔或者是弹出操作，不然会写入不成功，不成功则需要重新操作</p><p>上诉过程中截图的是<code>Windows10</code>的制作过程，<code>Windows11</code>也是一模一样，没有差别</p></blockquote><p>以上就是<code>Windows10&amp;11</code>官方系统盘制作过程，当然系统盘的制作不仅仅是这一种，但是这种是最傻瓜式的，希望小白也都能看懂~</p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本次做系统盘，采用官方的方式制作：&lt;/p&gt;
-&lt;p&gt;注意：U盘最少要&lt;code&gt;8G&lt;/code&gt;及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows10" scheme="http://example.com/categories/Windows10/"/>
-    
-    <category term="系统安装" scheme="http://example.com/categories/Windows10/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
-    
-    
-    <category term="Windows 10" scheme="http://example.com/tags/Windows-10/"/>
-    
-    <category term="Windows 11" scheme="http://example.com/tags/Windows-11/"/>
     
   </entry>
   
