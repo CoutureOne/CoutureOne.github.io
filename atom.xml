@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-17T00:30:08.762Z</updated>
+  <updated>2023-07-17T00:32:36.953Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VIM常快捷键</title>
+    <link href="http://example.com/2023/07/17/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://example.com/2023/07/17/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
+    <published>2023-07-17T00:31:50.000Z</published>
+    <updated>2023-07-17T00:32:36.953Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p><h4 id="插入模式（Insert-Mode）："><a href="#插入模式（Insert-Mode）：" class="headerlink" title="插入模式（Insert Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><ul><li><code>i</code>：在当前光标位置进入插入模式。</li><li><code>a</code>：在当前光标后插入文本。</li><li><code>I</code>：在当前行的开头插入文本。</li><li><code>A</code>：在当前行的末尾插入文本。</li><li><code>o</code>：在当前行的下方插入新行。</li><li><code>O</code>：在当前行的上方插入新行。</li></ul><h4 id="命令行模式（Command-Line-Mode）："><a href="#命令行模式（Command-Line-Mode）：" class="headerlink" title="命令行模式（Command Line Mode）："></a><strong>命令行模式</strong>（Command Line Mode）：</h4><ul><li><code>:</code>：进入命令行模式。</li><li><code>:w</code>：保存文件。</li><li><code>:q</code>：退出 Vim。</li><li><code>:wq</code>：保存文件并退出 Vim。</li><li><code>:q!</code>：强制退出 Vim，丢弃对文件的修改。</li></ul><h4 id="移动光标："><a href="#移动光标：" class="headerlink" title="移动光标："></a><strong>移动光标</strong>：</h4><ul><li><code>h</code>：向左移动光标。</li><li><code>j</code>：向下移动光标。</li><li><code>k</code>：向上移动光标。</li><li><code>l</code>：向右移动光标。</li><li><code>gg</code>：跳到文件开头。</li><li><code>G</code>：跳到文件末尾。</li><li><code>0</code>：跳到当前行的开头。</li><li><code>$</code>：跳到当前行的末尾。</li><li><code>w</code>：跳到下一个单词的开头。</li><li><code>b</code>：跳到上一个单词的开头。</li><li><code>Ctrl + f</code>：向下翻页。</li><li><code>Ctrl + b</code>：向上翻页。</li></ul><h4 id="复制、粘贴和删除："><a href="#复制、粘贴和删除：" class="headerlink" title="复制、粘贴和删除："></a><strong>复制、粘贴和删除</strong>：</h4><ul><li><code>yy</code>：复制当前行。</li><li><code>dd</code>：删除当前行。</li><li><code>p</code>：粘贴已复制或删除的文本。</li><li><code>x</code>：删除当前光标所在位置的字符。</li><li><code>u</code>：撤销上一次操作。</li><li><code>Ctrl + r</code>：重做上一次撤销的操作。</li></ul><h4 id="查找和替换："><a href="#查找和替换：" class="headerlink" title="查找和替换："></a><strong>查找和替换</strong>：</h4><ul><li><code>/pattern</code>：向下查找匹配的模式。</li><li><code>?pattern</code>：向上查找匹配的模式。</li><li><code>n</code>：在当前方向上查找下一个匹配。</li><li><code>N</code>：在当前方向上查找上一个匹配。</li><li><code>:s/old/new</code>：替换当前行中第一个匹配的字符串。</li><li><code>:s/old/new/g</code>：替换当前行中所有匹配的字符串。</li><li><code>:%s/old/new/g</code>：替换整个文件中所有匹配的字符串。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;下面是一些在 Vim 编辑器中常用的快捷键：&lt;/p&gt;
+&lt;h4 id=&quot;插入模式（Insert-Mode）：&quot;&gt;&lt;a href=&quot;#插入模式（Insert-Mode）：&quot; class=&quot;headerlink&quot; title=&quot;插入模式（Insert Mode）：&quot;&gt;&lt;/a&gt;&lt;s</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/categories/Linux/"/>
+    
+    <category term="运维" scheme="http://example.com/categories/Linux/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux常用命令</title>
@@ -489,33 +516,6 @@
     <category term="Docker" scheme="http://example.com/tags/Docker/"/>
     
     <category term="DevOps" scheme="http://example.com/tags/DevOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里云Docker镜像加速</title>
-    <link href="http://example.com/2023/04/08/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/"/>
-    <id>http://example.com/2023/04/08/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/</id>
-    <published>2023-04-08T01:51:36.000Z</published>
-    <updated>2023-04-08T02:08:55.451Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="阿里云镜像源"><a href="#阿里云镜像源" class="headerlink" title="阿里云镜像源"></a>阿里云镜像源</h4><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;   <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">&gt;   <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">&gt;     <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">&gt;   &#125;,</span><br><span class="line">&gt;   <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; EOF</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">  <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">  <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl daemon-reload</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl restart docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;阿里云镜像源&quot;&gt;&lt;a href=&quot;#阿里云镜像源&quot; class=&quot;headerlink&quot; title=&quot;阿里云镜像源&quot;&gt;&lt;/a&gt;阿里云镜像源&lt;/h4&gt;</summary>
-    
-    
-    
-    <category term="docker" scheme="http://example.com/categories/docker/"/>
-    
-    <category term="运维" scheme="http://example.com/categories/docker/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="DevOps" scheme="http://example.com/categories/docker/%E8%BF%90%E7%BB%B4/DevOps/"/>
-    
-    
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
-    
-    <category term="运维" scheme="http://example.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
