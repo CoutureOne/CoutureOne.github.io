@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows 11取消右键二级菜单</title>
+    <url>/2023/07/21/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</url>
+    <content><![CDATA[<p>因为不习惯<code>Windows11</code>鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉</p>
+<p>修改成<code>Windows10</code>样式</p>
+<p><strong>搜索<code>CMD</code>，然后点击管理员运行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reg add &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /f /ve</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p><strong>然后回车执行，会提示<code>successful</code></strong></p>
+<p><strong>然后去任务管理里面去重启<code>Windows资源管理器</code></strong></p>
+<p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png" alt="eda9b420830aa647f95f2b3fd7ae96f9_0"></p>
+<p><strong>重启完成以后打开，鼠标右键如下，成功</strong></p>
+<p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png" alt="825c0b51ebcb0ed2b75e8925d4ebea09_0"></p>
+<p>如果想改回原始的，命令如下，重复上面一样的操，作执行<code>命令</code>-&gt;<code>重启Windows资源管理器</code></p>
+<p><code>Windows11</code>命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reg delete <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;&quot;</span> /f</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Windows 11</category>
+      </categories>
+      <tags>
+        <tag>Windows 11</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VIM常快捷键</title>
     <url>/2023/07/17/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p>
@@ -790,8 +815,8 @@
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 10</tag>
         <tag>Windows 11</tag>
+        <tag>Windows 10</tag>
       </tags>
   </entry>
   <entry>
