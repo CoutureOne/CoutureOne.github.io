@@ -4,6 +4,8 @@
     <title>多平台使用 Hexo+GithubPage</title>
     <url>/2023/08/20/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</url>
     <content><![CDATA[<p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面</p>
+<span id="more"></span>
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">couture@MacPro  ~/MyBlog  </span><br><span class="line">位于分支 main</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">致命错误：无法读取远程仓库。</span><br><span class="line"></span><br><span class="line">请确认您有正确的访问权限并且仓库存在。</span><br><span class="line">FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="string">Error: Spawn failed</span></span><br><span class="line"><span class="string">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span><br><span class="line"><span class="string">    at ChildProcess.emit (node:events:514:28)</span></span><br><span class="line"><span class="string">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span><br></pre></td></tr></table></figure>
 
 
