@@ -64,19 +64,13 @@
     <link href="http://coutures.top/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>http://coutures.top/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
     <published>2023-07-17T00:31:50.000Z</published>
-    <updated>2023-07-17T00:33:12.000Z</updated>
+    <updated>2023-10-29T01:38:43.148Z</updated>
     
-    <content type="html"><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p><h4 id="插入模式（Insert-Mode）："><a href="#插入模式（Insert-Mode）：" class="headerlink" title="插入模式（Insert Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><ul><li><code>i</code>：在当前光标位置进入插入模式。</li><li><code>a</code>：在当前光标后插入文本。</li><li><code>I</code>：在当前行的开头插入文本。</li><li><code>A</code>：在当前行的末尾插入文本。</li><li><code>o</code>：在当前行的下方插入新行。</li><li><code>O</code>：在当前行的上方插入新行。<span id="more"></span></li></ul><h4 id="命令行模式（Command-Line-Mode）："><a href="#命令行模式（Command-Line-Mode）：" class="headerlink" title="命令行模式（Command Line Mode）："></a><strong>命令行模式</strong>（Command Line Mode）：</h4><ul><li><code>:</code>：进入命令行模式。</li><li><code>:w</code>：保存文件。</li><li><code>:q</code>：退出 Vim。</li><li><code>:wq</code>：保存文件并退出 Vim。</li><li><code>:q!</code>：强制退出 Vim，丢弃对文件的修改。</li></ul><h4 id="移动光标："><a href="#移动光标：" class="headerlink" title="移动光标："></a><strong>移动光标</strong>：</h4><ul><li><code>h</code>：向左移动光标。</li><li><code>j</code>：向下移动光标。</li><li><code>k</code>：向上移动光标。</li><li><code>l</code>：向右移动光标。</li><li><code>gg</code>：跳到文件开头。</li><li><code>G</code>：跳到文件末尾。</li><li><code>0</code>：跳到当前行的开头。</li><li><code>$</code>：跳到当前行的末尾。</li><li><code>w</code>：跳到下一个单词的开头。</li><li><code>b</code>：跳到上一个单词的开头。</li><li><code>Ctrl + f</code>：向下翻页。</li><li><code>Ctrl + b</code>：向上翻页。</li></ul><h4 id="复制、粘贴和删除："><a href="#复制、粘贴和删除：" class="headerlink" title="复制、粘贴和删除："></a><strong>复制、粘贴和删除</strong>：</h4><ul><li><code>yy</code>：复制当前行。</li><li><code>dd</code>：删除当前行。</li><li><code>p</code>：粘贴已复制或删除的文本。</li><li><code>x</code>：删除当前光标所在位置的字符。</li><li><code>u</code>：撤销上一次操作。</li><li><code>Ctrl + r</code>：重做上一次撤销的操作。</li></ul><h4 id="查找和替换："><a href="#查找和替换：" class="headerlink" title="查找和替换："></a><strong>查找和替换</strong>：</h4><ul><li><code>/pattern</code>：向下查找匹配的模式。</li><li><code>?pattern</code>：向上查找匹配的模式。</li><li><code>n</code>：在当前方向上查找下一个匹配。</li><li><code>N</code>：在当前方向上查找上一个匹配。</li><li><code>:s/old/new</code>：替换当前行中第一个匹配的字符串。</li><li><code>:s/old/new/g</code>：替换当前行中所有匹配的字符串。</li><li><code>:%s/old/new/g</code>：替换整个文件中所有匹配的字符串。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p><h4 id="插入模式（Insert-Mode）："><a href="#插入模式（Insert-Mode）：" class="headerlink" title="插入模式（Insert Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><span id="more"></span><ul><li><code>i</code>：在当前光标位置进入插入模式。</li><li><code>a</code>：在当前光标后插入文本。</li><li><code>I</code>：在当前行的开头插入文本。</li><li><code>A</code>：在当前行的末尾插入文本。</li><li><code>o</code>：在当前行的下方插入新行。</li><li><code>O</code>：在当前行的上方插入新行。</li></ul><h4 id="命令行模式（Command-Line-Mode）："><a href="#命令行模式（Command-Line-Mode）：" class="headerlink" title="命令行模式（Command Line Mode）："></a><strong>命令行模式</strong>（Command Line Mode）：</h4><ul><li><code>:</code>：进入命令行模式。</li><li><code>:w</code>：保存文件。</li><li><code>:q</code>：退出 Vim。</li><li><code>:wq</code>：保存文件并退出 Vim。</li><li><code>:q!</code>：强制退出 Vim，丢弃对文件的修改。</li></ul><h4 id="移动光标："><a href="#移动光标：" class="headerlink" title="移动光标："></a><strong>移动光标</strong>：</h4><ul><li><code>h</code>：向左移动光标。</li><li><code>j</code>：向下移动光标。</li><li><code>k</code>：向上移动光标。</li><li><code>l</code>：向右移动光标。</li><li><code>gg</code>：跳到文件开头。</li><li><code>G</code>：跳到文件末尾。</li><li><code>0</code>：跳到当前行的开头。</li><li><code>$</code>：跳到当前行的末尾。</li><li><code>w</code>：跳到下一个单词的开头。</li><li><code>b</code>：跳到上一个单词的开头。</li><li><code>Ctrl + f</code>：向下翻页。</li><li><code>Ctrl + b</code>：向上翻页。</li></ul><h4 id="复制、粘贴和删除："><a href="#复制、粘贴和删除：" class="headerlink" title="复制、粘贴和删除："></a><strong>复制、粘贴和删除</strong>：</h4><ul><li><code>yy</code>：复制当前行。</li><li><code>dd</code>：删除当前行。</li><li><code>p</code>：粘贴已复制或删除的文本。</li><li><code>x</code>：删除当前光标所在位置的字符。</li><li><code>u</code>：撤销上一次操作。</li><li><code>Ctrl + r</code>：重做上一次撤销的操作。</li></ul><h4 id="查找和替换："><a href="#查找和替换：" class="headerlink" title="查找和替换："></a><strong>查找和替换</strong>：</h4><ul><li><code>/pattern</code>：向下查找匹配的模式。</li><li><code>?pattern</code>：向上查找匹配的模式。</li><li><code>n</code>：在当前方向上查找下一个匹配。</li><li><code>N</code>：在当前方向上查找上一个匹配。</li><li><code>:s/old/new</code>：替换当前行中第一个匹配的字符串。</li><li><code>:s/old/new/g</code>：替换当前行中所有匹配的字符串。</li><li><code>:%s/old/new/g</code>：替换整个文件中所有匹配的字符串。</li></ul>]]></content>
     
     
     <summary type="html">&lt;p&gt;下面是一些在 Vim 编辑器中常用的快捷键：&lt;/p&gt;
-&lt;h4 id=&quot;插入模式（Insert-Mode）：&quot;&gt;&lt;a href=&quot;#插入模式（Insert-Mode）：&quot; class=&quot;headerlink&quot; title=&quot;插入模式（Insert Mode）：&quot;&gt;&lt;/a&gt;&lt;strong&gt;插入模式&lt;/strong&gt;（Insert Mode）：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;i&lt;/code&gt;：在当前光标位置进入插入模式。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;a&lt;/code&gt;：在当前光标后插入文本。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;I&lt;/code&gt;：在当前行的开头插入文本。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;A&lt;/code&gt;：在当前行的末尾插入文本。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;o&lt;/code&gt;：在当前行的下方插入新行。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;O&lt;/code&gt;：在当前行的上方插入新行。</summary>
+&lt;h4 id=&quot;插入模式（Insert-Mode）：&quot;&gt;&lt;a href=&quot;#插入模式（Insert-Mode）：&quot; class=&quot;headerlink&quot; title=&quot;插入模式（Insert Mode）：&quot;&gt;&lt;/a&gt;&lt;strong&gt;插入模式&lt;/strong&gt;（Insert Mode）：&lt;/h4&gt;</summary>
     
     
     
@@ -94,19 +88,13 @@
     <link href="http://coutures.top/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>http://coutures.top/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2023-07-17T00:28:22.000Z</published>
-    <updated>2023-07-17T00:30:08.000Z</updated>
+    <updated>2023-10-29T01:38:17.380Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ol><li><strong>ls</strong>：列出目录内容。</li><li><strong>cd</strong>：切换目录。</li><li><strong>pwd</strong>：显示当前工作目录的路径。</li><li><strong>mkdir</strong>：创建目录。</li><li><strong>rm</strong>：删除文件或目录。</li><li><strong>cp</strong>：复制文件或目录。</li><li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。<span id="more"></span></li><li><strong>cat</strong>：显示文件内容。</li><li><strong>grep</strong>：在文件中搜索指定模式。</li><li><strong>chmod</strong>：修改文件或目录的权限。</li><li><strong>chown</strong>：修改文件或目录的所有者。</li><li><strong>chgrp</strong>：修改文件或目录的所属组。</li><li><strong>sudo</strong>：以超级用户权限执行命令。</li><li><strong>apt-get</strong>（Debian&#x2F;Ubuntu）或 <strong>yum</strong>（CentOS&#x2F;RHEL）：包管理器，用于安装、更新和卸载软件包。</li><li><strong>wget</strong>：从网络下载文件。</li><li><strong>ssh</strong>：远程登录到另一台计算机。</li><li><strong>tar</strong>：打包和解压文件。</li><li><strong>df</strong>：显示文件系统的磁盘使用情况。</li><li><strong>top</strong>：实时显示系统资源的使用情况和运行的进程。</li><li><strong>ps</strong>：显示当前运行的进程。</li><li><strong>kill</strong>：终止正在运行的进程。</li><li><strong>ifconfig</strong>（已被 ip 命令取代）：显示和配置网络接口。</li><li><strong>ping</strong>：发送 ICMP Echo 请求以测试网络连接。</li><li><strong>traceroute</strong>：跟踪数据包在网络中的路径。</li><li><strong>man</strong>：查看命令的手册页。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ol><li><strong>ls</strong>：列出目录内容。<span id="more"></span></li><li><strong>cd</strong>：切换目录。</li><li><strong>pwd</strong>：显示当前工作目录的路径。</li><li><strong>mkdir</strong>：创建目录。</li><li><strong>rm</strong>：删除文件或目录。</li><li><strong>cp</strong>：复制文件或目录。</li><li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。</li><li><strong>cat</strong>：显示文件内容。</li><li><strong>grep</strong>：在文件中搜索指定模式。</li><li><strong>chmod</strong>：修改文件或目录的权限。</li><li><strong>chown</strong>：修改文件或目录的所有者。</li><li><strong>chgrp</strong>：修改文件或目录的所属组。</li><li><strong>sudo</strong>：以超级用户权限执行命令。</li><li><strong>apt-get</strong>（Debian&#x2F;Ubuntu）或 <strong>yum</strong>（CentOS&#x2F;RHEL）：包管理器，用于安装、更新和卸载软件包。</li><li><strong>wget</strong>：从网络下载文件。</li><li><strong>ssh</strong>：远程登录到另一台计算机。</li><li><strong>tar</strong>：打包和解压文件。</li><li><strong>df</strong>：显示文件系统的磁盘使用情况。</li><li><strong>top</strong>：实时显示系统资源的使用情况和运行的进程。</li><li><strong>ps</strong>：显示当前运行的进程。</li><li><strong>kill</strong>：终止正在运行的进程。</li><li><strong>ifconfig</strong>（已被 ip 命令取代）：显示和配置网络接口。</li><li><strong>ping</strong>：发送 ICMP Echo 请求以测试网络连接。</li><li><strong>traceroute</strong>：跟踪数据包在网络中的路径。</li><li><strong>man</strong>：查看命令的手册页。</li></ol>]]></content>
     
     
     <summary type="html">&lt;h1 id=&quot;Linux常用命令&quot;&gt;&lt;a href=&quot;#Linux常用命令&quot; class=&quot;headerlink&quot; title=&quot;Linux常用命令&quot;&gt;&lt;/a&gt;Linux常用命令&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;ls&lt;/strong&gt;：列出目录内容。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;cd&lt;/strong&gt;：切换目录。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;pwd&lt;/strong&gt;：显示当前工作目录的路径。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;mkdir&lt;/strong&gt;：创建目录。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;rm&lt;/strong&gt;：删除文件或目录。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;cp&lt;/strong&gt;：复制文件或目录。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;mv&lt;/strong&gt;：移动文件或目录，或重命名文件或目录。</summary>
+&lt;li&gt;&lt;strong&gt;ls&lt;/strong&gt;：列出目录内容。</summary>
     
     
     

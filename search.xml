@@ -47,13 +47,14 @@
     <title>VIM常快捷键</title>
     <url>/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p>
-<h4 id="插入模式（Insert-Mode）："><a href="#插入模式（Insert-Mode）：" class="headerlink" title="插入模式（Insert Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><ul>
+<h4 id="插入模式（Insert-Mode）："><a href="#插入模式（Insert-Mode）：" class="headerlink" title="插入模式（Insert Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><span id="more"></span>
+<ul>
 <li><code>i</code>：在当前光标位置进入插入模式。</li>
 <li><code>a</code>：在当前光标后插入文本。</li>
 <li><code>I</code>：在当前行的开头插入文本。</li>
 <li><code>A</code>：在当前行的末尾插入文本。</li>
 <li><code>o</code>：在当前行的下方插入新行。</li>
-<li><code>O</code>：在当前行的上方插入新行。<span id="more"></span></li>
+<li><code>O</code>：在当前行的上方插入新行。</li>
 </ul>
 <h4 id="命令行模式（Command-Line-Mode）："><a href="#命令行模式（Command-Line-Mode）：" class="headerlink" title="命令行模式（Command Line Mode）："></a><strong>命令行模式</strong>（Command Line Mode）：</h4><ul>
 <li><code>:</code>：进入命令行模式。</li>
@@ -106,13 +107,13 @@
     <title>Linux常用命令</title>
     <url>/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ol>
-<li><strong>ls</strong>：列出目录内容。</li>
+<li><strong>ls</strong>：列出目录内容。<span id="more"></span></li>
 <li><strong>cd</strong>：切换目录。</li>
 <li><strong>pwd</strong>：显示当前工作目录的路径。</li>
 <li><strong>mkdir</strong>：创建目录。</li>
 <li><strong>rm</strong>：删除文件或目录。</li>
 <li><strong>cp</strong>：复制文件或目录。</li>
-<li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。<span id="more"></span></li>
+<li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。</li>
 <li><strong>cat</strong>：显示文件内容。</li>
 <li><strong>grep</strong>：在文件中搜索指定模式。</li>
 <li><strong>chmod</strong>：修改文件或目录的权限。</li>
