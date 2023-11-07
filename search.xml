@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>YMAL文章语法</title>
+    <url>/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<ul>
+<li><code>title</code>：文档或博文的标题。</li>
+<li><code>date</code>：文档或博文创建或发布的日期和时间。<span id="more"></span></li>
+<li><code>tags</code>：与文档或博文相关的关键词或标签的列表。</li>
+<li><code>categories</code>：文档或博文所属的类别或主题的列表。</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">这是文档的简要描述。</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">日期</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者名</span></span><br><span class="line"><span class="attr">thumbnail:</span> <span class="string">/path/to/thumbnail.jpg</span>  <span class="comment"># 封面图像或缩略图</span></span><br><span class="line"><span class="attr">external_link:</span> <span class="string">https://example.com</span> <span class="comment"># 链接</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">1.0</span> <span class="comment"># 版本号</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签2</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类2</span></span><br><span class="line"><span class="attr">featured:</span> <span class="literal">true</span> <span class="comment"># 顶置</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>YML - Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多平台使用 Hexo+GithubPage</title>
     <url>/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</url>
     <content><![CDATA[<p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面</p>
@@ -835,8 +854,8 @@
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 11</tag>
         <tag>Windows 10</tag>
+        <tag>Windows 11</tag>
       </tags>
   </entry>
   <entry>

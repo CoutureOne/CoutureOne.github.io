@@ -6,7 +6,7 @@
   <link href="http://coutures.top/atom.xml" rel="self"/>
   
   <link href="http://coutures.top/"/>
-  <updated>2023-08-20T07:51:05.000Z</updated>
+  <updated>2023-11-07T13:47:47.367Z</updated>
   <id>http://coutures.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>YMAL文章语法</title>
+    <link href="http://coutures.top/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/"/>
+    <id>http://coutures.top/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/</id>
+    <published>2023-11-07T13:43:17.000Z</published>
+    <updated>2023-11-07T13:47:47.367Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><code>title</code>：文档或博文的标题。</li><li><code>date</code>：文档或博文创建或发布的日期和时间。<span id="more"></span></li><li><code>tags</code>：与文档或博文相关的关键词或标签的列表。</li><li><code>categories</code>：文档或博文所属的类别或主题的列表。</li></ul><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">这是文档的简要描述。</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">日期</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者名</span></span><br><span class="line"><span class="attr">thumbnail:</span> <span class="string">/path/to/thumbnail.jpg</span>  <span class="comment"># 封面图像或缩略图</span></span><br><span class="line"><span class="attr">external_link:</span> <span class="string">https://example.com</span> <span class="comment"># 链接</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">1.0</span> <span class="comment"># 版本号</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签2</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类2</span></span><br><span class="line"><span class="attr">featured:</span> <span class="literal">true</span> <span class="comment"># 顶置</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt;：文档或博文的标题。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;date&lt;/code&gt;：文档或博文创建或发布的日期和时间。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="http://coutures.top/categories/Hexo/"/>
+    
+    
+    <category term="YML - Hexo" scheme="http://coutures.top/tags/YML-Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>多平台使用 Hexo+GithubPage</title>
@@ -467,33 +490,6 @@
     <category term="Linux" scheme="http://coutures.top/tags/Linux/"/>
     
     <category term="MySQL" scheme="http://coutures.top/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac（M1Pro安装Redis）</title>
-    <link href="http://coutures.top/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/"/>
-    <id>http://coutures.top/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/</id>
-    <published>2023-04-13T05:53:29.000Z</published>
-    <updated>2023-04-13T05:57:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~ brew install redis <span class="comment"># 执行这个命令来安装Redis</span></span><br><span class="line">Running `brew update --auto-update`...</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"></span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Fetching redis</span><br><span class="line">==&gt; Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span><br><span class="line">==&gt; Running `brew cleanup redis`...</span><br><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br><span class="line">➜  ~ brew services start redis</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="comment">##O=#  #</span></span><br><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ redis-cli <span class="comment"># 启动redis</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name couture</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;couture&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; shutdown <span class="comment"># 关闭</span></span><br><span class="line">not connected&gt; quit  <span class="comment"># 退出</span></span><br></pre></td></tr></table></figure><p>在<code>homebrew</code>安装的时候也出现一个问题</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure><p>需要修复什么东西</p><p>然后只需要执行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">unset</span> HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure><p>问题解决~</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;采用&lt;code&gt;homebrew&lt;/code&gt;安装Redis，前提是Mac已经安装Redis&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="redis" scheme="http://coutures.top/categories/redis/"/>
-    
-    <category term="Mac" scheme="http://coutures.top/categories/redis/Mac/"/>
-    
-    <category term="Homebrew" scheme="http://coutures.top/categories/redis/Mac/Homebrew/"/>
-    
-    
-    <category term="redis" scheme="http://coutures.top/tags/redis/"/>
-    
-    <category term="Homebrew" scheme="http://coutures.top/tags/Homebrew/"/>
     
   </entry>
   
