@@ -6,7 +6,7 @@
   <link href="http://coutures.top/atom.xml" rel="self"/>
   
   <link href="http://coutures.top/"/>
-  <updated>2023-11-07T13:51:45.977Z</updated>
+  <updated>2023-11-08T12:10:59.947Z</updated>
   <id>http://coutures.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title># Ubuntu 22.04配置静态IP地址</title>
+    <link href="http://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/"/>
+    <id>http://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</id>
+    <published>2023-11-08T12:09:18.000Z</published>
+    <updated>2023-11-08T12:10:59.947Z</updated>
+    
+    <content type="html"><![CDATA[<p>进入系统以后：</p><p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml </span><br><span class="line"><span class="comment"># This is the network config written by &#x27;subiquity&#x27;</span></span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure><p>将 <code>dhcp4: true</code> 修改为 <code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a href="https://so.csdn.net/so/search?q=%E9%9D%99%E6%80%81IP&spm=1001.2101.3001.7020">静态IP</a>配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    enp0s3:</span><br><span class="line">      dhcp4: <span class="literal">false</span></span><br><span class="line">      addresses: [192.168.1.10/24]  <span class="comment"># 静态IP和子网掩码</span></span><br><span class="line">      gateway4: 192.168.1.1  <span class="comment"># 默认网关</span></span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [8.8.8.8, 8.8.4.4]  <span class="comment"># DNS服务器</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure><p>关闭并且保存文件,然后重启网络</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo netplan apply</span><br><span class="line"></span><br><span class="line">sudo systemctl restart network-manager</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;进入系统以后：&lt;/p&gt;
+&lt;p&gt;编辑网络配置文件（&lt;code&gt;nano&lt;/code&gt;或者&lt;code&gt;vim&lt;/code&gt;）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Linux Ubuntu" scheme="http://coutures.top/categories/Linux-Ubuntu/"/>
+    
+    
+    <category term="Ubuntu - Linux" scheme="http://coutures.top/tags/Ubuntu-Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS网配置模板</title>
@@ -459,31 +481,6 @@
     
     
     <category term="Windows 11 - 运维" scheme="http://coutures.top/tags/Windows-11-%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 设置开机自动（关闭）启动MySQL</title>
-    <link href="http://coutures.top/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/"/>
-    <id>http://coutures.top/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/</id>
-    <published>2023-04-25T00:38:33.000Z</published>
-    <updated>2023-04-25T11:12:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>注意：本次设备是MacBookPro M1Pro版本</p></blockquote><p>打开终端应用</p><p>如果过启动关闭MySQL，输入以下命令：</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">disable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>系统会提示输入管理员密码，输入密码后按下回车键。</p><p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p><p>如果想要启动自动开机MySQL，可以使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl <span class="built_in">enable</span> system/com.oracle.oss.mysql.mysqld</span><br></pre></td></tr></table></figure><p>这样可以启动MySQL并开始运行~</p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;注意：本次设备是MacBookPro M1Pro版本&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;打开终端应用&lt;/p&gt;
-&lt;p&gt;如果过启动关闭MySQL，输入以下命令：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MySQL" scheme="http://coutures.top/categories/MySQL/"/>
-    
-    
-    <category term="MySQL - Mac" scheme="http://coutures.top/tags/MySQL-Mac/"/>
     
   </entry>
   

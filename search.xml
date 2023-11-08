@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title># Ubuntu 22.04配置静态IP地址</title>
+    <url>/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<p>进入系统以后：</p>
+<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml </span><br><span class="line"><span class="comment"># This is the network config written by &#x27;subiquity&#x27;</span></span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>dhcp4: true</code> 修改为 <code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a href="https://so.csdn.net/so/search?q=%E9%9D%99%E6%80%81IP&spm=1001.2101.3001.7020">静态IP</a>配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    enp0s3:</span><br><span class="line">      dhcp4: <span class="literal">false</span></span><br><span class="line">      addresses: [192.168.1.10/24]  <span class="comment"># 静态IP和子网掩码</span></span><br><span class="line">      gateway4: 192.168.1.1  <span class="comment"># 默认网关</span></span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [8.8.8.8, 8.8.4.4]  <span class="comment"># DNS服务器</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure>
+<p>关闭并且保存文件,然后重启网络</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo netplan apply</span><br><span class="line"></span><br><span class="line">sudo systemctl restart network-manager</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu - Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS网配置模板</title>
     <url>/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[rootClocalhost~]<span class="comment"># cd /etc/sysconf ig/network-scripts/</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># ls</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># vi ifcfg-ens160</span></span><br></pre></td></tr></table></figure>
