@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title># Ubuntu 22.04配置静态IP地址</title>
+    <title>Ubuntu 22.04配置静态IP地址</title>
     <url>/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</url>
     <content><![CDATA[<p>进入系统以后：</p>
 <p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
@@ -839,9 +839,9 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>Docker</tag>
         <tag>DevOps</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
