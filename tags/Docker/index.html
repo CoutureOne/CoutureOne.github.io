@@ -22,7 +22,7 @@
     <meta name="description" content="好记性不如烂笔头">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Couture&#39;s Blog">
-<meta property="og:url" content="http://coutures.top/tags/docker/index.html">
+<meta property="og:url" content="http://coutures.top/tags/Docker/index.html">
 <meta property="og:site_name" content="Couture&#39;s Blog">
 <meta property="og:description" content="好记性不如烂笔头">
 <meta property="og:locale" content="en_US">
@@ -433,32 +433,28 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/">
+            <a class="abstract-title" href="/Docker-%E4%BC%98%E5%8C%96/">
                 
-                <span class="abstract-title-text">Docker基础操作（二）</span>
+                <span class="abstract-title-text">Docker 优化</span>
             </a>
             <div class="abstract-content">
-                <h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
-
-<p>安装指定版本</p>
-<p>shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
+                <blockquote>
+<p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱， <code>Docker</code>优化方案解决</p>
+</blockquote>
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/30">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/30</span>
+                <div class="abstract-date" title="Last updated: 2023/04/29">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/04/29</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker">docker</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
     
 </div>
 
@@ -475,32 +471,68 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/">
+            <a class="abstract-title" href="/CentOS-8-%E5%AE%89%E8%A3%85Docker/">
                 
-                <span class="abstract-title-text">Docker基础操作（一）</span>
+                <span class="abstract-title-text">CentOS 8 安装Docker</span>
             </a>
             <div class="abstract-content">
-                <h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
-<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
-<p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
-<p>如果已安装，可以先删除</p>
-<p>[root@localhost ~]# yum -y remove docker-ce</p>
-</blockquote>
+                <h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3>
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/30">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/29</span>
+                <div class="abstract-date" title="Last updated: 2023/04/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/04/08</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="docker">docker</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DevOps">DevOps</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">
+                
+                <span class="abstract-title-text">阿里云Docker镜像加速</span>
+            </a>
+            <div class="abstract-content">
+                <h4 id="阿里云镜像源"><a href="#阿里云镜像源" class="headerlink" title="阿里云镜像源"></a>阿里云镜像源</h4>
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/04/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/04/08</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="运维">运维</a>
     
 </div>
 
@@ -1197,6 +1229,16 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="后端">
+                <span class="iconfont-archer">&#xe606;</span>
+                后端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="C#">
+                <span class="iconfont-archer">&#xe606;</span>
+                C#
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Cloudflare">
                 <span class="iconfont-archer">&#xe606;</span>
                 Cloudflare
@@ -1205,6 +1247,16 @@
             <span class="sidebar-tag-name" data-tags="Cloud">
                 <span class="iconfont-archer">&#xe606;</span>
                 Cloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="CentOS 8">
+                <span class="iconfont-archer">&#xe606;</span>
+                CentOS 8
             </span>
         
             <span class="sidebar-tag-name" data-tags="CentOS - Linux">
@@ -1220,11 +1272,6 @@
             <span class="sidebar-tag-name" data-tags="DevOps">
                 <span class="iconfont-archer">&#xe606;</span>
                 DevOps
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Linux">
-                <span class="iconfont-archer">&#xe606;</span>
-                Linux
             </span>
         
             <span class="sidebar-tag-name" data-tags="Debian - Docker">
@@ -1252,24 +1299,14 @@
                 homebrew
             </span>
         
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="后端">
-                <span class="iconfont-archer">&#xe606;</span>
-                后端
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="C#">
-                <span class="iconfont-archer">&#xe606;</span>
-                C#
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Switch">
                 <span class="iconfont-archer">&#xe606;</span>
                 Switch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
             </span>
         
             <span class="sidebar-tag-name" data-tags="MySQL - Mac">
@@ -1287,6 +1324,16 @@
                 Homebrew
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                Nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="java">
                 <span class="iconfont-archer">&#xe606;</span>
                 java
@@ -1295,11 +1342,6 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="RabbitMQ">
-                <span class="iconfont-archer">&#xe606;</span>
-                RabbitMQ
             </span>
         
             <span class="sidebar-tag-name" data-tags="Ubuntu - Linux">
@@ -1312,29 +1354,29 @@
                 ufw - 防火墙
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Nginx">
-                <span class="iconfont-archer">&#xe606;</span>
-                Nginx
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="CentOS 8">
-                <span class="iconfont-archer">&#xe606;</span>
-                CentOS 8
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows 11">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows 11
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Ubuntu - SSH">
                 <span class="iconfont-archer">&#xe606;</span>
                 Ubuntu - SSH
             </span>
         
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ssm">
+                <span class="iconfont-archer">&#xe606;</span>
+                ssm
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Nginx - 运维">
                 <span class="iconfont-archer">&#xe606;</span>
                 Nginx - 运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Windows 11">
+                <span class="iconfont-archer">&#xe606;</span>
+                Windows 11
             </span>
         
             <span class="sidebar-tag-name" data-tags="Windows 10">
@@ -1357,14 +1399,19 @@
                 网络
             </span>
         
-            <span class="sidebar-tag-name" data-tags="交换机">
-                <span class="iconfont-archer">&#xe606;</span>
-                交换机
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="YML - Hexo">
                 <span class="iconfont-archer">&#xe606;</span>
                 YML - Hexo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Windows 11 - 运维">
+                <span class="iconfont-archer">&#xe606;</span>
+                Windows 11 - 运维
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="交换机">
+                <span class="iconfont-archer">&#xe606;</span>
+                交换机
             </span>
         
             <span class="sidebar-tag-name" data-tags="Windows Command">
@@ -1382,9 +1429,9 @@
                 打印机
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Windows 11 - 运维">
+            <span class="sidebar-tag-name" data-tags="hexo - 博客">
                 <span class="iconfont-archer">&#xe606;</span>
-                Windows 11 - 运维
+                hexo - 博客
             </span>
         
             <span class="sidebar-tag-name" data-tags="Agreement">
@@ -1392,14 +1439,9 @@
                 Agreement
             </span>
         
-            <span class="sidebar-tag-name" data-tags="hexo - 博客">
+            <span class="sidebar-tag-name" data-tags="交换机 - 常见网络设备密码">
                 <span class="iconfont-archer">&#xe606;</span>
-                hexo - 博客
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows10&Windows11">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows10&Windows11
+                交换机 - 常见网络设备密码
             </span>
         
             <span class="sidebar-tag-name" data-tags="ChatGPT - NGINX">
@@ -1407,24 +1449,14 @@
                 ChatGPT - NGINX
             </span>
         
-            <span class="sidebar-tag-name" data-tags="交换机 - 常见网络设备密码">
+            <span class="sidebar-tag-name" data-tags="Windows10&Windows11">
                 <span class="iconfont-archer">&#xe606;</span>
-                交换机 - 常见网络设备密码
+                Windows10&Windows11
             </span>
         
             <span class="sidebar-tag-name" data-tags="服务器">
                 <span class="iconfont-archer">&#xe606;</span>
                 服务器
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="spring">
-                <span class="iconfont-archer">&#xe606;</span>
-                spring
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ssm">
-                <span class="iconfont-archer">&#xe606;</span>
-                ssm
             </span>
         
     </div>
@@ -1438,9 +1470,19 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
+        <span class="sidebar-category-name" data-categories="C#">
+            <span class="iconfont-archer">&#xe60a;</span>
+            C#
+        </span>
+    
         <span class="sidebar-category-name" data-categories="Cloudflare">
             <span class="iconfont-archer">&#xe60a;</span>
             Cloudflare
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
         </span>
     
         <span class="sidebar-category-name" data-categories="Linux CentOS">
@@ -1453,14 +1495,14 @@
             Docker
         </span>
     
-        <span class="sidebar-category-name" data-categories="Cloud">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Cloud
-        </span>
-    
         <span class="sidebar-category-name" data-categories="Debian">
             <span class="iconfont-archer">&#xe60a;</span>
             Debian
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Cloud">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Cloud
         </span>
     
         <span class="sidebar-category-name" data-categories="docker">
@@ -1468,14 +1510,14 @@
             docker
         </span>
     
+        <span class="sidebar-category-name" data-categories="CentOS 8">
+            <span class="iconfont-archer">&#xe60a;</span>
+            CentOS 8
+        </span>
+    
         <span class="sidebar-category-name" data-categories="hexo">
             <span class="iconfont-archer">&#xe60a;</span>
             hexo
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="DevOps">
-            <span class="iconfont-archer">&#xe60a;</span>
-            DevOps
         </span>
     
         <span class="sidebar-category-name" data-categories="macOS">
@@ -1483,34 +1525,29 @@
             macOS
         </span>
     
-        <span class="sidebar-category-name" data-categories="MySQL">
-            <span class="iconfont-archer">&#xe60a;</span>
-            MySQL
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="C#">
-            <span class="iconfont-archer">&#xe60a;</span>
-            C#
-        </span>
-    
         <span class="sidebar-category-name" data-categories="Switch">
             <span class="iconfont-archer">&#xe60a;</span>
             Switch
         </span>
     
-        <span class="sidebar-category-name" data-categories="redis">
+        <span class="sidebar-category-name" data-categories="DevOps">
             <span class="iconfont-archer">&#xe60a;</span>
-            redis
+            DevOps
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="MySQL">
+            <span class="iconfont-archer">&#xe60a;</span>
+            MySQL
         </span>
     
         <span class="sidebar-category-name" data-categories="Docker">
             <span class="iconfont-archer">&#xe60a;</span>
             Docker
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="redis">
+            <span class="iconfont-archer">&#xe60a;</span>
+            redis
         </span>
     
         <span class="sidebar-category-name" data-categories="后端学习">
@@ -1528,24 +1565,14 @@
             Linux Ubuntu
         </span>
     
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
         <span class="sidebar-category-name" data-categories="UFW">
             <span class="iconfont-archer">&#xe60a;</span>
             UFW
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows 11">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows 11
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
         </span>
     
         <span class="sidebar-category-name" data-categories="Ubuntu">
@@ -1553,9 +1580,9 @@
             Ubuntu
         </span>
     
-        <span class="sidebar-category-name" data-categories="Homebrew">
+        <span class="sidebar-category-name" data-categories="Linux">
             <span class="iconfont-archer">&#xe60a;</span>
-            Homebrew
+            Linux
         </span>
     
         <span class="sidebar-category-name" data-categories="nginx">
@@ -1563,14 +1590,14 @@
             nginx
         </span>
     
+        <span class="sidebar-category-name" data-categories="Windows 11">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Windows 11
+        </span>
+    
         <span class="sidebar-category-name" data-categories="Windows10">
             <span class="iconfont-archer">&#xe60a;</span>
             Windows10
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Mac">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Mac
         </span>
     
         <span class="sidebar-category-name" data-categories="IP">
@@ -1578,24 +1605,14 @@
             IP
         </span>
     
+        <span class="sidebar-category-name" data-categories="Homebrew">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Homebrew
+        </span>
+    
         <span class="sidebar-category-name" data-categories="Hexo">
             <span class="iconfont-archer">&#xe60a;</span>
             Hexo
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="后端学习">
-            <span class="iconfont-archer">&#xe60a;</span>
-            后端学习
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="打印机">
-            <span class="iconfont-archer">&#xe60a;</span>
-            打印机
         </span>
     
         <span class="sidebar-category-name" data-categories="Windows 11 - 运维">
@@ -1608,9 +1625,49 @@
             运维
         </span>
     
+        <span class="sidebar-category-name" data-categories="交换机">
+            <span class="iconfont-archer">&#xe60a;</span>
+            交换机
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="后端学习">
+            <span class="iconfont-archer">&#xe60a;</span>
+            后端学习
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Windows">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Windows
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="打印机">
+            <span class="iconfont-archer">&#xe60a;</span>
+            打印机
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Mac">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Mac
+        </span>
+    
         <span class="sidebar-category-name" data-categories="Agreement">
             <span class="iconfont-archer">&#xe60a;</span>
             Agreement
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="网络设备">
+            <span class="iconfont-archer">&#xe60a;</span>
+            网络设备
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="ChatGPT">
+            <span class="iconfont-archer">&#xe60a;</span>
+            ChatGPT
         </span>
     
         <span class="sidebar-category-name" data-categories="Windows教程 运维">
@@ -1623,26 +1680,6 @@
             Mac
         </span>
     
-        <span class="sidebar-category-name" data-categories="ChatGPT">
-            <span class="iconfont-archer">&#xe60a;</span>
-            ChatGPT
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="网络设备">
-            <span class="iconfont-archer">&#xe60a;</span>
-            网络设备
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="redis">
-            <span class="iconfont-archer">&#xe60a;</span>
-            redis
-        </span>
-    
         <span class="sidebar-category-name" data-categories="Windows">
             <span class="iconfont-archer">&#xe60a;</span>
             Windows
@@ -1653,19 +1690,19 @@
             java
         </span>
     
-        <span class="sidebar-category-name" data-categories="Ubuntu UFW 防火墙">
+        <span class="sidebar-category-name" data-categories="redis">
             <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu UFW 防火墙
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="CentOS 8">
-            <span class="iconfont-archer">&#xe60a;</span>
-            CentOS 8
+            redis
         </span>
     
         <span class="sidebar-category-name" data-categories="运维">
             <span class="iconfont-archer">&#xe60a;</span>
             运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Ubuntu UFW 防火墙">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Ubuntu UFW 防火墙
         </span>
     
         <span class="sidebar-category-name" data-categories="SSH">
@@ -1688,9 +1725,9 @@
             Windows
         </span>
     
-        <span class="sidebar-category-name" data-categories="交换机">
+        <span class="sidebar-category-name" data-categories="Nginx">
             <span class="iconfont-archer">&#xe60a;</span>
-            交换机
+            Nginx
         </span>
     
         <span class="sidebar-category-name" data-categories="Homebrew">
@@ -1698,29 +1735,14 @@
             Homebrew
         </span>
     
-        <span class="sidebar-category-name" data-categories="Nginx">
+        <span class="sidebar-category-name" data-categories="Ubuntu">
             <span class="iconfont-archer">&#xe60a;</span>
-            Nginx
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="DevOps">
-            <span class="iconfont-archer">&#xe60a;</span>
-            DevOps
+            Ubuntu
         </span>
     
         <span class="sidebar-category-name" data-categories="Spring">
             <span class="iconfont-archer">&#xe60a;</span>
             Spring
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Ubuntu">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu
         </span>
     
         <span class="sidebar-category-name" data-categories="Ubuntu">
@@ -1731,6 +1753,16 @@
         <span class="sidebar-category-name" data-categories="网络">
             <span class="iconfont-archer">&#xe60a;</span>
             网络
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="DevOps">
+            <span class="iconfont-archer">&#xe60a;</span>
+            DevOps
         </span>
     
     </div>
@@ -1764,6 +1796,21 @@
         <script src="/scripts/dark.js?v=20211217"></script>
         <!-- fancybox -->
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
+.7/dist/jquery.fancybox.min.js" defer></script>
         <!-- algolia -->
         
         <!-- busuanzi -->
