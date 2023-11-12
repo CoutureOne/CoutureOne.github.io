@@ -6,7 +6,7 @@
   <link href="http://coutures.top/atom.xml" rel="self"/>
   
   <link href="http://coutures.top/"/>
-  <updated>2023-11-08T12:17:14.295Z</updated>
+  <updated>2023-11-12T07:24:43.351Z</updated>
   <id>http://coutures.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac自带文件修改</title>
+    <link href="http://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
+    <id>http://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
+    <published>2023-11-12T07:23:34.000Z</published>
+    <updated>2023-11-12T07:24:43.351Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题所在："><a href="#问题所在：" class="headerlink" title="问题所在："></a>问题所在：</h3><span id="more"></span><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" /><p>想要修改<code>Mac</code>系统的文件，但是上图来看，没有操作权限</p><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol><li><h5 id="禁用SIP并删除文件："><a href="#禁用SIP并删除文件：" class="headerlink" title="禁用SIP并删除文件："></a><strong>禁用SIP并删除文件：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p></li><li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p></li><li><p>在终端中输入以下命令来禁用SIP：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li><li><p>重新尝试删除文件：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf ~/Desktop/hosts</span><br></pre></td></tr></table></figure></li></ul></li><li><h5 id="重新启用SIP："><a href="#重新启用SIP：" class="headerlink" title="重新启用SIP："></a><strong>重新启用SIP：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p></li><li><p>打开终端，输入以下命令来重新启用SIP：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil enable</span><br></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li></ul></li></ol><p>问题解决!!!</p>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;问题所在：&quot;&gt;&lt;a href=&quot;#问题所在：&quot; class=&quot;headerlink&quot; title=&quot;问题所在：&quot;&gt;&lt;/a&gt;问题所在：&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="Mac" scheme="http://coutures.top/categories/Mac/"/>
+    
+    
+    <category term="Mac - Linux" scheme="http://coutures.top/tags/Mac-Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 22.04配置静态IP地址</title>
@@ -457,30 +478,6 @@
     
     
     <category term="Docker" scheme="http://coutures.top/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows11跳过开机联网</title>
-    <link href="http://coutures.top/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/"/>
-    <id>http://coutures.top/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</id>
-    <published>2023-04-25T07:16:20.000Z</published>
-    <updated>2023-04-25T11:12:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p><blockquote><p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p></blockquote><span id="more"></span><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obbe\bypasssnro</span><br></pre></td></tr></table></figure><p>执行以后回车，等待加载即可！！</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;这时候在激活界面调出&lt;code&gt;CMD&lt;/code&gt;界面,输入命令：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;调出CMD界面的快捷键是：&lt;code&gt;Shift+F10&lt;/code&gt;或者是&lt;code&gt;Fn+Shift+F10&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Windows 11 - 运维" scheme="http://coutures.top/categories/Windows-11-%E8%BF%90%E7%BB%B4/"/>
-    
-    
-    <category term="Windows 11 - 运维" scheme="http://coutures.top/tags/Windows-11-%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
