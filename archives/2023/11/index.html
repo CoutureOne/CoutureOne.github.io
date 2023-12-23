@@ -1,1866 +1,373 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
-    <!-- title -->
-
-
-    
-
-<!-- keywords -->
+<html lang="en" data-default-color-scheme=auto>
 
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Couture">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Couture">
-    
-        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    
-    <meta name="description" content="好记性不如烂笔头">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Couture">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="好记性不如烂笔头">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Couture&#39;s Blog">
+<meta property="og:title" content="Archives">
 <meta property="og:url" content="http://coutures.top/archives/2023/11/index.html">
 <meta property="og:site_name" content="Couture&#39;s Blog">
 <meta property="og:description" content="好记性不如烂笔头">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Couture">
-<meta name="twitter:card" content="summary">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="icon" href="/assets/couture.ico">
-    
-    <title>Couture&#39;s Blog</title>
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-    (function (w) {
-        'use strict'
-        // rel=preload support test
-        if (!w.loadCSS) {
-            w.loadCSS = function () {}
-        }
-        // define on the loadCSS obj
-        var rp = (loadCSS.relpreload = {})
-        // rel=preload feature support test
-        // runs once and returns a function for compat purposes
-        rp.support = (function () {
-            var ret
-            try {
-                ret = w.document.createElement('link').relList.supports('preload')
-            } catch (e) {
-                ret = false
-            }
-            return function () {
-                return ret
-            }
-        })()
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Archives - Couture&#39;s Blog</title>
 
-        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-        // then change that media back to its intended value on load
-        rp.bindMediaToggle = function (link) {
-            // remember existing media attr for ultimate state, or default to 'all'
-            var finalMedia = link.media || 'all'
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
-            function enableStylesheet() {
-                link.media = finalMedia
-            }
 
-            // bind load handlers to enable media
-            if (link.addEventListener) {
-                link.addEventListener('load', enableStylesheet)
-            } else if (link.attachEvent) {
-                link.attachEvent('onload', enableStylesheet)
-            }
 
-            // Set rel and non-applicable media type to start an async request
-            // note: timeout allows this to happen async to let rendering continue in IE
-            setTimeout(function () {
-                link.rel = 'stylesheet'
-                link.media = 'only x'
-            })
-            // also enable media after 3 seconds,
-            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-            setTimeout(enableStylesheet, 3000)
-        }
 
-        // loop through link elements in DOM
-        rp.poly = function () {
-            // double check this to prevent external calls from running
-            if (rp.support()) {
-                return
-            }
-            var links = w.document.getElementsByTagName('link')
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i]
-                // qualify links to those with rel=preload and as=style attrs
-                if (
-                    link.rel === 'preload' &&
-                    link.getAttribute('as') === 'style' &&
-                    !link.getAttribute('data-loadcss')
-                ) {
-                    // prevent rerunning on link
-                    link.setAttribute('data-loadcss', true)
-                    // bind listeners to toggle media back
-                    rp.bindMediaToggle(link)
-                }
-            }
-        }
 
-        // if unsupported, run the polyfill
-        if (!rp.support()) {
-            // run once at least
-            rp.poly()
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-            // rerun poly on an interval until onload
-            var run = w.setInterval(rp.poly, 500)
-            if (w.addEventListener) {
-                w.addEventListener('load', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            } else if (w.attachEvent) {
-                w.attachEvent('onload', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            }
-        }
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
-        // commonjs
-        if (typeof exports !== 'undefined') {
-            exports.loadCSS = loadCSS
-        } else {
-            w.loadCSS = loadCSS
-        }
-    })(typeof global !== 'undefined' ? global : this)
-</script>
 
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"coutures.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
-    body {
-        margin: 0;
-    }
 
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-</style>
-
-    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
-    <link rel="stylesheet" href="/css/dark.css">
-    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
-    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
-    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
-    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
-    <!-- algolia -->
-    
-    <!-- 百度统计  -->
-    
-    <!-- Google tag (gtag.js) -->
-    
-
+  
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
 </head>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ == undefined) {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js" />')
-        }
-    </script>
+
+<body>
+  
+
+  <header>
     
-        <!-- header -->
-        <header class="header header-mobile">
-    <!-- top read progress line -->
-    <div class="header-element">
-        <div class="read-progress"></div>
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <!-- sidebar menu button -->
-    <div class="header-element">
-        
-            <div class="header-sidebar-menu">
-        
-            
-                <div style="padding-left: 1px;">&#xe775;</div>
-            
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Archives"></span>
+          
         </div>
+
+        
+      </div>
+
+      
     </div>
-    <!-- header actions -->
-    <div class="header-actions">
-        <!-- theme mode switch button -->
-        <span class="header-theme-btn header-element">
-            <i class="fas fa-adjust"></i>
-        </span>
-        <!-- back to home page text -->
-        <span class="home-link header-element">
-            <a href=/>Couture's Blog</a>
-        </span>
-    </div>
-    <!-- toggle banner for post layout -->
-    
-</header>
-
-        <!-- fixed footer -->
-        <footer class="footer-fixed">
-    <!-- back to top button -->
-    <div class="footer-fixed-element">
-        
-            <div class="back-top back-top-hidden">
-        
-        
-            <div>&#xe639;</div>
-        
-        </div>
-    </div>
-</footer>
-
-        <!-- wrapper -->
-        <div class="wrapper">
-            <div class="site-intro" style="
-
-
-
-
-
-
-
-">
-    
-    <!-- 主页  -->
-    
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-        </p>
-        <!-- 文章页 meta -->
-        
-    </div>
+  </div>
 </div>
 
-            <script>
-  // get user agent
-  function getBrowserVersions() {
-    var u = window.navigator.userAgent
-    return {
-      userAgent: u,
-      trident: u.indexOf('Trident') > -1, //IE内核
-      presto: u.indexOf('Presto') > -1, //opera内核
-      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-      iPad: u.indexOf('iPad') > -1, //是否为iPad
-      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
-    }
-  }
-  var browser = {
-    versions: getBrowserVersions(),
-  }
-  console.log('userAgent: ' + browser.versions.userAgent)
+</div>
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded')
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document
-        .getElementsByClassName('intro-title')[0]
-        .classList.add('intro-fade-in')
-      document
-        .getElementsByClassName('intro-subtitle')[0]
-        .classList.add('intro-fade-in')
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in')
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">46 posts in total</p>
+  <hr>
+  
+  
+    
+      
+      <p class="h5">2023</p>
+    
+    <a href="/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/" class="list-group-item list-group-item-action">
+      <time>11-12</time>
+      <div class="list-group-item-title">Mac自带文件修改</div>
+    </a>
+  
+    
+    <a href="/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/" class="list-group-item list-group-item-action">
+      <time>11-08</time>
+      <div class="list-group-item-title">Ubuntu 22.04配置静态IP地址</div>
+    </a>
+  
+    
+    <a href="/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/" class="list-group-item list-group-item-action">
+      <time>11-07</time>
+      <div class="list-group-item-title">CentOS网配置模板</div>
+    </a>
+  
+    
+    <a href="/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
+      <time>11-07</time>
+      <div class="list-group-item-title">YMAL文章语法</div>
+    </a>
+  
+</div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
-    }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb() {
-    if (browser.versions.uc) {
-      console.log('UCBrowser')
-      fontLoaded()
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular'],
-        },
-        loading: function () {
-          // 所有字体开始加载
-          // console.log('font loading');
-        },
-        active: function () {
-          // 所有字体已渲染
-          fontLoaded()
-        },
-        inactive: function () {
-          // 字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout')
-          fontLoaded()
-        },
-        timeout: 5000, // Set the timeout to two seconds
-      })
-    }
-  }
-
-  function asyncErr() {
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0]
-    o.src = u
-    if (cb) {
-      o.addEventListener(
-        'load',
-        function (e) {
-          cb(null, e)
-        },
-        false
-      )
-    }
-    if (err) {
-      o.addEventListener(
-        'error',
-        function (e) {
-          err(null, e)
-        },
-        false
-      )
-    }
-    s.parentNode.insertBefore(o, s)
-  }
-
-  var asyncLoadWithFallBack = function (arr, success, reject) {
-    var currReject = function () {
-      reject()
-      arr.shift()
-      if (arr.length) async(arr[0], success, currReject)
-    }
-
-    async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack(
-    [
-      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
-      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
-      "/lib/webfontloader.min.js",
-    ],
-    asyncCb,
-    asyncErr
-  )
-</script>
-
-            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-            <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/">
-                
-                <span class="abstract-title-text">Mac自带文件修改</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="问题所在："><a href="#问题所在：" class="headerlink" title="问题所在："></a>问题所在：</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/12">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/12</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Mac - Linux">Mac - Linux</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/">
-                
-                <span class="abstract-title-text">Ubuntu 22.04配置静态IP地址</span>
-            </a>
-            <div class="abstract-content">
-                <p>进入系统以后：</p>
-<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/08</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Ubuntu - Linux">Ubuntu - Linux</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/">
-                
-                <span class="abstract-title-text">CentOS网配置模板</span>
-            </a>
-            <div class="abstract-content">
-                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[rootClocalhost~]<span class="comment"># cd /etc/sysconf ig/network-scripts/</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># ls</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># vi ifcfg-ens160</span></span><br></pre></td></tr></table></figure>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/07">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/07</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="CentOS - Linux">CentOS - Linux</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/">
-                
-                <span class="abstract-title-text">YMAL文章语法</span>
-            </a>
-            <div class="abstract-content">
-                <ul>
-<li><code>title</code>：文档或博文的标题。</li>
-<li><code>date</code>：文档或博文创建或发布的日期和时间。
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/07">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/07</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="YML - Hexo">YML - Hexo</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-    <!-- paginator  -->
-    
-</main>
-
-                <!-- profile -->
-                
-            </div>
-            <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-        <div class="social">
-            
-    
-        
-            
-                <a href="mailto:couturecome@gmail.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="https://github.com/CoutureOne" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                    
-                    <img class="profile-qr" src="/assets/couturewechat.png" />
-                </span>
-            
-        
-    
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
-        </div>
-    
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- website approve for Chinese user -->
-    
-    <!-- 不蒜子  -->
-    
-        <div class="busuanzi-container">
-            
-             
-                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-            
-        </div>
-    	
-</footer>
-
-        </div>
-        <!-- toc -->
-        
-        <!-- sidebar -->
-        <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
-    </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-        <div class="sidebar-panel-archives">
-    <!-- 在 ejs 中将 archive 按照时间排序 -->
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 46
-        </div>
-        <!-- search  -->
-        
-    </div>
-    
-    <div class="post-archive">
-    
-        
-            
-            
-            <div class="archive-year"> 2023 </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/12</span>
-            <a class="archive-post-title" href="/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/">Mac自带文件修改</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/">Ubuntu 22.04配置静态IP地址</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/07</span>
-            <a class="archive-post-title" href="/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/">CentOS网配置模板</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/07</span>
-            <a class="archive-post-title" href="/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/">YMAL文章语法</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/20</span>
-            <a class="archive-post-title" href="/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/">多平台使用 Hexo+GithubPage</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/21</span>
-            <a class="archive-post-title" href="/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/">Windows 11取消右键二级菜单</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span>
-            <a class="archive-post-title" href="/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/">VIM常快捷键</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span>
-            <a class="archive-post-title" href="/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span>
-            <a class="archive-post-title" href="/Hexo-pandoc-exited-with-code-null/">Hexo:pandoc exited with code null</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/05</span>
-            <a class="archive-post-title" href="/Debian11-%E5%AE%89%E8%A3%85-Docker/">Debian11 安装 Docker</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/01</span>
-            <a class="archive-post-title" href="/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/">Ubuntu UFW 防火墙</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span>
-            <a class="archive-post-title" href="/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/">常见网络设备密码</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span>
-            <a class="archive-post-title" href="/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/">交换机巡检命令</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/07</span>
-            <a class="archive-post-title" href="/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">Mac(MacBookPro M1)MySQL无法打开解决方式</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/29</span>
-            <a class="archive-post-title" href="/%E5%B0%8F%E7%9F%A5%E8%AF%86/">小知识</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span>
-            <a class="archive-post-title" href="/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/">搭建ChatGPT关闭NGINX缓存实现官方回答效果</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/05</span>
-            <a class="archive-post-title" href="/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/">Ubuntu使用ssh连接有输入命令有提示</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span>
-            <a class="archive-post-title" href="/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Ubuntu卸载Nginx和替换配置文件</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/29</span>
-            <a class="archive-post-title" href="/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/">CLOUDFLARE关闭缓存</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/29</span>
-            <a class="archive-post-title" href="/Docker-%E4%BC%98%E5%8C%96/">Docker 优化</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/25</span>
-            <a class="archive-post-title" href="/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/">Windows11跳过开机联网</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/25</span>
-            <a class="archive-post-title" href="/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/">Mac 设置开机自动（关闭）启动MySQL</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/17</span>
-            <a class="archive-post-title" href="/Ubuntu-SSH%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E9%94%99/">Ubuntu SSH连接MySQL报错</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/13</span>
-            <a class="archive-post-title" href="/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/">Mac（M1Pro安装Redis）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/CentOS-8-%E5%AD%97%E7%AC%A6%E9%9B%86%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">CentOS 8 字符集报错解决方法</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/CentOS-8-%E5%AE%89%E8%A3%85Docker/">CentOS 8 安装Docker</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span>
-            <a class="archive-post-title" href="/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">阿里云Docker镜像加速</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/03</span>
-            <a class="archive-post-title" href="/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/">Windows10&11官方系统盘制作教程</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span>
-            <a class="archive-post-title" href="/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/">Homebrew安装报错Error:Command failed with exit 128: git</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span>
-            <a class="archive-post-title" href="/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/">Windows修改固定IP和网络</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span>
-            <a class="archive-post-title" href="/%E6%9F%A5%E8%AF%A2Windows-IP/">查询Windows IP</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span>
-            <a class="archive-post-title" href="/Mac-Console%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA/">Mac Console连接交换机</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/">新装的Windows10,11系统和Office激活教程</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/">关于网络打印机教程（二）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">关于网络打印机教程（一）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/Nginx/">Nginx</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/">关于Windows一些常用Command</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
-            <div class="archive-year"> 2022 </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/22</span>
-            <a class="archive-post-title" href="/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/">关于Rider引入nuget无法加载包依赖解方式</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/07</span>
-            <a class="archive-post-title" href="/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/">服务器（一）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/02</span>
-            <a class="archive-post-title" href="/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">C# windows 环境搭建</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/05</span>
-            <a class="archive-post-title" href="/Redis/">Redis</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/30</span>
-            <a class="archive-post-title" href="/RabbitMQ/">RabbitMQ</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span>
-            <a class="archive-post-title" href="/Shiro/">Shiro</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/30</span>
-            <a class="archive-post-title" href="/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/">Docker基础操作（二）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/29</span>
-            <a class="archive-post-title" href="/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/">Docker基础操作（一）</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span>
-            <a class="archive-post-title" href="/Spring%EF%BC%88%E4%B8%80%EF%BC%89/">Spring（一）</a>
-        </li>
-    
-    </div>
-</div>
-
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-        
-            <span class="sidebar-tag-name" data-tags="后端">
-                <span class="iconfont-archer">&#xe606;</span>
-                后端
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="C#">
-                <span class="iconfont-archer">&#xe606;</span>
-                C#
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Cloudflare">
-                <span class="iconfont-archer">&#xe606;</span>
-                Cloudflare
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Cloud">
-                <span class="iconfont-archer">&#xe606;</span>
-                Cloud
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Linux">
-                <span class="iconfont-archer">&#xe606;</span>
-                Linux
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="CentOS 8">
-                <span class="iconfont-archer">&#xe606;</span>
-                CentOS 8
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                Docker
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="DevOps">
-                <span class="iconfont-archer">&#xe606;</span>
-                DevOps
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Debian - Docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                Debian - Docker
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="CentOS - Linux">
-                <span class="iconfont-archer">&#xe606;</span>
-                CentOS - Linux
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="hexo">
-                <span class="iconfont-archer">&#xe606;</span>
-                hexo
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="docker">
-                <span class="iconfont-archer">&#xe606;</span>
-                docker
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Mac">
-                <span class="iconfont-archer">&#xe606;</span>
-                Mac
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="homebrew">
-                <span class="iconfont-archer">&#xe606;</span>
-                homebrew
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Switch">
-                <span class="iconfont-archer">&#xe606;</span>
-                Switch
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Mac - Linux">
-                <span class="iconfont-archer">&#xe606;</span>
-                Mac - Linux
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="redis">
-                <span class="iconfont-archer">&#xe606;</span>
-                redis
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Homebrew">
-                <span class="iconfont-archer">&#xe606;</span>
-                Homebrew
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MySQL - Mac">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL - Mac
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Nginx">
-                <span class="iconfont-archer">&#xe606;</span>
-                Nginx
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="RabbitMQ">
-                <span class="iconfont-archer">&#xe606;</span>
-                RabbitMQ
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="java">
-                <span class="iconfont-archer">&#xe606;</span>
-                java
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数据库">
-                <span class="iconfont-archer">&#xe606;</span>
-                数据库
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="spring">
-                <span class="iconfont-archer">&#xe606;</span>
-                spring
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ssm">
-                <span class="iconfont-archer">&#xe606;</span>
-                ssm
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Ubuntu - Linux">
-                <span class="iconfont-archer">&#xe606;</span>
-                Ubuntu - Linux
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ufw - 防火墙">
-                <span class="iconfont-archer">&#xe606;</span>
-                ufw - 防火墙
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Ubuntu - SSH">
-                <span class="iconfont-archer">&#xe606;</span>
-                Ubuntu - SSH
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Nginx - 运维">
-                <span class="iconfont-archer">&#xe606;</span>
-                Nginx - 运维
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows 11">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows 11
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows 10">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows 10
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows 11 - 运维">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows 11 - 运维
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="YML - Hexo">
-                <span class="iconfont-archer">&#xe606;</span>
-                YML - Hexo
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="IP">
-                <span class="iconfont-archer">&#xe606;</span>
-                IP
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="网络">
-                <span class="iconfont-archer">&#xe606;</span>
-                网络
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="交换机">
-                <span class="iconfont-archer">&#xe606;</span>
-                交换机
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows Command">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows Command
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="运维">
-                <span class="iconfont-archer">&#xe606;</span>
-                运维
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="打印机">
-                <span class="iconfont-archer">&#xe606;</span>
-                打印机
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="hexo - 博客">
-                <span class="iconfont-archer">&#xe606;</span>
-                hexo - 博客
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Agreement">
-                <span class="iconfont-archer">&#xe606;</span>
-                Agreement
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="交换机 - 常见网络设备密码">
-                <span class="iconfont-archer">&#xe606;</span>
-                交换机 - 常见网络设备密码
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ChatGPT - NGINX">
-                <span class="iconfont-archer">&#xe606;</span>
-                ChatGPT - NGINX
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Windows10&Windows11">
-                <span class="iconfont-archer">&#xe606;</span>
-                Windows10&Windows11
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="服务器">
-                <span class="iconfont-archer">&#xe606;</span>
-                服务器
-            </span>
-        
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-        <span class="sidebar-category-name" data-categories="C#">
-            <span class="iconfont-archer">&#xe60a;</span>
-            C#
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Cloudflare">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Cloudflare
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Docker">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Docker
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Debian">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Debian
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Cloud">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Cloud
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux CentOS">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux CentOS
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="hexo">
-            <span class="iconfont-archer">&#xe60a;</span>
-            hexo
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="CentOS 8">
-            <span class="iconfont-archer">&#xe60a;</span>
-            CentOS 8
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="docker">
-            <span class="iconfont-archer">&#xe60a;</span>
-            docker
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="macOS">
-            <span class="iconfont-archer">&#xe60a;</span>
-            macOS
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="DevOps">
-            <span class="iconfont-archer">&#xe60a;</span>
-            DevOps
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Switch">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Switch
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Docker">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Docker
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="MySQL">
-            <span class="iconfont-archer">&#xe60a;</span>
-            MySQL
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Mac">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Mac
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="redis">
-            <span class="iconfont-archer">&#xe60a;</span>
-            redis
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="后端学习">
-            <span class="iconfont-archer">&#xe60a;</span>
-            后端学习
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="RabbitMQ">
-            <span class="iconfont-archer">&#xe60a;</span>
-            RabbitMQ
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux Ubuntu">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux Ubuntu
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="UFW">
-            <span class="iconfont-archer">&#xe60a;</span>
-            UFW
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Ubuntu">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="nginx">
-            <span class="iconfont-archer">&#xe60a;</span>
-            nginx
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Homebrew">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Homebrew
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows 11">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows 11
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows10">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows10
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows 11 - 运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows 11 - 运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Hexo">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Hexo
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="IP">
-            <span class="iconfont-archer">&#xe60a;</span>
-            IP
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Linux">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Linux
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="后端学习">
-            <span class="iconfont-archer">&#xe60a;</span>
-            后端学习
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="打印机">
-            <span class="iconfont-archer">&#xe60a;</span>
-            打印机
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Mac">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Mac
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Agreement">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Agreement
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="网络设备">
-            <span class="iconfont-archer">&#xe60a;</span>
-            网络设备
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="ChatGPT">
-            <span class="iconfont-archer">&#xe60a;</span>
-            ChatGPT
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows教程 运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows教程 运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Mac">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Mac
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="java">
-            <span class="iconfont-archer">&#xe60a;</span>
-            java
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="redis">
-            <span class="iconfont-archer">&#xe60a;</span>
-            redis
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Ubuntu UFW 防火墙">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu UFW 防火墙
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="SSH">
-            <span class="iconfont-archer">&#xe60a;</span>
-            SSH
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="运维">
-            <span class="iconfont-archer">&#xe60a;</span>
-            运维
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="系统安装">
-            <span class="iconfont-archer">&#xe60a;</span>
-            系统安装
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Windows">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Windows
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="交换机">
-            <span class="iconfont-archer">&#xe60a;</span>
-            交换机
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Nginx">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Nginx
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Homebrew">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Homebrew
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="DevOps">
-            <span class="iconfont-archer">&#xe60a;</span>
-            DevOps
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Spring">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Spring
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Ubuntu">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="Ubuntu">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Ubuntu
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="网络">
-            <span class="iconfont-archer">&#xe60a;</span>
-            网络
-        </span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-
-    </div>
-</div>
-
-        <!-- site-meta -->
-        <script>
-    var siteMetaRoot = "/"
-    if (siteMetaRoot === "undefined") {
-        siteMetaRoot = '/'
-    }
-    var siteMeta = {
-        url: "http://coutures.top",
-        root: siteMetaRoot,
-        author: "Couture"
-    }
-</script>
-
-        <!-- import experimental options here -->
-        <!-- Custom Font -->
 
 
-        <!-- main func -->
-        <script src="/scripts/main.js?v=20211217"></script>
-        <!-- dark mode -->
-        <script src="/scripts/dark.js?v=20211217"></script>
-        <!-- fancybox -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
-        <!-- algolia -->
-        
-        <!-- busuanzi -->
-        
-            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-        
-        <!-- CNZZ -->
-        
-        <!-- async load share.js -->
-        
-        <!-- mermaid -->
-        
-    </body>
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
 </html>
