@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="http://coutures.top/atom.xml" rel="self"/>
+  <link href="http://example.com/atom.xml" rel="self"/>
   
-  <link href="http://coutures.top/"/>
+  <link href="http://example.com/"/>
   <updated>2023-11-12T07:24:43.351Z</updated>
-  <id>http://coutures.top/</id>
+  <id>http://example.com/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Mac自带文件修改</title>
-    <link href="http://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
-    <id>http://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
+    <link href="http://example.com/2023/11/12/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
+    <id>http://example.com/2023/11/12/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
     <published>2023-11-12T07:23:34.000Z</published>
     <updated>2023-11-12T07:24:43.351Z</updated>
     
@@ -30,17 +30,17 @@
     
     
     
-    <category term="Mac" scheme="http://coutures.top/categories/Mac/"/>
+    <category term="Mac" scheme="http://example.com/categories/Mac/"/>
     
     
-    <category term="Mac - Linux" scheme="http://coutures.top/tags/Mac-Linux/"/>
+    <category term="Mac - Linux" scheme="http://example.com/tags/Mac-Linux/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu 22.04配置静态IP地址</title>
-    <link href="http://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/"/>
-    <id>http://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</id>
+    <link href="http://example.com/2023/11/08/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/"/>
+    <id>http://example.com/2023/11/08/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</id>
     <published>2023-11-08T12:15:24.000Z</published>
     <updated>2023-11-08T12:17:14.295Z</updated>
     
@@ -52,17 +52,17 @@
     
     
     
-    <category term="Linux Ubuntu" scheme="http://coutures.top/categories/Linux-Ubuntu/"/>
+    <category term="Linux Ubuntu" scheme="http://example.com/categories/Linux-Ubuntu/"/>
     
     
-    <category term="Ubuntu - Linux" scheme="http://coutures.top/tags/Ubuntu-Linux/"/>
+    <category term="Ubuntu - Linux" scheme="http://example.com/tags/Ubuntu-Linux/"/>
     
   </entry>
   
   <entry>
     <title>CentOS网配置模板</title>
-    <link href="http://coutures.top/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/"/>
-    <id>http://coutures.top/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/</id>
+    <link href="http://example.com/2023/11/07/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/"/>
+    <id>http://example.com/2023/11/07/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/</id>
     <published>2023-11-07T13:49:27.000Z</published>
     <updated>2023-11-07T13:51:45.977Z</updated>
     
@@ -73,17 +73,17 @@
     
     
     
-    <category term="Linux CentOS" scheme="http://coutures.top/categories/Linux-CentOS/"/>
+    <category term="Linux CentOS" scheme="http://example.com/categories/Linux-CentOS/"/>
     
     
-    <category term="CentOS - Linux" scheme="http://coutures.top/tags/CentOS-Linux/"/>
+    <category term="CentOS - Linux" scheme="http://example.com/tags/CentOS-Linux/"/>
     
   </entry>
   
   <entry>
     <title>YMAL文章语法</title>
-    <link href="http://coutures.top/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/"/>
-    <id>http://coutures.top/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/</id>
+    <link href="http://example.com/2023/11/07/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/"/>
+    <id>http://example.com/2023/11/07/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/</id>
     <published>2023-11-07T13:43:17.000Z</published>
     <updated>2023-11-07T13:47:47.367Z</updated>
     
@@ -96,17 +96,17 @@
     
     
     
-    <category term="Hexo" scheme="http://coutures.top/categories/Hexo/"/>
+    <category term="Hexo" scheme="http://example.com/categories/Hexo/"/>
     
     
-    <category term="YML - Hexo" scheme="http://coutures.top/tags/YML-Hexo/"/>
+    <category term="YML - Hexo" scheme="http://example.com/tags/YML-Hexo/"/>
     
   </entry>
   
   <entry>
     <title>多平台使用 Hexo+GithubPage</title>
-    <link href="http://coutures.top/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/"/>
-    <id>http://coutures.top/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</id>
+    <link href="http://example.com/2023/08/20/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/"/>
+    <id>http://example.com/2023/08/20/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</id>
     <published>2023-08-20T07:48:52.000Z</published>
     <updated>2023-08-20T07:51:05.000Z</updated>
     
@@ -118,14 +118,14 @@
     
     
     
-    <category term="hexo - 博客" scheme="http://coutures.top/tags/hexo-%E5%8D%9A%E5%AE%A2/"/>
+    <category term="hexo - 博客" scheme="http://example.com/tags/hexo-%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Windows 11取消右键二级菜单</title>
-    <link href="http://coutures.top/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/"/>
-    <id>http://coutures.top/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</id>
+    <link href="http://example.com/2023/07/21/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/"/>
+    <id>http://example.com/2023/07/21/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</id>
     <published>2023-07-21T08:19:28.000Z</published>
     <updated>2023-07-21T08:20:33.000Z</updated>
     
@@ -139,17 +139,17 @@
     
     
     
-    <category term="Windows 11" scheme="http://coutures.top/categories/Windows-11/"/>
+    <category term="Windows 11" scheme="http://example.com/categories/Windows-11/"/>
     
     
-    <category term="Windows 11" scheme="http://coutures.top/tags/Windows-11/"/>
+    <category term="Windows 11" scheme="http://example.com/tags/Windows-11/"/>
     
   </entry>
   
   <entry>
     <title>VIM常快捷键</title>
-    <link href="http://coutures.top/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    <id>http://coutures.top/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
+    <link href="http://example.com/2023/07/17/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://example.com/2023/07/17/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
     <published>2023-07-17T00:31:50.000Z</published>
     <updated>2023-10-29T01:38:43.000Z</updated>
     
@@ -161,19 +161,19 @@
     
     
     
-    <category term="Linux" scheme="http://coutures.top/categories/Linux/"/>
+    <category term="Linux" scheme="http://example.com/categories/Linux/"/>
     
-    <category term="运维" scheme="http://coutures.top/categories/Linux/%E8%BF%90%E7%BB%B4/"/>
+    <category term="运维" scheme="http://example.com/categories/Linux/%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Linux" scheme="http://coutures.top/tags/Linux/"/>
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Linux常用命令</title>
-    <link href="http://coutures.top/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://coutures.top/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <link href="http://example.com/2023/07/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2023/07/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2023-07-17T00:28:22.000Z</published>
     <updated>2023-10-29T01:38:17.000Z</updated>
     
@@ -185,17 +185,17 @@
     
     
     
-    <category term="运维" scheme="http://coutures.top/categories/%E8%BF%90%E7%BB%B4/"/>
+    <category term="运维" scheme="http://example.com/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Linux" scheme="http://coutures.top/tags/Linux/"/>
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Hexo:pandoc exited with code null</title>
-    <link href="http://coutures.top/Hexo-pandoc-exited-with-code-null/"/>
-    <id>http://coutures.top/Hexo-pandoc-exited-with-code-null/</id>
+    <link href="http://example.com/2023/07/06/Hexo-pandoc-exited-with-code-null/"/>
+    <id>http://example.com/2023/07/06/Hexo-pandoc-exited-with-code-null/</id>
     <published>2023-07-06T05:26:52.000Z</published>
     <updated>2023-10-29T01:37:01.000Z</updated>
     
@@ -206,17 +206,17 @@
     
     
     
-    <category term="hexo" scheme="http://coutures.top/categories/hexo/"/>
+    <category term="hexo" scheme="http://example.com/categories/hexo/"/>
     
     
-    <category term="hexo" scheme="http://coutures.top/tags/hexo/"/>
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>Debian11 安装 Docker</title>
-    <link href="http://coutures.top/Debian11-%E5%AE%89%E8%A3%85-Docker/"/>
-    <id>http://coutures.top/Debian11-%E5%AE%89%E8%A3%85-Docker/</id>
+    <link href="http://example.com/2023/07/05/Debian11-%E5%AE%89%E8%A3%85-Docker/"/>
+    <id>http://example.com/2023/07/05/Debian11-%E5%AE%89%E8%A3%85-Docker/</id>
     <published>2023-07-05T08:01:21.000Z</published>
     <updated>2023-07-05T08:02:47.000Z</updated>
     
@@ -227,19 +227,19 @@
     
     
     
-    <category term="Debian" scheme="http://coutures.top/categories/Debian/"/>
+    <category term="Debian" scheme="http://example.com/categories/Debian/"/>
     
-    <category term="Docker" scheme="http://coutures.top/categories/Debian/Docker/"/>
+    <category term="Docker" scheme="http://example.com/categories/Debian/Docker/"/>
     
     
-    <category term="Debian - Docker" scheme="http://coutures.top/tags/Debian-Docker/"/>
+    <category term="Debian - Docker" scheme="http://example.com/tags/Debian-Docker/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu UFW 防火墙</title>
-    <link href="http://coutures.top/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
-    <id>http://coutures.top/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</id>
+    <link href="http://example.com/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <id>http://example.com/2023/07/01/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</id>
     <published>2023-07-01T02:35:36.000Z</published>
     <updated>2023-07-01T02:47:18.000Z</updated>
     
@@ -252,19 +252,19 @@
     
     
     
-    <category term="UFW" scheme="http://coutures.top/categories/UFW/"/>
+    <category term="UFW" scheme="http://example.com/categories/UFW/"/>
     
-    <category term="Ubuntu UFW 防火墙" scheme="http://coutures.top/categories/UFW/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <category term="Ubuntu UFW 防火墙" scheme="http://example.com/categories/UFW/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
     
     
-    <category term="ufw - 防火墙" scheme="http://coutures.top/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <category term="ufw - 防火墙" scheme="http://example.com/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
     
   </entry>
   
   <entry>
     <title>常见网络设备密码</title>
-    <link href="http://coutures.top/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
-    <id>http://coutures.top/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/</id>
+    <link href="http://example.com/2023/06/20/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
+    <id>http://example.com/2023/06/20/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/</id>
     <published>2023-06-20T00:22:01.000Z</published>
     <updated>2023-06-21T12:25:26.000Z</updated>
     
@@ -279,17 +279,17 @@
     
     
     
-    <category term="网络设备" scheme="http://coutures.top/categories/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
+    <category term="网络设备" scheme="http://example.com/categories/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
     
     
-    <category term="交换机 - 常见网络设备密码" scheme="http://coutures.top/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
+    <category term="交换机 - 常见网络设备密码" scheme="http://example.com/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>交换机巡检命令</title>
-    <link href="http://coutures.top/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/"/>
-    <id>http://coutures.top/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</id>
+    <link href="http://example.com/2023/06/17/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2023/06/17/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</id>
     <published>2023-06-17T10:00:16.000Z</published>
     <updated>2023-06-17T10:02:17.000Z</updated>
     
@@ -300,21 +300,21 @@
     
     
     
-    <category term="Switch" scheme="http://coutures.top/categories/Switch/"/>
+    <category term="Switch" scheme="http://example.com/categories/Switch/"/>
     
-    <category term="交换机" scheme="http://coutures.top/categories/Switch/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
+    <category term="交换机" scheme="http://example.com/categories/Switch/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
     
     
-    <category term="Switch" scheme="http://coutures.top/tags/Switch/"/>
+    <category term="Switch" scheme="http://example.com/tags/Switch/"/>
     
-    <category term="交换机" scheme="http://coutures.top/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
+    <category term="交换机" scheme="http://example.com/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
     
   </entry>
   
   <entry>
     <title>Mac(MacBookPro M1)MySQL无法打开解决方式</title>
-    <link href="http://coutures.top/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
-    <id>http://coutures.top/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
+    <link href="http://example.com/2023/06/07/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
+    <id>http://example.com/2023/06/07/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
     <published>2023-06-07T14:05:11.000Z</published>
     <updated>2023-06-07T14:06:46.000Z</updated>
     
@@ -325,21 +325,21 @@
     
     
     
-    <category term="MySQL" scheme="http://coutures.top/categories/MySQL/"/>
+    <category term="MySQL" scheme="http://example.com/categories/MySQL/"/>
     
-    <category term="Mac" scheme="http://coutures.top/categories/MySQL/Mac/"/>
+    <category term="Mac" scheme="http://example.com/categories/MySQL/Mac/"/>
     
     
-    <category term="Mac" scheme="http://coutures.top/tags/Mac/"/>
+    <category term="Mac" scheme="http://example.com/tags/Mac/"/>
     
-    <category term="MySQL" scheme="http://coutures.top/tags/MySQL/"/>
+    <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>小知识</title>
-    <link href="http://coutures.top/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
-    <id>http://coutures.top/%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
+    <link href="http://example.com/2023/05/29/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <id>http://example.com/2023/05/29/%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
     <published>2023-05-29T13:03:15.000Z</published>
     <updated>2023-05-29T13:20:19.000Z</updated>
     
@@ -350,17 +350,17 @@
     
     
     
-    <category term="Agreement" scheme="http://coutures.top/categories/Agreement/"/>
+    <category term="Agreement" scheme="http://example.com/categories/Agreement/"/>
     
     
-    <category term="Agreement" scheme="http://coutures.top/tags/Agreement/"/>
+    <category term="Agreement" scheme="http://example.com/tags/Agreement/"/>
     
   </entry>
   
   <entry>
     <title>搭建ChatGPT关闭NGINX缓存实现官方回答效果</title>
-    <link href="http://coutures.top/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/"/>
-    <id>http://coutures.top/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/</id>
+    <link href="http://example.com/2023/05/08/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/"/>
+    <id>http://example.com/2023/05/08/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/</id>
     <published>2023-05-08T13:13:20.000Z</published>
     <updated>2023-05-08T13:15:56.000Z</updated>
     
@@ -371,19 +371,19 @@
     
     
     
-    <category term="ChatGPT" scheme="http://coutures.top/categories/ChatGPT/"/>
+    <category term="ChatGPT" scheme="http://example.com/categories/ChatGPT/"/>
     
-    <category term="Nginx" scheme="http://coutures.top/categories/ChatGPT/Nginx/"/>
+    <category term="Nginx" scheme="http://example.com/categories/ChatGPT/Nginx/"/>
     
     
-    <category term="ChatGPT - NGINX" scheme="http://coutures.top/tags/ChatGPT-NGINX/"/>
+    <category term="ChatGPT - NGINX" scheme="http://example.com/tags/ChatGPT-NGINX/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu使用ssh连接有输入命令有提示</title>
-    <link href="http://coutures.top/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/"/>
-    <id>http://coutures.top/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</id>
+    <link href="http://example.com/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/"/>
+    <id>http://example.com/2023/05/05/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</id>
     <published>2023-05-05T03:43:13.000Z</published>
     <updated>2023-05-05T04:20:06.000Z</updated>
     
@@ -396,19 +396,19 @@
     
     
     
-    <category term="Ubuntu" scheme="http://coutures.top/categories/Ubuntu/"/>
+    <category term="Ubuntu" scheme="http://example.com/categories/Ubuntu/"/>
     
-    <category term="SSH" scheme="http://coutures.top/categories/Ubuntu/SSH/"/>
+    <category term="SSH" scheme="http://example.com/categories/Ubuntu/SSH/"/>
     
     
-    <category term="Ubuntu - SSH" scheme="http://coutures.top/tags/Ubuntu-SSH/"/>
+    <category term="Ubuntu - SSH" scheme="http://example.com/tags/Ubuntu-SSH/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu卸载Nginx和替换配置文件</title>
-    <link href="http://coutures.top/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>http://coutures.top/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
+    <link href="http://example.com/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>http://example.com/2023/05/04/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
     <published>2023-05-04T12:42:40.000Z</published>
     <updated>2023-05-04T13:01:38.000Z</updated>
     
@@ -421,21 +421,21 @@
     
     
     
-    <category term="nginx" scheme="http://coutures.top/categories/nginx/"/>
+    <category term="nginx" scheme="http://example.com/categories/nginx/"/>
     
-    <category term="运维" scheme="http://coutures.top/categories/nginx/%E8%BF%90%E7%BB%B4/"/>
+    <category term="运维" scheme="http://example.com/categories/nginx/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="Ubuntu" scheme="http://coutures.top/categories/nginx/%E8%BF%90%E7%BB%B4/Ubuntu/"/>
+    <category term="Ubuntu" scheme="http://example.com/categories/nginx/%E8%BF%90%E7%BB%B4/Ubuntu/"/>
     
     
-    <category term="Nginx - 运维" scheme="http://coutures.top/tags/Nginx-%E8%BF%90%E7%BB%B4/"/>
+    <category term="Nginx - 运维" scheme="http://example.com/tags/Nginx-%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
   <entry>
     <title>CLOUDFLARE关闭缓存</title>
-    <link href="http://coutures.top/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/"/>
-    <id>http://coutures.top/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/</id>
+    <link href="http://example.com/2023/04/29/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/"/>
+    <id>http://example.com/2023/04/29/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/</id>
     <published>2023-04-29T13:53:57.000Z</published>
     <updated>2023-04-29T13:55:46.000Z</updated>
     
@@ -447,21 +447,21 @@
     
     
     
-    <category term="Cloudflare" scheme="http://coutures.top/categories/Cloudflare/"/>
+    <category term="Cloudflare" scheme="http://example.com/categories/Cloudflare/"/>
     
-    <category term="Cloud" scheme="http://coutures.top/categories/Cloudflare/Cloud/"/>
+    <category term="Cloud" scheme="http://example.com/categories/Cloudflare/Cloud/"/>
     
     
-    <category term="Cloudflare" scheme="http://coutures.top/tags/Cloudflare/"/>
+    <category term="Cloudflare" scheme="http://example.com/tags/Cloudflare/"/>
     
-    <category term="Cloud" scheme="http://coutures.top/tags/Cloud/"/>
+    <category term="Cloud" scheme="http://example.com/tags/Cloud/"/>
     
   </entry>
   
   <entry>
     <title>Docker 优化</title>
-    <link href="http://coutures.top/Docker-%E4%BC%98%E5%8C%96/"/>
-    <id>http://coutures.top/Docker-%E4%BC%98%E5%8C%96/</id>
+    <link href="http://example.com/2023/04/29/Docker-%E4%BC%98%E5%8C%96/"/>
+    <id>http://example.com/2023/04/29/Docker-%E4%BC%98%E5%8C%96/</id>
     <published>2023-04-29T01:54:22.000Z</published>
     <updated>2023-04-29T01:55:47.000Z</updated>
     
@@ -474,10 +474,10 @@
     
     
     
-    <category term="Docker" scheme="http://coutures.top/categories/Docker/"/>
+    <category term="Docker" scheme="http://example.com/categories/Docker/"/>
     
     
-    <category term="Docker" scheme="http://coutures.top/tags/Docker/"/>
+    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
     
   </entry>
   

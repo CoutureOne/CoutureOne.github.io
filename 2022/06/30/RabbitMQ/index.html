@@ -1,0 +1,1367 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#8A2387">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="[TOC] 一、引言 模块之间的耦合度过高，一旦一个模块宕机后，全部功能都不能用了，并且同步通讯的成本过高，用户体验差。     RabbitMQ引言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="http://example.com/2022/06/30/RabbitMQ/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 一、引言 模块之间的耦合度过高，一旦一个模块宕机后，全部功能都不能用了，并且同步通讯的成本过高，用户体验差。     RabbitMQ引言">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256494.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256472.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256803.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257793.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257549.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257803.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257617.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257828.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257229.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257641.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257569.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257024.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257254.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257525.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071258092.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071258024.png">
+<meta property="article:published_time" content="2022-06-30T00:05:07.000Z">
+<meta property="article:modified_time" content="2023-04-01T01:33:11.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="RabbitMQ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>RabbitMQ Couture&#39;s Blogs Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"☁️","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Couture&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="RabbitMQ"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-30 08:05" pubdate>
+          2022年6月30日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          79 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">RabbitMQ</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>[TOC]</p>
+<h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><blockquote>
+<p>模块之间的耦合度过高，一旦一个模块宕机后，全部功能都不能用了，并且同步通讯的成本过高，用户体验差。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">RabbitMQ引言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png" srcset="/img/loading.gif" lazyload alt="1587650344256"></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h3 id="二、RabbitMQ介绍"><a href="#二、RabbitMQ介绍" class="headerlink" title="二、RabbitMQ介绍"></a>二、RabbitMQ介绍</h3><hr>
+<blockquote>
+<p>市面上比较火爆的几款MQ：</p>
+<p>ActiveMQ，RocketMQ，Kafka，RabbitMQ。</p>
+<ul>
+<li><p>语言的支持：ActiveMQ，RocketMQ只支持Java语言，Kafka可以支持多门语言，RabbitMQ支持多种语言。</p>
+</li>
+<li><p>效率方面：ActiveMQ，RocketMQ，Kafka效率都是毫秒级别，RabbitMQ是微秒级别的。</p>
+</li>
+<li><p>消息丢失，消息重复问题： RabbitMQ针对消息的持久化，和重复问题都有比较成熟的解决方案。</p>
+</li>
+<li><p>学习成本：RabbitMQ非常简单。</p>
+</li>
+</ul>
+<p>RabbitMQ是由Rabbit公司去研发和维护的，最终是在Pivotal，由Erlang语言开发（并发的编程语言）</p>
+<p>RabbitMQ严格的遵循AMQP协议，高级消息队列协议，帮助我们在进程之间传递异步消息。</p>
+</blockquote>
+<blockquote>
+<p>​	RabbitMQ是用Erlang实现的一个高并发高可靠AMQP消息队列服务器。支持消息的持久化、事务、拥塞控制、负载均衡等特性，使得RabbitMQ拥有更加广泛的应用场景。RabbitMQ跟Erlang和AMQP有关。下面简单介绍一下Erlang和AMQP。</p>
+<p>​	 Erlang是一门动态类型的函数式编程语言，它也是一门解释型语言，由Erlang虚拟机解释执行。从语言模型上说，Erlang是基于Actor模型的实现。在Actor模型里面，万物皆Actor，每个Actor都封装着内部状态，Actor相互之间只能通过消息传递这一种方式来进行通信。对应到Erlang里，每个Actor对应着一个Erlang进程，进程之间通过消息传递进行通信。相比共享内存，进程间通过消息传递来通信带来的直接好处就是消除了直接的锁开销(不考虑Erlang虚拟机底层实现中的锁应用)。</p>
+<p>​	AMQP(Advanced Message Queue Protocol)定义了一种消息系统规范。这个规范描述了在一个分布式的系统中各个子系统如何通过消息交互。而RabbitMQ则是AMQP的一种基于erlang的实现。AMQP将分布式系统中各个子系统隔离开来，子系统之间不再有依赖。子系统仅依赖于消息。子系统不关心消息的发送者，也不关心消息的接受者。</p>
+</blockquote>
+<blockquote>
+<p>优点</p>
+<p>1、解耦：降低系统模块的耦合度</p>
+<p>2、提高系统响应时间</p>
+<p>3、异步消息</p>
+<p>4、过载保护，流量削峰</p>
+</blockquote>
+<blockquote>
+<p>1.应用解耦</p>
+<p>场景：双11购物，用户下单后，订单系统需要通知库存系统，传统的做法就是订单系统调用库存系统的接口.</p>
+<p>这种做法有一个缺点:</p>
+<ul>
+<li>当库存系统出现故障时，订单就会失败.</li>
+<li>订单系统和库存系统高耦合.</li>
+</ul>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256494.png" srcset="/img/loading.gif" lazyload alt="1617864607294"></p>
+<blockquote>
+<p>引入消息队列</p>
+<ul>
+<li><p>订单系统: 用户下单后，订单系统完成持久化处理，将消息写入消息队列,返回用户订单下单成功。</p>
+</li>
+<li><p>库存系统: 订阅下单的消息,获取下单消息，进行库操作。 就算库存系统出现故障，消息队列也能保证消息的可靠投递，不会导致消息丢失</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256472.png" srcset="/img/loading.gif" lazyload alt="1617864757691"></p>
+<blockquote>
+<p>2.异步处理<br>场景说明：用户注册后，需要发注册邮件和注册短信，传统的做法有两种  1. 串行的方式   2. 并行的方式</p>
+<p>串行方式: 将注册信息写入数据库后,发送注册邮件，再发送注册短信，以上三个任务全部完成后才返回给客户端。 这有一个问题是，邮件，短信并不是必须的，它只是一个通知,而这种做法让客户端等待没有必要等待的东西.</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256803.png" srcset="/img/loading.gif" lazyload alt="1617865002916"></p>
+<blockquote>
+<p>并行方式:将注册信息写入数据库后,发送邮件的同时,发送短信,以上三个任务完成后,返回给客户端,并行的方式能提高处理的时间</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257793.png" srcset="/img/loading.gif" lazyload alt="1617865040355"></p>
+<blockquote>
+<p>假设三个业务节点分别使用50ms，串行方式使用时间150ms,并行使用时间100ms。虽然并性已经提高的处理时间，但是，前面说过,邮件和短信对我正常的使用网站没有任何影响，客户端没有必要等着其发送完成才显示注册成功,英爱是写入数据库后就返回.</p>
+</blockquote>
+<blockquote>
+<p>消息队列</p>
+<p>引入消息队列后，把发送邮件，短信不是必须的业务逻辑异步处理，引入消息队列后，用户的响应时间就等于写入数据库的时间+写入消息队列的时间(可以忽略不计)，引入消息队列后处理后，响应时间是串行的3倍，是并行的2倍</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257549.png" srcset="/img/loading.gif" lazyload alt="1617865161427"></p>
+<blockquote>
+<p>3.流量削峰</p>
+<p>流量削峰一般在秒杀活动中应用广泛</p>
+<p>场景:秒杀活动，一般会因为流量过大，导致应用挂掉，为了解决这个问题，一般在应用前端加入消息队列。</p>
+<p>作用:<br>1.可以控制活动人数，超过此一定阀值的订单直接丢弃</p>
+<p>2.可以缓解短时间的高流量压垮应用(应用程序按自己的最大处理能力获取订单)</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257803.png" srcset="/img/loading.gif" lazyload alt="1617865250142"></p>
+<blockquote>
+<p>这样我们就可以采用队列的机制来处理，如同我们在超市结算一样，并不会一窝蜂一样涌入收银台，而是排队结算，一个接着一个的处理，不能插队，因为同时结算就只能达到这么多。</p>
+</blockquote>
+<h3 id="三、RabbitMQ安装"><a href="#三、RabbitMQ安装" class="headerlink" title="三、RabbitMQ安装"></a>三、RabbitMQ安装</h3><hr>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3.1&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">rabbitmq:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">daocloud.io/library/rabbitmq:management</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">rabbitmq</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">5672</span><span class="hljs-string">:5672</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">15672</span><span class="hljs-string">:15672</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/var/lib/rabbitmq</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs sh">[root@192 ~]<span class="hljs-comment"># cd /opt</span><br>[root@192 opt]<span class="hljs-comment"># mkdir docker_rabbitmq</span><br>[root@192 opt]<span class="hljs-comment"># cd docker_rabbitmq/</span><br>[root@192 docker_rabbitmq]<span class="hljs-comment"># vim docker-compose.yml</span><br>[root@192 docker_rabbitmq]<span class="hljs-comment"># docker-compose up -d</span><br>Creating network <span class="hljs-string">&quot;docker_rabbitmq_default&quot;</span> with the default driver<br>Pulling rabbitmq (daocloud.io/library/rabbitmq:management)...<br>management: Pulling from library/rabbitmq<br>01bf7da0a88c: Pull complete<br>f3b4a5f15c7a: Pull complete<br>57ffbe87baa1: Pull complete<br>5ef3ef76b1b5: Pull complete<br>82a3ce07c0eb: Pull complete<br>1da219d9bd70: Pull complete<br>446554ac749d: Pull complete<br>8e4c09e200e7: Pull complete<br>7a8620611ebf: Pull complete<br>c70a2924b273: Pull complete<br>3b0b9e36b4e9: Pull complete<br>7619a9a42512: Pull complete<br>965a8e1f1b1c: Pull complete<br>Digest: sha256:4cc2267788b21e0f34523b4f2d9b32ee1c2867bf2de75d572158d6115349658c<br>Status: Downloaded newer image <span class="hljs-keyword">for</span> daocloud.io/library/rabbitmq:management<br>Creating rabbitmq ... <span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>浏览器访问：<a target="_blank" rel="noopener" href="http://ip:15672/">http://ip:15672</a>  （注：ip指当前云服务器的地址，云服务器记得开放 15672 和 5672 端口）</p>
+<p>用户名和密码默认都是：guest</p>
+</blockquote>
+<h3 id="四、RabbitMQ架构【重点】"><a href="#四、RabbitMQ架构【重点】" class="headerlink" title="四、RabbitMQ架构【重点】"></a>四、RabbitMQ架构【<code>重点</code>】</h3><hr>
+<h4 id="4-1-官方的简单架构图"><a href="#4-1-官方的简单架构图" class="headerlink" title="4.1 官方的简单架构图"></a>4.1 官方的简单架构图</h4><blockquote>
+<ul>
+<li><p>Publisher - 生产者：发布消息到RabbitMQ中的Exchange</p>
+</li>
+<li><p>Consumer - 消费者：监听RabbitMQ中的Queue中的消息</p>
+</li>
+<li><p>Exchange - 交换机：和生产者建立连接并接收生产者的消息</p>
+</li>
+<li><p>Queue - 队列：Exchange会将消息分发到指定的Queue，Queue和消费者进行交互</p>
+</li>
+<li><p>Routes - 路由：交换机以什么样的策略将消息发布到Queue</p>
+</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">简单架构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257617.png" srcset="/img/loading.gif" lazyload alt="1587703812776"></td>
+</tr>
+</tbody></table>
+<h4 id="4-2-RabbitMQ的完整架构图"><a href="#4-2-RabbitMQ的完整架构图" class="headerlink" title="4.2 RabbitMQ的完整架构图"></a>4.2 RabbitMQ的完整架构图</h4><blockquote>
+<p>完整架构图</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">完整架构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257828.png" srcset="/img/loading.gif" lazyload alt="1587705504342"></td>
+</tr>
+</tbody></table>
+<h4 id="4-3-RabbitMQ-通讯方式"><a href="#4-3-RabbitMQ-通讯方式" class="headerlink" title="4.3 RabbitMQ 通讯方式"></a>4.3 RabbitMQ 通讯方式</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/getstarted.html">https://www.rabbitmq.com/getstarted.html</a></p>
+</blockquote>
+<h4 id="4-4-Hello-World案例演示"><a href="#4-4-Hello-World案例演示" class="headerlink" title="4.4 Hello-World案例演示"></a>4.4 Hello-World案例演示</h4><blockquote>
+<ol>
+<li>导入依赖</li>
+</ol>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.rabbitmq<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>amqp-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.15.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="2">
+<li>创建生产者 Publisher</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.rabbitmq;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.ConnectionFactory;<br><br><span class="hljs-comment">//生产者</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Publisher</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        System.out.println(<span class="hljs-string">&quot;Publisher...&quot;</span>);<br>        <span class="hljs-comment">//配置连接参数</span><br>        <span class="hljs-type">ConnectionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConnectionFactory</span>();<br>        factory.setHost(<span class="hljs-string">&quot;192.168.25.132&quot;</span>);<br>        factory.setPort(<span class="hljs-number">5672</span>);<br>        factory.setUsername(<span class="hljs-string">&quot;guest&quot;</span>);<br>        factory.setPassword(<span class="hljs-string">&quot;guest&quot;</span>);<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> factory.newConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//配置队列参数</span><br>        <span class="hljs-comment">//参数1：queue - 指定队列的名称</span><br>        <span class="hljs-comment">//参数2：durable - 当前队列是否需要持久化,值为true时表示持久化，rabbitmq宕机或重启后，队列依然在</span><br>        <span class="hljs-comment">//参数3：exclusive - 当前队列是否为排他队列，值为true时表示与当前连接（connection）绑定，连接关闭，队列消失</span><br>        <span class="hljs-comment">//参数4：autoDelete - 当前队列是否自动删除，值为true时表示队列中的消息一旦被消费，该队列会消失</span><br>        <span class="hljs-comment">//参数5：arguments - 指定当前队列的相关参数</span><br>        channel.queueDeclare(<span class="hljs-string">&quot;helloworldQueue&quot;</span>,<span class="hljs-literal">false</span>,<span class="hljs-literal">false</span>,<span class="hljs-literal">false</span>,<span class="hljs-literal">null</span>);<br>        <span class="hljs-comment">//发布消息到exchange，同时指定路由的规则</span><br>        <span class="hljs-comment">// 参数1：指定exchange，目前测试没有创建交换机，使用&quot;&quot;</span><br>        <span class="hljs-comment">// 参数2：指定路由的规则，或者使用具体的队列名称</span><br>        <span class="hljs-comment">// 参数3：指定传递的消息所携带的properties，目前测试不需要，使用null</span><br>        <span class="hljs-comment">// 参数4：指定发布的具体消息，byte[]类型，目前测试需要，传递数据进行类型转换</span><br>        channel.basicPublish(<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;helloworldQueue&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;helloworld&quot;</span>.getBytes());<br>        <span class="hljs-comment">//关闭资源</span><br>        channel.close();<br>        connection.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="3">
+<li>创建消费者 Consumer</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.rabbitmq;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">//消费者</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Consumer</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;Consumer...&quot;</span>);<br>        <span class="hljs-comment">//配置连接参数</span><br>        <span class="hljs-type">ConnectionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConnectionFactory</span>();<br>        factory.setHost(<span class="hljs-string">&quot;192.168.25.132&quot;</span>);<br>        factory.setPort(<span class="hljs-number">5672</span>);<br>        factory.setUsername(<span class="hljs-string">&quot;guest&quot;</span>);<br>        factory.setPassword(<span class="hljs-string">&quot;guest&quot;</span>);<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> factory.newConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//监听队列</span><br>        <span class="hljs-type">DefaultConsumer</span> <span class="hljs-variable">defaultConsumer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultConsumer</span>(channel)&#123;<br><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleDelivery</span><span class="hljs-params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="hljs-type">byte</span>[] body)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                System.out.println(<span class="hljs-string">&quot;来自生产者的消息：&quot;</span>+<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(body));<br>            &#125;<br>        &#125;;<br><br>        <span class="hljs-comment">//消费消息</span><br>        <span class="hljs-comment">//参数1：queue - 指定消费哪个队列</span><br>        <span class="hljs-comment">//参数2：autoAck - 指定是否自动ACK （true表示接收到消息后，会立即告知RabbitMQ，false表示不告知）</span><br>        <span class="hljs-comment">//参数3：consumer - 指定消费回调</span><br>        channel.basicConsume(<span class="hljs-string">&quot;helloworldQueue&quot;</span>,<span class="hljs-literal">true</span>,defaultConsumer);<br>        <span class="hljs-comment">//关闭资源</span><br>        channel.close();<br>        connection.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>分别启动生产者和消费者进行测试（生产一次才能消费一次）</p>
+</blockquote>
+<h4 id="4-5-基本原理"><a href="#4-5-基本原理" class="headerlink" title="4.5 基本原理"></a>4.5 基本原理</h4><blockquote>
+<p>RabbitMQ是消息队列的一种实现，那么一个消息队列到底需要什么？答案是队列，即Queue，那么接下来所有名词都是围绕这个<strong>Queue</strong>来拓展的。</p>
+<p>​	就RabbimtMQ而言，Queue是其中的一个逻辑上的实现，我们需要连接到RabbitMQ来操作队列进而实现业务功能，所以就会有<strong>Connection</strong>，我们发一条消息连接一次，这样很显然是浪费资源的，建立连接的过程也很耗时，所以我们就会做一个东西让他来管理连接，当我用的时候，直接从里边拿出来已经建立好的连接发信息，那么<strong>ConnectionFactory</strong>应运而生。</p>
+<p>​	接下来，当程序开发时，可能不止用到一个队列，可能有订单的队列、消息的队列、任务的队列等等，那么就需要给不同的queue发信息，那么和每一个队列连接的这个概念，就叫<strong>Channel</strong>。</p>
+<p>​	再往下来，当我们开发的时候还有时候会用到这样一种功能，就是当我发送一条消息，需要让几个queue都收到，那么怎么解决这个问题呢，难道我要给每一个queue发送一次消息？那岂不是浪费带宽又浪费资源，我们能想到什么办法呢，当然是我们发送给RabbitMQ服务器一次，然后让RabbitMQ服务器自己解析需要给哪个Queue发，那么<strong>Exchange</strong>就是干这件事的<br>但是我们给Exchange发消息，他怎么知道给哪个Queue发呢？这里就用到了<strong>RoutingKey和BindingKey</strong><br>BindingKey是Exchange和Queue绑定的规则描述，这个描述用来解析当Exchange接收到消息时，Exchange接收到的消息会带有RoutingKey这个字段，Exchange就是根据这个RoutingKey和当前Exchange所有绑定的BindingKey做匹配，如果满足要求，就往BindingKey所绑定的Queue发送消息，这样我们就解决了我们向RabbitMQ发送一次消息，可以分发到不同的Queue的过程</p>
+<p>至此，我们就把所有的名词贯通咯，接下来做个概要描述：</p>
+<ul>
+<li>Broker:提供一种传输服务,它的角色就是维护一条从生产者到消费者的路线，保证数据能按照指定的方式进行传输</li>
+<li>ConnectionFactory：与RabbitMQ服务器连接的管理器</li>
+<li>Connection：与RabbitMQ服务器的TCP连接</li>
+<li>Channel：与Exchange的连接，一个Connection可以包含多个Channel。之所以需要Channel，是因为TCP连接的建立和释放都是十分昂贵的，为了多路复用。RabbitMQ建议客户端线程之间不要共用Channel，但是建议尽量共用Connection。</li>
+<li>Queue:消息的载体,每个消息都会被投到一个或多个队列。</li>
+<li>Exchange：接受消息生产者的消息，并根据消息的RoutingKey和 Exchange绑定的BindingKey，以及Binding规则将消息路由给服务器中的队列。ExchangeType决定了Exchange路由消息的行为，例如，在RabbitMQ中，ExchangeType有direct、Fanout和Topic三种，不同类型的Exchange路由的行为是不一样的。</li>
+<li>Message Queue：消息队列，用于存储还未被消费者消费的消息。</li>
+<li>Message: 由Header和Body组成，Header是由生产者添加的各种属性的集合，包括Message是否被持久化、由哪个Message Queue接受、优先级是多少等。而Body是真正需要传输的APP数据。</li>
+<li>RoutingKey：由Producer发送Message时指定，指定当前消息被谁接受</li>
+<li>BindingKey：由Consumer在Binding Exchange与Message Queue时指定，指定当前Exchange下，什么样的RoutingKey会被下派到当前绑定的Queue中</li>
+<li>Binding:联系了Exchange与Message Queue。Exchange在与多个Message Queue发生Binding后会生成一张路由表，路由表中存储着Message Queue所需消息的限制条件即Binding Key。当Exchange收到Message时会解析其Header得到Routing Key，Exchange根据Routing Key与<strong>Exchange Type</strong>将Message路由到Message Queue。Binding Key由Consumer在Binding Exchange与Message Queue时指定，而Routing Key由Producer发送Message时指定，两者的匹配方式由Exchange Type决定。</li>
+<li>Server: 接受客户端连接，实现AMQP消息队列和路由功能的进程。</li>
+<li>Virtual Host:其实是一个虚拟概念，类似于权限控制组，可以通过命令分配给用户Virtual Host的权限，默认的guest用户是管理员权限，初始空间有&#x2F;，一个Virtual Host里面可以有若干个Exchange和Queue，但是权限控制的最小粒度是Virtual Host</li>
+</ul>
+</blockquote>
+<h3 id="五、SpringBoot整合RabbitMQ的使用【重点】"><a href="#五、SpringBoot整合RabbitMQ的使用【重点】" class="headerlink" title="五、SpringBoot整合RabbitMQ的使用【重点】"></a>五、SpringBoot整合RabbitMQ的使用【<code>重点</code>】</h3><hr>
+<h4 id="5-1-导入依赖"><a href="#5-1-导入依赖" class="headerlink" title="5.1 导入依赖"></a>5.1 导入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-2-在application-properties中增加配置"><a href="#5-2-在application-properties中增加配置" class="headerlink" title="5.2 在application.properties中增加配置"></a>5.2 在application.properties中增加配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">#对于rabbitMQ的支持</span><br>spring.rabbitmq.host=192.168.153.136<br>spring.rabbitmq.port=5672<br>spring.rabbitmq.username=guest<br>spring.rabbitmq.password=guest<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-3-Hello-World-简单队列"><a href="#5-3-Hello-World-简单队列" class="headerlink" title="5.3 Hello-World 简单队列"></a>5.3 Hello-World 简单队列</h4><blockquote>
+<p>一个生产者，一个默认的交换机，一个队列，一个消费者</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">结构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257229.png" srcset="/img/loading.gif" lazyload alt="1587715551088"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>1）创建配置类，用于创建队列对象</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Queue;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleQueueConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">simple</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;simpleQueue&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2）创建生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleQueueProducer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;SimpleQueueProducer&quot;</span>);<br>        <span class="hljs-comment">//发送消息，第一个参数为队列名称，第二参数为消息内容</span><br>        rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;simpleQueue&quot;</span>,<span class="hljs-string">&quot;简单模式&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>3）创建消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleQueueCustomer</span> &#123;<br>    <br>    <span class="hljs-meta">@RabbitListener(queues=&quot;simpleQueue&quot;)</span><span class="hljs-comment">//监听指定的消息队列</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;SimpleQueueCustomer&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;来SimpleQueueProducer的信息：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>4）在src\test\java\com\qf\Rabbitmq01ApplicationTests.java进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture;<br><span class="hljs-keyword">import</span> com.couture.simple.SimpleQueueProducer;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Rabbitmq01ApplicationTests</span> &#123;<br>    <br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">contextLoads</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br>    <br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> SimpleQueueProducer simpleQueueProducer;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSimpleQueueProducer</span><span class="hljs-params">()</span>&#123;<br>        simpleQueueProducer.send();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果传递的是 JavaBean 对象，该实体类需要实现序列化接口，具体流程如下：</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>导入lombok依赖，创建User类</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.pojo;<br><br><span class="hljs-keyword">import</span> lombok.AllArgsConstructor;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.NoArgsConstructor;<br><br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> String username;<br>    <span class="hljs-keyword">private</span> String password;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="2">
+<li>修改生产者中的代码</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> com.couture.pojo.User;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-comment">//生产者</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimplePublisher</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;SimplePublisher...&quot;</span>);<br>        <span class="hljs-comment">//rabbitTemplate.convertAndSend(&quot;&quot;,&quot;simpleQueue&quot;,&quot;简单模式&quot;);</span><br>        rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;simpleQueue&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>));<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="3">
+<li>修改消费者中的代码</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> com.couture.pojo.User;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-comment">//消费者</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleConsumer</span> &#123;<br><br><span class="hljs-comment">//    @RabbitListener(queues = &quot;simpleQueue&quot;)</span><br><span class="hljs-comment">//    public void receive(String content)&#123;</span><br><span class="hljs-comment">//        System.out.println(&quot;SimpleConsumer...&quot;);</span><br><span class="hljs-comment">//        System.out.println(&quot;来自SimplePublisher的消息：&quot;+content);</span><br><span class="hljs-comment">//    &#125;</span><br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;simpleQueue&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(User user)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;SimpleConsumer...&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;来自SimplePublisher的消息：&quot;</span>+user);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="4">
+<li>运行测试类即可！</li>
+</ol>
+</blockquote>
+<h4 id="5-4-Work-工作队列"><a href="#5-4-Work-工作队列" class="headerlink" title="5.4 Work 工作队列"></a>5.4 Work 工作队列</h4><blockquote>
+<p>一个生产者，一个默认的交换机，一个队列，两个消费者</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">结构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257641.png" srcset="/img/loading.gif" lazyload alt="1587718055260"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 1）创建配置类，用于创建队列对象</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.work;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Queue;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkQueueConfig</span> &#123;<br>    <br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">work</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;workQueue&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2）创建生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.work;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkQueueProducer</span> &#123;<br>    <br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;WorkQueueProducer&quot;</span>);<br>        rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;workQueue&quot;</span>,<span class="hljs-string">&quot;工作队列模式&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>3）创建消费者，本案例创建两个消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.work;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkQueueCustomer_01</span> &#123;<br>    <br>    <span class="hljs-meta">@RabbitListener(queues=&quot;workQueue&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;WorkQueueCustomer_01：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.work;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkQueueCustomer_02</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues=&quot;workQueue&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;WorkQueueCustomer_02：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>4）在测试类中添加对象和方法进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> WorkQueueProducer workQueueProducer;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testWorkQueueProducer</span><span class="hljs-params">()</span>&#123;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">100</span>; i++)&#123;<br>        workQueueProducer.send();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-5-Publish-x2F-Subscribe-发布订阅模式"><a href="#5-5-Publish-x2F-Subscribe-发布订阅模式" class="headerlink" title="5.5 Publish&#x2F;Subscribe 发布订阅模式"></a>5.5 Publish&#x2F;Subscribe 发布订阅模式</h4><blockquote>
+<p>一个生产者，一个交换机，两个队列，两个消费者</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">结构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257569.png" srcset="/img/loading.gif" lazyload alt="1587720941513"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>使用该模式需要借助交换机，生产者将消息发送到交换机，再通过交换机到达队列.</p>
+<p>有四种交换机：direct&#x2F;topic&#x2F;headers&#x2F;fanout，默认交换机是direct，发布与订阅的实现使用第四个交换器类型fanout</p>
+<p>使用交换机时，每个消费者有自己的队列，生产者将消息发送到交换机(X)，每个队列都要绑定到交换机</p>
+</blockquote>
+<blockquote>
+<p>本例中：</p>
+<p>创建2个消息队列</p>
+<p>创建一个fanout交换机对象</p>
+<p>Bind交换机和队列</p>
+</blockquote>
+<blockquote>
+<p> 1）创建配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.fanout;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Binding;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.BindingBuilder;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.FanoutExchange;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Queue;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FanoutConfig</span> &#123;<br><br>    <span class="hljs-comment">//创建两个队列</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">fanoutQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;fanoutQueue1&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">fanoutQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;fanoutQueue2&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//创建一个交换机</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> FanoutExchange <span class="hljs-title function_">fanoutExchange</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FanoutExchange</span>(<span class="hljs-string">&quot;fanoutExchange&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//将两个队列绑定到交换机上</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bindingFanoutQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(fanoutQueue1()).to(fanoutExchange());<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bindingFanoutQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(fanoutQueue2()).to(fanoutExchange());<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2）创建生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.fanout;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FanoutProducer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;FanoutProducer&quot;</span>);<br>        <span class="hljs-comment">//第一个参数是交换机的名称 ，第二个参数是routerKey 这里设置为空字符串即可，第三个参数是要发送的消息</span><br>        rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;fanoutExchange&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;发布/订阅&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>3）创建消费者，本案例创建两个消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.fanout;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FanoutCustomer_01</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;fanoutQueue1&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;FanoutCustomer_01：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.fanout;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FanoutCustomer_02</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;fanoutQueue2&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;FanoutCustomer_02：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>4）在测试类中添加对象和方法进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> FanoutProducer fanoutProducer;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testFanoutProducer</span><span class="hljs-params">()</span>&#123;<br>    fanoutProducer.send();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-6-Routing-路由模式"><a href="#5-6-Routing-路由模式" class="headerlink" title="5.6 Routing 路由模式"></a>5.6 Routing 路由模式</h4><blockquote>
+<p>一个生产者，一个交换机，两个队列，两个消费者</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">结构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257024.png" srcset="/img/loading.gif" lazyload alt="1587724886159"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>生产者将消息发送到direct交换机（路由模式需要借助直连交换机实现），在绑定队列和交换机的时候有一个路由key，生产者发送的消息会指定一个路由key，那么消息只会发送到相应key相同的队列，接着监听该队列的消费者消费消息。也就是让消费者有选择性的接收消息。</p>
+</blockquote>
+<blockquote>
+<p>本例中：</p>
+<p>创建2个消息队列</p>
+<p>创建一个direct交换机对象</p>
+<p>Bind交换机和队列</p>
+</blockquote>
+<blockquote>
+<p>1）创建配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.direct;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Binding;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.BindingBuilder;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.DirectExchange;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Queue;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DirectConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">directQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;directQueue1&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">directQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;directQueue2&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> DirectExchange <span class="hljs-title function_">directExchange</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DirectExchange</span>(<span class="hljs-string">&quot;directExchange&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bingDirectQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(directQueue1()).to(directExchange()).with(<span class="hljs-string">&quot;zhangsan&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bingDirectQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(directQueue2()).to(directExchange()).with(<span class="hljs-string">&quot;lisi&quot;</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2）创建生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.direct;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.DirectExchange;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DirectProducer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DirectExchange directExchange;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;DirectProducer&quot;</span>);<br>        rabbitTemplate.convertAndSend(directExchange.getName(),<span class="hljs-string">&quot;zhangsan&quot;</span>,<span class="hljs-string">&quot;zhangsanContent&quot;</span>);<br>        rabbitTemplate.convertAndSend(directExchange.getName(),<span class="hljs-string">&quot;lisi&quot;</span>,<span class="hljs-string">&quot;lisiContent&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>3）创建两个消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.direct;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DirectCustomer_01</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;directQueue1&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;DirectCustomer_01：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.direct;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DirectCustomer_02</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;directQueue2&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;DirectCustomer_02：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>4）在测试类中添加对象和方法进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> DirectProducer directProducer;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testDirectProducer</span><span class="hljs-params">()</span>&#123;<br>    directProducer.send();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-7-Topic-主题模式"><a href="#5-7-Topic-主题模式" class="headerlink" title="5.7 Topic 主题模式"></a>5.7 Topic 主题模式</h4><blockquote>
+<p>一个生产者，一个交换机，两个队列，两个消费者</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">结构图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257254.png" srcset="/img/loading.gif" lazyload alt="1587727436898"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>又称通配符模式（可以理解为模糊匹配，路由模式相当于精确匹配）</p>
+<p>使用直连交换机可以改善我们的系统，但是它仍有局限性，它不能实现多重条件的路由。</p>
+<p>在消息系统中，我们不仅想要订阅基于路由键的队列，还想订阅基于生产消息的源。这时候可以使用topic交换机。</p>
+<p>使用主题交换机时不能采用任意写法的路由键，路由键的形式应该是由点分割的有意义的单词。例如”goods.stock.info”等。路由key最多255字节。</p>
+</blockquote>
+<blockquote>
+<p>*号代表一个单词</p>
+<p>#号代表0个或多个单词</p>
+</blockquote>
+<blockquote>
+<p>1）创建配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.topic;<br><br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Binding;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.BindingBuilder;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Queue;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.TopicExchange;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TopicConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">topicQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;topicQueue1&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">topicQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;topicQueue2&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> TopicExchange <span class="hljs-title function_">topicExchange</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TopicExchange</span>(<span class="hljs-string">&quot;topicExchange&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bingTopicQueue1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(topicQueue1()).to(topicExchange()).with(<span class="hljs-string">&quot;wangwu.*&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Binding <span class="hljs-title function_">bingTopicQueue2</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> BindingBuilder.bind(topicQueue2()).to(topicExchange()).with(<span class="hljs-string">&quot;zhaoliu.#&quot;</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2）创建生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.topic;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.DirectExchange;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.TopicExchange;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TopicProducer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> TopicExchange topicExchange;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;TopicProducer&quot;</span>);<br> rabbitTemplate.convertAndSend(topicExchange.getName(),<span class="hljs-string">&quot;wangwu.abc&quot;</span>,<span class="hljs-string">&quot;wangwuContent&quot;</span>);    rabbitTemplate.convertAndSend(topicExchange.getName(),<span class="hljs-string">&quot;zhaoliu.xyz.qwer&quot;</span>,<span class="hljs-string">&quot;zhaoliuContent&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>3）创建两个消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.topic;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TopicCustomer_01</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;topicQueue1&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;TopicCustomer_01：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.topic;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TopicCustomer_02</span> &#123;<br><br>    <span class="hljs-meta">@RabbitListener(queues = &quot;topicQueue2&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String content)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;TopicCustomer_02：&quot;</span>+content);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>4）在测试类中添加对象和方法进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> TopicProducer topicProducer;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testTopicProducer</span><span class="hljs-params">()</span>&#123;<br>    topicProducer.send();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-8手动Ack"><a href="#5-8手动Ack" class="headerlink" title="5.8手动Ack"></a>5.8手动Ack</h4><blockquote>
+<p>RabbitMQ中的Ack： 主要是确认消息被消费者消费完成后通知服务器将队列里面的消息清除，spring-boot-data-amqp 是自动ACK机制，就意味着 MQ 会在消息发送完毕后，自动帮我们去ACK，然后删除队列中的消息，这样会存在一些问题：如果消费者处理消息需要较长时间，或者在消费消息的时候出现异常，都会出现问题，手动Ack可以避免消息重复消费。</p>
+</blockquote>
+<h5 id="5-8-1-原生方式测试"><a href="#5-8-1-原生方式测试" class="headerlink" title="5.8.1 原生方式测试"></a>5.8.1 原生方式测试</h5><blockquote>
+<p>1.以简单模式为例，只需要修改消费者即可，启动生产者进行测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.helloworld;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.*;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.concurrent.TimeoutException;<br><br><span class="hljs-comment">//消费者</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Consumer</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, TimeoutException &#123;<br>        System.out.println(<span class="hljs-string">&quot;消费者启动...&quot;</span>);<br><br>        <span class="hljs-comment">//创建连接</span><br>        <span class="hljs-type">ConnectionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConnectionFactory</span>();<br>        <span class="hljs-comment">//设置参数</span><br>        factory.setUsername(<span class="hljs-string">&quot;guest&quot;</span>);<br>        factory.setPassword(<span class="hljs-string">&quot;guest&quot;</span>);<br>        factory.setHost(<span class="hljs-string">&quot;192.168.25.134&quot;</span>);<br>        factory.setPort(<span class="hljs-number">5672</span>);<span class="hljs-comment">//浏览器访问的是：15672</span><br><br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> factory.newConnection();<br><br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br><br>        <span class="hljs-comment">//回调，创建Consumer</span><br>        <span class="hljs-type">DefaultConsumer</span> <span class="hljs-variable">defaultConsumer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultConsumer</span>(channel)&#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleDelivery</span><span class="hljs-params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="hljs-type">byte</span>[] body)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-comment">//获取消息</span><br>                    System.out.println(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(body, <span class="hljs-string">&quot;UTF-8&quot;</span>));<br>                    <span class="hljs-comment">//模拟异常</span><br>                    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;<br>                    <span class="hljs-comment">//手动ack</span><br>                    <span class="hljs-comment">//参数1：deliveryTag:投递过来消息的标签,由MQ打的，从1开始，1,2,3...</span><br>        			<span class="hljs-comment">//参数2：multiple：是否批量确认之前已经消费过的消息，一般为false</span><br>                    channel.basicAck(envelope.getDeliveryTag(), <span class="hljs-literal">false</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<span class="hljs-comment">//捕获所有异常</span><br>                    <span class="hljs-comment">//第三个参数：requeue -&gt; true表示重新放入队列，false -&gt; 放弃该消息</span><br>                    <span class="hljs-comment">//channel.basicNack(envelope.getDeliveryTag(), false, true);</span><br>                    <span class="hljs-comment">//抛弃此条消息</span><br>                    channel.basicNack(envelope.getDeliveryTag(), <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>);<br>                    e.printStackTrace();<br>                    <span class="hljs-comment">//关闭，否则一直循环当前操作</span><br>                    connection.close();<br>                &#125;<br>            &#125;<br>        &#125;;<br><br>        <span class="hljs-comment">//获取消息</span><br>        <span class="hljs-comment">//1.队列名称（从哪个队列中获取消息）</span><br>        <span class="hljs-comment">//2.true表示自动ack（消费完消息之后，自动告诉rabbitmq）</span><br>        <span class="hljs-comment">//  false表示手动ack，需要自己收到调用方法</span><br>        <span class="hljs-comment">//3.回调</span><br>        channel.basicConsume(<span class="hljs-string">&quot;helloworld&quot;</span>,<span class="hljs-literal">false</span>,defaultConsumer);<br><br>        <span class="hljs-comment">//关闭，消费方一般不关闭，有消息过来就需要及时处理</span><br>        <span class="hljs-comment">//channel.close();</span><br>        <span class="hljs-comment">//connection.close();</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="5-8-2-SpringBoot中测试"><a href="#5-8-2-SpringBoot中测试" class="headerlink" title="5.8.2 SpringBoot中测试"></a>5.8.2 SpringBoot中测试</h5><blockquote>
+<p>1.在 application.properties 中添加配置</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">#配置手动Ack</span><br>spring.rabbitmq.listener.simple.acknowledge-mode=manual<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.在之前测试的任意模式中添加 AckCustomer 演示</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">//消费者：监听队列中的消息，然后获取消息</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@RabbitListener(queues = &quot;simpleQueue&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AckCustomer</span> &#123;<br><br>    <span class="hljs-comment">//处理消息（获取消息，进一步操作）</span><br>    <span class="hljs-meta">@RabbitHandler</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receive</span><span class="hljs-params">(String message,Channel channel,Message msg)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;AckCustomer...&quot;</span>);<br>        <span class="hljs-comment">//获取消息内容</span><br>        <span class="hljs-keyword">if</span>(message!=<span class="hljs-literal">null</span> &amp;&amp; message.length()&gt;<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                System.out.println(<span class="hljs-string">&quot;获取消息：&quot;</span>+message);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;<br>                <span class="hljs-comment">//手动确认</span><br>                <span class="hljs-type">long</span> <span class="hljs-variable">deliveryTag</span> <span class="hljs-operator">=</span> msg.getMessageProperties().getDeliveryTag();<br>                System.out.println(<span class="hljs-string">&quot;deliveryTag：&quot;</span>+deliveryTag);<br>                channel.basicAck(deliveryTag,<span class="hljs-literal">false</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<span class="hljs-comment">//捕获所有异常</span><br>                System.out.println(<span class="hljs-string">&quot;消息处理...&quot;</span>);<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-comment">//重新放入队列中</span><br>                    <span class="hljs-comment">//channel.basicNack(msg.getMessageProperties().getDeliveryTag(),false,true);</span><br>                    <span class="hljs-comment">//放弃消息</span><br>                    channel.basicNack(msg.getMessageProperties().getDeliveryTag(),<span class="hljs-literal">false</span>,<span class="hljs-literal">false</span>);<br>                    e.printStackTrace();<br>                    <span class="hljs-comment">//关闭</span><br>                    channel.getConnection().close();<br>                &#125; <span class="hljs-keyword">catch</span> (Exception ex) &#123;<br>                    ex.printStackTrace();<br>                &#125;<br>            &#125;<br><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            System.out.println(<span class="hljs-string">&quot;没有消息&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注释或打开异常进行测试即可！</p>
+</blockquote>
+<h3 id="六、事务与confirm机制"><a href="#六、事务与confirm机制" class="headerlink" title="六、事务与confirm机制"></a>六、事务与confirm机制</h3><hr>
+<h4 id="6-1-消息的可靠性"><a href="#6-1-消息的可靠性" class="headerlink" title="6.1 消息的可靠性"></a>6.1 消息的可靠性</h4><blockquote>
+<p>思考？</p>
+<p>1.如果消息已经到达RabbitMQ，RabbitMQ宕机了，消息是不是就丢失了？</p>
+<p>可以使用Queue的持久化机制</p>
+<p>2.消费者在消费消息的时候，程序执行到一半，消费者宕机了怎么办？</p>
+<p>可以手动Ack</p>
+<p>3.生产者发送消息时，由于网络问题，导致消息没有发送到RabbitMQ怎么办？</p>
+<p>RabbitMQ提供了事务操作和Confirm以及Return机制</p>
+</blockquote>
+<blockquote>
+<p>保证消息的传递可以使用RabbitMQ中的事务，事务可以保证消息100%传递，可以通过事务的回滚去记录日志，后面定时再次发送当前消息，但是事务操作效率太低。</p>
+<p>RabbitMQ中除了事务，还提供了Confirm的确认机制，这个效率比事务高很多。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071257525.png" srcset="/img/loading.gif" lazyload alt="1587727436898"></p>
+<h4 id="6-2-RabbitMQ事务"><a href="#6-2-RabbitMQ事务" class="headerlink" title="6.2 RabbitMQ事务"></a>6.2 RabbitMQ事务</h4><blockquote>
+<p>RabbitMQ的事务是对AMQP协议的实现，通过设置<code>Channel</code> 的模式来完成，具体操作如下：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">channel.txSelect();  <span class="hljs-comment">//开启事务</span><br><span class="hljs-comment">// ....本地事务操作</span><br>channel.txCommit();  <span class="hljs-comment">//提交事务</span><br>channel.txRollback(); <span class="hljs-comment">//回滚事务</span><br></code></pre></td></tr></table></figure>
+
+<p><font color="red"><strong>特别说明：RabbitMQ的事务机制是同步操作，会极大的降低RabbitMQ的性能。</strong></font></p>
+<h4 id="6-3-Confirm机制"><a href="#6-3-Confirm机制" class="headerlink" title="6.3 Confirm机制"></a>6.3 Confirm机制</h4><blockquote>
+<p>由于RabbitMQ的事务性能的问题，于是就又推出了发送方确认模式。</p>
+</blockquote>
+<h5 id="6-3-1-创建工具类"><a href="#6-3-1-创建工具类" class="headerlink" title="6.3.1 创建工具类"></a>6.3.1 创建工具类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.utils;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.ConnectionFactory;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.concurrent.TimeoutException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RabbitMQUtils</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 1. 创建连接工厂（ConnectionFactory）</span><br><span class="hljs-comment">     * 2. 创建连接 (Connection)</span><br><span class="hljs-comment">     * 3. 创建通道  (Channel)</span><br><span class="hljs-comment">     Connection conn = connectionFactory.newConnection();</span><br><span class="hljs-comment">     Channel channel = conn.createChannel();</span><br><span class="hljs-comment">    */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ConnectionFactory connectionFactory;<br><br>    <span class="hljs-keyword">static</span> &#123;<br>        connectionFactory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConnectionFactory</span>();<br>        connectionFactory.setPort(<span class="hljs-number">5672</span>);<br>        connectionFactory.setUsername(<span class="hljs-string">&quot;guest&quot;</span>);<br>        connectionFactory.setPassword(<span class="hljs-string">&quot;guest&quot;</span>);<br>        connectionFactory.setHost(<span class="hljs-string">&quot;192.168.25.134&quot;</span>);<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Connection <span class="hljs-title function_">getConnection</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            connection = connectionFactory.newConnection();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException ioException) &#123;<br>            ioException.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (TimeoutException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-keyword">return</span> connection;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">(Channel channel, Connection connection)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-literal">null</span> != channel) &#123;<br>                channel.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-literal">null</span> != connection)&#123;<br>                connection.close();<br>            &#125;<br>        &#125;<span class="hljs-keyword">catch</span> (Exception ex) &#123;<br>            ex.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="6-3-2-单条消息确认"><a href="#6-3-2-单条消息确认" class="headerlink" title="6.3.2 单条消息确认"></a>6.3.2 单条消息确认</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">channel.confirmSelect(); <span class="hljs-comment">//开启发送方确认模式</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.在RabbitMq控制台页面，创建一个direct类型的交换机，再创建一个队列并绑定</p>
+</blockquote>
+<blockquote>
+<p>channel.waitForConfirms(); &#x2F;&#x2F;对于单条消息的确认，true表示成功</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.confirm;<br><br><span class="hljs-keyword">import</span> com.couture.utils.RabbitMQUtils;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComfirmTest1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> RabbitMQUtils.getConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//开启confirm</span><br>        channel.confirmSelect();<br>        <span class="hljs-comment">//发送消息（前提：队列已经通过routingKey绑定到该交换机上）</span><br>        channel.basicPublish(<span class="hljs-string">&quot;myExchange&quot;</span>,<span class="hljs-string">&quot;my&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;消息内容&quot;</span>.getBytes());<br><br>        <span class="hljs-comment">//判断消息到达交换机，true表示到达，若没有交换机则系统会直接报错</span><br>        <span class="hljs-keyword">if</span>(channel.waitForConfirms())&#123;<br>            System.out.println(<span class="hljs-string">&quot;消息已到达交换机&quot;</span>);<br>        &#125;<br><br>        <span class="hljs-comment">//关闭</span><br>        RabbitMQUtils.close(channel,connection);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-3-2-批量消息确认"><a href="#6-3-2-批量消息确认" class="headerlink" title="6.3.2 批量消息确认"></a>6.3.2 批量消息确认</h5><blockquote>
+<p>channel.waitForConfirmsOrDie();  &#x2F;&#x2F;批量消息确认，如果有一条消息没有发送成功，会抛出异常</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.confirm;<br><br><span class="hljs-keyword">import</span> com.couture.utils.RabbitMQUtils;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComfirmTest2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> RabbitMQUtils.getConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//开启confirm</span><br>        channel.confirmSelect();<br>        <span class="hljs-comment">//发送消息（前提：队列已经通过routingKey绑定到该交换机上）</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            <span class="hljs-comment">//判断</span><br>            <span class="hljs-keyword">if</span>(i == <span class="hljs-number">5</span>)&#123;<br>                <span class="hljs-comment">//前提是系统中没有名为myExchange2的交换机</span><br>                channel.basicPublish(<span class="hljs-string">&quot;myExchange2&quot;</span>, <span class="hljs-string">&quot;my&quot;</span>, <span class="hljs-literal">null</span>, (<span class="hljs-string">&quot;消息内容&quot;</span>+ i).getBytes());<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-comment">//发送消息</span><br>            channel.basicPublish(<span class="hljs-string">&quot;myExchange&quot;</span>, <span class="hljs-string">&quot;my&quot;</span>, <span class="hljs-literal">null</span>, (<span class="hljs-string">&quot;消息内容&quot;</span>+ i).getBytes());<br>        &#125;<br><br>        <span class="hljs-comment">//确定批量操作是否成功</span><br>        <span class="hljs-comment">//当发送的全部消息，有一个失败的时候，就直接全部失败 抛出异常</span><br>        channel.waitForConfirmsOrDie();<br><br>        <span class="hljs-comment">//关闭</span><br>        RabbitMQUtils.close(channel,connection);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-3-3-回调方式确认"><a href="#6-3-3-回调方式确认" class="headerlink" title="6.3.3 回调方式确认"></a>6.3.3 回调方式确认</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.confirm;<br><br><span class="hljs-keyword">import</span> com.couture.utils.RabbitMQUtils;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.ConfirmListener;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComfirmTest3</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> RabbitMQUtils.getConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//开启confirm</span><br>        channel.confirmSelect();<br><br>        <span class="hljs-comment">//发送消息（前提：队列已经通过routingKey绑定到该交换机上）</span><br>        channel.basicPublish(<span class="hljs-string">&quot;myExchange&quot;</span>,<span class="hljs-string">&quot;my&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;消息内容&quot;</span>.getBytes());<br><br>        <span class="hljs-comment">//开启异步回调</span><br>        channel.addConfirmListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConfirmListener</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleAck</span><span class="hljs-params">(<span class="hljs-type">long</span> deliveryTag, <span class="hljs-type">boolean</span> multiple)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                System.out.println(<span class="hljs-string">&quot;成功达到交换机&quot;</span>);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleNack</span><span class="hljs-params">(<span class="hljs-type">long</span> deliveryTag, <span class="hljs-type">boolean</span> multiple)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                System.out.println(<span class="hljs-string">&quot;没有到达交换机&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        <span class="hljs-comment">//关闭</span><br>        RabbitMQUtils.close(channel,connection);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-4-Return机制"><a href="#6-4-Return机制" class="headerlink" title="6.4 Return机制"></a>6.4 Return机制</h4><blockquote>
+<p>Confirm只能保证消息到达exchange，无法保证消息可以被exchange分发到指定queue</p>
+<p>而且exchange是不能持久化消息的，queue是可以持久化消息</p>
+<p>采用Return机制来监听消息是否从exchange送到了指定的queue中</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071258092.png" srcset="/img/loading.gif" lazyload alt="1587727436898"></p>
+<blockquote>
+<p>开启Return机制，在发送消息时，需要指定mandatory为true</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.confirm;<br><br><span class="hljs-keyword">import</span> com.couture.utils.RabbitMQUtils;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.*;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ReturnTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> RabbitMQUtils.getConnection();<br>        <span class="hljs-comment">//获取Channel</span><br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br>        <span class="hljs-comment">//开启confirm</span><br>        channel.confirmSelect();<br><br>        <span class="hljs-comment">//发送消息</span><br>        <span class="hljs-comment">//注意：指定mandatory参数为true，设置没有绑定的routingkey</span><br>        channel.basicPublish(<span class="hljs-string">&quot;myExchange&quot;</span>,<span class="hljs-string">&quot;my2&quot;</span>,<span class="hljs-literal">true</span>,<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;消息内容&quot;</span>.getBytes());<br><br>        <span class="hljs-comment">//开启异步回调</span><br>        channel.addConfirmListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConfirmListener</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleAck</span><span class="hljs-params">(<span class="hljs-type">long</span> deliveryTag, <span class="hljs-type">boolean</span> multiple)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                System.out.println(<span class="hljs-string">&quot;成功达到交换机&quot;</span>);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleNack</span><span class="hljs-params">(<span class="hljs-type">long</span> deliveryTag, <span class="hljs-type">boolean</span> multiple)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>                System.out.println(<span class="hljs-string">&quot;没有到达交换机&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        <span class="hljs-comment">//没有到达队列的时候触发</span><br>        channel.addReturnListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ReturnListener</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleReturn</span><span class="hljs-params">(<span class="hljs-type">int</span> replyCode, String replyText, String exchange,</span><br><span class="hljs-params">                                     String routingKey, AMQP.BasicProperties properties,</span><br><span class="hljs-params">                                     <span class="hljs-type">byte</span>[] body)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br><br>                System.out.println(<span class="hljs-string">&quot;没有到达队列&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        <span class="hljs-comment">//关闭</span><br>        RabbitMQUtils.close(channel,connection);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-5-SpringBoot实现"><a href="#6-5-SpringBoot实现" class="headerlink" title="6.5  SpringBoot实现"></a>6.5  SpringBoot实现</h4><blockquote>
+<p>1.在 application.properties 中添加配置</p>
+</blockquote>
+<blockquote>
+<p>spring.rabbitmq.publisher-confirm-type 对应值的说明</p>
+<ul>
+<li>NONE ：禁用发布确认模式，是默认值</li>
+<li>CORRELATED：发布消息成功到交换器后会触发回调方法</li>
+<li>SIMPLE：两种效果</li>
+</ul>
+<ol>
+<li>和CORRELATED值一样会触发回调方法</li>
+<li>在发布消息成功后使用rabbitTemplate调用waitForConfirms或waitForConfirmsOrDie方法等待broker节点返回发送结果，根据返回结果来判定下一步的逻辑，要注意的点是waitForConfirmsOrDie方法如果返回false则会关闭channel，则接下来无法发送消息到broker</li>
+</ol>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 配置开启Confirm和Return</span><br>spring.rabbitmq.publisher-confirm-type: simple<br>spring.rabbitmq.publisher-returns: <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.创建配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.direct;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.ReturnedMessage;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.connection.CorrelationData;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-keyword">import</span> javax.annotation.PostConstruct;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PublisherConfirmAndReturnConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">RabbitTemplate</span>.ConfirmCallback,RabbitTemplate.ReturnsCallback &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-meta">@PostConstruct</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initMethod</span><span class="hljs-params">()</span>&#123;<br>        rabbitTemplate.setConfirmCallback(<span class="hljs-built_in">this</span>);<br>        rabbitTemplate.setReturnsCallback(<span class="hljs-built_in">this</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">confirm</span><span class="hljs-params">(CorrelationData correlationData, <span class="hljs-type">boolean</span> ack, String s)</span> &#123;<br>        <span class="hljs-keyword">if</span>(ack)&#123;<br>            System.out.println(<span class="hljs-string">&quot;到达交换机&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            System.out.println(<span class="hljs-string">&quot;没有到达交换机&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">returnedMessage</span><span class="hljs-params">(ReturnedMessage returnedMessage)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;没有到达队列&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.修改生产者发送消息方法中的routingKey，然后启动测试类测试即可！</p>
+</blockquote>
+<h3 id="七-死信队列"><a href="#七-死信队列" class="headerlink" title="七. 死信队列"></a>七. 死信队列</h3><hr>
+<blockquote>
+<p>死信队列并不是一个特殊的队列，只是一个普通的队列，只是我们把他们取名叫做死信队列。</p>
+<p>死信队列的设计是在某个队列的头信息中设定<code>x-dead-letter-exchange</code> (死信交换机)和<code>x-dead-letter-routing-key</code>(死信路由键)即可。关联到一个绑定到某个死信交换机的队列上。然后给该队列指定过期时间或者指定的消息的过期时间，那么该消息到期后会自动到达死信队列中。</p>
+</blockquote>
+<h5 id="7-1-场景"><a href="#7-1-场景" class="headerlink" title="7.1 场景"></a>7.1 场景</h5><blockquote>
+<p>场景一：未支付订单在规定的时间取消。实现的方式为，将订单消息放入到一个队列中，并指定其过期时间。当过期时间到了之后，就进入到了死信队列，那么可以直接在死信队列的消费端取出对应的消息即可。</p>
+</blockquote>
+<blockquote>
+<p>场景二：某条消息在消费端曾多次尝试消费，但是均未消费成功，那么就进入死信队列，让人工干预。</p>
+</blockquote>
+<h5 id="7-2-测试"><a href="#7-2-测试" class="headerlink" title="7.2 测试"></a>7.2 测试</h5><blockquote>
+<p>提前创建RabbitMQUtils工具类并测试即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.dead;<br><br><span class="hljs-keyword">import</span> com.couture.utils.RabbitMQUtils;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.AMQP;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> com.rabbitmq.client.Connection;<br><br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeadQueueTest</span> &#123;<br><br>    <span class="hljs-comment">//死信交换机</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">dead_letter_exchange</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dead_letter_exchange&quot;</span>;<br>    <span class="hljs-comment">//死信路由键</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">dead_letter_routing_key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dead_letter_routing_key&quot;</span>;<br>    <span class="hljs-comment">//死信队列</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">dead_letter_queue</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dead_letter_queue&quot;</span>;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">people_exchange</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;people_exchange&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">people_routing_key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;people_routing_key&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">people_queue</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;people_queue&quot;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        <span class="hljs-comment">//获取连接</span><br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> RabbitMQUtils.getConnection();<br>        <span class="hljs-type">Channel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> connection.createChannel();<br><br>        <span class="hljs-comment">// 创建一个死信的交换机</span><br>        channel.exchangeDeclare(dead_letter_exchange, <span class="hljs-string">&quot;direct&quot;</span>);<br>        <span class="hljs-comment">// 创建死信队列</span><br>        channel.queueDeclare(dead_letter_queue, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>);<br>        <span class="hljs-comment">// 将死信队列绑定到死信交换机，路由键为 &quot;dead_letter_routing_key&quot;</span><br>        channel.queueBind(dead_letter_queue, dead_letter_exchange, dead_letter_routing_key);<br><br>        <span class="hljs-comment">//设置队列参数</span><br>        Map&lt;String, Object&gt; arguments = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        arguments.put(<span class="hljs-string">&quot;x-dead-letter-exchange&quot;</span>, dead_letter_exchange);<br>        arguments.put(<span class="hljs-string">&quot;x-dead-letter-routing-key&quot;</span>, dead_letter_routing_key);<br><br>        <span class="hljs-comment">//创建当前交换机，队列以及路由键</span><br>        channel.exchangeDeclare(people_exchange, <span class="hljs-string">&quot;direct&quot;</span>);<br>        <span class="hljs-comment">//最后一个参数是当前队列的属性</span><br>        channel.queueDeclare(people_queue, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, arguments);<br>        channel.queueBind(people_queue, people_exchange, people_routing_key);<br><br>        <span class="hljs-comment">//设置消息的过期时间，单位：毫秒</span><br>        AMQP.<span class="hljs-type">BasicProperties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMQP</span>.BasicProperties.Builder()<br>                .expiration(<span class="hljs-string">&quot;15000&quot;</span>).build();<br><br>        <span class="hljs-comment">//发送消息</span><br>        channel.basicPublish(people_exchange, people_routing_key, properties, <span class="hljs-string">&quot;dead_message&quot;</span>.getBytes());<br><br>        RabbitMQUtils.close(channel, connection);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="八-避免消息重复消费"><a href="#八-避免消息重复消费" class="headerlink" title="八. 避免消息重复消费"></a>八. 避免消息重复消费</h3><hr>
+<h4 id="8-1-幂等性"><a href="#8-1-幂等性" class="headerlink" title="8.1 幂等性"></a>8.1 幂等性</h4><blockquote>
+<p>所有的消息中间件都会存在这样一个问题，那就是消息的重复消费问题，所以我们必须做幂等性设计，所谓幂等性设计就是，一条消息无论消费多少次所产生的结果都是相同的。</p>
+<p>重复消费消息，是对非幂等性操作造成问题，重复消费消息的原因是因为消费者没有给RabbitMQ一个Ack</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071258024.png" srcset="/img/loading.gif" lazyload alt="1587727436898"></p>
+<blockquote>
+<p>为了解决消息重复消费的问题，可以采用Redis，在消费者消费消息之前，现将消息的id放到Redis中，</p>
+<p>id-0（正在执行业务）</p>
+<p>id-1（执行业务成功）</p>
+<p>如果ack失败，在RabbitMQ将消息交给其他的消费者时，先执行setnx，如果key已经存在，获取他的值，如果是0，当前消费者就什么都不做，如果是1，直接ack。</p>
+<p>极端情况：第一个消费者在执行业务时，出现了死锁，在setnx的基础上，再给key设置一个生存时间。</p>
+</blockquote>
+<h4 id="8-2-解决方案"><a href="#8-2-解决方案" class="headerlink" title="8.2 解决方案"></a>8.2 解决方案</h4><blockquote>
+<p>方案一：为每条消息生成全局唯一ID，将ID和业务数据放在同一个事务中，每次消费消息之后都将ID在表中插入一条数据，每次消费之前先查询ID是否存在，如果不存在就执行对应的逻辑；如果存在则直接确认。</p>
+</blockquote>
+<blockquote>
+<p>方案二（推荐）：利用redis+数据库的方案来实现幂等性的设计，实现的思路与redis的缓存击穿方案类似；当插入数据的时候，将唯一ID同时插入数据库，然后放入到redis中，设置过期时间，每次从redis中判断。</p>
+</blockquote>
+<h4 id="8-3-在springboot中测试"><a href="#8-3-在springboot中测试" class="headerlink" title="8.3 在springboot中测试"></a>8.3 在springboot中测试</h4><h5 id="8-3-1-导入依赖"><a href="#8-3-1-导入依赖" class="headerlink" title="8.3.1 导入依赖"></a>8.3.1 导入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-2-配置application-properties"><a href="#8-3-2-配置application-properties" class="headerlink" title="8.3.2 配置application.properties"></a>8.3.2 配置application.properties</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#对于rabbitMQ的支持</span><br><span class="hljs-attr">spring.rabbitmq.host</span>=<span class="hljs-string">192.168.25.140</span><br><span class="hljs-attr">spring.rabbitmq.port</span>=<span class="hljs-string">5672</span><br><span class="hljs-attr">spring.rabbitmq.username</span>=<span class="hljs-string">guest</span><br><span class="hljs-attr">spring.rabbitmq.password</span>=<span class="hljs-string">guest</span><br><br><span class="hljs-attr">spring.rabbitmq.listener.simple.acknowledge-mode</span>=<span class="hljs-string">manual</span><br><br><span class="hljs-attr">spring.redis.host</span>=<span class="hljs-string">127.0.0.1</span><br><span class="hljs-attr">spring.redis.port</span>=<span class="hljs-string">6379</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-3-这里以简单模式演示"><a href="#8-3-3-这里以简单模式演示" class="headerlink" title="8.3.3 这里以简单模式演示"></a>8.3.3 这里以简单模式演示</h5><blockquote>
+<p>1.编写配置类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.AmqpException;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.*;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.connection.CorrelationData;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-comment">//配置类，创建队列</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleQueueConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Queue <span class="hljs-title function_">simpleQueue</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Queue</span>(<span class="hljs-string">&quot;simpleQueue&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//创建MessagePostProcessor对象，用于在生产者中把id等参数传给消费者</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> MessagePostProcessor <span class="hljs-title function_">correlationIdProcessor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">MessagePostProcessor</span> <span class="hljs-variable">messagePostProcessor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MessagePostProcessor</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> Message <span class="hljs-title function_">postProcessMessage</span><span class="hljs-params">(Message message, Correlation correlation)</span> &#123;<br>                <span class="hljs-type">MessageProperties</span> <span class="hljs-variable">messageProperties</span> <span class="hljs-operator">=</span> message.getMessageProperties();<br>                <span class="hljs-comment">//通过Correlation对象存储id参数，Message获取id参数</span><br>                <span class="hljs-keyword">if</span> (correlation <span class="hljs-keyword">instanceof</span> CorrelationData) &#123;<br>                    <span class="hljs-type">String</span> <span class="hljs-variable">correlationId</span> <span class="hljs-operator">=</span> ((CorrelationData) correlation).getId();<br>                    messageProperties.setCorrelationId(correlationId);<br>                &#125;<br>                <span class="hljs-comment">//返回</span><br>                <span class="hljs-keyword">return</span> message;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> Message <span class="hljs-title function_">postProcessMessage</span><span class="hljs-params">(Message message)</span> <span class="hljs-keyword">throws</span> AmqpException &#123;<br>                <span class="hljs-keyword">return</span> message;<br>            &#125;<br>        &#125;;<br>        <span class="hljs-keyword">return</span> messagePostProcessor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.编写生产者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.MessagePostProcessor;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.connection.CorrelationData;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.util.UUID;<br><br><br><span class="hljs-comment">//生产者</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleProducer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> MessagePostProcessor messagePostProcessor;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RabbitTemplate rabbitTemplate;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">CorrelationData</span> <span class="hljs-variable">correlationData</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CorrelationData</span>();<br>        System.out.println(correlationData.getId());<br>        rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;simpleQueue&quot;</span>,<span class="hljs-string">&quot;简单队列&quot;</span>,messagePostProcessor,correlationData);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.编写消费者</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture.simple;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.MessageProperties;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitHandler;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.core.StringRedisTemplate;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.concurrent.TimeUnit;<br><br><span class="hljs-comment">//消费者</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-comment">//监听指定队列</span><br><span class="hljs-meta">@RabbitListener(queues = &quot;simpleQueue&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AckCustomer</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StringRedisTemplate redisTemplate;<br><br>    <span class="hljs-meta">@RabbitHandler</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getMessage</span><span class="hljs-params">(String msg, Channel channel, Message message)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-comment">//1.获取MessageId</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">messageId</span> <span class="hljs-operator">=</span> message.getMessageProperties().getCorrelationId();<br>        System.out.println(messageId);<br>        <span class="hljs-type">Boolean</span> <span class="hljs-variable">aBoolean</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().setIfAbsent(messageId, <span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-number">600</span>, TimeUnit.SECONDS);<br>        <span class="hljs-comment">//2.设置key到Redis</span><br>        <span class="hljs-keyword">if</span>(aBoolean) &#123;<br>            <span class="hljs-comment">//3.消费消息</span><br>            System.out.println(<span class="hljs-string">&quot;正在处理消息....&quot;</span>);<br>            <span class="hljs-comment">//System.out.println(&quot;接收到消息：&quot; + msg);</span><br>            <span class="hljs-comment">//4.设置key的value为1</span><br>            <span class="hljs-comment">//redisTemplate.opsForValue().set(messageId,&quot;1&quot;,600, TimeUnit.SECONDS);</span><br>            <span class="hljs-comment">//5.手动ack</span><br>            <span class="hljs-comment">//channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);</span><br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">//判断消息是否已经消费：1 -&gt; 已消费 0 -&gt; 未消费</span><br>        <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;0&quot;</span>.equalsIgnoreCase(redisTemplate.opsForValue().get(messageId)))&#123;<br>            System.out.println(<span class="hljs-string">&quot;接收到消息：&quot;</span> + msg);<br>            redisTemplate.opsForValue().set(messageId,<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-number">600</span>, TimeUnit.SECONDS);<br>            channel.basicAck(message.getMessageProperties().getDeliveryTag(),<span class="hljs-literal">false</span>);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">//获取Redis中的value即可 如果是1，直接手动ack，不需要再次消费了</span><br>            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;1&quot;</span>.equalsIgnoreCase(redisTemplate.opsForValue().get(messageId)))&#123;<br>                channel.basicAck(message.getMessageProperties().getDeliveryTag(),<span class="hljs-literal">false</span>);<br>            &#125;<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4.测试类测试即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.couture;<br><br><span class="hljs-keyword">import</span> com.couture.simple.SimpleProducer;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Springboot14RabbitmqApplicationTests</span> &#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">contextLoads</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> SimpleProducer simpleProducer;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span>&#123;<br>        simpleProducer.send();<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>测试成功后，到redis中查看即可！</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF/" class="print-no-link">#后端</a>
+      
+        <a href="/tags/RabbitMQ/" class="print-no-link">#RabbitMQ</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>RabbitMQ</div>
+      <div>http://example.com/2022/06/30/RabbitMQ/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/05/Redis/" title="Redis">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redis</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/30/Shiro/" title="Shiro">
+                        <span class="hidden-mobile">Shiro</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
