@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-12T07:24:43.351Z</updated>
+  <updated>2023-12-24T01:49:17.972Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/11/12/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
     <id>http://example.com/2023/11/12/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
     <published>2023-11-12T07:23:34.000Z</published>
-    <updated>2023-11-12T07:24:43.351Z</updated>
+    <updated>2023-12-24T01:49:17.972Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题所在："><a href="#问题所在：" class="headerlink" title="问题所在："></a>问题所在：</h3><span id="more"></span><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" /><p>想要修改<code>Mac</code>系统的文件，但是上图来看，没有操作权限</p><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol><li><h5 id="禁用SIP并删除文件："><a href="#禁用SIP并删除文件：" class="headerlink" title="禁用SIP并删除文件："></a><strong>禁用SIP并删除文件：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p></li><li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p></li><li><p>在终端中输入以下命令来禁用SIP：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">csrutil <span class="hljs-built_in">disable</span><br></code></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li><li><p>重新尝试删除文件：</p><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">sudo rm -rf ~<span class="hljs-regexp">/Desktop/</span>hosts<br></code></pre></td></tr></table></figure></li></ul></li><li><h5 id="重新启用SIP："><a href="#重新启用SIP：" class="headerlink" title="重新启用SIP："></a><strong>重新启用SIP：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p></li><li><p>打开终端，输入以下命令来重新启用SIP：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">csrutil <span class="hljs-built_in">enable</span><br></code></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li></ul></li></ol><p>问题解决!!!</p>]]></content>
     
@@ -127,7 +127,7 @@
     <link href="http://example.com/2023/07/21/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/"/>
     <id>http://example.com/2023/07/21/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</id>
     <published>2023-07-21T08:19:28.000Z</published>
-    <updated>2023-07-21T08:20:33.000Z</updated>
+    <updated>2023-12-24T01:47:04.261Z</updated>
     
     <content type="html"><![CDATA[<p>因为不习惯<code>Windows11</code>鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉</p><p>修改成<code>Windows10</code>样式</p><p><strong>搜索<code>CMD</code>，然后点击管理员运行</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 改win10：">reg add &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /f /ve<br></code></pre></td></tr></table></figure><span id="more"></span><p><strong>然后回车执行，会提示<code>successful</code></strong></p><p><strong>然后去任务管理里面去重启<code>Windows资源管理器</code></strong></p><p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png" alt="eda9b420830aa647f95f2b3fd7ae96f9_0"></p><p><strong>重启完成以后打开，鼠标右键如下，成功</strong></p><p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png" alt="825c0b51ebcb0ed2b75e8925d4ebea09_0"></p><p>如果想改回原始的，命令如下，重复上面一样的操，作执行<code>命令</code>-&gt;<code>重启Windows资源管理器</code></p><p><code>Windows11</code>命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reg delete <span class="hljs-string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;&quot;</span> /f<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -463,7 +463,7 @@
     <link href="http://example.com/2023/04/29/Docker-%E4%BC%98%E5%8C%96/"/>
     <id>http://example.com/2023/04/29/Docker-%E4%BC%98%E5%8C%96/</id>
     <published>2023-04-29T01:54:22.000Z</published>
-    <updated>2023-04-29T01:55:47.000Z</updated>
+    <updated>2023-12-24T01:47:04.301Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱， <code>Docker</code>优化方案解决</p></blockquote><span id="more"></span><p>Docker的缓存会随着时间的推移不断增长，清理缓存可以减小磁盘占用，提高系统性能。以下是清理Docker缓存的方法：</p><ol><li>清理没有使用的镜像和容器。这些未使用的镜像和容器会占用系统的空间，可以使用以下命令来清理：</li></ol><ul><li>清理未运行的容器：</li></ul><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">docker <span class="hljs-built_in">container</span> prune -f<br></code></pre></td></tr></table></figure><ul><li>清理未使用的镜像：</li></ul><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">docker image prune -a -f<br></code></pre></td></tr></table></figure><ol start="2"><li>清理未使用的数据卷。在使用数据卷的情况下，可以使用以下命令来清理没有关联容器的数据卷：</li></ol><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">docker <span class="hljs-keyword">volume</span><span class="language-bash"> prune -f</span><br></code></pre></td></tr></table></figure><ol start="3"><li><p>改变Docker的镜像存储位置。可以在Docker守护进程启动时设置<code>--data-root</code>参数，指定Docker镜像存储的位置，或者通过软链接等方法来改变Docker镜像目录。</p></li><li><p>定期清理Docker镜像缓存。可以通过以下命令来清理Docker镜像缓存：</p></li></ol><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">docker <span class="hljs-keyword">system</span> prune -<span class="hljs-keyword">a</span> -f <span class="hljs-comment">--volumes</span><br></code></pre></td></tr></table></figure><p>这个命令会清理Docker镜像、容器、网络和数据卷等不再使用的资源。</p><p>清理Docker缓存是一个健壮的管理实践，可以帮助系统保持最佳性能，减少磁盘占用</p>]]></content>
     
