@@ -845,7 +845,7 @@ i.iconfont {
 }
 :root {
   --color-mode: "light";
-  --body-bg-color: #333333;
+  --body-bg-color: #EEEEEE;
   --board-bg-color: #ffffff;
   --text-color: #DEDEDE;
   --sec-text-color: #718096;
