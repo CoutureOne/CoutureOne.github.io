@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="多平台使用 Hexo+GithubPage, Couture&#39;s Blogs">
     <meta name="description" content="将一台电脑的博客所有目录直接拷贝到另一台电脑上面 
-123456789101112couture@MacPro  ~/MyBlog  位于分支 main无文件要提交，干净的工作区git@github.com: Permission de">
+couture@MacPro  ~/MyBlog  
+位于分支 main
+无文件要提交，干净的工作区
+git@github.com: Permission denied (public">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -403,7 +406,19 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面 <span id="more"></span></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">couture@MacPro  ~/MyBlog  </span><br><span class="line">位于分支 main</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">致命错误：无法读取远程仓库。</span><br><span class="line"></span><br><span class="line">请确认您有正确的访问权限并且仓库存在。</span><br><span class="line">FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="string">Error: Spawn failed</span></span><br><span class="line"><span class="string">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span><br><span class="line"><span class="string">    at ChildProcess.emit (node:events:514:28)</span></span><br><span class="line"><span class="string">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">couture@MacPro</span>  ~/MyBlog  </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">位于分支</span> main</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">无文件要提交，干净的工作区</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">git@github.com:</span> Permission denied <span class="er">(</span><span class="ex">publickey</span><span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">致命错误：无法读取远程仓库。</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">请确认您有正确的访问权限并且仓库存在。</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> Something<span class="st">&#39;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">Error: Spawn failed</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess.emit (node:events:514:28)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span></code></pre></div>
 <p>这个问题属于电脑没有当前GitHub的账户的ssh公钥，然后给公钥添加到当前电脑即可，添加方式:</p>
 <p><a
 target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40047019/article/details/122898308">添加方式连接</a></p>
@@ -622,7 +637,7 @@ date：文档或博文创建或发布的日期和时间。
                             因为不习惯Windows11鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉
 修改成Windows10样式
 搜索CMD，然后点击管理员运行
-1reg add &quot;HKCU\Software\Classes\CLSID\&#123
+reg add &quot;HKCU\Software\Classes\CLSID\&#123;
                         
                     </div>
                     <div class="publish-info">

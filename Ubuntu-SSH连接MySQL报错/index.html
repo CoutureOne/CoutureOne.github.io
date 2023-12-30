@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Ubuntu SSH连接MySQL报错, Couture&#39;s Blogs">
     <meta name="description" content="报错内容：
-1[28000][1698] Access denied for user &amp;#x27;root&amp;#x27;@&amp;#x27;10.211.55.22&amp;#x27;
+[28000][1698] Access denied for user &amp;#39;root&amp;#39;@&amp;#39;10.211.55.22&amp;#39;
 
 
 
@@ -14,7 +14,7 @@ v
 
 
 
-e92246d9f5d9f15c20b70b597c">
+e92246d9f5d9f15c20b70b597ccb6d2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -432,7 +432,8 @@ e92246d9f5d9f15c20b70b597c">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="报错内容">报错内容：</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[28000][1698] Access denied <span class="keyword">for</span> user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;10.211.55.22&#x27;</span></span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[28000][1698]</span> Access denied for user <span class="st">&#39;root&#39;</span>@<span class="st">&#39;10.211.55.22&#39;</span></span></code></pre></div>
 <span id="more"></span>
 <figure>
 <img
@@ -456,7 +457,9 @@ aria-hidden="true">e92246d9f5d9f15c20b70b597ccb6d2c</figcaption>
 <p>​
 首先你得防火墙规则要放通端口<code>3306</code>,如果是虚拟机内网的情况，也可以直接给防火墙关掉。</p>
 <p>​ 然后可以直接新添加一个用户，用来管理MySQL。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27;; # username 你的用户名  password 你要设置的密码</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES; # 刷新</span><br></pre></td></tr></table></figure>
+<pre class="mysql"><code>CREATE USER &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; # username 你的用户名  password 你要设置的密码
+
+FLUSH PRIVILEGES; # 刷新</code></pre>
 <p>这时候再次连接就能连接成功了~</p>
 <figure>
 <img

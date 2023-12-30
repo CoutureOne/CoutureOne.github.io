@@ -8,7 +8,8 @@
     <meta name="description" content="Docker基础操作和配置
 配置阿里云Docker Yum源
 shell
-12# yum install -y yum-utils device-mapper-persistent-data lvm2 git# yum-config-man">
+# yum install -y yum-utils device-mapper-persistent-data lvm2 git
+# yum-config-mana">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -416,10 +417,12 @@ shell
                 <h2 id="docker基础操作和配置">Docker基础操作和配置</h2>
 <p>配置阿里云Docker Yum源</p>
 <p>shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install -y yum-utils device-mapper-persistent-data lvm2 git</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br></pre></td></tr></table></figure>
+<pre class="shell"><code># yum install -y yum-utils device-mapper-persistent-data lvm2 git
+# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre>
 <p>安装指定版本</p>
 <p>shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  查看Docker版本：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum list docker-ce --showduplicates</span></span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>  查看Docker版本：
+# yum list docker-ce --showduplicates</code></pre>
 <span id="more"></span>
 <p>安装较旧版本（比如Docker 17.03.2) ： FROM：指定基础镜像
 MAINTAINER：作者的信息 RUN：执行什么命令 EXPOSE：容器对外暴露的端口

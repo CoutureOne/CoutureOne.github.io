@@ -532,41 +532,43 @@ directory. Run Redis with:</p>
 <h4 id="安装步骤">3.3 安装步骤</h4>
 <blockquote>
 <p>1.把下载好的redis-6.2.6.tar.gz安装包拷贝到当前虚拟机root目录下，解压到/usr/local下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -zxvf redis-6.2.6.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost ~]# tar -zxvf redis-6.2.6.tar.gz -C /usr/local</code></pre>
 <p>2.编译的c环境，注：安装时如果显示yum正在运行，需要先将yum进程kill后再执行该命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install gcc-c++</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost ~]# yum install gcc-c++</code></pre>
 <p>3.进入redis-6.2.6目录 使用make命令编译redis（若报错，先make
 distclean，再make）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost redis-6.2.6]# make</code></pre>
 <p>4.使用make PREFIX=/usr/local/redis-6.2.6
 install命令安装（安装后会出现bin目录）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make PREFIX=/usr/local/redis-6.2.6 install</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost redis-6.2.6]# make PREFIX=/usr/local/redis-6.2.6 install</code></pre>
 <p>5.启动redis服务端（前台启动）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cd bin</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-server </span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost redis-6.2.6]# cd bin</code></pre>
+<pre class="shell"><code>[root@localhost bin]# ./redis-server </code></pre>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238861.png" /></p>
 <p>启动后看到如上欢迎页面，但此窗口不能关闭，窗口关闭就认为redis也关闭了，所以我们需要在后台启动，然后再启动客户端进行连接，所以首先Ctrl+C退出。</p>
 <p>解决：可以通过修改配置文件配置redis的后台启动（即服务器启动了但不会创建控制台窗口）</p>
 <p>步骤如下：</p>
 <p>1.切换到redis-6.2.6目录下，把当前目录下的redis.conf文件拷贝到bin目录下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# cd ../</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cp redis.conf bin/redis.conf</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# cd ../</code></pre>
+<pre class="shell"><code>[root@localhost redis-6.2.6]# cp redis.conf bin/redis.conf</code></pre>
 <p>2.切换到bin目录下，修改redis.conf文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cd bin</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# vim redis.conf </span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost redis-6.2.6]# cd bin</code></pre>
+<pre class="shell"><code>[root@localhost bin]# vim redis.conf </code></pre>
 <p>3.将redis.conf文件中的daemonize的值从no修改成yes表示后台启动</p>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238640.png" /></p>
 <p>4.启动redis服务端（后台启动）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-server redis.conf</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-server redis.conf</code></pre>
 <p>5.查看是否启动成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ps -ef | grep redis</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ps -ef | grep redis</code></pre>
 <p>6.启动客户端</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-cli</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-cli</code></pre>
 <p>7.存取数据进行测试</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name jack</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&quot;jack&quot;</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>127.0.0.1:6379&gt; set name jack
+OK</code></pre>
+<pre class="shell"><code>127.0.0.1:6379&gt; get name
+&quot;jack&quot;</code></pre>
 </blockquote>
 <h4 id="redis的配置文件">3.4 Redis的配置文件</h4>
 <table>
@@ -678,7 +680,7 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238733.png
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238626.png" /></p>
 <blockquote>
 <p>测试：100个并发，十万个请求，单机测试</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000</code></pre>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238323.png" /></p>
 <p>====== SET ======<br />
@@ -696,7 +698,7 @@ keep alive: 1 只有一台服务器处理请求 host configuration "save": 3600 
 <p>另一种写法：</p>
 <p>只测试 set 和 get 命令后退出</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -t set,get -n 10000 -q</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -t set,get -n 10000 -q</code></pre>
 <h3 id="五redis的数据类型重点">五、Redis的数据类型【重点】</h3>
 <hr />
 <blockquote>
@@ -944,15 +946,129 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071240709.png
 <blockquote>
 <p>2.创建Maven工程，导入依赖</p>
 </blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- jedis客户端 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.24<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dependencies</span>&gt;</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- jedis客户端 --&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;redis.clients&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;jedis&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;4.2.3&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;lombok&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;1.18.24&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;com.alibaba&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;fastjson&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;2.0.2&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;junit&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;junit&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;4.13.2&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">scope</span>&gt;compile&lt;/<span class="kw">scope</span>&gt;</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">dependencies</span>&gt;</span></code></pre></div>
 <blockquote>
 <p>3.编写实体类</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qf.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">pojo</span><span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Data</span><span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="at">@Data</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> User <span class="op">&#123;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">Integer</span> id<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> password<span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
 <blockquote>
 <p>4.编写测试类</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qf.jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson2.JSON;</span><br><span class="line"><span class="keyword">import</span> com.qf.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPool;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPoolConfig;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JedisTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//获取客户端对象</span></span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.126.129&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="comment">//如果有密码，必须设置</span></span><br><span class="line">        <span class="comment">//jedis.auth(&quot;root&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//存储String类型数据</span></span><br><span class="line">        jedis.set(<span class="string">&quot;content&quot;</span>,<span class="string">&quot;java2203&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//取String值</span></span><br><span class="line">        System.out.println(jedis.get(<span class="string">&quot;content&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//存对象</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setId(<span class="number">1</span>);</span><br><span class="line">        user.setName(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">        user.setPassword(<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">userJson</span> <span class="operator">=</span> JSON.toJSONString(user);</span><br><span class="line">        jedis.set(<span class="string">&quot;user&quot;</span>,userJson);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//取对象</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">jsonStringUser</span> <span class="operator">=</span> jedis.get(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        System.out.println(jsonStringUser);</span><br><span class="line">        <span class="type">User</span> <span class="variable">db_user</span> <span class="operator">=</span> JSON.parseObject(jsonStringUser, User.class);</span><br><span class="line">        System.out.println(db_user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//通过池拿jedis对象</span></span><br><span class="line">        <span class="comment">//配置一些参数</span></span><br><span class="line">        <span class="type">JedisPoolConfig</span> <span class="variable">jedisPoolConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPoolConfig</span>();</span><br><span class="line">        <span class="comment">//配置参数</span></span><br><span class="line">        jedisPoolConfig.setMaxTotal(<span class="number">200</span>);<span class="comment">//最大连接数</span></span><br><span class="line">        jedisPoolConfig.setMaxIdle(<span class="number">20</span>);<span class="comment">//最大空闲</span></span><br><span class="line">        jedisPoolConfig.setMinIdle(<span class="number">1</span>);<span class="comment">//最小空闲</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建JedisPool对象</span></span><br><span class="line">        <span class="type">JedisPool</span> <span class="variable">jedisPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPool</span>(jedisPoolConfig,<span class="string">&quot;192.168.126.129&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="comment">//获取jedis对象</span></span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> jedisPool.getResource();</span><br><span class="line">        <span class="comment">//如果有密码，必须设置</span></span><br><span class="line">        <span class="comment">//jedis.auth(&quot;root&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//操作List集合</span></span><br><span class="line">        jedis.lpush(<span class="string">&quot;sina001&quot;</span>,<span class="string">&quot;今天中午吃什么？&quot;</span>,<span class="string">&quot;今天晚上喝什么&quot;</span>);</span><br><span class="line">        System.out.println(jedis.lrange(<span class="string">&quot;sina001&quot;</span>,<span class="number">0</span>,-<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//操作Set集合</span></span><br><span class="line">        jedis.sadd(<span class="string">&quot;userList&quot;</span>,<span class="string">&quot;jack&quot;</span>,<span class="string">&quot;rose&quot;</span>,<span class="string">&quot;jack&quot;</span>);</span><br><span class="line">        System.out.println(jedis.smembers(<span class="string">&quot;userList&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//有序Set以及Hash</span></span><br><span class="line">        <span class="comment">//....</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">jedis</span><span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">alibaba</span><span class="op">.</span><span class="im">fastjson2</span><span class="op">.</span><span class="im">JSON</span><span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">pojo</span><span class="op">.</span><span class="im">User</span><span class="op">;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">Jedis</span><span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">JedisPool</span><span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">JedisPoolConfig</span><span class="op">;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> JedisTest <span class="op">&#123;</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">test1</span><span class="op">()&#123;</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">//获取客户端对象</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        Jedis jedis <span class="op">=</span> <span class="kw">new</span> <span class="fu">Jedis</span><span class="op">(</span><span class="st">&quot;192.168.126.129&quot;</span><span class="op">,</span><span class="dv">6379</span><span class="op">);</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">//如果有密码，必须设置</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">//jedis.auth(&quot;root&quot;);</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">//存储String类型数据</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="st">&quot;content&quot;</span><span class="op">,</span><span class="st">&quot;java2203&quot;</span><span class="op">);</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">//取String值</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;content&quot;</span><span class="op">));</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">//存对象</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>        User user <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">();</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setId</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setName</span><span class="op">(</span><span class="st">&quot;张三&quot;</span><span class="op">);</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setPassword</span><span class="op">(</span><span class="st">&quot;123&quot;</span><span class="op">);</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> userJson <span class="op">=</span> JSON<span class="op">.</span><span class="fu">toJSONString</span><span class="op">(</span>user<span class="op">);</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">,</span>userJson<span class="op">);</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">//取对象</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> jsonStringUser <span class="op">=</span> jedis<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">);</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jsonStringUser<span class="op">);</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>        User db_user <span class="op">=</span> JSON<span class="op">.</span><span class="fu">parseObject</span><span class="op">(</span>jsonStringUser<span class="op">,</span> User<span class="op">.</span><span class="fu">class</span><span class="op">);</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>db_user<span class="op">);</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        <span class="co">//关闭</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">test2</span><span class="op">()&#123;</span></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">//通过池拿jedis对象</span></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>        <span class="co">//配置一些参数</span></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>        JedisPoolConfig jedisPoolConfig <span class="op">=</span> <span class="kw">new</span> <span class="fu">JedisPoolConfig</span><span class="op">();</span></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>        <span class="co">//配置参数</span></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMaxTotal</span><span class="op">(</span><span class="dv">200</span><span class="op">);</span><span class="co">//最大连接数</span></span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMaxIdle</span><span class="op">(</span><span class="dv">20</span><span class="op">);</span><span class="co">//最大空闲</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMinIdle</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span><span class="co">//最小空闲</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>        <span class="co">//创建JedisPool对象</span></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>        JedisPool jedisPool <span class="op">=</span> <span class="kw">new</span> <span class="fu">JedisPool</span><span class="op">(</span>jedisPoolConfig<span class="op">,</span><span class="st">&quot;192.168.126.129&quot;</span><span class="op">,</span><span class="dv">6379</span><span class="op">);</span></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>        <span class="co">//获取jedis对象</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>        Jedis jedis <span class="op">=</span> jedisPool<span class="op">.</span><span class="fu">getResource</span><span class="op">();</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>        <span class="co">//如果有密码，必须设置</span></span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>        <span class="co">//jedis.auth(&quot;root&quot;);</span></span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>        <span class="co">//操作List集合</span></span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">lpush</span><span class="op">(</span><span class="st">&quot;sina001&quot;</span><span class="op">,</span><span class="st">&quot;今天中午吃什么？&quot;</span><span class="op">,</span><span class="st">&quot;今天晚上喝什么&quot;</span><span class="op">);</span></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">lrange</span><span class="op">(</span><span class="st">&quot;sina001&quot;</span><span class="op">,</span><span class="dv">0</span><span class="op">,-</span><span class="dv">1</span><span class="op">));</span></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>        <span class="co">//操作Set集合</span></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">sadd</span><span class="op">(</span><span class="st">&quot;userList&quot;</span><span class="op">,</span><span class="st">&quot;jack&quot;</span><span class="op">,</span><span class="st">&quot;rose&quot;</span><span class="op">,</span><span class="st">&quot;jack&quot;</span><span class="op">);</span></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">smembers</span><span class="op">(</span><span class="st">&quot;userList&quot;</span><span class="op">));</span></span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>        <span class="co">//有序Set以及Hash</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>        <span class="co">//....</span></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>        <span class="co">//关闭</span></span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
 <h3 id="七redis中的事务了解">七、Redis中的事务【了解】</h3>
 <hr />
 <blockquote>
@@ -1085,7 +1201,7 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071240740.png
 <blockquote>
 <p><strong>配置步骤：</strong></p>
 <p>1.查看当前库的信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; info replication</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>127.0.0.1:6379&gt; info replication</code></pre>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241232.png" /></p>
 <p>2.关闭当前运行的redis，打开四个链接，进行测试，拷贝三个redis.conf文件（改成6379，6380，6381）</p>
@@ -1115,7 +1231,9 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241022.png
 <p>5.配置一主二从</p>
 <p>默认情况下，每台Redis都是主节点，我们只需要配置从机即可，我们这里使用6379为主机，6380和6381为从机.</p>
 <p>在对应6380的链接中进行配置：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-cli -p 6380</span><br><span class="line"></span><br><span class="line">127.0.0.1:6380&gt; slaveof 127.0.0.1 6379</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-cli -p 6380
+
+127.0.0.1:6380&gt; slaveof 127.0.0.1 6379</code></pre>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241702.png" /></p>
 <p>6380从机配置成功之后，可以去主机中查看对应信息</p>
@@ -1168,7 +1286,7 @@ Sentinel 会开始一次自动故障迁移操作，
 <blockquote>
 <p><strong>配置步骤：</strong></p>
 <p>1.创建哨兵配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# vim sentinel.conf</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# vim sentinel.conf</code></pre>
 <p>sentinel.conf文件内容如下：（格式：sentinel monitor 被监控名称 host
 port 1）</p>
 <p>sentinel monitor myredis 127.0.0.1 6379 1</p>
@@ -1178,7 +1296,7 @@ monitor myredis 主机IP地址 6379
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241771.png" /></p>
 <p>2.启动哨兵</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-sentinel sentinel.conf</span><br></pre></td></tr></table></figure>
+<pre class="shell"><code>[root@localhost bin]# ./redis-sentinel sentinel.conf</code></pre>
 <p><img src="Pictures\59.png" /></p>
 <p>3.如果Master节点断开了（主机宕机了），过一会，会发送哨兵日志，并自动通过算法在其他两个从机中选择一个成为主机.</p>
 <p><img

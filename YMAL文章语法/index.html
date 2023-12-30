@@ -12,7 +12,9 @@ date：文档或博文创建或发布的日期和时间。
 tags：与文档或博文相关的关键词或标签的列表。
 categories：文档或博文所属的类别或主题的列表。
 
-12345678910111213141516-">
+---
+title: 标题
+descriptio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -424,7 +426,23 @@ categories：文档或博文所属的类别或主题的列表。
 <li><code>tags</code>：与文档或博文相关的关键词或标签的列表。</li>
 <li><code>categories</code>：文档或博文所属的类别或主题的列表。</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">这是文档的简要描述。</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">日期</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者名</span></span><br><span class="line"><span class="attr">thumbnail:</span> <span class="string">/path/to/thumbnail.jpg</span>  <span class="comment"># 封面图像或缩略图</span></span><br><span class="line"><span class="attr">external_link:</span> <span class="string">https://example.com</span> <span class="comment"># 链接</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">1.0</span> <span class="comment"># 版本号</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签2</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类2</span></span><br><span class="line"><span class="attr">featured:</span> <span class="literal">true</span> <span class="comment"># 顶置</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> 标题</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> 这是文档的简要描述。</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 日期</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> 作者名</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">thumbnail</span><span class="kw">:</span><span class="at"> /path/to/thumbnail.jpg</span><span class="co">  # 封面图像或缩略图</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">external_link</span><span class="kw">:</span><span class="at"> https://example.com</span><span class="co"> # 链接</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0</span><span class="co"> # 版本号</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 标签1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 标签2</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 分类1</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 分类2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">featured</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 顶置</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 
                 
             </div>
@@ -585,7 +603,9 @@ categories：文档或博文所属的类别或主题的列表。
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            123[rootClocalhost~]# cd /etc/sysconf ig/network-scripts/[rootClocalhost~]# ls[rootClocalhost~]# vi ifcfg-ens160
+                            [rootClocalhost~]# cd /etc/sysconf ig/network-scripts/
+[rootClocalhost~]# ls
+[rootClocalhost~]# vi ifcfg-ens160
                         
                     </div>
                     <div class="publish-info">

@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="CentOS 8 字符集报错解决方法, Couture&#39;s Blogs">
     <meta name="description" content="首先是错误如下：
-123[root@VM-4-3-centos ~]# yum install -y yum-utilsFailed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF">
+[root@VM-4-3-centos ~]# yum install -y yum-utils
+Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -424,11 +425,17 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h5 id="首先是错误如下">首先是错误如下：</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum install -y yum-utils</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8     <span class="comment"># 这里是出现了 UTF-8字符集的问题</span></span><br><span class="line">Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# yum install <span class="at">-y</span> yum-utils</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Failed</span> to set locale, defaulting to C.UTF-8     <span class="co"># 这里是出现了 UTF-8字符集的问题</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Last</span> metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span></code></pre></div>
 <span id="more"></span>
 <h5 id="解决方式">解决方式：</h5>
 <p>执行一下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export LC_ALL=en_US.UTF-8&quot;</span>  &gt;&gt;  /etc/profile</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export LC_CTYPE=en_US.UTF-8&quot;</span>  &gt;&gt;  /etc/profile</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;export LC_ALL=en_US.UTF-8&quot;</span>  <span class="op">&gt;&gt;</span>  /etc/profile</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;export LC_CTYPE=en_US.UTF-8&quot;</span>  <span class="op">&gt;&gt;</span>  /etc/profile</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/profile</span></code></pre></div>
 <p>在安装软件，不会有报错提示，问题得到了解决~</p>
 
                 

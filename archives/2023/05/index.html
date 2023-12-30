@@ -580,7 +580,14 @@ Unit）的缩写，是一种远程数据传输设备。它通常是安装在现�
                                 
                                     下面是Nginx配置反向代理方式，当然不仅仅这一种方式
 
-1234567891011121314151617181920212223242526272829303132333435server &#123;listen 80;server_
+server &#123;
+
+listen 80;
+
+server_name xx.xx; # 域名
+
+return 301 https://$host$request_uri;
+&
                                 
                             </div>
                             <div class="publish-info">
@@ -649,7 +656,7 @@ Unit）的缩写，是一种远程数据传输设备。它通常是安装在现�
 
 打开您的SSH配置文件
 
-1sudo nano /etc/ssh/sshd_c
+sudo nano /etc/ssh/sshd_co
                                 
                             </div>
                             <div class="publish-info">
@@ -717,15 +724,15 @@ Unit）的缩写，是一种远程数据传输设备。它通常是安装在现�
 停止 Nginx 服务：
 
 
-1sudo systemctl stop nginx
+sudo systemctl stop nginx
 
 删除 Nginx：
 
-1sudo apt-get remove nginx
+sudo apt-get remove nginx
 
 删除 Nginx 配置文件：
 
-1sudo rm -r
+sudo rm -rf /
                                 
                             </div>
                             <div class="publish-info">

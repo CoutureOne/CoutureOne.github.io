@@ -478,7 +478,7 @@
 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开
 CMD 运行命令也可以。</p>
 <p>text</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01taskkill /f /im explorer.exe &amp; start explorer.exe</span><br></pre></td></tr></table></figure>
+<pre class="text"><code>01taskkill /f /im explorer.exe &amp; start explorer.exe</code></pre>
 <p><strong>使用示例 2：</strong></p>
 <p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和
 <code>XLServicePlatform</code>
@@ -486,7 +486,8 @@ CMD 运行命令也可以。</p>
 <p>我们可以将如下代码保存为
 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
 <p>text</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0102net stop XLServicePlatform</span><br><span class="line">taskkill /F /im ThunderPlatform.exe</span><br></pre></td></tr></table></figure>
+<pre class="text"><code>0102net stop XLServicePlatform
+taskkill /F /im ThunderPlatform.exe</code></pre>
 
                 
             </div>

@@ -429,20 +429,20 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
 <ul>
 <li>清理未运行的容器：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container prune -f</span><br></pre></td></tr></table></figure>
+<pre><code>docker container prune -f</code></pre>
 <ul>
 <li>清理未使用的镜像：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune -a -f</span><br></pre></td></tr></table></figure>
+<pre><code>docker image prune -a -f</code></pre>
 <ol start="2" type="1">
 <li>清理未使用的数据卷。在使用数据卷的情况下，可以使用以下命令来清理没有关联容器的数据卷：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume prune -f</span><br></pre></td></tr></table></figure>
+<pre><code>docker volume prune -f</code></pre>
 <ol start="3" type="1">
 <li><p>改变Docker的镜像存储位置。可以在Docker守护进程启动时设置<code>--data-root</code>参数，指定Docker镜像存储的位置，或者通过软链接等方法来改变Docker镜像目录。</p></li>
 <li><p>定期清理Docker镜像缓存。可以通过以下命令来清理Docker镜像缓存：</p></li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a -f --volumes</span><br></pre></td></tr></table></figure>
+<pre><code>docker system prune -a -f --volumes</code></pre>
 <p>这个命令会清理Docker镜像、容器、网络和数据卷等不再使用的资源。</p>
 <p>清理Docker缓存是一个健壮的管理实践，可以帮助系统保持最佳性能，减少磁盘占用</p>
 
