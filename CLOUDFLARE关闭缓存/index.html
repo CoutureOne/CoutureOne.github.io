@@ -5,14 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="CLOUDFLARE关闭缓存, Couture&#39;s Blogs">
-    <meta name="description" content="​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
-下面是关闭CLOUDFLARE缓存。
-
-
-
+    <meta name="description" content="​
+关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
+下面是关闭CLOUDFLARE缓存。 
 打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。
 
-U">
+
+im">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -51,8 +50,6 @@ U">
 
 
 
-    
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
     
 
 
@@ -430,25 +427,37 @@ U">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
-<p>下面是关闭CLOUDFLARE缓存。</p>
-<span id="more"></span>
-
-
+                <p>​
+关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
+<p>下面是关闭CLOUDFLARE缓存。 <span id="more"></span></p>
 <p><strong>打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。</strong></p>
-<p><img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png" alt="image-20230429213154288"></p>
+<figure>
+<img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png"
+alt="image-20230429213154288" />
+<figcaption aria-hidden="true">image-20230429213154288</figcaption>
+</figure>
 <p><strong>URL填写你的域名地址，创建页面第一次</strong></p>
 <p><strong>模板:</strong></p>
-<pre><code>(你的域名)/*
-</code></pre>
-<p><img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png" alt="image-20230429213705544"></p>
+<pre><code>(你的域名)/*</code></pre>
+<figure>
+<img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png"
+alt="image-20230429213705544" />
+<figcaption aria-hidden="true">image-20230429213705544</figcaption>
+</figure>
 <p><strong>重复上面的操作再来一次。</strong></p>
 <p><strong>第二次模版：</strong></p>
-<pre><code>*.(你的域名)/*
-</code></pre>
-<p><img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png" alt="image-20230429214152718"></p>
+<pre><code>*.(你的域名)/*</code></pre>
+<figure>
+<img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png"
+alt="image-20230429214152718" />
+<figcaption aria-hidden="true">image-20230429214152718</figcaption>
+</figure>
 <p><strong>配置完成以后的结果：</strong></p>
-<p><img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png" alt="image-20230429214511773"></p>
+<figure>
+<img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png"
+alt="image-20230429214511773" />
+<figcaption aria-hidden="true">image-20230429214511773</figcaption>
+</figure>
 
                 
             </div>
@@ -540,39 +549,6 @@ U">
                 </div>
             </div>
             
-                <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
         </div>
     </div>
 
@@ -614,6 +590,7 @@ U">
                     <div class="summary block-with-text">
                         
                             1、卸载Nginx
+
 停止 Nginx 服务：
 
                         
@@ -673,7 +650,8 @@ U">
                     <div class="summary block-with-text">
                         
                             
-由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱， Docker优化方案解决
+由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱，
+Docker优化方案解决
 
                         
                     </div>

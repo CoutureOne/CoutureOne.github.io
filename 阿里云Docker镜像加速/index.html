@@ -8,7 +8,7 @@
     <meta name="description" content="阿里云镜像源
 
 [root@VM-4-3-centos ~]# mkdir -p /etc/docker
-[root@VM-4-3-centos ~]# sudo tee /etc/docker/daemon.json &amp;lt;&amp;lt;-&#39;">
+[root@VM-4-3-centos ~]# sudo tee /etc/docker/daemon.json &amp;lt;&amp;lt;-&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -47,8 +47,6 @@
 
 
 
-    
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
     
 
 
@@ -430,35 +428,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="阿里云镜像源"><a href="#阿里云镜像源" class="headerlink" title="阿里云镜像源"></a>阿里云镜像源</h4><span id="more"></span>
-
-<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mkdir -p /etc/docker</span>
-<span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span>
-<span class="token operator">></span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-<span class="token operator">></span>   <span class="token string">"registry-mirrors"</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">"https://82m9ar63.mirror.aliyuncs.com"</span><span class="token punctuation">]</span>,
-<span class="token operator">></span>   <span class="token string">"exec-opts"</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">"native.cgroupdriver=systemd"</span><span class="token punctuation">]</span>,
-<span class="token operator">></span>   <span class="token string">"log-driver"</span><span class="token keyword">:</span> <span class="token string">"json-file"</span>,
-<span class="token operator">></span>   <span class="token string">"log-opts"</span><span class="token keyword">:</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-<span class="token operator">></span>     <span class="token string">"max-size"</span><span class="token keyword">:</span> <span class="token string">"100m"</span>
-<span class="token operator">></span>   <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;,</span>
-<span class="token operator">></span>   <span class="token string">"storage-driver"</span><span class="token keyword">:</span> <span class="token string">"overlay2"</span>
-<span class="token operator">></span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-<span class="token operator">></span> EOF
-<span class="token operator">&lt;</span><span class="token operator">!</span>--more--<span class="token operator">></span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-  <span class="token string">"registry-mirrors"</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">"https://82m9ar63.mirror.aliyuncs.com"</span><span class="token punctuation">]</span>,
-  <span class="token string">"exec-opts"</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">"native.cgroupdriver=systemd"</span><span class="token punctuation">]</span>,
-  <span class="token string">"log-driver"</span><span class="token keyword">:</span> <span class="token string">"json-file"</span>,
-  <span class="token string">"log-opts"</span><span class="token keyword">:</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-    <span class="token string">"max-size"</span><span class="token keyword">:</span> <span class="token string">"100m"</span>
-  <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;,</span>
-  <span class="token string">"storage-driver"</span><span class="token keyword">:</span> <span class="token string">"overlay2"</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-<span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># sudo systemctl daemon-reload</span>
-<span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># sudo systemctl restart docker</span>
-<span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker ps</span>
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-</code></pre>
+                <h4 id="阿里云镜像源">阿里云镜像源</h4>
+<span id="more"></span>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# mkdir <span class="at">-p</span> /etc/docker</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# sudo tee /etc/docker/daemon.json <span class="op">&lt;&lt;-&#39;EOF&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; &#123;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;log-driver&quot;: &quot;json-file&quot;,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;log-opts&quot;: &#123;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;     &quot;max-size&quot;: &quot;100m&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &#125;,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;storage-driver&quot;: &quot;overlay2&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; &#125;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; EOF</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;!--more--&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">&#123;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;log-driver&quot;: &quot;json-file&quot;,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;log-opts&quot;: &#123;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;max-size&quot;: &quot;100m&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">  &#125;,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">&#125;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# sudo systemctl daemon-reload</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# sudo systemctl restart docker</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# docker ps</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span></span></code></pre></div>
 
                 
             </div>
@@ -549,39 +547,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
                 </div>
             </div>
-            
-                <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -691,7 +656,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
                             
 本次做系统盘，采用官方的方式制作：
 注意：U盘最少要8G及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化
-
                         
                     </div>
                     <div class="publish-info">
@@ -717,12 +681,12 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Windows-10/">
-                        <span class="chip bg-color">Windows 10</span>
-                    </a>
-                    
                     <a href="/tags/Windows-11/">
                         <span class="chip bg-color">Windows 11</span>
+                    </a>
+                    
+                    <a href="/tags/Windows-10/">
+                        <span class="chip bg-color">Windows 10</span>
                     </a>
                     
                 </div>
