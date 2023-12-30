@@ -5,12 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="交换机巡检命令, Couture&#39;s Blogs">
-    <meta name="description" content="交换机巡检命令
-一、思科交换机
-
+    <meta name="description" content="交换机巡检命令一、思科交换机
 show interface stats # 查看交换所有接口当前接口流量
 show running-config #  查看当前配置信息
-show version # 查看ISO版本信息及设备正常运行时间">
+show version # 查看ISO版本信息及设备正常运行时间
+s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,96 +419,94 @@ show version # 查看ISO版本信息及设备正常运行时间">
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="交换机巡检命令">交换机巡检命令</h1>
-<h3 id="一思科交换机">一、思科交换机</h3>
-<span id="more"></span>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>show interface stats <span class="co"># 查看交换所有接口当前接口流量</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>show running-config <span class="co">#  查看当前配置信息</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>show version <span class="co"># 查看ISO版本信息及设备正常运行时间</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>show clock <span class="co"># 查看设备时钟</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>show vtp status <span class="co"># 查看交换机vtp配置模式</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>show vtp password <span class="co"># 查看交换机vtp配置口令</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>show env all <span class="co"># 插卡设备温度，电源和风扇运转参数及是否报警</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>show inventory <span class="co"># 调取设备内部板卡出厂模块型号及序列号</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show spanning-tree root <span class="co"># 查看交换机生成树根位置</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>show interface summary <span class="co"># 查看交换接口当前接口流量</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>show interface <span class="op">|</span>ierrors<span class="op">|</span>FastEthernet<span class="op">|</span>GigabitEthernet <span class="co"># 查看接口是够存在大量input或output errors 包错误</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>show processses cpu <span class="co"># 查看设备CPU负载</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>show access-list <span class="co">#查看访问控制列表配置及匹配数据包数量</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>show logging <span class="co"># 查看本机内部日志记录情况</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>show ip route <span class="co"># 查看路由表</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>show firewall <span class="co"># 检查防火墙的工作模式</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>show conn count <span class="co"># 检查防火墙并发数</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>show xlate count <span class="co"># 检查防火墙nat工作状态</span></span></code></pre></div>
-<h3 id="二华为h3c交换机">二、华为/H3C交换机</h3>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">system-view</span> <span class="co"># 进入系统视图</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">user-interface</span> vty 0 4 <span class="co">#vty就是用telnet/ssh远程进入交换机的界面</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">screen-length</span> 0 <span class="co"># 指定要在屏幕上显示行数，0默认是没有分页</span></span></code></pre></div>
-<h4 id="硬件状态iso版本信息检查">1. 硬件状态，ISO版本信息检查</h4>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> clock <span class="co">#系统时间</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> version <span class="co">#查看版本信息，最近i一次启动的时间</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> environment <span class="co">#设备温度</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> device <span class="co">#单板运行状态</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> device manuinfor <span class="co">#查看设备序列号</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> power <span class="co">#查看电源状况</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> fan <span class="co">#查看风扇状况</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">disply</span> cpu-usage task <span class="co">#查看CPU利用率</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">dispaly</span> memory <span class="co">#查看内存大小和占用率</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">dispaly</span> logbuffer <span class="co">#日志缓冲区</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span> flash <span class="co">#查看flash</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">dis</span> boot-loader <span class="co">#显示软件映像文件</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> arp <span class="co">#显示arp表（目的IP和目的Mac的映射关系）</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> mac-address <span class="co">#查看mac地址表（二层转发通过mac地址表）</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> ntp status <span class="co">#ntp状态信息</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">reset</span> counters interface <span class="co">#清除接口统计信息，方便下次巡检查看接口错误包是否增加</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> elabel <span class="co">#路由器设备命令—查看电子标签信息（华为）改用display device manuinfo</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> ndp <span class="co">#路由器设备命令—华三V5版本支持，现在改用display lldp neighbor-information</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> diagnostic-information <span class="co">#故障信息收集</span></span></code></pre></div>
-<h4 id="系统运行配置状态检查">2. 系统运行配置状态检查</h4>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> interface <span class="co">#接口流量、链路状态</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dis</span> current-configuration inter <span class="co">#地址分配</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dis</span> current-configuration <span class="kw">|</span><span class="ex">include</span> ospf <span class="co">#路由扩散</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> ip routing-table <span class="co">#路由信息</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> ip interface <span class="co">#显示 vlan 端口统计数据</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> saved-configuration <span class="co">#保存配置文件</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> logbuffer <span class="co">#日志信息</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> port trunk <span class="co">#查看参与 trunk 的端口</span></span></code></pre></div>
-<h4 id="stp信息检查">3. STP信息检查</h4>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> stp root <span class="co">#查看 stp 根情况</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> stp brief <span class="co">#查看 stp 简单信息</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> stp abnormal-port <span class="co">#查看是否有非正常端口</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> stp region-configuration <span class="co">#生成树区域配置</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> lldp neighbor-information <span class="co">#查看链路层邻居发现协议（邻居信息）</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> tcp status <span class="co">#路由器设备命令—tcp统计数据</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> tcp statistics <span class="co">#交换机设备命令—tcp统计数据</span></span></code></pre></div>
-<h4 id="vrrp和端口聚合检查">4.vrrp和端口聚合检查</h4>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> vrrp <span class="co">#查看虚拟路由冗余协议</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> vrrp statistics <span class="co">#查看主备用状态</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">display</span> link-aggregation summary <span class="co">#查看链路聚合组的情况</span></span></code></pre></div>
+                <h1 id="交换机巡检命令"><a href="#交换机巡检命令" class="headerlink" title="交换机巡检命令"></a>交换机巡检命令</h1><h3 id="一、思科交换机"><a href="#一、思科交换机" class="headerlink" title="一、思科交换机"></a>一、思科交换机</h3><span id="more"></span>
+<pre class=" language-powershell"><code class="language-powershell">show interface stats <span class="token comment" spellcheck="true"># 查看交换所有接口当前接口流量</span>
+show running<span class="token operator">-</span>config <span class="token comment" spellcheck="true">#  查看当前配置信息</span>
+show version <span class="token comment" spellcheck="true"># 查看ISO版本信息及设备正常运行时间</span>
+show clock <span class="token comment" spellcheck="true"># 查看设备时钟</span>
+show vtp status <span class="token comment" spellcheck="true"># 查看交换机vtp配置模式</span>
+show vtp password <span class="token comment" spellcheck="true"># 查看交换机vtp配置口令</span>
+show env all <span class="token comment" spellcheck="true"># 插卡设备温度，电源和风扇运转参数及是否报警</span>
+show inventory <span class="token comment" spellcheck="true"># 调取设备内部板卡出厂模块型号及序列号</span>
+show spanning<span class="token operator">-</span>tree root <span class="token comment" spellcheck="true"># 查看交换机生成树根位置</span>
+show interface summary <span class="token comment" spellcheck="true"># 查看交换接口当前接口流量</span>
+show interface <span class="token punctuation">|</span>ierrors<span class="token punctuation">|</span>FastEthernet<span class="token punctuation">|</span>GigabitEthernet <span class="token comment" spellcheck="true"># 查看接口是够存在大量input或output errors 包错误</span>
+show processses cpu <span class="token comment" spellcheck="true"># 查看设备CPU负载</span>
+show access<span class="token operator">-</span>list <span class="token comment" spellcheck="true">#查看访问控制列表配置及匹配数据包数量</span>
+show logging <span class="token comment" spellcheck="true"># 查看本机内部日志记录情况</span>
+show ip route <span class="token comment" spellcheck="true"># 查看路由表</span>
+show firewall <span class="token comment" spellcheck="true"># 检查防火墙的工作模式</span>
+show conn count <span class="token comment" spellcheck="true"># 检查防火墙并发数</span>
+show xlate count <span class="token comment" spellcheck="true"># 检查防火墙nat工作状态</span>
+</code></pre>
+<h3 id="二、华为-H3C交换机"><a href="#二、华为-H3C交换机" class="headerlink" title="二、华为&#x2F;H3C交换机"></a>二、华为&#x2F;H3C交换机</h3><pre class=" language-bash"><code class="language-bash">system-view <span class="token comment" spellcheck="true"># 进入系统视图</span>
+user-interface vty 0 4 <span class="token comment" spellcheck="true">#vty就是用telnet/ssh远程进入交换机的界面</span>
+screen-length 0 <span class="token comment" spellcheck="true"># 指定要在屏幕上显示行数，0默认是没有分页</span>
+</code></pre>
+<h4 id="1-硬件状态，ISO版本信息检查"><a href="#1-硬件状态，ISO版本信息检查" class="headerlink" title="1. 硬件状态，ISO版本信息检查"></a>1. 硬件状态，ISO版本信息检查</h4><pre class=" language-bash"><code class="language-bash">display clock <span class="token comment" spellcheck="true">#系统时间</span>
+display version <span class="token comment" spellcheck="true">#查看版本信息，最近i一次启动的时间</span>
+display environment <span class="token comment" spellcheck="true">#设备温度</span>
+display device <span class="token comment" spellcheck="true">#单板运行状态</span>
+display device manuinfor <span class="token comment" spellcheck="true">#查看设备序列号</span>
+display power <span class="token comment" spellcheck="true">#查看电源状况</span>
+display fan <span class="token comment" spellcheck="true">#查看风扇状况</span>
+disply cpu-usage task <span class="token comment" spellcheck="true">#查看CPU利用率</span>
+dispaly memory <span class="token comment" spellcheck="true">#查看内存大小和占用率</span>
+dispaly logbuffer <span class="token comment" spellcheck="true">#日志缓冲区</span>
+<span class="token function">dir</span> flash <span class="token comment" spellcheck="true">#查看flash</span>
+dis boot-loader <span class="token comment" spellcheck="true">#显示软件映像文件</span>
+display arp <span class="token comment" spellcheck="true">#显示arp表（目的IP和目的Mac的映射关系）</span>
+display mac-address <span class="token comment" spellcheck="true">#查看mac地址表（二层转发通过mac地址表）</span>
+display ntp status <span class="token comment" spellcheck="true">#ntp状态信息</span>
+reset counters interface <span class="token comment" spellcheck="true">#清除接口统计信息，方便下次巡检查看接口错误包是否增加</span>
+display elabel <span class="token comment" spellcheck="true">#路由器设备命令—查看电子标签信息（华为）改用display device manuinfo</span>
+display ndp <span class="token comment" spellcheck="true">#路由器设备命令—华三V5版本支持，现在改用display lldp neighbor-information</span>
+display diagnostic-information <span class="token comment" spellcheck="true">#故障信息收集</span>
+</code></pre>
+<h4 id="2-系统运行配置状态检查"><a href="#2-系统运行配置状态检查" class="headerlink" title="2. 系统运行配置状态检查"></a>2. 系统运行配置状态检查</h4><pre class=" language-bash"><code class="language-bash">display interface <span class="token comment" spellcheck="true">#接口流量、链路状态</span>
+
+dis current-configuration inter <span class="token comment" spellcheck="true">#地址分配</span>
+
+dis current-configuration <span class="token operator">|</span>include ospf <span class="token comment" spellcheck="true">#路由扩散</span>
+
+display ip routing-table <span class="token comment" spellcheck="true">#路由信息</span>
+
+display ip interface <span class="token comment" spellcheck="true">#显示 vlan 端口统计数据</span>
+
+display saved-configuration <span class="token comment" spellcheck="true">#保存配置文件</span>
+
+display logbuffer <span class="token comment" spellcheck="true">#日志信息</span>
+
+display port trunk <span class="token comment" spellcheck="true">#查看参与 trunk 的端口</span>
+</code></pre>
+<h4 id="3-STP信息检查"><a href="#3-STP信息检查" class="headerlink" title="3. STP信息检查"></a>3. STP信息检查</h4><pre class=" language-bash"><code class="language-bash">display stp root <span class="token comment" spellcheck="true">#查看 stp 根情况</span>
+
+display stp brief <span class="token comment" spellcheck="true">#查看 stp 简单信息</span>
+
+display stp abnormal-port <span class="token comment" spellcheck="true">#查看是否有非正常端口</span>
+
+display stp region-configuration <span class="token comment" spellcheck="true">#生成树区域配置</span>
+
+display lldp neighbor-information <span class="token comment" spellcheck="true">#查看链路层邻居发现协议（邻居信息）</span>
+
+display tcp status <span class="token comment" spellcheck="true">#路由器设备命令—tcp统计数据</span>
+
+display tcp statistics <span class="token comment" spellcheck="true">#交换机设备命令—tcp统计数据</span>
+</code></pre>
+<h4 id="4-vrrp和端口聚合检查"><a href="#4-vrrp和端口聚合检查" class="headerlink" title="4.vrrp和端口聚合检查"></a>4.vrrp和端口聚合检查</h4><pre class=" language-bash"><code class="language-bash">display vrrp <span class="token comment" spellcheck="true">#查看虚拟路由冗余协议</span>
+
+display vrrp statistics <span class="token comment" spellcheck="true">#查看主备用状态</span>
+
+display link-aggregation summary <span class="token comment" spellcheck="true">#查看链路聚合组的情况</span>
+</code></pre>
 
                 
             </div>
@@ -674,8 +671,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            H3C
-（华三）路由器交换机默认用户名和密码
+                            H3C（华三）路由器交换机默认用户名和密码
 
 默认用户名：admin
 默认密码：admin或adminer
@@ -781,11 +777,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 

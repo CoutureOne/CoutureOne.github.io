@@ -6,19 +6,20 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Ubuntu卸载Nginx和替换配置文件, Couture&#39;s Blogs">
     <meta name="description" content="1、卸载Nginx
-
 停止 Nginx 服务：
 
 
 sudo systemctl stop nginx
 
+
 删除 Nginx：
 
 sudo apt-get remove nginx
 
+
 删除 Nginx 配置文件：
 
-sudo rm -rf /">
+sudo rm -rf ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -428,74 +429,76 @@ sudo rm -rf /">
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="卸载nginx">1、卸载Nginx</h3>
-<ol type="1">
+                <h3 id="1、卸载Nginx"><a href="#1、卸载Nginx" class="headerlink" title="1、卸载Nginx"></a>1、卸载Nginx</h3><ol>
 <li>停止 Nginx 服务：</li>
 </ol>
 <span id="more"></span>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span></code></pre></div>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl stop nginx
+</code></pre>
+<ol>
 <li>删除 Nginx：</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get remove nginx</span></code></pre></div>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> remove nginx
+</code></pre>
+<ol>
 <li>删除 Nginx 配置文件：</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /etc/nginx/</span></code></pre></div>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> -rf /etc/nginx/
+</code></pre>
+<ol>
 <li>删除 Nginx 日志文件：</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /var/log/nginx/</span></code></pre></div>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> -rf /var/log/nginx/
+</code></pre>
+<ol>
 <li>最后，删除 Nginx 用户和用户组：</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> deluser <span class="at">--remove-home</span> nginx</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> delgroup nginx</span></code></pre></div>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> deluser --remove-home nginx
+<span class="token function">sudo</span> delgroup nginx
+</code></pre>
 <p>完成以上步骤后，就成功卸载 Nginx。</p>
-<h3 id="配置文件替换重置配置文件">2、配置文件替换（重置配置文件）</h3>
-<p>1.打开终端，输入以下命令停止NGINX服务：</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span></code></pre></div>
+<h3 id="2、配置文件替换（重置配置文件）"><a href="#2、配置文件替换（重置配置文件）" class="headerlink" title="2、配置文件替换（重置配置文件）"></a>2、配置文件替换（重置配置文件）</h3><p>1.打开终端，输入以下命令停止NGINX服务：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl stop nginx
+</code></pre>
 <p>2.备份NGINX的当前配置文件：</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak</span></code></pre></div>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+</code></pre>
 <p>3.恢复默认的NGINX配置文件：</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode awk"><code class="sourceCode awk"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sudo cp <span class="op">/</span>etc<span class="op">/</span>nginx<span class="op">/</span>nginx.conf.<span class="cf">default</span> <span class="op">/</span>etc<span class="op">/</span>nginx<span class="op">/</span>nginx.conf</span></code></pre></div>
+<pre class=" language-awk"><code class="language-awk">sudo cp /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf
+</code></pre>
 <p>4.检查配置文件是否有错误：</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nginx <span class="at">-t</span></span></code></pre></div>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> nginx -t
+</code></pre>
 <p>5.如果没有错误，则重新启动NGINX服务：</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span></code></pre></div>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl start nginx
+</code></pre>
 <p>现在，您的NGINX服务应该已经重置并重新启动。</p>
-<h3 id="安装nginx">3、安装Nginx</h3>
-<ol type="1">
+<h3 id="3、安装Nginx"><a href="#3、安装Nginx" class="headerlink" title="3、安装Nginx"></a>3、安装Nginx</h3><ol>
 <li>打开命令终端，更新软件仓库信息：</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code></pre></div>
-<pre><code>sudo apt install nginx</code></pre>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update
+</code></pre>
+<pre><code>sudo apt install nginx
+</code></pre>
+<ol>
 <li>安装完成后，您可以启动NGINX并将其添加到启动项：</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx<span class="kw">`</span> <span class="kw">`</span>sudo systemctl enable nginx</span></code></pre></div>
-<ol type="1">
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl start nginx<span class="token variable"><span class="token variable">`</span> <span class="token variable">`</span></span><span class="token function">sudo</span> systemctl <span class="token function">enable</span> nginx
+</code></pre>
+<ol>
 <li>检查NGINX是否正在运行：</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status nginx</span></code></pre></div>
-<p>如果看到“Active: active
-(running)”的状态，则说明NGINX已成功安装并正在运行。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl status nginx
+</code></pre>
+<p>如果看到“Active: active (running)”的状态，则说明NGINX已成功安装并正在运行。</p>
 
                 
             </div>
@@ -711,8 +714,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href=
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ​
-关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
+                            ​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
 下面是关闭CLOUDFLARE缓存。
                         
                     </div>
@@ -766,11 +768,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href=
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 

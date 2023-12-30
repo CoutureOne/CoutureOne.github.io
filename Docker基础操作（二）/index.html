@@ -5,11 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Docker基础操作（二）, Couture&#39;s Blogs">
-    <meta name="description" content="Docker基础操作和配置
-配置阿里云Docker Yum源
+    <meta name="description" content="Docker基础操作和配置配置阿里云Docker Yum源
 shell
 # yum install -y yum-utils device-mapper-persistent-data lvm2 git
-# yum-config-mana">
+# yum-config-manag">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -411,36 +410,28 @@ shell
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="docker基础操作和配置">Docker基础操作和配置</h2>
-<p>配置阿里云Docker Yum源</p>
+                <h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
 <p>shell</p>
-<pre class="shell"><code># yum install -y yum-utils device-mapper-persistent-data lvm2 git
-# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre>
+<pre class=" language-shell"><code class="language-shell"># yum install -y yum-utils device-mapper-persistent-data lvm2 git
+# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
 <p>安装指定版本</p>
 <p>shell</p>
-<pre class="shell"><code>  查看Docker版本：
-# yum list docker-ce --showduplicates</code></pre>
+<pre class=" language-shell"><code class="language-shell">  查看Docker版本：
+# yum list docker-ce --showduplicates
+</code></pre>
 <span id="more"></span>
-<p>安装较旧版本（比如Docker 17.03.2) ： FROM：指定基础镜像
-MAINTAINER：作者的信息 RUN：执行什么命令 EXPOSE：容器对外暴露的端口
-WORKDIR：进入到容器后进入到哪个目录 ENV：配置环境变量
-ADD：将文件拷贝到镜像中并解压 COPY：将文件拷贝到镜像中
-VOLUME：配置数据卷 CMD：容器启动时候执行的命令
-ENTRYPOINT：容器启动时候执行的命令</p>
-<p>--------------------------Dockerfile参考配置---------------------------------</p>
-<p>FROM <a
-target="_blank" rel="noopener" href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io/library/tomcat:8.5.15-jre8</a>
-#指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM COPY music.war
-/usr/local/tomcat/webapps #拷贝工程到tomcat指定目录 MAINTAINER <a
-href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁 RUN
-mkdir -p /datas/ ADD jdk-8u60-linux-x64.tar.gz /datas/
-#将文件拷贝到镜像中并解压 ENV JAVA_HOME=/datas/jdk1.8.0_60
-#配置JAVA_HOME ENV PATH=JAVA_HOME/bin:JAVAH​OME/bin:PATH #配置PATH
-WORKDIR /dev/ #启动容器后，如果启动交互模式，直接进入到哪个目录 CMD
-[“/bin/bash”] #启动容器的时候，进入到/bin/bash这种命令行</p>
+<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
+<p>————————–Dockerfile参考配置———————————</p>
+<p>FROM <a target="_blank" rel="noopener" href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
 
                 
             </div>
@@ -602,16 +593,10 @@ WORKDIR /dev/ #启动容器后，如果启动交互模式，直接进入到哪�
                     <div class="summary block-with-text">
                         
                             
-
-1587372890081
-
 [TOC]
 一、RBAC介绍
-
 1.1 RBAC简介
-
-RBAC是基于角色的访问控制（Role-Based Access Control ）在 RBAC
-中，权限与角色相关联，用户通过成为适当角色的成员而得
+RBAC是基于角色的访问控制（Role-Based Access Control ）在 RBAC 中，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。这就极大地简化了权
                         
                     </div>
                     <div class="publish-info">
@@ -668,13 +653,10 @@ RBAC是基于角色的访问控制（Role-Based Access Control ）在 RBAC
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker基本命令
-一、Docker的安装
-
+                            Docker基本命令一、Docker的安装
 1.1 下载Docker依赖的环境
-
 想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样
-参考：https://developer.aliyun.com/articl
+参考：https://developer.aliyun.com/article/1
                         
                     </div>
                     <div class="publish-info">
@@ -719,11 +701,17 @@ RBAC是基于角色的访问控制（Role-Based Access Control ）在 RBAC
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
