@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="交换机巡检命令, Couture&#39;s Blogs">
-    <meta name="description" content="交换机巡检命令一、思科交换机
-123456789101112131415161718show interface stats # 查看交换所有接口当前接口流量show running-config #  查看当前配置信息show versi">
+    <meta name="description" content="交换机巡检命令
+一、思科交换机
+
+123456789101112131415161718show interface stats # 查看交换所有接口当前接口流量show running-config #  查看当前配置信息show ver">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -419,53 +421,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="交换机巡检命令"><a href="#交换机巡检命令" class="headerlink" title="交换机巡检命令"></a>交换机巡检命令</h1><h3 id="一、思科交换机"><a href="#一、思科交换机" class="headerlink" title="一、思科交换机"></a>一、思科交换机</h3><span id="more"></span>
+                <h1 id="交换机巡检命令">交换机巡检命令</h1>
+<h3 id="一思科交换机">一、思科交换机</h3>
+<span id="more"></span>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">show interface stats <span class="comment"># 查看交换所有接口当前接口流量</span></span><br><span class="line">show running<span class="literal">-config</span> <span class="comment">#  查看当前配置信息</span></span><br><span class="line">show version <span class="comment"># 查看ISO版本信息及设备正常运行时间</span></span><br><span class="line">show clock <span class="comment"># 查看设备时钟</span></span><br><span class="line">show vtp status <span class="comment"># 查看交换机vtp配置模式</span></span><br><span class="line">show vtp password <span class="comment"># 查看交换机vtp配置口令</span></span><br><span class="line">show env all <span class="comment"># 插卡设备温度，电源和风扇运转参数及是否报警</span></span><br><span class="line">show inventory <span class="comment"># 调取设备内部板卡出厂模块型号及序列号</span></span><br><span class="line">show spanning<span class="literal">-tree</span> root <span class="comment"># 查看交换机生成树根位置</span></span><br><span class="line">show interface summary <span class="comment"># 查看交换接口当前接口流量</span></span><br><span class="line">show interface |ierrors|FastEthernet|GigabitEthernet <span class="comment"># 查看接口是够存在大量input或output errors 包错误</span></span><br><span class="line">show processses cpu <span class="comment"># 查看设备CPU负载</span></span><br><span class="line">show access<span class="literal">-list</span> <span class="comment">#查看访问控制列表配置及匹配数据包数量</span></span><br><span class="line">show logging <span class="comment"># 查看本机内部日志记录情况</span></span><br><span class="line">show ip route <span class="comment"># 查看路由表</span></span><br><span class="line">show firewall <span class="comment"># 检查防火墙的工作模式</span></span><br><span class="line">show conn count <span class="comment"># 检查防火墙并发数</span></span><br><span class="line">show xlate count <span class="comment"># 检查防火墙nat工作状态</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="二、华为-H3C交换机"><a href="#二、华为-H3C交换机" class="headerlink" title="二、华为&#x2F;H3C交换机"></a>二、华为&#x2F;H3C交换机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view <span class="comment"># 进入系统视图</span></span><br><span class="line">user-interface vty 0 4 <span class="comment">#vty就是用telnet/ssh远程进入交换机的界面</span></span><br><span class="line">screen-length 0 <span class="comment"># 指定要在屏幕上显示行数，0默认是没有分页</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-硬件状态，ISO版本信息检查"><a href="#1-硬件状态，ISO版本信息检查" class="headerlink" title="1. 硬件状态，ISO版本信息检查"></a>1. 硬件状态，ISO版本信息检查</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">display clock <span class="comment">#系统时间</span></span><br><span class="line">display version <span class="comment">#查看版本信息，最近i一次启动的时间</span></span><br><span class="line">display environment <span class="comment">#设备温度</span></span><br><span class="line">display device <span class="comment">#单板运行状态</span></span><br><span class="line">display device manuinfor <span class="comment">#查看设备序列号</span></span><br><span class="line">display power <span class="comment">#查看电源状况</span></span><br><span class="line">display fan <span class="comment">#查看风扇状况</span></span><br><span class="line">disply cpu-usage task <span class="comment">#查看CPU利用率</span></span><br><span class="line">dispaly memory <span class="comment">#查看内存大小和占用率</span></span><br><span class="line">dispaly logbuffer <span class="comment">#日志缓冲区</span></span><br><span class="line"><span class="built_in">dir</span> flash <span class="comment">#查看flash</span></span><br><span class="line">dis boot-loader <span class="comment">#显示软件映像文件</span></span><br><span class="line">display arp <span class="comment">#显示arp表（目的IP和目的Mac的映射关系）</span></span><br><span class="line">display mac-address <span class="comment">#查看mac地址表（二层转发通过mac地址表）</span></span><br><span class="line">display ntp status <span class="comment">#ntp状态信息</span></span><br><span class="line">reset counters interface <span class="comment">#清除接口统计信息，方便下次巡检查看接口错误包是否增加</span></span><br><span class="line">display elabel <span class="comment">#路由器设备命令—查看电子标签信息（华为）改用display device manuinfo</span></span><br><span class="line">display ndp <span class="comment">#路由器设备命令—华三V5版本支持，现在改用display lldp neighbor-information</span></span><br><span class="line">display diagnostic-information <span class="comment">#故障信息收集</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2-系统运行配置状态检查"><a href="#2-系统运行配置状态检查" class="headerlink" title="2. 系统运行配置状态检查"></a>2. 系统运行配置状态检查</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">display interface <span class="comment">#接口流量、链路状态</span></span><br><span class="line"></span><br><span class="line">dis current-configuration inter <span class="comment">#地址分配</span></span><br><span class="line"></span><br><span class="line">dis current-configuration |include ospf <span class="comment">#路由扩散</span></span><br><span class="line"></span><br><span class="line">display ip routing-table <span class="comment">#路由信息</span></span><br><span class="line"></span><br><span class="line">display ip interface <span class="comment">#显示 vlan 端口统计数据</span></span><br><span class="line"></span><br><span class="line">display saved-configuration <span class="comment">#保存配置文件</span></span><br><span class="line"></span><br><span class="line">display logbuffer <span class="comment">#日志信息</span></span><br><span class="line"></span><br><span class="line">display port trunk <span class="comment">#查看参与 trunk 的端口</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-STP信息检查"><a href="#3-STP信息检查" class="headerlink" title="3. STP信息检查"></a>3. STP信息检查</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">display stp root <span class="comment">#查看 stp 根情况</span></span><br><span class="line"></span><br><span class="line">display stp brief <span class="comment">#查看 stp 简单信息</span></span><br><span class="line"></span><br><span class="line">display stp abnormal-port <span class="comment">#查看是否有非正常端口</span></span><br><span class="line"></span><br><span class="line">display stp region-configuration <span class="comment">#生成树区域配置</span></span><br><span class="line"></span><br><span class="line">display lldp neighbor-information <span class="comment">#查看链路层邻居发现协议（邻居信息）</span></span><br><span class="line"></span><br><span class="line">display tcp status <span class="comment">#路由器设备命令—tcp统计数据</span></span><br><span class="line"></span><br><span class="line">display tcp statistics <span class="comment">#交换机设备命令—tcp统计数据</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-vrrp和端口聚合检查"><a href="#4-vrrp和端口聚合检查" class="headerlink" title="4.vrrp和端口聚合检查"></a>4.vrrp和端口聚合检查</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">display vrrp <span class="comment">#查看虚拟路由冗余协议</span></span><br><span class="line"></span><br><span class="line">display vrrp statistics <span class="comment">#查看主备用状态</span></span><br><span class="line"></span><br><span class="line">display link-aggregation summary <span class="comment">#查看链路聚合组的情况</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3 id="二华为h3c交换机">二、华为/H3C交换机</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view <span class="comment"># 进入系统视图</span></span><br><span class="line">user-interface vty 0 4 <span class="comment">#vty就是用telnet/ssh远程进入交换机的界面</span></span><br><span class="line">screen-length 0 <span class="comment"># 指定要在屏幕上显示行数，0默认是没有分页</span></span><br></pre></td></tr></table></figure>
+<h4 id="硬件状态iso版本信息检查">1. 硬件状态，ISO版本信息检查</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">display clock <span class="comment">#系统时间</span></span><br><span class="line">display version <span class="comment">#查看版本信息，最近i一次启动的时间</span></span><br><span class="line">display environment <span class="comment">#设备温度</span></span><br><span class="line">display device <span class="comment">#单板运行状态</span></span><br><span class="line">display device manuinfor <span class="comment">#查看设备序列号</span></span><br><span class="line">display power <span class="comment">#查看电源状况</span></span><br><span class="line">display fan <span class="comment">#查看风扇状况</span></span><br><span class="line">disply cpu-usage task <span class="comment">#查看CPU利用率</span></span><br><span class="line">dispaly memory <span class="comment">#查看内存大小和占用率</span></span><br><span class="line">dispaly logbuffer <span class="comment">#日志缓冲区</span></span><br><span class="line"><span class="built_in">dir</span> flash <span class="comment">#查看flash</span></span><br><span class="line">dis boot-loader <span class="comment">#显示软件映像文件</span></span><br><span class="line">display arp <span class="comment">#显示arp表（目的IP和目的Mac的映射关系）</span></span><br><span class="line">display mac-address <span class="comment">#查看mac地址表（二层转发通过mac地址表）</span></span><br><span class="line">display ntp status <span class="comment">#ntp状态信息</span></span><br><span class="line">reset counters interface <span class="comment">#清除接口统计信息，方便下次巡检查看接口错误包是否增加</span></span><br><span class="line">display elabel <span class="comment">#路由器设备命令—查看电子标签信息（华为）改用display device manuinfo</span></span><br><span class="line">display ndp <span class="comment">#路由器设备命令—华三V5版本支持，现在改用display lldp neighbor-information</span></span><br><span class="line">display diagnostic-information <span class="comment">#故障信息收集</span></span><br></pre></td></tr></table></figure>
+<h4 id="系统运行配置状态检查">2. 系统运行配置状态检查</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">display interface <span class="comment">#接口流量、链路状态</span></span><br><span class="line"></span><br><span class="line">dis current-configuration inter <span class="comment">#地址分配</span></span><br><span class="line"></span><br><span class="line">dis current-configuration |include ospf <span class="comment">#路由扩散</span></span><br><span class="line"></span><br><span class="line">display ip routing-table <span class="comment">#路由信息</span></span><br><span class="line"></span><br><span class="line">display ip interface <span class="comment">#显示 vlan 端口统计数据</span></span><br><span class="line"></span><br><span class="line">display saved-configuration <span class="comment">#保存配置文件</span></span><br><span class="line"></span><br><span class="line">display logbuffer <span class="comment">#日志信息</span></span><br><span class="line"></span><br><span class="line">display port trunk <span class="comment">#查看参与 trunk 的端口</span></span><br></pre></td></tr></table></figure>
+<h4 id="stp信息检查">3. STP信息检查</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">display stp root <span class="comment">#查看 stp 根情况</span></span><br><span class="line"></span><br><span class="line">display stp brief <span class="comment">#查看 stp 简单信息</span></span><br><span class="line"></span><br><span class="line">display stp abnormal-port <span class="comment">#查看是否有非正常端口</span></span><br><span class="line"></span><br><span class="line">display stp region-configuration <span class="comment">#生成树区域配置</span></span><br><span class="line"></span><br><span class="line">display lldp neighbor-information <span class="comment">#查看链路层邻居发现协议（邻居信息）</span></span><br><span class="line"></span><br><span class="line">display tcp status <span class="comment">#路由器设备命令—tcp统计数据</span></span><br><span class="line"></span><br><span class="line">display tcp statistics <span class="comment">#交换机设备命令—tcp统计数据</span></span><br></pre></td></tr></table></figure>
+<h4 id="vrrp和端口聚合检查">4.vrrp和端口聚合检查</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">display vrrp <span class="comment">#查看虚拟路由冗余协议</span></span><br><span class="line"></span><br><span class="line">display vrrp statistics <span class="comment">#查看主备用状态</span></span><br><span class="line"></span><br><span class="line">display link-aggregation summary <span class="comment">#查看链路聚合组的情况</span></span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -630,7 +599,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            H3C（华三）路由器交换机默认用户名和密码
+                            H3C
+（华三）路由器交换机默认用户名和密码
 
 默认用户名：admin
 默认密码：admin或adminer
