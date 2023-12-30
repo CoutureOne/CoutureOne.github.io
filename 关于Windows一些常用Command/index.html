@@ -6,13 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="关于Windows一些常用Command, Couture&#39;s Blogs">
     <meta name="description" content="关机、重启、注销、休眠、定时
-
 关机：shutdown /s
 重启：shutdown /r
 注销：shutdown /l
 休眠：shutdown /h /f
 取消关机：shutdown /a
-定时关机：shutdown /s /t 3600">
+定时关机：shutdown /s /t 3600（">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,23 +419,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="关机重启注销休眠定时">关机、重启、注销、休眠、定时</h3>
-<ul>
+                <h3 id="关机、重启、注销、休眠、定时"><a href="#关机、重启、注销、休眠、定时" class="headerlink" title="关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3><ul>
 <li>关机：<code>shutdown /s</code></li>
 <li>重启：<code>shutdown /r</code></li>
 <li>注销：<code>shutdown /l</code></li>
 <li>休眠：<code>shutdown /h /f</code></li>
 <li>取消关机：<code>shutdown /a</code></li>
-<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）
-<span id="more"></span> ### 目录操作</li>
+<li>定时关机：<code>shutdown /s /t 3600</code>（3600 秒后关机）<span id="more"></span></li>
 </ul>
-<p><strong>切换目录，进入指定文件夹：</strong></p>
+<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p><strong>切换目录，进入指定文件夹：</strong></p>
 <ul>
 <li>切换磁盘：<code>d:</code>（进入 d 盘）</li>
-<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘
-<code>test</code> 文件夹）</li>
-<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code>
-文件夹）</li>
+<li>切换磁盘和目录：<code>cd /d d:/test</code>（进入 <code>d</code> 盘 <code>test</code> 文件夹）</li>
+<li>进入文件夹：<code>cd \test1\test2</code>（进入 <code>test2</code> 文件夹）</li>
 <li>返回根目录：<code>cd \</code></li>
 <li>回到上级目录：<code>cd ..</code></li>
 <li>新建文件夹：<code>md test</code></li>
@@ -448,21 +443,18 @@
 <li>显示当前目录位置：<code>cd</code></li>
 <li>显示指定磁盘的当前目录位置：<code>cd d:</code></li>
 </ul>
-<h3 id="网络操作"><strong>网络操作</strong></h3>
-<ul>
+<h3 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a><strong>网络操作</strong></h3><ul>
 <li>延迟和丢包率：<code>ping ip/域名</code></li>
 <li>Ping 测试 5 次：<code>ping ip/域名 -n 5</code></li>
 <li>清除本地 DNS 缓存：<code>ipconfig /flushdns</code></li>
 <li>路由追踪：<code>tracert ip/域名</code></li>
 </ul>
-<h3 id="进程服务操作"><strong>进程/服务操作</strong></h3>
-<p><strong>进程管理：</strong></p>
+<h3 id="进程-服务操作"><a href="#进程-服务操作" class="headerlink" title="进程&#x2F;服务操作"></a><strong>进程&#x2F;服务操作</strong></h3><p><strong>进程管理：</strong></p>
 <ul>
 <li>显示当前正在运行的进程：<code>tasklist</code></li>
 <li>运行程序或命令：<code>start 程序名</code></li>
 <li>结束进程，按名称：<code>taskkill /im notepad.exe</code>（关闭记事本）</li>
-<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234
-的进程）</li>
+<li>结束进程，按 PID：<code>taskkill /pid 1234</code>（关闭 PID 为 1234 的进程）</li>
 </ul>
 <p><strong>服务管理：</strong></p>
 <ul>
@@ -470,27 +462,20 @@
 <li>启动指定服务：<code>net start 服务名</code></li>
 <li>停止指定服务：<code>net stop 服务名</code></li>
 </ul>
-<h3 id="保存为-.bat-可执行文件">保存为 .bat 可执行文件</h3>
-<p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code>
-的可执行文件。</p>
+<h3 id="保存为-bat-可执行文件"><a href="#保存为-bat-可执行文件" class="headerlink" title="保存为 .bat 可执行文件"></a>保存为 .bat 可执行文件</h3><p>我们可以将常用的命令输入记事本中，并保存为后缀为 <code>.bat</code> 的可执行文件。</p>
 <p>以后只要双击该文件即可执行指定命令；将文件放入系统【启动】目录中，可以实现开机自动运行。</p>
-<h3 id="使用的案例">使用的案例</h3>
-<p><strong>使用示例 1：</strong></p>
-<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code>
-命令重启。将下面命令保存为
-<code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开
-CMD 运行命令也可以。</p>
+<h3 id="使用的案例"><a href="#使用的案例" class="headerlink" title="使用的案例"></a>使用的案例</h3><p><strong>使用示例 1：</strong></p>
+<p>在资源管理器卡死时，我们可以使用 <code>taskkill</code> 命令重启。将下面命令保存为 <code>ReExplorer.bat</code>，在需要时双击即可强制重启资源管理器。或直接打开 CMD 运行命令也可以。</p>
 <p>text</p>
-<pre class="text"><code>01taskkill /f /im explorer.exe &amp; start explorer.exe</code></pre>
+<pre class=" language-text"><code class="language-text">01taskkill /f /im explorer.exe & start explorer.exe
+</code></pre>
 <p><strong>使用示例 2：</strong></p>
-<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和
-<code>XLServicePlatform</code>
-服务，如果当前没有使用迅雷的话显然没必要。</p>
-<p>我们可以将如下代码保存为
-<code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
+<p>迅雷会在后台自动运行 <code>ThunderPlatform.exe</code> 进程和 <code>XLServicePlatform</code> 服务，如果当前没有使用迅雷的话显然没必要。</p>
+<p>我们可以将如下代码保存为 <code>killxl.bat</code>，并放入【启动】目录，开机后会自动运行该脚本，清除这两个进程。</p>
 <p>text</p>
-<pre class="text"><code>0102net stop XLServicePlatform
-taskkill /F /im ThunderPlatform.exe</code></pre>
+<pre class=" language-text"><code class="language-text">0102net stop XLServicePlatform
+taskkill /F /im ThunderPlatform.exe
+</code></pre>
 
                 
             </div>
@@ -621,10 +606,9 @@ taskkill /F /im ThunderPlatform.exe</code></pre>
                             
 [TOC]
 一、引言
-
 1.1 代理问题
-
 客户端到底要将请求发送给哪台服务器。
+
                         
                     </div>
                     <div class="publish-info">
@@ -679,6 +663,7 @@ taskkill /F /im ThunderPlatform.exe</code></pre>
                         
                             
 这个问题已经是困扰我三天了，因为C#使用rider开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了nuget无法引入包的解决方案
+
                         
                     </div>
                     <div class="publish-info">
