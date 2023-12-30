@@ -9,7 +9,7 @@
 
 ~ brew install redis # 执行这个命令来安装Redis
 Running `brew update --auto-update`...
-==&gt; Down">
+==&amp;gt; D">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -431,47 +431,47 @@ Running `brew update --auto-update`...
             <div id="articleContent">
                 <p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p>
 <span id="more"></span>
-<pre class=" language-bash"><code class="language-bash">~ brew <span class="token function">install</span> redis <span class="token comment" spellcheck="true"># 执行这个命令来安装Redis</span>
-Running <span class="token variable"><span class="token variable">`</span>brew update --auto-update<span class="token variable">`</span></span><span class="token punctuation">..</span>.
-<span class="token operator">==</span><span class="token operator">></span> Downloading https://formulae.brew.sh/api/formula.jws.json
-
-<span class="token comment" spellcheck="true">######################################################################## 100.0%</span>
-<span class="token operator">==</span><span class="token operator">></span> Fetching redis
-<span class="token operator">==</span><span class="token operator">></span> Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1
-<span class="token comment" spellcheck="true">######################################################################## 100.0%</span>
-<span class="token operator">==</span><span class="token operator">></span> Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz
-<span class="token operator">==</span><span class="token operator">></span> Caveats
-To start redis now and restart at login:
-  brew services start redis
-<span class="token operator">==</span><span class="token operator">></span> Summary
-🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB
-<span class="token operator">==</span><span class="token operator">></span> Running <span class="token variable"><span class="token variable">`</span>brew cleanup redis<span class="token variable">`</span></span><span class="token punctuation">..</span>.
-Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
-Hide these hints with HOMEBREW_NO_ENV_HINTS <span class="token punctuation">(</span>see <span class="token variable"><span class="token variable">`</span><span class="token function">man</span> brew<span class="token variable">`</span></span><span class="token punctuation">)</span>.
-➜  ~ brew services start redis
-<span class="token operator">==</span><span class="token operator">></span> Downloading https://formulae.brew.sh/api/formula.jws.json
-<span class="token comment" spellcheck="true">##O=#  #</span>
-Warning: Calling formula.plist_path is deprecated<span class="token operator">!</span> Use formula.launchd_service_path instead.
-Please report this issue to the homebrew/services tap <span class="token punctuation">(</span>not Homebrew/brew or Homebrew/homebrew-core<span class="token punctuation">)</span>, or even better, submit a PR to fix it:
-  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">➜  ~ redis-cli <span class="token comment" spellcheck="true"># 启动redis</span>
-127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> name couture
-OK
-127.0.0.1:6379<span class="token operator">></span> get name
-<span class="token string">"couture"</span>
-127.0.0.1:6379<span class="token operator">></span> <span class="token function">shutdown</span> <span class="token comment" spellcheck="true"># 关闭</span>
-not connected<span class="token operator">></span> quit  <span class="token comment" spellcheck="true"># 退出</span>
-</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span> brew install redis <span class="co"># 执行这个命令来安装Redis</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> <span class="kw">`</span><span class="ex">brew</span> update <span class="at">--auto-update</span><span class="kw">`</span>...</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Downloading https://formulae.brew.sh/api/formula.jws.json</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">######################################################################## 100.0%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Fetching redis</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">######################################################################## 100.0%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Caveats</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> start redis now and restart at login:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">brew</span> services start redis</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Summary</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">🍺</span>  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Running <span class="kw">`</span><span class="ex">brew</span> cleanup redis<span class="kw">`</span>...</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Disable</span> this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Hide</span> these hints with HOMEBREW_NO_ENV_HINTS <span class="er">(</span><span class="ex">see</span> <span class="kw">`</span><span class="fu">man</span> brew<span class="kw">`)</span><span class="bu">.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  ~ brew services start redis</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">==</span><span class="op">&gt;</span> Downloading https://formulae.brew.sh/api/formula.jws.json</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">##O=#  #</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">Warning:</span> Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> report this issue to the homebrew/services tap <span class="er">(</span><span class="ex">not</span> Homebrew/brew or Homebrew/homebrew-core<span class="kw">)</span><span class="ex">,</span> or even better, submit a PR to fix it:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  ~ redis-cli <span class="co"># 启动redis</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">127.0.0.1:6379</span><span class="op">&gt;</span> set name couture</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">OK</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">127.0.0.1:6379</span><span class="op">&gt;</span> get name</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;couture&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">127.0.0.1:6379</span><span class="op">&gt;</span> shutdown <span class="co"># 关闭</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">not</span> connected<span class="op">&gt;</span> quit  <span class="co"># 退出</span></span></code></pre></div>
 <p>在<code>homebrew</code>安装的时候也出现一个问题</p>
-<pre class=" language-bash"><code class="language-bash">Warning: Calling formula.plist_path is deprecated<span class="token operator">!</span> Use formula.launchd_service_path instead.
-Please report this issue to the homebrew/services tap <span class="token punctuation">(</span>not Homebrew/brew or Homebrew/homebrew-core<span class="token punctuation">)</span>, or even better, submit a PR to fix it:
-  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58
-</code></pre>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Warning:</span> Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> report this issue to the homebrew/services tap <span class="er">(</span><span class="ex">not</span> Homebrew/brew or Homebrew/homebrew-core<span class="kw">)</span><span class="ex">,</span> or even better, submit a PR to fix it:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span></span></code></pre></div>
 <p>需要修复什么东西</p>
 <p>然后只需要执行命令</p>
-<pre class=" language-bash"><code class="language-bash">➜  ~ unset HOMEBREW_BOTTLE_DOMAIN
-</code></pre>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  ~ unset HOMEBREW_BOTTLE_DOMAIN</span></code></pre></div>
 <p>问题解决~</p>
 
                 
@@ -604,8 +604,8 @@ Please report this issue to the homebrew/services tap <span class="token punctua
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            报错内容：[28000][1698] Access denied for user &#39;root&#39;@&#39;10.211.55.22&#39;
-
+                            报错内容：
+[28000][1698] Access denied for user &#39;root&#39;@&#39;10.211.55.22&#39;
                         
                     </div>
                     <div class="publish-info">
@@ -666,8 +666,9 @@ Please report this issue to the homebrew/services tap <span class="token punctua
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            首先是错误如下：[root@VM-4-3-centos ~]# yum install -y yum-utils
-Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8字
+                            首先是错误如下：
+[root@VM-4-3-centos ~]# yum install -y yum-utils
+Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8
                         
                     </div>
                     <div class="publish-info">
@@ -836,7 +837,7 @@ Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8字
             
                 <span id="year">2018-2023</span>
             
-            <a href="/about" target="_blank">John Doe</a>
+            <a href="/about" target="_blank">Couture</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             

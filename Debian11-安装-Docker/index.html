@@ -5,11 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Debian11 安装 Docker, Couture&#39;s Blogs">
-    <meta name="description" content="一、安装Docker1.更新系统软件包sudo apt update
+    <meta name="description" content="一、安装Docker
+1.更新系统软件包
+sudo apt update
 sudo apt upgrade
 
-
-2.安装所需的依赖库和工具：sudo apt install apt-transport-https ca-certificates">
+2.安装所需的依赖库和工具：
+sudo apt install apt-transport-https ca-certificat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,60 +423,74 @@ sudo apt upgrade
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、安装Docker"><a href="#一、安装Docker" class="headerlink" title="一、安装Docker"></a>一、安装<code>Docker</code></h3><h4 id="1-更新系统软件包"><a href="#1-更新系统软件包" class="headerlink" title="1.更新系统软件包"></a>1.更新系统软件包</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update
-<span class="token function">sudo</span> apt upgrade
-</code></pre>
+                <h3 id="一安装docker">一、安装<code>Docker</code></h3>
+<h4 id="更新系统软件包">1.更新系统软件包</h4>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt upgrade</span></code></pre></div>
 <span id="more"></span>
-<h4 id="2-安装所需的依赖库和工具："><a href="#2-安装所需的依赖库和工具：" class="headerlink" title="2.安装所需的依赖库和工具："></a>2.安装所需的依赖库和工具：</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> apt-transport-https ca-certificates curl gnupg lsb-release
-</code></pre>
-<h3 id="3-添加Docker官方GPT秘钥："><a href="#3-添加Docker官方GPT秘钥：" class="headerlink" title="3.添加Docker官方GPT秘钥："></a>3.添加<code>Docker</code>官方<code>GPT</code>秘钥：</h3><pre class=" language-bash"><code class="language-bash">curl -fsSL https://download.docker.com/linux/debian/gpg <span class="token operator">|</span> <span class="token function">sudo</span> gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-</code></pre>
-<h4 id="4-设置Docker稳定版存储库"><a href="#4-设置Docker稳定版存储库" class="headerlink" title="4.设置Docker稳定版存储库"></a>4.设置<code>Docker</code>稳定版存储库</h4><pre class=" language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian <span class="token variable"><span class="token variable">$(</span>lsb_release -cs<span class="token variable">)</span></span> stable"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/docker.list <span class="token operator">></span> /dev/null
-</code></pre>
-<h4 id="5-更新软件包索引：-这一步可要可不要，因为前面已经执行了"><a href="#5-更新软件包索引：-这一步可要可不要，因为前面已经执行了" class="headerlink" title="5.更新软件包索引：(这一步可要可不要，因为前面已经执行了)"></a>5.更新软件包索引：(这一步可要可不要，因为前面已经执行了)</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update
-</code></pre>
-<h4 id="6-安装Docker引擎："><a href="#6-安装Docker引擎：" class="headerlink" title="6.安装Docker引擎："></a>6.安装Docker引擎：</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> docker-ce docker-ce-cli containerd.io
-</code></pre>
-<h4 id="7-添加当前用户到Docker组："><a href="#7-添加当前用户到Docker组：" class="headerlink" title="7.添加当前用户到Docker组："></a>7.添加当前用户到<code>Docker</code>组：</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">usermod</span> -aG docker <span class="token variable">$USER</span>
-</code></pre>
-<h6 id="安装成功以后提示："><a href="#安装成功以后提示：" class="headerlink" title="安装成功以后提示："></a>安装成功以后提示：</h6><pre class=" language-bash"><code class="language-bash">root@Debian:~<span class="token comment" spellcheck="true"># docker version #查看版本</span>
-Client: Docker Engine - Community
- Version:           24.0.2
- API version:       1.43
- Go version:        go1.20.4
- Git commit:        cb74dfc
- Built:             Thu May 25 21:52:17 2023
- OS/Arch:           linux/amd64
- Context:           default
-
-Server: Docker Engine - Community
- Engine:
-  Version:          24.0.2
-  API version:      1.43 <span class="token punctuation">(</span>minimum version 1.12<span class="token punctuation">)</span>
-  Go version:       go1.20.4
-  Git commit:       659604f
-  Built:            Thu May 25 21:52:17 2023
-  OS/Arch:          linux/amd64
-  Experimental:     <span class="token boolean">false</span>
- containerd:
-  Version:          1.6.21
-  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8
- runc:
-  Version:          1.1.7
-  GitCommit:        v1.1.7-0-g860f061
- docker-init:
-  Version:          0.19.0
-  GitCommit:        de40ad0
-</code></pre>
-<h3 id="二、安装Docker-Compose"><a href="#二、安装Docker-Compose" class="headerlink" title="二、安装Docker Compose"></a>二、安装<code>Docker Compose</code></h3><p>下载 <code>Docker Compose</code> 二进制文件：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> curl -L <span class="token string">"https://github.com/docker/compose/releases/latest/download/docker-compose-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -s<span class="token variable">)</span></span>-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -m<span class="token variable">)</span></span>"</span> -o /usr/local/bin/docker-compose
-</code></pre>
+<h4 id="安装所需的依赖库和工具">2.安装所需的依赖库和工具：</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install apt-transport-https ca-certificates curl gnupg lsb-release</span></code></pre></div>
+<h3
+id="添加docker官方gpt秘钥">3.添加<code>Docker</code>官方<code>GPT</code>秘钥：</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://download.docker.com/linux/debian/gpg <span class="kw">|</span> <span class="fu">sudo</span> gpg <span class="at">--dearmor</span> <span class="at">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg</span></code></pre></div>
+<h4
+id="设置docker稳定版存储库">4.设置<code>Docker</code>稳定版存储库</h4>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st"> stable&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/docker.list <span class="op">&gt;</span> /dev/null</span></code></pre></div>
+<h4
+id="更新软件包索引这一步可要可不要因为前面已经执行了">5.更新软件包索引：(这一步可要可不要，因为前面已经执行了)</h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code></pre></div>
+<h4 id="安装docker引擎">6.安装Docker引擎：</h4>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install docker-ce docker-ce-cli containerd.io</span></code></pre></div>
+<h4
+id="添加当前用户到docker组">7.添加当前用户到<code>Docker</code>组：</h4>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span></code></pre></div>
+<h6 id="安装成功以后提示">安装成功以后提示：</h6>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@Debian:~#</span> docker version <span class="co">#查看版本</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Client:</span> Docker Engine <span class="at">-</span> Community</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">Version:</span>           24.0.2</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">API</span> version:       1.43</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">Go</span> version:        go1.20.4</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a> <span class="ex">Git</span> commit:        cb74dfc</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a> <span class="ex">Built:</span>             Thu May 25 21:52:17 2023</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">OS/Arch:</span>           linux/amd64</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">Context:</span>           default</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Server:</span> Docker Engine <span class="at">-</span> Community</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> <span class="ex">Engine:</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          24.0.2</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">API</span> version:      1.43 <span class="er">(</span><span class="ex">minimum</span> version 1.12<span class="kw">)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Go</span> version:       go1.20.4</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Git</span> commit:       659604f</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Built:</span>            Thu May 25 21:52:17 2023</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">OS/Arch:</span>          linux/amd64</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Experimental:</span>     false</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a> <span class="ex">containerd:</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          1.6.21</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        3dce8eb055cbb6872793272b4f20ed16117344f8</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a> <span class="ex">runc:</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          1.1.7</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        v1.1.7-0-g860f061</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a> <span class="ex">docker-init:</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          0.19.0</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        de40ad0</span></code></pre></div>
+<h3 id="二安装docker-compose">二、安装<code>Docker Compose</code></h3>
+<p>下载 <code>Docker Compose</code> 二进制文件：</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> curl <span class="at">-L</span> <span class="st">&quot;https://github.com/docker/compose/releases/latest/download/docker-compose-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="st">&quot;</span> <span class="at">-o</span> /usr/local/bin/docker-compose</span></code></pre></div>
 <p>添加执行权限：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose
-</code></pre>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</span></code></pre></div>
 <p>验证<code>Docker Compose</code>是否安装成功：</p>
-<pre class=" language-bash"><code class="language-bash">docker-compose version
-</code></pre>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> version</span></code></pre></div>
 
                 
             </div>
@@ -651,8 +667,10 @@ Server: Docker Engine - Community
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Ubuntu防火墙（Uncomplicated Firewall，简称ufw）是一个用户友好的前端工具，用于配置底层的iptables防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉iptables命令的用户。
-一、安装UFWUFW
+                            Ubuntu防火墙（Uncomplicated
+Firewall，简称ufw）是一个用户友好的前端工具，用于配置底层的iptables防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉iptables命令的用户。
+一、安装UFW
+UF
                         
                     </div>
                     <div class="publish-info">
@@ -813,7 +831,7 @@ Server: Docker Engine - Community
             
                 <span id="year">2018-2023</span>
             
-            <a href="/about" target="_blank">John Doe</a>
+            <a href="/about" target="_blank">Couture</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
