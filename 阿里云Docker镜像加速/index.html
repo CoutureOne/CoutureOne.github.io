@@ -424,10 +424,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="阿里云镜像源"><a href="#阿里云镜像源" class="headerlink" title="阿里云镜像源"></a>阿里云镜像源</h4><span id="more"></span>
-
+                <h4 id="阿里云镜像源">阿里云镜像源</h4>
+<span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;   <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">&gt;   <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">&gt;     <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">&gt;   &#125;,</span><br><span class="line">&gt;   <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; EOF</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">  <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">  <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl daemon-reload</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl restart docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br></pre></td></tr></table></figure>
-
 
                 
             </div>
@@ -622,16 +621,16 @@
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
                     <a href="/tags/Docker/">
                         <span class="chip bg-color">Docker</span>
                     </a>
                     
                     <a href="/tags/DevOps/">
                         <span class="chip bg-color">DevOps</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -660,7 +659,6 @@
                             
 本次做系统盘，采用官方的方式制作：
 注意：U盘最少要8G及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化
-
                         
                     </div>
                     <div class="publish-info">
@@ -686,12 +684,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Windows-11/">
-                        <span class="chip bg-color">Windows 11</span>
-                    </a>
-                    
                     <a href="/tags/Windows-10/">
                         <span class="chip bg-color">Windows 10</span>
+                    </a>
+                    
+                    <a href="/tags/Windows-11/">
+                        <span class="chip bg-color">Windows 11</span>
                     </a>
                     
                 </div>
@@ -722,8 +720,6 @@
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 

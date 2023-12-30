@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Ubuntu 22.04配置静态IP地址, Couture&#39;s Blogs">
     <meta name="description" content="进入系统以后：
-编辑网络配置文件（nano或者vim）
-
+编辑网络配置文件（nano或者vim） 
 12345678couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml # This is the net">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -414,16 +413,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>进入系统以后：</p>
-<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml </span><br><span class="line"></span><br><span class="line"><span class="comment"># This is the network config written by &#x27;subiquity&#x27;</span></span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure>
-
-<p>将 <code>dhcp4: true</code> 修改为 <code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%9D%99%E6%80%81IP&spm=1001.2101.3001.7020">静态IP</a>配置</p>
+<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>） <span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml </span><br><span class="line"></span><br><span class="line"><span class="comment"># This is the network config written by &#x27;subiquity&#x27;</span></span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure></p>
+<p>将 <code>dhcp4: true</code> 修改为
+<code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=静态IP&amp;spm=1001.2101.3001.7020">静态IP</a>配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    enp0s3:</span><br><span class="line">      dhcp4: <span class="literal">false</span></span><br><span class="line">      addresses: [192.168.1.10/24]  <span class="comment"># 静态IP和子网掩码</span></span><br><span class="line">      gateway4: 192.168.1.1  <span class="comment"># 默认网关</span></span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [8.8.8.8, 8.8.4.4]  <span class="comment"># DNS服务器</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure>
-
 <p>关闭并且保存文件,然后重启网络</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo netplan apply</span><br><span class="line"></span><br><span class="line">sudo systemctl restart network-manager</span><br></pre></td></tr></table></figure>
-
 
                 
             </div>
@@ -687,8 +684,6 @@
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 

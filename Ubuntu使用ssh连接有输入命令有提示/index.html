@@ -7,10 +7,11 @@
     <meta name="keywords" content="Ubuntu使用ssh连接有输入命令有提示, Couture&#39;s Blogs">
     <meta name="description" content="Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：
 
-登录到您的远程计算机     
+登录到您的远程计算机 
+
 打开您的SSH配置文件
 
-1sudo nano /etc/ssh/ssh">
+1sudo nano /etc/ssh/sshd_c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,44 +421,35 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
-<ol>
-<li>登录到您的远程计算机<span id="more"></span>     </li>
+<ol type="1">
+<li>登录到您的远程计算机 <span id="more"></span><br />
+</li>
 <li>打开您的<code>SSH</code>配置文件</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol start="3" type="1">
 <li>将以下行添加到配置文件的末尾：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitUserEnvironment <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新启动<code>SSH</code>服务器</p>
-</li>
+<ol start="4" type="1">
+<li><p>保存并关闭文件</p></li>
+<li><p>重新启动<code>SSH</code>服务器</p></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
+<ol start="6" type="1">
 <li>创建一个<code>.bashrc</code>文件并添加一些变量</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
+<ol start="7" type="1">
 <li>添加以下行到文本中：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">&quot;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ &quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>这会设置您的提示符。</p>
-<ol start="8">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新加载<code>bashrc</code>文件</p>
-</li>
+<ol start="8" type="1">
+<li><p>保存并关闭文件</p></li>
+<li><p>重新加载<code>bashrc</code>文件</p></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
 <p>这能确保让<code>.bashrc</code>的变更生效。</p>
 <p>从现在开始，在使用<code>SSH</code>连接到远程计算机时，您应该会在输入命令时获得提示。</p>
 
@@ -674,6 +666,7 @@
                     <div class="summary block-with-text">
                         
                             1、卸载Nginx
+
 停止 Nginx 服务：
 
                         
@@ -737,8 +730,6 @@
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 

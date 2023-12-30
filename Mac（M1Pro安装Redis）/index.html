@@ -427,18 +427,12 @@
                 <p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~ brew install redis <span class="comment"># 执行这个命令来安装Redis</span></span><br><span class="line">Running `brew update --auto-update`...</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"></span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Fetching redis</span><br><span class="line">==&gt; Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span><br><span class="line">==&gt; Running `brew cleanup redis`...</span><br><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br><span class="line">➜  ~ brew services start redis</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="comment">##O=#  #</span></span><br><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ redis-cli <span class="comment"># 启动redis</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name couture</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;couture&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; shutdown <span class="comment"># 关闭</span></span><br><span class="line">not connected&gt; quit  <span class="comment"># 退出</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p>在<code>homebrew</code>安装的时候也出现一个问题</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure>
-
 <p>需要修复什么东西</p>
 <p>然后只需要执行命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">unset</span> HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure>
-
 <p>问题解决~</p>
 
                 
@@ -604,7 +598,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            报错内容：1[28000][1698] Access denied for user &#x27;root&#x27;@&#x27;10.211.55.22&#x27;
+                            报错内容：
+1[28000][1698] Access denied for user &#x27;root&#x27;@&#x27;10.211.55.22&#x27;
                         
                     </div>
                     <div class="publish-info">
@@ -665,7 +660,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            首先是错误如下：123[root@VM-4-3-centos ~]# yum install -y yum-utilsFailed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-
+                            首先是错误如下：
+123[root@VM-4-3-centos ~]# yum install -y yum-utilsFailed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF
                         
                     </div>
                     <div class="publish-info">
@@ -731,8 +727,6 @@
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
