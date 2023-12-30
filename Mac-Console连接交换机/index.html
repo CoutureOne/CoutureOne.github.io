@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Mac Console连接交换机, Couture&#39;s Blogs">
-    <meta name="description" content="一、Mac使用console连接交换机
-首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A
+    <meta name="description" content="一、Mac使用console连接交换机首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A
+
 
 Mac上面查看是否com口的驱动安装成功
 123# 这个tty.usbserial-A9KXFHCD就是我们com口">
@@ -57,7 +57,7 @@ Mac上面查看是否com口的驱动安装成功
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blogs" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -422,38 +422,89 @@ Mac上面查看是否com口的驱动安装成功
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一mac使用console连接交换机">一、Mac使用console连接交换机</h3>
-<p>首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A
-<span id="more"></span></p>
+                <h3 id="一、Mac使用console连接交换机"><a href="#一、Mac使用console连接交换机" class="headerlink" title="一、Mac使用console连接交换机"></a>一、Mac使用console连接交换机</h3><p>首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A</p>
+<span id="more"></span>
+
 <p>Mac上面查看是否com口的驱动安装成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个tty.usbserial-A9KXFHCD就是我们com口的设备</span></span><br><span class="line">$ <span class="built_in">ls</span> /dev/* |grep usb</span><br><span class="line">/dev/tty.usbserial-A9KXFHCD</span><br></pre></td></tr></table></figure>
+
+
+
 <p>安装minicom来通过com连接交换机</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ brew install minicom</span><br></pre></td></tr></table></figure>
+
+
+
 <p>配置minicom</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入到配置</span></span><br><span class="line">$ minicom -s</span><br><span class="line">            +-----[configuration]------+</span><br><span class="line">            | Filenames and paths      |</span><br><span class="line">            | File transfer protocols  |</span><br><span class="line">            | Serial port setup        |			<span class="comment"># 选择此项回车</span></span><br><span class="line">            | Modem and dialing        |</span><br><span class="line">            | Screen and keyboard      |</span><br><span class="line">            | Save setup as dfl        |</span><br><span class="line">            | Save setup as..          |</span><br><span class="line">            | Exit                     |</span><br><span class="line">            | Exit from Minicom        |</span><br><span class="line">            +--------------------------+</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------------------------------------+</span><br><span class="line">| A -    Serial Device      : /dev/tty.usbserial-A9KXFHCD               |	<span class="comment"># 将此设备名称改为前面ls查看到的设备名称</span></span><br><span class="line">| B - Lockfile Location     : /opt/homebrew/Cellar/minicom/2.8/var      |</span><br><span class="line">| C -   Callin Program      :                                           |</span><br><span class="line">| D -  Callout Program      :                                           |</span><br><span class="line">| E -    Bps/Par/Bits       : 9600 8N1                                  |	<span class="comment"># 将此项改为9600 8N1</span></span><br><span class="line">| F - Hardware Flow Control : No                                        |	<span class="comment"># 将此项改为No</span></span><br><span class="line">| G - Software Flow Control : No                                        |</span><br><span class="line">| H -     RS485 Enable      : No                                        |</span><br><span class="line">| I -   RS485 Rts On Send   : No                                        |</span><br><span class="line">| J -  RS485 Rts After Send : No                                        |</span><br><span class="line">| K -  RS485 Rx During Tx   : No                                        |</span><br><span class="line">| L -  RS485 Terminate Bus  : No                                        |</span><br><span class="line">| M - RS485 Delay Rts Before: 0                                         |</span><br><span class="line">| N - RS485 Delay Rts After : 0                                         |</span><br><span class="line">|                                                                       |</span><br><span class="line">|    Change <span class="built_in">which</span> setting?                                              |</span><br><span class="line">+-----------------------------------------------------------------------+</span><br><span class="line"><span class="comment"># 回车</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-----[configuration]------+</span><br><span class="line">| Filenames and paths      |</span><br><span class="line">| File transfer protocols  |</span><br><span class="line">| Serial port setup        |</span><br><span class="line">| Modem and dialing        |</span><br><span class="line">| Screen and keyboard      |</span><br><span class="line">| Save setup as dfl        |	<span class="comment"># 选择此项保存</span></span><br><span class="line">| Save setup as..          |</span><br><span class="line">| Exit                     |</span><br><span class="line">| Exit from Minicom        |</span><br><span class="line">+--------------------------+</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-----[configuration]------+</span><br><span class="line">| Filenames and paths      |</span><br><span class="line">| File transfer protocols  |</span><br><span class="line">| Serial port setup        |</span><br><span class="line">| Modem and dialing        |</span><br><span class="line">| Screen and keyboard      |</span><br><span class="line">| Save setup as dfl        |</span><br><span class="line">| Save setup as..          |</span><br><span class="line">| Exit                     |	<span class="comment"># 选择此项进入到终端</span></span><br><span class="line">| Exit from Minicom        |</span><br><span class="line">+--------------------------+</span><br></pre></td></tr></table></figure>
+
 <p>进入终端以后输入密码即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ Login authentication</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Password:</span><br><span class="line">&lt;Quidway&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="二配置华为交换机web访问">二、配置华为交换机web访问</h3>
-<p>配置vlanif的管理iP，在这里我的所有管理iP都在vlan100的管理iP</p>
+
+<h3 id="二、配置华为交换机web访问"><a href="#二、配置华为交换机web访问" class="headerlink" title="二、配置华为交换机web访问"></a>二、配置华为交换机web访问</h3><p>配置vlanif的管理iP，在这里我的所有管理iP都在vlan100的管理iP</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Quidway&gt;system-view		(进入系统视图)</span><br><span class="line">[Quidway]int vlanif 100		（进入vlan100接口）</span><br><span class="line">[Quidway-Vlanif100]ip add 192.168.99.200 24			（为vlan100配置管理ip）</span><br><span class="line">[Quidway-Vlanif100]q</span><br><span class="line">[Quidway]q</span><br></pre></td></tr></table></figure>
+
 <p>查看web管理的文件包地址</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Quidway&gt;sys    (进入系统视图)</span><br><span class="line">[Quidway]http server load web.7z   (加载web包)</span><br><span class="line">[Quidway]http server <span class="built_in">enable</span>    (开启http服务)</span><br><span class="line">[Quidway]aaa    (进入aaa视图)</span><br><span class="line">[Quidway-aaa]local-user admin password cipher Admin123  (配置管理账号与密码)</span><br><span class="line">[Quidway-aaa]local-user admin privilege level 3   (配置管理账号级别)</span><br><span class="line">[Quidway-aaa]local-user admin service-type http   (配置接入类型为http)</span><br><span class="line">[Quidway-aaa]q   (退出)</span><br><span class="line">[Quidway]q    (退出)</span><br><span class="line">&lt;Quidway&gt;save    (保存)</span><br><span class="line">Y   (确认)</span><br></pre></td></tr></table></figure>
+
 <p>至此就配置完成了，使用浏览器打开配置的管理vlanip，即可访问到交换机的管理web页面。</p>
-<h3 id="三交换机常用vlan配置">三、交换机常用vlan配置，</h3>
-<p>vlan配置相关</p>
+<h3 id="三、交换机常用vlan配置，"><a href="#三、交换机常用vlan配置，" class="headerlink" title="三、交换机常用vlan配置，"></a>三、交换机常用vlan配置，</h3><p>vlan配置相关</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看交换机vlan配置信息</span></span><br><span class="line">[Quidway]display vlan</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建vlan100</span></span><br><span class="line">[Quidway]vlan 100</span><br><span class="line">[Quidway-vlan100]q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将0/0/21端口从原有vlan中移除</span></span><br><span class="line">[Quidway]int GigabitEthernet 0/0/21</span><br><span class="line">[Quidway-GigabitEthernet0/0/21]undo port default vlan</span><br></pre></td></tr></table></figure>
+
 <p>创建端口组，以及添加端口组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看端口组中的成员</span></span><br><span class="line">[Quidway-port-group-200]display this</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建端口组</span></span><br><span class="line">[Quidway]port-group 100			<span class="comment"># 创建端口组100，100为端口组名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将端口添加到端口组,将g0/0/1-g0/0/15添加到端口组100</span></span><br><span class="line">[Quidway-port-group-100]group-member GigabitEthernet 0/0/1 to GigabitEthernet 0/0/15</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置端口组中的端口访问模式</span></span><br><span class="line">[Quidway-port-group-100]port link-type access		<span class="comment"># (这里设置为access模式，也可以是trunk模式的)；</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将端口组加入到vlan</span></span><br><span class="line">[Quidway-port-group-100]port default vlan 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将22和21端口从端口组200中移除</span></span><br><span class="line">[Quidway]port-group 200</span><br><span class="line">[Quidway-port-group-200]undo  group-member GigabitEthernet 0/0/22 GigabitEthernet 0/0/21</span><br></pre></td></tr></table></figure>
-<h3 id="四常用路由配置">四、常用路由配置</h3>
-<p>常用配置命令</p>
+
+<h3 id="四、常用路由配置"><a href="#四、常用路由配置" class="headerlink" title="四、常用路由配置"></a>四、常用路由配置</h3><p>常用配置命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">常用配置命令：</span><br><span class="line">1.进入视图模式</span><br><span class="line">	&lt;Huawei&gt;sys</span><br><span class="line">2.进入接口</span><br><span class="line">	[Huawei]int g0/0/1				<span class="comment">#进入指定接口</span></span><br><span class="line">	[Huawei]user-interface console 0			<span class="comment">#进入console口</span></span><br><span class="line">	[Huawei-ui-console0]authentication-mode password	<span class="comment">#配置console口密码验证</span></span><br><span class="line">3.查看指定接口信息包括ip地址</span><br><span class="line">	[Huawei-GigabitEthernet0/0/1]display ip interface g0/0/1</span><br><span class="line">4.为指定接口配置ip地址</span><br><span class="line">	[Huawei-GigabitEthernet0/0/1]ip add 192.168.1.111 24		<span class="comment">#配ip</span></span><br><span class="line">	[Huawei-GigabitEthernet0/0/1]undo ip add 192.168.1.111 24	<span class="comment">#删除配置的ip</span></span><br><span class="line">5.查看路由器ip配置表</span><br><span class="line">	[Huawei]display current-configuration			<span class="comment">#查看ip</span></span><br><span class="line">	[Huawei]display  ip routing-table			<span class="comment">#查看路由表</span></span><br><span class="line">	[Huawei]display  nat  session  all			<span class="comment">#查看nat地址转换表</span></span><br></pre></td></tr></table></figure>
+
+
+
 <p>nat配置命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 静态nat：在公网入站接口配置</span></span><br><span class="line">	[Huawei]interface  g0/0/0</span><br><span class="line">	[Huawei-GigabitEthernet0/0/0]nat server global 39.105.70.100 inside 192.168.1.254	<span class="comment">#将70.100静态nat到1.254</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 动态pat：</span></span><br><span class="line">	[Huawei]acl number 2000				<span class="comment">#使用acl匹配所有ip流量</span></span><br><span class="line">	[Huawei-acl-basic-2000]rule  1 permit</span><br><span class="line">	[Huawei]interface  g0/0/0</span><br><span class="line">	[Huawei-GigabitEthernet0/0/0]nat outbound  2000	<span class="comment">#在出接口应用这个PAT规则</span></span><br></pre></td></tr></table></figure>
+
+
+
 <p>开启telnet配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 路由器开启telnet配置：</span></span><br><span class="line">user-interface maximum-vty 15</span><br><span class="line">user-interface vty 0 4</span><br><span class="line">authentication-mode aaa         		<span class="comment"># 配置认证模式为aaa</span></span><br><span class="line">q</span><br><span class="line">aaa                                			  <span class="comment"># 进入aaa视图</span></span><br><span class="line">local-user admin password cipher huawei    <span class="comment"># 配置用户名为admin，密码为huawei</span></span><br><span class="line">local-user admin privilege level 3               <span class="comment"># 设置用户权限为3</span></span><br><span class="line">local-user admin service-type telnet  ssh     <span class="comment">#  定义用户接入类型为telnet</span></span><br><span class="line">dis this                                   		  <span class="comment">#查看配置</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 
             </div>
@@ -618,10 +669,7 @@ Mac上面查看是否com口的驱动安装成功
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            方式一：
-一、如何知道我们本机的IP地址
-第一步：首先电脑上面的快捷键win
-+ R
+                            方式一：一、如何知道我们本机的IP地址第一步：首先电脑上面的快捷键win + R
                         
                     </div>
                     <div class="publish-info">
@@ -678,8 +726,7 @@ Mac上面查看是否com口的驱动安装成功
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一步：
-首先我们要准备好激活软件，HEU_KMS_Activator这个软件的下载地址如下：https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0
+                            第一步：首先我们要准备好激活软件，HEU_KMS_Activator这个软件的下载地址如下：https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0
                         
                     </div>
                     <div class="publish-info">

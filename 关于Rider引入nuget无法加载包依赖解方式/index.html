@@ -7,13 +7,11 @@
     <meta name="keywords" content="关于Rider引入nuget无法加载包依赖解方式, Couture&#39;s Blogs">
     <meta name="description" content="
 这个问题已经是困扰我三天了，因为C#使用rider开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了nuget无法引入包的解决方案
- 首先看图：
 
 
+首先看图：
 
-image-20221122082335814
-
-我在Nuget下面查找">
+我在Nuget下面查找Nunit测试包下面都没有加载出来，其他的包也是加载">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -61,7 +59,7 @@ image-20221122082335814
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blogs" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -423,49 +421,26 @@ image-20221122082335814
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案
-<span id="more"></span> 首先看图：</p>
+<p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
 </blockquote>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png"
-alt="image-20221122082335814" />
-<figcaption aria-hidden="true">image-20221122082335814</figcaption>
-</figure>
+<span id="more"></span>
+<p>首先看图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" alt="image-20221122082335814"></p>
 <p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
 <p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
 <p>在默认配置中：</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png"
-alt="image-20221122082848339" />
-<figcaption aria-hidden="true">image-20221122082848339</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" alt="image-20221122082848339"></p>
 <p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
 <p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- defaultPushSource key works like the &#x27;defaultPushSource&#x27; key of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This can be used by administrators to prevent accidental publishing of packages to nuget.org. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;defaultPushSource&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources; works like the &#x27;packageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- This collection cannot be deleted or modified but can be disabled/enabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;Contoso Package Source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://contoso.com/packages/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;https://api.nuget.org/v3/index.json&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">packageSources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Default Package Sources that are disabled by default. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Works like the &#x27;disabledPackageSources&#x27; section of NuGet.Config files. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Sources cannot be modified or deleted either but can be enabled/disabled by users. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;nuget.org&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">disabledPackageSources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>要给这些enable都勾选上</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png"
-alt="image-20221122083314091" />
-<figcaption aria-hidden="true">image-20221122083314091</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" alt="image-20221122083314091"></p>
 <p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png"
-alt="image-20221122083437031" />
-<figcaption aria-hidden="true">image-20221122083437031</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" alt="image-20221122083437031"></p>
 <p>这时候代表已经添加成功。</p>
 <p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png"
-alt="image-20221122083626412" />
-<figcaption aria-hidden="true">image-20221122083626412</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" alt="image-20221122083626412"></p>
 <p>这时候说明已经成功！！！</p>
 <blockquote>
 <p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
@@ -631,13 +606,12 @@ alt="image-20221122083626412" />
                     <div class="summary block-with-text">
                         
                             关机、重启、注销、休眠、定时
-
 关机：shutdown /s
 重启：shutdown /r
 注销：shutdown /l
 休眠：shutdown /h /f
 取消关机：shutdown /a
-定时关机：shutdown /s /t 3600
+定时关机：shutdown /s /t 3600（
                         
                     </div>
                     <div class="publish-info">
@@ -686,10 +660,8 @@ alt="image-20221122083626412" />
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.服务器的概述
-1.什么是服务器
-
-服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能
+                            1.服务器的概述1.什么是服务器
+服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、
                         
                     </div>
                     <div class="publish-info">
