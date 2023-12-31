@@ -6,13 +6,14 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Docker 优化, Couture&#39;s Blog">
     <meta name="description" content="
-由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱，
-Docker优化方案解决
+由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱， Docker优化方案解决
+
+
 
 
 Docker的缓存会随着时间的推移不断增长，清理缓存可以减小磁盘占用，提高系统性能。以下是清理Docker缓存的方法：
 
-清理没有使用的镜像">
+清理没有使用的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,6 +28,15 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
     <title>Docker 优化 | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -57,9 +67,9 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -417,31 +427,38 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱，
-<code>Docker</code>优化方案解决</p>
+<p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱， <code>Docker</code>优化方案解决</p>
 </blockquote>
 <span id="more"></span>
+
+
 <p>Docker的缓存会随着时间的推移不断增长，清理缓存可以减小磁盘占用，提高系统性能。以下是清理Docker缓存的方法：</p>
-<ol type="1">
+<ol>
 <li>清理没有使用的镜像和容器。这些未使用的镜像和容器会占用系统的空间，可以使用以下命令来清理：</li>
 </ol>
 <ul>
 <li>清理未运行的容器：</li>
 </ul>
-<pre><code>docker container prune -f</code></pre>
+<pre><code>docker container prune -f
+</code></pre>
 <ul>
 <li>清理未使用的镜像：</li>
 </ul>
-<pre><code>docker image prune -a -f</code></pre>
-<ol start="2" type="1">
+<pre><code>docker image prune -a -f
+</code></pre>
+<ol start="2">
 <li>清理未使用的数据卷。在使用数据卷的情况下，可以使用以下命令来清理没有关联容器的数据卷：</li>
 </ol>
-<pre><code>docker volume prune -f</code></pre>
-<ol start="3" type="1">
-<li><p>改变Docker的镜像存储位置。可以在Docker守护进程启动时设置<code>--data-root</code>参数，指定Docker镜像存储的位置，或者通过软链接等方法来改变Docker镜像目录。</p></li>
-<li><p>定期清理Docker镜像缓存。可以通过以下命令来清理Docker镜像缓存：</p></li>
+<pre><code>docker volume prune -f
+</code></pre>
+<ol start="3">
+<li><p>改变Docker的镜像存储位置。可以在Docker守护进程启动时设置<code>--data-root</code>参数，指定Docker镜像存储的位置，或者通过软链接等方法来改变Docker镜像目录。</p>
+</li>
+<li><p>定期清理Docker镜像缓存。可以通过以下命令来清理Docker镜像缓存：</p>
+</li>
 </ol>
-<pre><code>docker system prune -a -f --volumes</code></pre>
+<pre><code>docker system prune -a -f --volumes
+</code></pre>
 <p>这个命令会清理Docker镜像、容器、网络和数据卷等不再使用的资源。</p>
 <p>清理Docker缓存是一个健壮的管理实践，可以帮助系统保持最佳性能，减少磁盘占用</p>
 
@@ -571,8 +588,7 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ​
-关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
+                            ​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
 下面是关闭CLOUDFLARE缓存。
                         
                     </div>
@@ -633,6 +649,7 @@ Docker的缓存会随着时间的推移不断增长，清理缓存可以减小�
                             这时候在激活界面调出CMD界面,输入命令：
 
 调出CMD界面的快捷键是：Shift+F10或者是Fn+Shift+F10
+
                         
                     </div>
                     <div class="publish-info">

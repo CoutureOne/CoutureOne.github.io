@@ -9,7 +9,8 @@
 [rootClocalhost~]# ls
 [rootClocalhost~]# vi ifcfg-ens160
 
-[root@l">
+
+[root@">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,6 +25,15 @@
     <title>CentOS网配置模板 | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -54,9 +64,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -413,37 +423,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[rootClocalhost~]#</span> cd /etc/sysconf ig/network-scripts/</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[rootClocalhost~]#</span> ls</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[rootClocalhost~]#</span> vi ifcfg-ens160</span></code></pre></div>
+                <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>rootClocalhost~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd /etc/sysconf ig/network-scripts/</span>
+<span class="token punctuation">[</span>rootClocalhost~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls</span>
+<span class="token punctuation">[</span>rootClocalhost~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vi ifcfg-ens160</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <span id="more"></span>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# cd /etc/sysconfig/network-scripts/</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> network-scripts]# vim ifcfg-ens160 </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">TYPE</span><span class="op">=</span><span class="st">&quot;Ethernet&quot;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">PROXY_METHOD</span><span class="op">=</span><span class="st">&quot;none&quot;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">BROWSER_ONLY</span><span class="op">=</span><span class="st">&quot;no&quot;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">BOOTPROTO</span><span class="op">=</span><span class="st">&quot;static&quot;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">DEFROUTE</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">IPV4_FAILURE_FATAL</span><span class="op">=</span><span class="st">&quot;no&quot;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="va">IPV6INIT</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="va">IPV6_AUTOCONF</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="va">IPV6_DEFROUTE</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="va">IPV6_FAILURE_FATAL</span><span class="op">=</span><span class="st">&quot;no&quot;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="va">IPV6_ADDR_GEN_MODE</span><span class="op">=</span><span class="st">&quot;stable-privacy&quot;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="va">NAME</span><span class="op">=</span><span class="st">&quot;ens160&quot;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="va">UUID</span><span class="op">=</span><span class="st">&quot;c203d758-1006-4fed-85cf-b485feac9682&quot;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="va">DEVICE</span><span class="op">=</span><span class="st">&quot;ens160&quot;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="va">ONBOOT</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">IPADDR</span><span class="op">=</span>192.168.200.181</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="va">NETMASK</span><span class="op">=</span>255.255.255.0</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="va">GATEWAY</span><span class="op">=</span>192.168.200.2</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="va">DNS1</span><span class="op">=</span>114.114.114.114</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 重启网卡 </span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> restart network</span></code></pre></div>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd /etc/sysconfig/network-scripts/</span>
+<span class="token punctuation">[</span>root@localhost network-scripts<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim ifcfg-ens160 </span>
+
+TYPE<span class="token operator">=</span><span class="token string">"Ethernet"</span>
+PROXY_METHOD<span class="token operator">=</span><span class="token string">"none"</span>
+BROWSER_ONLY<span class="token operator">=</span><span class="token string">"no"</span>
+BOOTPROTO<span class="token operator">=</span><span class="token string">"static"</span>
+DEFROUTE<span class="token operator">=</span><span class="token string">"yes"</span>
+IPV4_FAILURE_FATAL<span class="token operator">=</span><span class="token string">"no"</span>
+IPV6INIT<span class="token operator">=</span><span class="token string">"yes"</span>
+IPV6_AUTOCONF<span class="token operator">=</span><span class="token string">"yes"</span>
+IPV6_DEFROUTE<span class="token operator">=</span><span class="token string">"yes"</span>
+IPV6_FAILURE_FATAL<span class="token operator">=</span><span class="token string">"no"</span>
+IPV6_ADDR_GEN_MODE<span class="token operator">=</span><span class="token string">"stable-privacy"</span>
+NAME<span class="token operator">=</span><span class="token string">"ens160"</span>
+UUID<span class="token operator">=</span><span class="token string">"c203d758-1006-4fed-85cf-b485feac9682"</span>
+DEVICE<span class="token operator">=</span><span class="token string">"ens160"</span>
+ONBOOT<span class="token operator">=</span><span class="token string">"yes"</span>
+IPADDR<span class="token operator">=</span>192.168.200.181
+NETMASK<span class="token operator">=</span>255.255.255.0
+GATEWAY<span class="token operator">=</span>192.168.200.2
+DNS1<span class="token operator">=</span>114.114.114.114
+
+<span class="token comment" spellcheck="true"># 重启网卡 </span>
+systemctl restart network
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

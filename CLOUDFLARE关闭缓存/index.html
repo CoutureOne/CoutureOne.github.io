@@ -5,12 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="CLOUDFLARE关闭缓存, Couture&#39;s Blog">
-    <meta name="description" content="​
-关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
-下面是关闭CLOUDFLARE缓存。 
+    <meta name="description" content="​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。
+下面是关闭CLOUDFLARE缓存。
+
+
+
 打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。
 
-URL">
+U">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,6 +27,15 @@ URL">
     <title>CLOUDFLARE关闭缓存 | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -55,9 +66,9 @@ URL">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -422,21 +433,25 @@ URL">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​
-关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
-<p>下面是关闭CLOUDFLARE缓存。 <span id="more"></span></p>
+                <p>​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
+<p>下面是关闭CLOUDFLARE缓存。</p>
+<span id="more"></span>
+
+
 <p><strong>打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。</strong></p>
-<p><img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png" /></p>
+<p><img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png"></p>
 <p><strong>URL填写你的域名地址，创建页面第一次</strong></p>
 <p><strong>模板:</strong></p>
-<pre><code>(你的域名)/*</code></pre>
-<p><img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png" /></p>
+<pre><code>(你的域名)/*
+</code></pre>
+<p><img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png"></p>
 <p><strong>重复上面的操作再来一次。</strong></p>
 <p><strong>第二次模版：</strong></p>
-<pre><code>*.(你的域名)/*</code></pre>
-<p><img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png" /></p>
+<pre><code>*.(你的域名)/*
+</code></pre>
+<p><img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png"></p>
 <p><strong>配置完成以后的结果：</strong></p>
-<p><img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png" /></p>
+<p><img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png"></p>
 
                 
             </div>
@@ -569,7 +584,6 @@ URL">
                     <div class="summary block-with-text">
                         
                             1、卸载Nginx
-
 停止 Nginx 服务：
 
                         
@@ -629,8 +643,7 @@ URL">
                     <div class="summary block-with-text">
                         
                             
-由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱，
-Docker优化方案解决
+由于Docker部署项目之后访问有些慢，考虑到服务器的性能比较弱， Docker优化方案解决
 
                         
                     </div>

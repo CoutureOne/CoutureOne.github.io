@@ -8,12 +8,14 @@
     <meta name="description" content="安装命令：
 brew install telnet
 
+
 打印报错信息：
 fatal: not in a git directory
 
 Error: Command failed with exit 128: git
+
 解决方式：
-首先执行命令：">
+首先执行命">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,6 +30,15 @@ Error: Command failed with exit 128: git
     <title>Homebrew安装报错Error:Command failed with exit 128: git | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -58,9 +69,9 @@ Error: Command failed with exit 128: git
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -426,18 +437,22 @@ Error: Command failed with exit 128: git
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>安装命令：</p>
-<pre class="shell"><code>brew install telnet</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">brew install telnet
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <span id="more"></span>
 <p>打印报错信息：</p>
-<pre class="shell"><code>fatal: not in a git directory
+<pre class="line-numbers language-shell"><code class="language-shell">fatal: not in a git directory
 
-Error: Command failed with exit 128: git</code></pre>
+Error: Command failed with exit 128: git
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>解决方式：</p>
 <p>首先执行命令：</p>
-<pre class="shell"><code>unset HOMEBREW_BOTTLE_DOMAIN</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">unset HOMEBREW_BOTTLE_DOMAIN
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后执行命令：</p>
-<pre class="shell"><code>git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
-git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
+git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>
 
                 
@@ -573,6 +588,7 @@ git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/hom
                             
 本次做系统盘，采用官方的方式制作：
 注意：U盘最少要8G及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化
+
                         
                     </div>
                     <div class="publish-info">
@@ -598,12 +614,12 @@ git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/hom
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Windows-11/">
-                        <span class="chip bg-color">Windows 11</span>
-                    </a>
-                    
                     <a href="/tags/Windows-10/">
                         <span class="chip bg-color">Windows 10</span>
+                    </a>
+                    
+                    <a href="/tags/Windows-11/">
+                        <span class="chip bg-color">Windows 11</span>
                     </a>
                     
                 </div>
@@ -629,9 +645,7 @@ git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/hom
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            修改固定IP
-​
-修改和固定IP，就是查找的IP的第二种方式的基础上进行操作
+                            修改固定IP​	修改和固定IP，就是查找的IP的第二种方式的基础上进行操作
                         
                     </div>
                     <div class="publish-info">
