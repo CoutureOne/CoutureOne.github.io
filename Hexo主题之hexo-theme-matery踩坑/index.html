@@ -4,19 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mac自带文件修改, Couture&#39;s Blog">
-    <meta name="description" content="问题所在：
-
-
-想要修改Mac系统的文件，但是上图来看，没有操作权限
-解决方案：
-
-禁用SIP并删除文件：
-
-重启电脑，并在启动时按住Command + R
-进入恢复模式。
-打开终端（在“实用工具”菜单中选择“终端”）。
-在终端中输入以下命">
+    <meta name="keywords" content="Hexo主题之hexo-theme-matery踩坑, Couture&#39;s Blog">
+    <meta name="description" content="hexo主题的完善之一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mac自带文件修改 | Couture&#39;s Blog</title>
+    <title>Hexo主题之hexo-theme-matery踩坑 | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -354,12 +343,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mac自带文件修改</h1>
+                    <h1 class="description center-align post-title">Hexo主题之hexo-theme-matery踩坑</h1>
                 </div>
             </div>
         </div>
@@ -383,8 +372,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Mac-Linux/">
-                                <span class="chip bg-color">Mac - Linux</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
@@ -395,8 +384,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Mac/" class="post-category">
-                                Mac
+                            <a href="/categories/Hexo/" class="post-category">
+                                Hexo
                             </a>
                         
                     </div>
@@ -408,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-12
+                    2023-12-31
                 </div>
                 
 
@@ -429,33 +418,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题所在">问题所在：</h3>
-<span id="more"></span>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" /></p>
-<p>想要修改<code>Mac</code>系统的文件，但是上图来看，没有操作权限</p>
-<h3 id="解决方案">解决方案：</h3>
-<ol type="1">
-<li><h5 id="禁用sip并删除文件"><strong>禁用SIP并删除文件：</strong></h5>
-<ul>
-<li><p>重启电脑，并在启动时按住<code>Command + R</code>
-进入恢复模式。</p></li>
-<li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p></li>
-<li><p>在终端中输入以下命令来禁用SIP：</p>
-<pre><code>csrutil disable</code></pre></li>
-<li><p>重启电脑。</p></li>
-<li><p>重新尝试删除文件：</p>
-<pre><code>sudo rm -rf ~/Desktop/hosts</code></pre></li>
-</ul></li>
-<li><h5 id="重新启用sip"><strong>重新启用SIP：</strong></h5>
-<ul>
-<li><p>重启电脑，并在启动时按住<code>Command + R</code>
-进入恢复模式。</p></li>
-<li><p>打开终端，输入以下命令来重新启用SIP：</p>
-<pre><code>csrutil enable</code></pre></li>
-<li><p>重启电脑。</p></li>
-</ul></li>
-</ol>
-<p>问题解决!!!</p>
+                <h2 id="序言">1、序言：</h2>
+<blockquote>
+<p>最近元旦放假，想着自己也没啥事情要做的，自己博客也是好久没有更新过了，自己想换一个主题，然后参照了很多主题，最后选择了github上面的开源主题<a
+target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">hexo-thme-matery</a>这个主题，然后就有了下面就是自己遇到的一些坑了~</p>
+</blockquote>
+<h2 id="踩坑">2、踩坑</h2>
+<h3 id="标题">2.1 标题</h3>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231194336441.png" /></p>
+<p>上图箭头指的就是我踩坑的第一个点了，这个其实也是怪我自己没有好好去看官方文档，其实这里就是你想要的博客名称，但是这个配置文件里面是没有显示的，这个需要你手动去添加，在根目录配置文件里面修改<code>themes/hexo-theme-matery/_config.yml</code>在<code>_config.yml</code>配置文件里面进行添加：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">title:</span> Couture<span class="st">&#39;s Blog       # title后面就是你的博客名字，也就是我上面箭头指的地方</span></span></code></pre></div>
+<p>修改完成以后，就是下面这样的了，第一个坑算是解决了</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231194924432.png" /></p>
+<h3 id="副标题">2.2 副标题</h3>
+<p>先说明这个问题如何产生，如下图（当然这个是我已经修改好了），没有修改的话上面这段话显示的是<code>subtitle</code>,我一直以为副标题在配置文件中修改：</p>
+<p><code>subtitle</code>配置文件：</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">enable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">loop</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 是否循环</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">showCursor</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 是否显示光标</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">startDelay</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span><span class="co"> # 开始延迟</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typeSpeed</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span><span class="co"> # 打字速度</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">backSpeed</span><span class="kw">:</span><span class="at"> </span><span class="dv">50</span><span class="co"> # 删除速度</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sub</span><span class="kw">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> 忽有故人心上过,回首山河已是秋,恰有相思同沐雪,此生已算共白头</span></span></code></pre></div>
+<p>但是我发现问题根本不是在这里，而是在<code>themes/hexo-theme-matery/layout/_partial/bg-cover-content.ejs</code>在博客主题里面的<code>bg-cover-content.ejs</code>这个文件夹里面，第7行8行之间，下面我也给配置文件内容给列出来，对应修改就行了，第二个坑也算是给解决了。</p>
+<pre class="ejs"><code>&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col s10 offset-s1 m8 offset-m2 l8 offset-l2&quot;&gt;
+        &lt;div class=&quot;brand&quot;&gt;
+            &lt;div class=&quot;title center-align&quot;&gt;
+                &lt;% if (config.subtitle &amp;&amp; config.subtitle.length &gt; 0) &#123; %&gt;
+                &lt;%= config.subtitle %&gt;
+                &lt;% &#125; else &#123; %&gt;
+                        物来顺应，未来不迎，当时不杂，既过不恋  
+                &lt;% &#125; %&gt;</code></pre>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231210721855.png" /></p>
+<p>上面是我修改这个副标题的方式，可能看到这篇博客的大佬们还有更好的修改方式，我可能只是用了一种最笨的方式了。</p>
+<h3 id="代码块之究极大坑">2.3 代码块之究极大坑</h3>
+<p>问题产生，如图所示的代码块显示出了明显的问题：</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image.png" /></p>
+<p>我最开始想着是我在<code>_config.yml</code>配置文件中没有设置好，但是我看配置文件中的相关的是<code>code</code>,没有代码块的样式设置，只有一些开关如下：</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 代码块相关</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">code</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lang</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 代码块是否显示名称</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">copy</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 代码块是否可复制</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shrink</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 代码块是否可以收缩</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">break</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # 代码是否折行</span></span></code></pre></div>
+<p>这些显示，我是怎么设置都不能解决问题，然后就开始百度查询问题解决方式，最后经过不懈努力，终于是找到了方式，这个<code>github</code>的<code>issue</code>中也有其他的小伙伴提到过，我的解决方案：</p>
+<h5 id="首先要安装插件hexo-prism-plugin">2.3.1
+首先要安装插件<code>hexo-prism-plugin</code>：</h5>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install hexo-prism-plugin <span class="at">--save</span></span></code></pre></div>
+<h5 id="因为hexo主题自带有highlight语法高亮插件这个插件要禁用">2.3.2
+因为<code>hexo</code>主题自带有<code>highlight</code>语法高亮插件，这个插件要禁用</h5>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">highlight</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">enable</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">  # 禁用</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">line_number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">auto_detect</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tab_replace</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;&#39;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">wrap</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hljs</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 禁用以后下面的这些都不用管的</span></span></code></pre></div>
+<p>2.3.3
+开始配置<code>hexo-prism-plugin</code>插件，然后插件的配置用途我在下面也进行解释说明</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prism_plugin</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">enable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">        # 插件是否开启</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;tomorrow&#39;</span><span class="co"> # 插件主题</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">preprocess</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">  # 预加载功能是否开启</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">line_number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 行号是否开启</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tab_replace</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;&#39;</span></span></code></pre></div>
+<h5 id="看最后的显示效果">2.3.4 看最后的显示效果</h5>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231213835305.png" /></p>
+<h5 id="到此这个坑已经是解决了">2.4.5 到此这个坑已经是解决了。</h5>
+<h3 id="致谢">3、致谢</h3>
+<p>感谢开源作者<a target="_blank" rel="noopener" href="https://github.com/blinkfox"><span
+class="citation"
+data-cites="Blinkfox">@Blinkfox</span></a>的贡献精美主题</p>
+<p>对我来说这个主题里面的很多功能我是没有启用的，目前看来也已经是够用了，记录一些琐碎的东西，也希望更多伙伴能一起讨论关于这个主题的一些东西，共同学习和进步，希望我的这篇记录也能给你带来些许的帮助~</p>
 
                 
             </div>
@@ -482,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/">https://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</a>
+                    <a href="https://coutures.top/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/">https://coutures.top/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,8 +571,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Mac-Linux/">
-                                    <span class="chip bg-color">Mac - Linux</span>
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -567,9 +618,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/">
                     <div class="card-image">
@@ -587,9 +639,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -602,6 +654,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -620,32 +673,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/">
+                <a href="/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Ubuntu 22.04配置静态IP地址">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Mac自带文件修改">
                         
-                        <span class="card-title">Ubuntu 22.04配置静态IP地址</span>
+                        <span class="card-title">Mac自带文件修改</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            进入系统以后：
-编辑网络配置文件（nano或者vim）
+                            问题所在：
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux-Ubuntu/" class="post-category">
-                                    Linux Ubuntu
+                            <a href="/categories/Mac/" class="post-category">
+                                    Mac
                                 </a>
                             
                             
@@ -655,8 +707,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Ubuntu-Linux/">
-                        <span class="chip bg-color">Ubuntu - Linux</span>
+                    <a href="/tags/Mac-Linux/">
+                        <span class="chip bg-color">Mac - Linux</span>
                     </a>
                     
                 </div>
