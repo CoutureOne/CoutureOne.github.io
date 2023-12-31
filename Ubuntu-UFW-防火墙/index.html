@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Ubuntu UFW 防火墙, Couture&#39;s Blogs">
-    <meta name="description" content="Ubuntu防火墙（Uncomplicated Firewall，简称ufw）是一个用户友好的前端工具，用于配置底层的iptables防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉iptables命令的用户。
-一、安装UFWUFW">
+    <meta name="description" content="Ubuntu防火墙（Uncomplicated
+Firewall，简称ufw）是一个用户友好的前端工具，用于配置底层的iptables防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉iptables命令的用户。
+一、安装UFW
+UF">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -418,58 +420,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p>
-<h3 id="一、安装UFW"><a href="#一、安装UFW" class="headerlink" title="一、安装UFW"></a>一、安装<code>UFW</code></h3><p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update
-<span class="token function">sudo</span> apt <span class="token function">install</span> ufw
-</code></pre>
+                <p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code>
+<code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p>
+<h3 id="一安装ufw">一、安装<code>UFW</code></h3>
+<p><code>UFW</code> 是标准<code>Ubuntu 20.04</code>
+安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ufw</span></code></pre></div>
 <span id="more"></span>
-<h3 id="二、检查UFW的状态"><a href="#二、检查UFW的状态" class="headerlink" title="二、检查UFW的状态"></a>二、检查<code>UFW</code>的状态</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw status verbose
-</code></pre>
-<h3 id="三、防火墙的基本命令"><a href="#三、防火墙的基本命令" class="headerlink" title="三、防火墙的基本命令"></a>三、防火墙的基本命令</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw <span class="token function">enable</span> <span class="token comment" spellcheck="true"># 启用防火墙</span>
-
-<span class="token function">sudo</span> ufw disable <span class="token comment" spellcheck="true"># 禁用防火墙</span>
-
-<span class="token function">sudo</span> ufw status <span class="token comment" spellcheck="true"># 查看防火墙状态</span>
-
-<span class="token function">sudo</span> ufw allow <span class="token operator">&lt;</span>端口号<span class="token operator">></span> <span class="token comment" spellcheck="true"># 允许特定端口</span>
-
-<span class="token function">sudo</span> ufw deny <span class="token operator">&lt;</span>端口号<span class="token operator">></span> <span class="token comment" spellcheck="true"># 禁止特定端口</span>
-
-<span class="token function">sudo</span> ufw allow from <span class="token operator">&lt;</span>IP地址<span class="token operator">></span> <span class="token comment" spellcheck="true"># 允许特定IP地址访问</span>
-
-<span class="token function">sudo</span> ufw deny from <span class="token operator">&lt;</span>IP地址<span class="token operator">></span> <span class="token comment" spellcheck="true"># 禁止特定IP地址访问</span>
-
-<span class="token function">sudo</span> ufw allow from <span class="token operator">&lt;</span>IP地址<span class="token operator">></span> to any port <span class="token operator">&lt;</span>端口号<span class="token operator">></span> <span class="token comment" spellcheck="true"># 允许特定IP地址访问特定端口号 </span>
-
-<span class="token function">sudo</span> ufw status numbered <span class="token comment" spellcheck="true"># 查看规则编号</span>
-
-<span class="token function">sudo</span> ufw delete <span class="token operator">&lt;</span>规则编号<span class="token operator">></span> <span class="token comment" spellcheck="true"># 删除规则</span>
-</code></pre>
-<h3 id="四、校园网的案例"><a href="#四、校园网的案例" class="headerlink" title="四、校园网的案例"></a>四、校园网的案例</h3><p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p>
-<ol>
-<li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p>
-</li>
-<li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将 <code>&lt;校园网公网IP范围&gt;</code> 替换为您实际校园网的公网IP地址范围：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw allow from <span class="token operator">&lt;</span>校园网公网IP范围<span class="token operator">></span> to any
-</code></pre>
-<p>例如，如果校园网的公网IP地址范围是 203.0.113.0&#x2F;24，可以执行以下命令：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw allow from 203.0.113.0/24 to any
-</code></pre>
-<p>这将允许来自校园网公网IP范围的流量访问任何端口。</p>
-</li>
+<h3 id="二检查ufw的状态">二、检查<code>UFW</code>的状态</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status verbose</span></code></pre></div>
+<h3 id="三防火墙的基本命令">三、防火墙的基本命令</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw enable <span class="co"># 启用防火墙</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw disable <span class="co"># 禁用防火墙</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status <span class="co"># 查看防火墙状态</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow <span class="op">&lt;</span>端口号<span class="op">&gt;</span> <span class="co"># 允许特定端口</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw deny <span class="op">&lt;</span>端口号<span class="op">&gt;</span> <span class="co"># 禁止特定端口</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow from <span class="op">&lt;</span>IP地址<span class="op">&gt;</span> <span class="co"># 允许特定IP地址访问</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw deny from <span class="op">&lt;</span>IP地址<span class="op">&gt;</span> <span class="co"># 禁止特定IP地址访问</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow from <span class="op">&lt;</span>IP地址<span class="op">&gt;</span> to any port <span class="op">&lt;</span>端口号<span class="op">&gt;</span> <span class="co"># 允许特定IP地址访问特定端口号 </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status numbered <span class="co"># 查看规则编号</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw delete <span class="op">&lt;</span>规则编号<span class="op">&gt;</span> <span class="co"># 删除规则</span></span></code></pre></div>
+<h3 id="四校园网的案例">四、校园网的案例</h3>
+<p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p>
+<ol type="1">
+<li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p></li>
+<li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将
+<code>&lt;校园网公网IP范围&gt;</code>
+替换为您实际校园网的公网IP地址范围：</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow from <span class="op">&lt;</span>校园网公网IP范围<span class="op">&gt;</span> to any</span></code></pre></div>
+<p>例如，如果校园网的公网IP地址范围是
+203.0.113.0/24，可以执行以下命令：</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow from 203.0.113.0/24 to any</span></code></pre></div>
+<p>这将允许来自校园网公网IP范围的流量访问任何端口。</p></li>
 <li><p>添加拒绝规则：为了确保只有校园网的公网IP地址可以访问您的网站，您可以添加一条拒绝规则来阻止其他IP地址的访问。使用以下命令添加拒绝规则：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw deny from any to any
-</code></pre>
-<p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p>
-</li>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw deny from any to any</span></code></pre></div>
+<p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p></li>
 <li><p>确认规则设置：您可以使用以下命令确认规则已正确设置：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw status
-</code></pre>
-<p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p>
-</li>
-<li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p>
-</li>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status</span></code></pre></div>
+<p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p></li>
+<li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p></li>
 </ol>
 <p>请注意，确保在配置之前备份重要的配置文件，并在完成后验证规则已成功设置。同时，了解校园网的公网<code>IP</code>地址范围非常重要，以确保只有受限制的IP地址可以访问您的网站。</p>
 
@@ -599,9 +605,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、安装Docker1.更新系统软件包sudo apt update
+                            一、安装Docker
+1.更新系统软件包
+sudo apt update
 sudo apt upgrade
-
                         
                     </div>
                     <div class="publish-info">
@@ -654,7 +661,8 @@ sudo apt upgrade
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            H3C（华三）路由器交换机默认用户名和密码
+                            H3C
+（华三）路由器交换机默认用户名和密码
 
 默认用户名：admin
 默认密码：admin或adminer
