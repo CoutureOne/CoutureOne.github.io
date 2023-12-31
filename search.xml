@@ -192,19 +192,9 @@ href="https://blog.csdn.net/qq_40047019/article/details/122898308">添加方式�
 <span id="more"></span>
 <p><strong>然后回车执行，会提示<code>successful</code></strong></p>
 <p><strong>然后去任务管理里面去重启<code>Windows资源管理器</code></strong></p>
-<figure>
-<img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png"
-alt="eda9b420830aa647f95f2b3fd7ae96f9_0" />
-<figcaption
-aria-hidden="true">eda9b420830aa647f95f2b3fd7ae96f9_0</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png" /></p>
 <p><strong>重启完成以后打开，鼠标右键如下，成功</strong></p>
-<figure>
-<img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png"
-alt="825c0b51ebcb0ed2b75e8925d4ebea09_0" />
-<figcaption
-aria-hidden="true">825c0b51ebcb0ed2b75e8925d4ebea09_0</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png" /></p>
 <p>如果想改回原始的，命令如下，重复上面一样的操，作执行<code>命令</code>-&gt;<code>重启Windows资源管理器</code></p>
 <p><code>Windows11</code>命令：</p>
 <div class="sourceCode" id="cb2"><pre
@@ -928,33 +918,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href=
 关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
 <p>下面是关闭CLOUDFLARE缓存。 <span id="more"></span></p>
 <p><strong>打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。</strong></p>
-<figure>
-<img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png"
-alt="image-20230429213154288" />
-<figcaption aria-hidden="true">image-20230429213154288</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png" /></p>
 <p><strong>URL填写你的域名地址，创建页面第一次</strong></p>
 <p><strong>模板:</strong></p>
 <pre><code>(你的域名)/*</code></pre>
-<figure>
-<img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png"
-alt="image-20230429213705544" />
-<figcaption aria-hidden="true">image-20230429213705544</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png" /></p>
 <p><strong>重复上面的操作再来一次。</strong></p>
 <p><strong>第二次模版：</strong></p>
 <pre><code>*.(你的域名)/*</code></pre>
-<figure>
-<img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png"
-alt="image-20230429214152718" />
-<figcaption aria-hidden="true">image-20230429214152718</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png" /></p>
 <p><strong>配置完成以后的结果：</strong></p>
-<figure>
-<img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png"
-alt="image-20230429214511773" />
-<figcaption aria-hidden="true">image-20230429214511773</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png" /></p>
 ]]></content>
       <categories>
         <category>Cloudflare</category>
@@ -1055,19 +1029,10 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[28000][1698]</span> Access denied for user <span class="st">&#39;root&#39;</span>@<span class="st">&#39;10.211.55.22&#39;</span></span></code></pre></div>
 <span id="more"></span>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png"
-alt="v" />
-<figcaption aria-hidden="true">v</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png"
-alt="e92246d9f5d9f15c20b70b597ccb6d2c" />
-<figcaption
-aria-hidden="true">e92246d9f5d9f15c20b70b597ccb6d2c</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png" /></p>
 <h3 id="导致问题出现的原因">导致问题出现的原因：</h3>
 <p>​ 在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止
 <code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL
@@ -1081,12 +1046,8 @@ aria-hidden="true">e92246d9f5d9f15c20b70b597ccb6d2c</figcaption>
 
 FLUSH PRIVILEGES; # 刷新</code></pre>
 <p>这时候再次连接就能连接成功了~</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png"
-alt="image-20230417123523144" />
-<figcaption aria-hidden="true">image-20230417123523144</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png" /></p>
 <p> </p>
 ]]></content>
       <categories>
@@ -1581,51 +1542,26 @@ alt="image-20230403102222753" />
 </figure>
 <h4
 id="window11镜像httpswww.microsoft.comzh-cnsoftware-downloadwindows11"><code>Window11镜像</code>:https://www.microsoft.com/zh-cn/software-download/windows11/</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022354.png"
-alt="image-20230403102242020" />
-<figcaption aria-hidden="true">image-20230403102242020</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031022354.png" /></p>
 <h3
 id="第二步以windows10为例开始制作系统盘下载制作工具点击立即下载工具">第二步：以<code>Windows10</code>为例，开始制作系统盘，下载制作工具，点击<code>立即下载工具</code></h3>
 <p>​ <img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031025068.png"
-alt="image-20230403102511706" /></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031027631.png"
-alt="image-20230403102712343" />
-<figcaption aria-hidden="true">image-20230403102712343</figcaption>
-</figure>
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031025068.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031027631.png" /></p>
 <h3
 id="第三步下载好以后双击打开运行会出现下图界面">第三步：下载好以后双击打开运行，会出现下图界面</h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031028052.png"
-alt="image-20230403102836981" />
-<figcaption aria-hidden="true">image-20230403102836981</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031028052.png" /></p>
 <h4
 id="第四步选择接受-再选择为另一台电脑创建安装介质u盘dvd或iso文件-下一步-下一步">第四步：选择<code>接受</code>-&gt;再选择<code>为另一台电脑创建安装介质（U盘、DVD、或ISO文件）</code>-&gt;下一步-&gt;下一步</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031029150.png"
-alt="image-20230403102942082" />
-<figcaption aria-hidden="true">image-20230403102942082</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034181.png"
-alt="image-20230403103408109" />
-<figcaption aria-hidden="true">image-20230403103408109</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034314.png"
-alt="image-20230403103447243" />
-<figcaption aria-hidden="true">image-20230403103447243</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031029150.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034181.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202304031034314.png" /></p>
 <h3
 id="第五步选择你要安装系统的u盘下一步等待u盘写入完成">第五步：选择你要安装系统的U盘，下一步，等待U盘写入完成</h3>
 <figure>
@@ -1647,8 +1583,8 @@ id="第六步等待u盘写入百分之百成功以后会有提示u盘制作完�
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 11</tag>
         <tag>Windows 10</tag>
+        <tag>Windows 11</tag>
       </tags>
   </entry>
   <entry>
@@ -1685,31 +1621,19 @@ git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/hom
 <p>​
 <strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
 <span id="more"></span>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png"
-alt="image-20230401161930369" />
-<figcaption aria-hidden="true">image-20230401161930369</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161930369.png" /></p>
 <p>​
 <strong>如上图的更改适配器，进行操作，<code>选择以太网</code>-&gt;<code>鼠标右键</code>
 -&gt;<code>点击属性</code></strong></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png"
-alt="image-20230401162239432" />
-<figcaption aria-hidden="true">image-20230401162239432</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162239432.png" /></p>
 <p>​ <strong>双击下图标注的<code>IPv4</code></strong></p>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401162323793-20230401163312323.png" /></p>
 <p>​ <strong>双击以后会出现下面的这种情况</strong></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png"
-alt="image-20230401163413779" />
-<figcaption aria-hidden="true">image-20230401163413779</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401163413779.png" /></p>
 <p><strong>通常情况下都是自动获取<code>DHCP</code>，双击以后也就是空白的，如果你需要固定IP，需要给对应的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>填写即可。</strong></p>
 <h2 id="重置网络">重置网络</h2>
 <blockquote>
@@ -1751,63 +1675,35 @@ alt="image-20230401165032282" />
 id="第一步首先电脑上面的快捷键win-r">第一步：<strong>首先电脑上面的快捷键<code>win</code>
 + <code>R</code></strong></h4>
 <span id="more"></span>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png"
-alt="image-20230401155701051" />
-<figcaption aria-hidden="true">image-20230401155701051</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155701051.png" /></p>
 <h4
 id="第二步然后在打开这个选项中输入cmd然后回车">第二步：<strong>然后在打开这个选项中输入<code>cmd</code>,然后回车</strong></h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png"
-alt="image-20230401155900762" />
-<figcaption aria-hidden="true">image-20230401155900762</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401155900762.png" /></p>
 <h4
 id="第三步输入命令ipconfig然后进行回车">第三步：<strong>输入命令：<code>ipconfig</code>,然后进行回车</strong></h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png"
-alt="image-20230401160113210" />
-<figcaption aria-hidden="true">image-20230401160113210</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160113210.png" /></p>
 <blockquote>
 <p>注意这时候我标注出来的IPv4的地址就是一般所需要的地址</p>
 </blockquote>
 <h2 id="方式二">方式二：</h2>
 <h4
 id="第一步搜索控制面板然后进行回车">第一步：搜索控制面板，然后进行回车</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png"
-alt="image-20230401160747545" />
-<figcaption aria-hidden="true">image-20230401160747545</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160747545.png" /></p>
 <h4
 id="第二步选择网络和internet">第二步：选择<code>网络和Internet</code></h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png"
-alt="image-20230401160937333" />
-<figcaption aria-hidden="true">image-20230401160937333</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401160937333.png" /></p>
 <h4 id="第三步点击网络共享中心">第三步：点击网络共享中心</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png"
-alt="image-20230401161048431" />
-<figcaption aria-hidden="true">image-20230401161048431</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161048431.png" /></p>
 <p>​
 第四步：点击<code>更改适配器</code>-&gt;<code>双击以太网</code>-&gt;点开<code>详细信息</code>就可以看到IP地址</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png"
-alt="image-20230401161421970" />
-<figcaption aria-hidden="true">image-20230401161421970</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230401161421970.png" /></p>
 <blockquote>
 <p>以上就是如何查看电脑IP的方式，当然查看的IP的方式不仅仅是这这两种，也可以在设置网络里面进行直接的查看，还有其他方式等等...</p>
 </blockquote>
@@ -2014,8 +1910,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href=
     <content><![CDATA[<h3 id="第一步">第一步：</h3>
 <p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0
 <span id="more"></span> <img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png"
-alt="image-20221102093603191" />
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525532.png" />
 标志的压缩包就是要下载的软件，解压即可用，解压密码也在图中有展示。</p>
 <h3 id="第二步">第二步：</h3>
 <p>下载并解压这个软件：</p>
@@ -2023,19 +1918,11 @@ alt="image-20221102093603191" />
 <h3 id="第三步">第三步：</h3>
 <p>打开这个软件，对电脑系统和office进行激活即可</p>
 <p>运行上面的 <code>HEU_KMS_Activator_v26.0.0.exe</code>如图所示：</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png"
-alt="image-20221102094027301" />
-<figcaption aria-hidden="true">image-20221102094027301</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525536.png" /></p>
 <p>然后就是点击开始就行了，耐心等待进度条走完，激活完成即可。</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png"
-alt="image-20221102094233468" />
-<figcaption aria-hidden="true">image-20221102094233468</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071525986.png" /></p>
 <h3 id="最后">最后：</h3>
 <p>等百分之百的时候会有弹窗出来，即激活完毕。</p>
 ]]></content>
@@ -2055,19 +1942,11 @@ alt="image-20221102094233468" />
 <p>在一般情况下，网络打印机带扫描仪功能，对于<code>Windows7</code>和<code>Windows10</code>操作系统来说，直接去对应的官网和对应的打印机驱动网站直接下载对应的驱动即可，但是<code>Windows11</code>有点不太一样。
 <span id="more"></span>
 首先就是<code>Windows11</code>怎么添加打印机，<code>设置</code>-&gt;<code>蓝牙和其他设备</code>-&gt;<code>打印机和扫描仪</code>-&gt;<code>添加设备</code></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png"
-alt="win1101" />
-<figcaption aria-hidden="true">win1101</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250929234.png" /></p>
 <p>如果你是已经连接到了打印机，这时候就可以刷新检测到了</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png"
-alt="win1102" />
-<figcaption aria-hidden="true">win1102</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211250932931.png" /></p>
 <p>如果手没有检测到检查线路连接的同时，手动添加设备，手动添加设备如果你不知道流程，可以回看我的教程（一），按照流程走完，检测到驱动以后会自动安装驱动。自此打印机的驱动算是完成了。</p>
 <p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
 ]]></content>
@@ -2089,73 +1968,41 @@ alt="win1102" />
 <h3 id="鼠标右键选择个性化">鼠标右键选择<code>个性化</code></h3>
 <span id="more"></span>
 <h3 id="首先选择主页">首先选择<code>主页</code>：</h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png"
-alt="image-20221121192919409" />
-<figcaption aria-hidden="true">image-20221121192919409</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211929625.png" /></p>
 <h3 id="其次选择设备">其次选择<code>设备</code></h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png"
-alt="image-20221121193024629" />
-<figcaption aria-hidden="true">image-20221121193024629</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211930726.png" /></p>
 <h3 id="再选择设备与打印机">再选择<code>设备与打印机</code></h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png"
-alt="image-20221121193302298" />
-<figcaption aria-hidden="true">image-20221121193302298</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211933448.png" /></p>
 <h3 id="然后选择添加打印机">然后选择<code>添加打印机</code></h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png"
-alt="image-20221121193405923" />
-<figcaption aria-hidden="true">image-20221121193405923</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211934010.png" /></p>
 <blockquote>
 <p>注意选择以后，这时候会出现自动搜索界面，搜索打印机，如果你想要连接的打印机没有在搜索的列表中，这时候就需要手动添加。如果有的话，直接选中你要连接的打印机下一步即可。等待驱动自动安装完成就结束了。</p>
 <p>有的驱动window10系统是不能自动安装驱动，这时候需要手动下载驱动，到打印机驱动网站下载驱动就行了，网址：http://www.dyjqd.com/，自行下载对应的打印机型号即可，要注意下载时候选择官网下载，不要下载错误。</p>
 </blockquote>
 <h4
 id="下面是以惠普hp-laserjet-m1005-mfp打印机驱动为例子">下面是以<code>惠普HP LaserJet M1005 MFP</code>打印机驱动为例子：</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png"
-alt="image-20221121194013829" />
-<figcaption aria-hidden="true">image-20221121194013829</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211940929.png" /></p>
 <p>下载安装即可。</p>
 <h4
 id="回到刚才如果你在搜索框里面没有找到你的打印机这时候应该怎么做呢">回到刚才如果你在搜索框里面没有找到你的打印机，这时候应该怎么做呢？</h4>
 <h4 id="手动添加ip">手动添加IP：</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png"
-alt="image-20221121194200062" />
-<figcaption aria-hidden="true">image-20221121194200062</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942117.png" /></p>
 <ul>
 <li>选择我所需要的打印机未列出，然后选择<code>使用IP地址或主机名添加打印机</code></li>
 </ul>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png"
-alt="image-20221121194254616" />
-<figcaption aria-hidden="true">image-20221121194254616</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211942661.png" /></p>
 <ul>
 <li>这里选择<code>自动检测</code>或<code>TCP/IP</code>都可以，然后输入你打印机的IP地址，然后下一步即可（PS:下图中的IP地址只是一个例子，根据自己打印机的实际情况而定）</li>
 </ul>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png"
-alt="image-20221121194633900" />
-<figcaption aria-hidden="true">image-20221121194633900</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211211946943.png" /></p>
 <ul>
 <li>最后下一步，然后就等着搜索到打印机，安装驱动即可。</li>
 </ul>
@@ -2182,8 +2029,8 @@ alt="image-20221121194633900" />
 <p>客户端到底要将请求发送给哪台服务器。 <span id="more"></span> |
 发送给服务器1还是服务器2 | |
 :----------------------------------------------------------: | | <img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023267.png"
-alt="1589264952529" /> | <!--more--> #### 1.2 负载均衡问题</p>
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071023267.png" />
+| <!--more--> #### 1.2 负载均衡问题</p>
 </blockquote>
 <blockquote>
 <p>如果所有客户端的请求都发送给了服务器1，那么服务器2将没有任何意义</p>
@@ -2221,8 +2068,7 @@ alt="1589265005701" /></td>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024993.png"
-alt="1589265063451" /></td>
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024993.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -2239,8 +2085,7 @@ alt="1589265063451" /></td>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024840.png"
-alt="1589265181473" /></td>
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024840.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -3027,21 +2872,13 @@ taskkill /F /im ThunderPlatform.exe</code></pre>
 <p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案
 <span id="more"></span> 首先看图：</p>
 </blockquote>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png"
-alt="image-20221122082335814" />
-<figcaption aria-hidden="true">image-20221122082335814</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220823203.png" /></p>
 <p>我在<code>Nuget</code>下面查找<code>Nunit</code>测试包下面都没有加载出来，其他的包也是加载不出来，下面一直显示的包重置，但是我是默认下载下来的，什么也没有修改，然后我就点开了<code>nuget.config</code>这个配置文件</p>
 <p>图中也有，我在网上也没有找到相关的配置说明，当时也没有想到去微软官网去看，因为官网讲的基本都是关于VS的配置。</p>
 <p>在默认配置中：</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png"
-alt="image-20221122082848339" />
-<figcaption aria-hidden="true">image-20221122082848339</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220828462.png" /></p>
 <p>source中默认的feeds连接都是空的，问题就是出在我上面标注出来的包的下载地址。</p>
 <p>给下面从微软官方找到的配置地址，复制到<code>nuget.config</code>配置文件中</p>
 <div class="sourceCode" id="cb1"><pre
@@ -3068,27 +2905,15 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#c
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">disabledPackageSources</span>&gt;</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">configuration</span>&gt;</span></code></pre></div>
 <p>要给这些enable都勾选上</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png"
-alt="image-20221122083314091" />
-<figcaption aria-hidden="true">image-20221122083314091</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220833403.png" /></p>
 <p>然后右边的刷新按钮点一下，或者去到设置里面找到</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png"
-alt="image-20221122083437031" />
-<figcaption aria-hidden="true">image-20221122083437031</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220834175.png" /></p>
 <p>这时候代表已经添加成功。</p>
 <p>回到<code>nuget</code>以后,<code>packages</code>搜索框这时候已经加载出来包了，下图所示：</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png"
-alt="image-20221122083626412" />
-<figcaption aria-hidden="true">image-20221122083626412</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211220836706.png" /></p>
 <p>这时候说明已经成功！！！</p>
 <blockquote>
 <p>本次版本是<code>.net6,rider版本是2021.3.4</code>，最新版2022版本应该也是可以这样修改，如果能直接加载出来就更好，无法加载可以尝试修改~</p>
@@ -3208,77 +3033,41 @@ id="c-语言其实也叫做.net语言所有我们准备必要的开发环境下�
 语言，其实也叫做.net语言，所有我们准备必要的开发环境，下载链接:
 https://dotnet.microsoft.com/zh-cn/download</h3>
 <span id="more"></span>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120647988.png"
-alt="image-20221112064702881" />
-<figcaption aria-hidden="true">image-20221112064702881</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120647988.png" /></p>
 <h3
 id="上面两者软件都可以更推荐长期版本兼容性比较好">上面两者软件都可以，更推荐长期版本，兼容性比较好。</h3>
 <h3 id="下载完成以后双击安装即可">下载完成以后双击安装即可：</h3>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120649963.png"
-alt="image-20221112064939901" />
-<figcaption aria-hidden="true">image-20221112064939901</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120648869.png"
-alt="image-20221112064846821" />
-<figcaption aria-hidden="true">image-20221112064846821</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120649963.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120648869.png" /></p>
 <h3
 id="当进度条走完时代表已经安装成功">当进度条走完时，代表已经安装成功。</h3>
 <p>安装成功</p>
 <h3
 id="验证自己有没有安装成功在cmd中输入命令">验证自己有没有安装成功，在<code>cmd</code>中，输入命令</h3>
 <pre class="shell"><code>dotnet --list-sdks</code></pre>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120809434.png"
-alt="image-20221112080948275" />
-<figcaption aria-hidden="true">image-20221112080948275</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120809434.png" /></p>
 <h3
 id="出现这个即代表安装成功环境搭建完成">出现这个即代表安装成功，环境搭建完成。</h3>
 <p><strong>然后安装 <code>Jerbetbrians Rider</code></strong></p>
 <p><strong>官网下载：</strong>https://www.jetbrains.com/rider/</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120814198.png"
-alt="image-20221112081423053" />
-<figcaption aria-hidden="true">image-20221112081423053</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211120814198.png" /></p>
 <p><strong>下载以后双击：</strong></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131101754.png"
-alt="image-20221113110130585" />
-<figcaption aria-hidden="true">image-20221113110130585</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131101754.png" /></p>
 <p><strong>当出现这个界面的时候，即软件代表安装成功！</strong></p>
 <p><strong>然后就是新建项目</strong></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104971.png"
-alt="image-20221113110407910" />
-<figcaption aria-hidden="true">image-20221113110407910</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104951.png"
-alt="image-20221113110443839" />
-<figcaption aria-hidden="true">image-20221113110443839</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104971.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131104951.png" /></p>
 <p><strong>运行：</strong></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131106148.png"
-alt="image-20221113110613050" />
-<figcaption aria-hidden="true">image-20221113110613050</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211131106148.png" /></p>
 <p><strong>运行结果<code>Hello, World！</code></strong></p>
 <p><strong>环境搭建结束</strong></p>
 ]]></content>
@@ -3293,12 +3082,8 @@ alt="image-20221113110613050" />
   <entry>
     <title>Redis</title>
     <url>/Redis/</url>
-    <content><![CDATA[<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238373.jfif"
-alt="1586740065742" />
-<figcaption aria-hidden="true">1586740065742</figcaption>
-</figure>
+    <content><![CDATA[<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238373.jfif" /></p>
 <span id="more"></span>
 <p>[TOC]</p>
 <h3 id="一引言">一、引言</h3>
@@ -4293,8 +4078,7 @@ volatile-ttl：在内存不足时，Redis会在设置过了生存时间的key中
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png"
-alt="1587650344256" /></td>
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071256754.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -6172,12 +5956,8 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb53-1"><a href=
   <entry>
     <title>Shiro</title>
     <url>/Shiro/</url>
-    <content><![CDATA[<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071249775.png"
-alt="1587372890081" />
-<figcaption aria-hidden="true">1587372890081</figcaption>
-</figure>
+    <content><![CDATA[<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071249775.png" /></p>
 <p>[TOC]</p>
 <h3 id="一rbac介绍">一、RBAC介绍</h3>
 <hr />

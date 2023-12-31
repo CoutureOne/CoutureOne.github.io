@@ -10,11 +10,8 @@
 
 
 
-v
-
-
-
-e92246d9f5d9f15c20b70b597ccb6d2">
+导致问题出现的原因：
+​ 在 MySQL 5.7.6 及以上版本中，为了">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -60,7 +57,8 @@ e92246d9f5d9f15c20b70b597ccb6d2">
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -426,11 +424,6 @@ e92246d9f5d9f15c20b70b597ccb6d2">
         
 
         
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -438,19 +431,10 @@ e92246d9f5d9f15c20b70b597ccb6d2">
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[28000][1698]</span> Access denied for user <span class="st">&#39;root&#39;</span>@<span class="st">&#39;10.211.55.22&#39;</span></span></code></pre></div>
 <span id="more"></span>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png"
-alt="v" />
-<figcaption aria-hidden="true">v</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png"
-alt="e92246d9f5d9f15c20b70b597ccb6d2c" />
-<figcaption
-aria-hidden="true">e92246d9f5d9f15c20b70b597ccb6d2c</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png" /></p>
 <h3 id="导致问题出现的原因">导致问题出现的原因：</h3>
 <p>​ 在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止
 <code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL
@@ -464,12 +448,8 @@ aria-hidden="true">e92246d9f5d9f15c20b70b597ccb6d2c</figcaption>
 
 FLUSH PRIVILEGES; # 刷新</code></pre>
 <p>这时候再次连接就能连接成功了~</p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png"
-alt="image-20230417123523144" />
-<figcaption aria-hidden="true">image-20230417123523144</figcaption>
-</figure>
+<p><img
+src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png" /></p>
 <p> </p>
 
                 
