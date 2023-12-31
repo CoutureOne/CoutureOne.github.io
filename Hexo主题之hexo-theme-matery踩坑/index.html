@@ -426,13 +426,13 @@ target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-mate
 <h2 id="踩坑">2、踩坑</h2>
 <h3 id="标题">2.1 标题</h3>
 <p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231194336441.png" /></p>
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222639509.png" /></p>
 <p>上图箭头指的就是我踩坑的第一个点了，这个其实也是怪我自己没有好好去看官方文档，其实这里就是你想要的博客名称，但是这个配置文件里面是没有显示的，这个需要你手动去添加，在根目录配置文件里面修改<code>themes/hexo-theme-matery/_config.yml</code>在<code>_config.yml</code>配置文件里面进行添加：</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">title:</span> Couture<span class="st">&#39;s Blog       # title后面就是你的博客名字，也就是我上面箭头指的地方</span></span></code></pre></div>
 <p>修改完成以后，就是下面这样的了，第一个坑算是解决了</p>
 <p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231194924432.png" /></p>
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222609248.png" /></p>
 <h3 id="副标题">2.2 副标题</h3>
 <p>先说明这个问题如何产生，如下图（当然这个是我已经修改好了），没有修改的话上面这段话显示的是<code>subtitle</code>,我一直以为副标题在配置文件中修改：</p>
 <p><code>subtitle</code>配置文件：</p>
@@ -457,12 +457,12 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="
                         物来顺应，未来不迎，当时不杂，既过不恋  
                 &lt;% &#125; %&gt;</code></pre>
 <p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231210721855.png" /></p>
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222711587.png" /></p>
 <p>上面是我修改这个副标题的方式，可能看到这篇博客的大佬们还有更好的修改方式，我可能只是用了一种最笨的方式了。</p>
 <h3 id="代码块之究极大坑">2.3 代码块之究极大坑</h3>
 <p>问题产生，如图所示的代码块显示出了明显的问题：</p>
 <p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image.png" /></p>
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/11111.png" /></p>
 <p>我最开始想着是我在<code>_config.yml</code>配置文件中没有设置好，但是我看配置文件中的相关的是<code>code</code>,没有代码块的样式设置，只有一些开关如下：</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 代码块相关</span></span>
@@ -500,7 +500,7 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tab_replace</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;&#39;</span></span></code></pre></div>
 <h5 id="看最后的显示效果">2.3.4 看最后的显示效果</h5>
 <p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231213835305.png" /></p>
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222806955.png" /></p>
 <h5 id="到此这个坑已经是解决了">2.4.5 到此这个坑已经是解决了。</h5>
 <h3 id="致谢">3、致谢</h3>
 <p>感谢开源作者<a target="_blank" rel="noopener" href="https://github.com/blinkfox"><span
