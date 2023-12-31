@@ -644,8 +644,8 @@ display link-aggregation summary <span class="token comment" spellcheck="true">#
         <category>交换机</category>
       </categories>
       <tags>
-        <tag>交换机</tag>
         <tag>Switch</tag>
+        <tag>交换机</tag>
       </tags>
   </entry>
   <entry>
@@ -1514,8 +1514,8 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 10</tag>
         <tag>Windows 11</tag>
+        <tag>Windows 10</tag>
       </tags>
   </entry>
   <entry>
