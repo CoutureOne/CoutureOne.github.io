@@ -138,17 +138,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -244,17 +233,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/friends" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-address-book"></i>
@@ -265,75 +243,12 @@
         </li>
         
         
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/coutureone" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
     </ul>
 </div>
 
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/coutureone" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -376,16 +291,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-<script>
-    
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
-    
-    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -406,29 +312,20 @@
                 
                 
                 
-                <a href="/categories/Cloudflare/" title="Cloudflare: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Cloudflare
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%BF%90%E7%BB%B4/" title="运维: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">运维
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/C/" title="C#: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">C#
+                            style="background-color: #F9EBEA;">C#
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Cloudflare/" title="Cloudflare: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">Cloudflare
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -436,8 +333,26 @@
                 <a href="/categories/Docker/" title="Docker: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Docker
+                            style="background-color: #D5F5E3;">Docker
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E8%BF%90%E7%BB%B4/" title="运维: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">运维
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Linux-CentOS/" title="Linux CentOS: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">Linux CentOS
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -445,7 +360,7 @@
                 <a href="/categories/Cloudflare/Cloud/" title="Cloud: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Cloud
+                            style="background-color: #F8F9F9;">Cloud
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -454,25 +369,7 @@
                 <a href="/categories/Debian/" title="Debian: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Debian
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux-CentOS/" title="Linux CentOS: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">Linux CentOS
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%BF%90%E7%BB%B4/CentOS-8/" title="CentOS 8: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">CentOS 8
+                            style="background-color: #82E0AA;">Debian
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -481,8 +378,17 @@
                 <a href="/categories/docker/" title="docker: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">docker
+                            style="background-color: #D7BDE2;">docker
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Docker/DevOps/" title="DevOps: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">DevOps
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -496,46 +402,19 @@
                 </a>
                 
                 
-                <a href="/categories/Docker/DevOps/" title="DevOps: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8C471;">DevOps
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/MySQL/" title="MySQL: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">MySQL
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/macOS/" title="macOS: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">macOS
+                            style="background-color: #F8C471;">macOS
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Mac/" title="Mac: 1">
+                <a href="/categories/%E8%BF%90%E7%BB%B4/CentOS-8/" title="CentOS 8: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Mac
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Debian/Docker/" title="Docker: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Docker
+                            style="background-color: #F9E79F;">CentOS 8
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -550,15 +429,6 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" title="后端学习: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">后端学习
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Switch/" title="Switch: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -568,10 +438,19 @@
                 </a>
                 
                 
-                <a href="/categories/RabbitMQ/" title="RabbitMQ: 1">
+                <a href="/categories/MySQL/" title="MySQL: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">RabbitMQ
+                            style="background-color: #F9EBEA;">MySQL
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Mac/" title="Mac: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Mac
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -586,10 +465,37 @@
                 </a>
                 
                 
-                <a href="/categories/%E8%BF%90%E7%BB%B4/CentOS-8/Linux/" title="Linux: 1">
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" title="后端学习: 4">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #E8F8F5;">Linux
+                             chip-default "
+                            style="background-color: #A3E4D7;">后端学习
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Debian/Docker/" title="Docker: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Docker
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/RabbitMQ/" title="RabbitMQ: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">RabbitMQ
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Linux-Ubuntu/" title="Linux Ubuntu: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux Ubuntu
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -604,10 +510,28 @@
                 </a>
                 
                 
+                <a href="/categories/Docker/DevOps/Linux/" title="Linux: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/UFW/" title="UFW: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F5EEF8;">UFW
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Ubuntu/" title="Ubuntu: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">Ubuntu
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -631,69 +555,6 @@
                 </a>
                 
                 
-                <a href="/categories/Windows-11-%E8%BF%90%E7%BB%B4/" title="Windows 11 - 运维: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FFF;">Windows 11 - 运维
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Ubuntu/" title="Ubuntu: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">Ubuntu
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/IP/" title="IP: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">IP
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Docker/DevOps/Linux/" title="Linux: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #E8F8F5;">Linux
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/MySQL/Mac/" title="Mac: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Mac
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/C/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" title="后端学习: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">后端学习
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%BF%90%E7%BB%B4/%E6%89%93%E5%8D%B0%E6%9C%BA/" title="打印机: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FFF;">打印机
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/macOS/Homebrew/" title="Homebrew: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -712,10 +573,37 @@
                 </a>
                 
                 
-                <a href="/categories/Linux-Ubuntu/" title="Linux Ubuntu: 1">
+                <a href="/categories/Windows-11-%E8%BF%90%E7%BB%B4/" title="Windows 11 - 运维: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Linux Ubuntu
+                            style="background-color: #FFF;">Windows 11 - 运维
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E8%BF%90%E7%BB%B4/CentOS-8/Linux/" title="Linux: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/IP/" title="IP: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">IP
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/C/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" title="后端学习: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">后端学习
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -725,6 +613,33 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F8F9F9;">Windows
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Switch/%E8%BF%90%E7%BB%B4/" title="运维: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">运维
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E8%BF%90%E7%BB%B4/%E6%89%93%E5%8D%B0%E6%9C%BA/" title="打印机: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FFF;">打印机
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/MySQL/Mac/" title="Mac: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Mac
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -743,6 +658,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #FFF;">ChatGPT
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/" title="网络设备: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #82E0AA;">网络设备
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -775,6 +699,15 @@
                 </a>
                 
                 
+                <a href="/categories/redis/Mac/" title="Mac: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">Mac
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/" title="java: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -784,19 +717,10 @@
                 </a>
                 
                 
-                <a href="/categories/Switch/%E8%BF%90%E7%BB%B4/" title="运维: 1">
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/redis/" title="redis: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">运维
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/redis/Mac/" title="Mac: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Mac
+                            style="background-color: #82E0AA;">redis
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -820,6 +744,15 @@
                 </a>
                 
                 
+                <a href="/categories/Ubuntu/SSH/" title="SSH: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">SSH
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/nginx/%E8%BF%90%E7%BB%B4/" title="运维: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -829,10 +762,10 @@
                 </a>
                 
                 
-                <a href="/categories/Ubuntu/SSH/" title="SSH: 1">
+                <a href="/categories/Windows10/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" title="系统安装: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">SSH
+                            style="background-color: #F9E79F;">系统安装
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -847,28 +780,10 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/redis/" title="redis: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">redis
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Switch/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" title="交换机: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #D7BDE2;">交换机
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Windows10/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" title="系统安装: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">系统安装
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -910,15 +825,6 @@
                 </a>
                 
                 
-                <a href="/categories/nginx/%E8%BF%90%E7%BB%B4/Ubuntu/" title="Ubuntu: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">Ubuntu
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/Spring/" title="Spring: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -928,19 +834,19 @@
                 </a>
                 
                 
-                <a href="/categories/IP/Windows/%E7%BD%91%E7%BB%9C/" title="网络: 1">
+                <a href="/categories/nginx/%E8%BF%90%E7%BB%B4/Ubuntu/" title="Ubuntu: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FFF;">网络
+                            style="background-color: #FEF9E7;">Ubuntu
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/" title="网络设备: 1">
+                <a href="/categories/IP/Windows/%E7%BD%91%E7%BB%9C/" title="网络: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">网络设备
+                            style="background-color: #FFF;">网络
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1032,7 +938,7 @@ Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2024</span>
+                <span id="year">2020-2024</span>
             
             <a href="/about" target="_blank">Couture</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1069,7 +975,7 @@ Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8
                         var days = hours * 24;
                         var years = days * 365;
                         var today = new Date();
-                        var startYear = "2018";
+                        var startYear = "2020";
                         var startMonth = "10";
                         var startDate = "1";
                         var startHour = "0";

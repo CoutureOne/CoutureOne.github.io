@@ -263,7 +263,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #0074e4 0%, #0051b5 100%);
 }
 
 .text-color {
@@ -572,10 +572,10 @@ header .go-back i {
     height: 40vh !important;
 }
 
-/*.bg-cover:after {*/
-/*    -webkit-animation: rainbow 60s infinite;*/
-/*    animation: rainbow 60s infinite;*/
-/*}*/
+.bg-cover:after {
+    -webkit-animation: rainbow 60s infinite;
+    animation: rainbow 60s infinite;
+}
 
 .bg-cover:before,
 .bg-cover:after {
@@ -614,7 +614,7 @@ header .go-back i {
     font-size: 2.5rem;
     font-weight: 400;
 }
-
+/*
 @-webkit-keyframes rainbow {
 
     0%,
@@ -705,7 +705,7 @@ header .go-back i {
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
-}
+}*/
 
 .index-card {
     margin-top: -10px;
