@@ -8,12 +8,13 @@
     <meta name="description" content="
 title：文档或博文的标题。
 date：文档或博文创建或发布的日期和时间。
+
 tags：与文档或博文相关的关键词或标签的列表。
 categories：文档或博文所属的类别或主题的列表。
 
 ---
 title: 标题
-description">
+descriptio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -343,27 +344,28 @@ description">
             <div id="articleContent">
                 <ul>
 <li><code>title</code>：文档或博文的标题。</li>
-<li><code>date</code>：文档或博文创建或发布的日期和时间。<span id="more"></span></li>
+<li><code>date</code>：文档或博文创建或发布的日期和时间。
+<span id="more"></span></li>
 <li><code>tags</code>：与文档或博文相关的关键词或标签的列表。</li>
 <li><code>categories</code>：文档或博文所属的类别或主题的列表。</li>
 </ul>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
-<span class="token key atrule">title</span><span class="token punctuation">:</span> 标题
-<span class="token key atrule">description</span><span class="token punctuation">:</span> 这是文档的简要描述。
-<span class="token key atrule">date</span><span class="token punctuation">:</span> 日期
-<span class="token key atrule">author</span><span class="token punctuation">:</span> 作者名
-<span class="token key atrule">thumbnail</span><span class="token punctuation">:</span> /path/to/thumbnail.jpg  <span class="token comment" spellcheck="true"># 封面图像或缩略图</span>
-<span class="token key atrule">external_link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//example.com <span class="token comment" spellcheck="true"># 链接</span>
-<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">1.0 </span><span class="token comment" spellcheck="true"># 版本号</span>
-<span class="token key atrule">tags</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> 标签1
-  <span class="token punctuation">-</span> 标签2
-<span class="token key atrule">categories</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> 分类1
-  <span class="token punctuation">-</span> 分类2
-<span class="token key atrule">featured</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 顶置</span>
-<span class="token punctuation">---</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> 标题</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> 这是文档的简要描述。</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 日期</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> 作者名</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">thumbnail</span><span class="kw">:</span><span class="at"> /path/to/thumbnail.jpg</span><span class="co">  # 封面图像或缩略图</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">external_link</span><span class="kw">:</span><span class="at"> https://example.com</span><span class="co"> # 链接</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0</span><span class="co"> # 版本号</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 标签1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 标签2</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 分类1</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> 分类2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">featured</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 顶置</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 
                 
             </div>
@@ -494,7 +496,6 @@ description">
                             [rootClocalhost~]# cd /etc/sysconf ig/network-scripts/
 [rootClocalhost~]# ls
 [rootClocalhost~]# vi ifcfg-ens160
-
                         
                     </div>
                     <div class="publish-info">

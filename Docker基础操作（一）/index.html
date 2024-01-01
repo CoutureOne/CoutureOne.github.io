@@ -5,10 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Docker基础操作（一）, Couture&#39;s Blog">
-    <meta name="description" content="Docker基本命令一、Docker的安装
+    <meta name="description" content="Docker基本命令
+一、Docker的安装
+
 1.1 下载Docker依赖的环境
+
 想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样
-参考：https://developer.aliyun.com/article/1">
+参考：https://developer.aliyun.com/articl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -336,162 +339,183 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h2><h3 id="一、Docker的安装"><a href="#一、Docker的安装" class="headerlink" title="一、Docker的安装"></a>一、Docker的安装</h3><hr>
-<h4 id="1-1-下载Docker依赖的环境"><a href="#1-1-下载Docker依赖的环境" class="headerlink" title="1.1 下载Docker依赖的环境"></a>1.1 下载Docker依赖的环境</h4><blockquote>
+                <h2 id="docker基本命令">Docker基本命令</h2>
+<h3 id="一docker的安装">一、Docker的安装</h3>
+<hr />
+<h4 id="下载docker依赖的环境">1.1 下载Docker依赖的环境</h4>
+<blockquote>
 <p>想安装Docker，需要先将依赖的环境全部下载，就像Maven依赖JDK一样</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/110806">https://developer.aliyun.com/article/110806</a></p>
+<p>参考：https://developer.aliyun.com/article/110806</p>
 <p>如果已安装，可以先删除</p>
-<p>[root@localhost ~]# yum -y remove docker-ce</p>
+<p>[root@localhost ~]# yum -y remove docker-ce <span id="more"></span></p>
 </blockquote>
-<span id="more"></span>
-
-<pre class="line-numbers language-sh"><code class="language-sh">01[root@localhost local]# yum -y install yum-utils device-mapper-persistent-data lvm2
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="1-2-指定Docker镜像源"><a href="#1-2-指定Docker镜像源" class="headerlink" title="1.2 指定Docker镜像源"></a>1.2 指定Docker镜像源</h4><blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01[root@localhost</span> local]# yum <span class="at">-y</span> install yum-utils device-mapper-persistent-data lvm2</span></code></pre></div>
+<h4 id="指定docker镜像源">1.2 指定Docker镜像源</h4>
+<blockquote>
 <p>默认下载Docker回去国外服务器下载，速度较慢，我们可以设置为阿里云镜像源，速度更快</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01[root@localhost ~]# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="1-3-安装Docker"><a href="#1-3-安装Docker" class="headerlink" title="1.3 安装Docker"></a>1.3 安装Docker</h4><blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01[root@localhost</span> ~]# yum-config-manager <span class="at">--add-repo</span> http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></code></pre></div>
+<h4 id="安装docker">1.3 安装Docker</h4>
+<blockquote>
 <p>依然采用yum的方式安装</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">0102[root@localhost ~]# yum makecache fast
-[root@localhost ~]# yum -y install docker-ce
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="1-4-启动Docker并测试"><a href="#1-4-启动Docker并测试" class="headerlink" title="1.4 启动Docker并测试"></a>1.4 启动Docker并测试</h4><blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">0102[root@localhost</span> ~]# yum makecache fast</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# yum <span class="at">-y</span> install docker-ce</span></code></pre></div>
+<h4 id="启动docker并测试">1.4 启动Docker并测试</h4>
+<blockquote>
 <p>安装成功后，需要手动启动，设置为开机自启，并测试一下Docker</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01020304# 启动Docker服务
-[root@localhost ~]# systemctl start docker
-# 测试 hello-world
-[root@localhost ~]# docker run hello-world
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01020304#</span> 启动Docker服务</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# systemctl start docker</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试 hello-world</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker run hello-world</span></code></pre></div>
 <blockquote>
 <p>注：关闭防火墙之后docker需要重启</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01[root@localhost ~]#service docker restart
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="二、Docker的中央仓库"><a href="#二、Docker的中央仓库" class="headerlink" title="二、Docker的中央仓库"></a>二、Docker的中央仓库</h3><hr>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01[root@localhost</span> ~]#service docker restart</span></code></pre></div>
+<h3 id="二docker的中央仓库">二、Docker的中央仓库</h3>
+<hr />
 <blockquote>
 <ul>
-<li><p>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</p>
-<p><a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-</li>
-<li><p>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</p>
-<p><a target="_blank" rel="noopener" href="https://c.163yun.com/hub#/home">https://c.163yun.com/hub#/home</a></p>
-<p><a target="_blank" rel="noopener" href="http://hub.daocloud.io/">http://hub.daocloud.io/</a> （推荐使用）</p>
-</li>
-<li><p>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</p>
-<p><a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
-</li>
+<li>Docker官方的中央仓库：这个仓库是镜像最全的，但是下载速度较慢。</li>
 </ul>
 </blockquote>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token number">0102030405060708</span># 需要创建/etc/docker/daemon.json，并添加如下内容
-&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://registry.docker-cn.com"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token property">"insecure-registries"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"ip:port"</span><span class="token punctuation">]</span>   
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-# 重启两个服务
-systemctl daemon-rd9oeload
-systemctl restart docker
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="三、镜像的操作【重点】"><a href="#三、镜像的操作【重点】" class="headerlink" title="三、镜像的操作【重点】"></a>三、镜像的操作【<code>重点</code>】</h3><hr>
-<h4 id="3-1-拉取镜像"><a href="#3-1-拉取镜像" class="headerlink" title="3.1 拉取镜像"></a>3.1 拉取镜像</h4><blockquote>
+<pre><code>&gt;
+&gt;   https://hub.docker.com/</code></pre>
+<blockquote>
+<ul>
+<li>国内的镜像网站：网易蜂巢，daoCloud等，下载速度快，但是镜像相对不全。</li>
+</ul>
+</blockquote>
+<pre><code>&gt;
+&gt;   https://c.163yun.com/hub#/home
+&gt;
+&gt;   http://hub.daocloud.io/ （推荐使用）</code></pre>
+<blockquote>
+<ul>
+<li>在公司内部会采用私服的方式拉取镜像，需要添加配置，如下……</li>
+</ul>
+</blockquote>
+<pre><code>&gt;
+&gt;   https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</code></pre>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="er">0102030405060708#</span> <span class="er">需要创建/etc/docker/daemon.json，并添加如下内容</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">&#123;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;registry-mirrors&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;https://registry.docker-cn.com&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;insecure-registries&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ip:port&quot;</span><span class="ot">]</span>   </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">重启两个服务</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="er">systemctl</span> <span class="er">daemon-rd9oeload</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="er">systemctl</span> <span class="er">restart</span> <span class="er">docker</span></span></code></pre></div>
+<h3 id="三镜像的操作重点">三、镜像的操作【<code>重点</code>】</h3>
+<hr />
+<h4 id="拉取镜像">3.1 拉取镜像</h4>
+<blockquote>
 <p>从中央仓库拉取镜像到本地</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">010203docker pull 镜像名称[:tag]
-
-[root@localhost ~]# docker pull daocloud.io/library/tomcat:8.5.15-jre8
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="3-2-查看本地全部镜像"><a href="#3-2-查看本地全部镜像" class="headerlink" title="3.2 查看本地全部镜像"></a>3.2 查看本地全部镜像</h4><blockquote>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">010203docker</span> pull 镜像名称<span class="pp">[</span><span class="ss">:tag</span><span class="pp">]</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker pull daocloud.io/library/tomcat:8.5.15-jre8</span></code></pre></div>
+<h4 id="查看本地全部镜像">3.2 查看本地全部镜像</h4>
+<blockquote>
 <p>查看本地已经安装过的镜像信息，包含标识，名称，版本，更新时间，大小</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01[root@localhost ~]# docker images
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="3-3-删除本地镜像"><a href="#3-3-删除本地镜像" class="headerlink" title="3.3 删除本地镜像"></a>3.3 删除本地镜像</h4><blockquote>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01[root@localhost</span> ~]# docker images</span></code></pre></div>
+<h4 id="删除本地镜像">3.3 删除本地镜像</h4>
+<blockquote>
 <p>镜像会占用磁盘空间，可以直接手动删除，表示通过查看获取</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">010203docker rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）
-
-[root@localhost ~]# docker rmi b8dfe9ade316
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="四、容器操作【重点】"><a href="#四、容器操作【重点】" class="headerlink" title="四、容器操作【重点】"></a>四、容器操作【<code>重点</code>】</h3><hr>
-<h4 id="4-1-运行容器"><a href="#4-1-运行容器" class="headerlink" title="4.1 运行容器"></a>4.1 运行容器</h4><blockquote>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">010203docker</span> rmi 镜像的标识（需要先删除该镜像创建的容器，删除容器需要先停止容器）</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker rmi b8dfe9ade316</span></code></pre></div>
+<h3 id="四容器操作重点">四、容器操作【<code>重点</code>】</h3>
+<hr />
+<h4 id="运行容器">4.1 运行容器</h4>
+<blockquote>
 <p>运行容器需要制定具体镜像，如果镜像不存在，会直接下载</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh"># 简单操作
-docker run 镜像的标识|镜像名称[:tag]
-
-# 常用的参数
-docker run -d -p 宿主机端口:容器端口 --name 容器名称 镜像的标识|镜像名称[:tag]
-# -d：代表后台运行容器
-# -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口
-# --name 容器名称：指定容器的名称(自定义)
-
-[root@localhost ~]# docker run -d -p 8888:8080 --name mytomcat8.5 b8dfe9ade316
-
-# 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4-2-查看正在运行的容器"><a href="#4-2-查看正在运行的容器" class="headerlink" title="4.2 查看正在运行的容器"></a>4.2 查看正在运行的容器</h4><blockquote>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 简单操作</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run 镜像的标识<span class="kw">|</span><span class="ex">镜像名称[:tag]</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 常用的参数</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 宿主机端口:容器端口 <span class="at">--name</span> 容器名称 镜像的标识<span class="kw">|</span><span class="ex">镜像名称[:tag]</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -d：代表后台运行容器</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -p 宿主机端口:容器端口：为了映射当前Linux的端口和容器的端口</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># --name 容器名称：指定容器的名称(自定义)</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker run <span class="at">-d</span> <span class="at">-p</span> 8888:8080 <span class="at">--name</span> mytomcat8.5 b8dfe9ade316</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试：浏览器访问：虚拟机ip:8888（访问之前需要关闭防火墙以及开放安全组中的对应端口号）</span></span></code></pre></div>
+<h4 id="查看正在运行的容器">4.2 查看正在运行的容器</h4>
+<blockquote>
 <p>查看全部正在运行的容器信息</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">docker ps [-qa]
-# -a：查看全部的容器，包括没有运行
-# -q：只查看容器的标识
-
-[root@localhost ~]# docker ps
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4-3-查看容器日志"><a href="#4-3-查看容器日志" class="headerlink" title="4.3 查看容器日志"></a>4.3 查看容器日志</h4><blockquote>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="pp">[-</span><span class="ss">qa</span><span class="pp">]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -a：查看全部的容器，包括没有运行</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -q：只查看容器的标识</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker ps</span></code></pre></div>
+<h4 id="查看容器日志">4.3 查看容器日志</h4>
+<blockquote>
 <p>查看容器日志，以查看容器运行的信息</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01020304docker logs -f 容器id
-# -f：可以滚动查看日志的最后几行
-
-[root@localhost ~]# docker logs -f 4411f56f1fbb
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4-4-进入容器内部"><a href="#4-4-进入容器内部" class="headerlink" title="4.4 进入容器内部"></a>4.4 进入容器内部</h4><blockquote>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01020304docker</span> logs <span class="at">-f</span> 容器id</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -f：可以滚动查看日志的最后几行</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker logs <span class="at">-f</span> 4411f56f1fbb</span></code></pre></div>
+<h4 id="进入容器内部">4.4 进入容器内部</h4>
+<blockquote>
 <p>可以进入容器内部进行操作</p>
 </blockquote>
 <p>sh</p>
-<pre class="line-numbers language-sh"><code class="language-sh">docker exec -it 容器id bash
-
-[root@localhost ~]# docker exec -it 4411f56f1fbb bash
-
-# 退出当前容器 exit
-root@4411f56f1fbb:/usr/local/tomcat# exit
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4-5-复制内容到容器"><a href="#4-5-复制内容到容器" class="headerlink" title="4.5 复制内容到容器"></a>4.5 复制内容到容器</h4><blockquote>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> exec <span class="at">-it</span> 容器id bash</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker exec <span class="at">-it</span> 4411f56f1fbb bash</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 退出当前容器 exit</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">root@4411f56f1fbb:/usr/local/tomcat#</span> exit</span></code></pre></div>
+<h4 id="复制内容到容器">4.5 复制内容到容器</h4>
+<blockquote>
 <p>将宿主机的文件复制到容器内部的指定目录</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">01020304050607docker cp 文件名称 容器id:容器内部路径
-
-# 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）
-[root@localhost ~]# docker cp /root/a.txt 441:/usr/local/tomcat/temp
-
-# 把容器的temp目录下的a.txt拷贝到主机root目录下
-[root@localhost ~]# docker cp 441:/usr/local/tomcat/temp/a.txt /root
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4-6-重启-启动-停止-删除容器"><a href="#4-6-重启-启动-停止-删除容器" class="headerlink" title="4.6 重启&amp;启动&amp;停止&amp;删除容器"></a>4.6 重启&amp;启动&amp;停止&amp;删除容器</h4><blockquote>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">01020304050607docker</span> cp 文件名称 容器id:容器内部路径</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 把主机root目录下的a.txt文件拷贝到容器的temp目录下（由于tomcat默认路径在/usr/local/tomcat）</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker cp /root/a.txt 441:/usr/local/tomcat/temp</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 把容器的temp目录下的a.txt拷贝到主机root目录下</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker cp 441:/usr/local/tomcat/temp/a.txt /root</span></code></pre></div>
+<h4 id="重启启动停止删除容器">4.6
+重启&amp;启动&amp;停止&amp;删除容器</h4>
+<blockquote>
 <p>容器的启动，停止，删除等操作，后续经常会使用到</p>
 </blockquote>
-<pre class="line-numbers language-sh"><code class="language-sh">0102030405060708091011121314151617# 重新启动容器
-[root@localhost ~]# docker restart 容器id
-
-# 启动停止运行的容器
-[root@localhost ~]# docker start 容器id
-
-# 停止指定的容器（删除容器前，需要先停止容器）
-[root@localhost ~]# docker stop 容器id
-
-# 停止全部容器
-[root@localhost ~]# docker stop $(docker ps -qa)
-
-# 删除指定容器
-[root@localhost ~]# docker rm 容器id
-
-# 删除全部容器
-[root@localhost ~]# docker rm $(docker ps -qa)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">0102030405060708091011121314151617#</span> 重新启动容器</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker restart 容器id</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 启动停止运行的容器</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker start 容器id</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 停止指定的容器（删除容器前，需要先停止容器）</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker stop 容器id</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 停止全部容器</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker stop <span class="va">$(</span><span class="ex">docker</span> ps <span class="at">-qa</span><span class="va">)</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除指定容器</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker rm 容器id</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除全部容器</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# docker rm <span class="va">$(</span><span class="ex">docker</span> ps <span class="at">-qa</span><span class="va">)</span></span></code></pre></div>
 
                 
             </div>
@@ -619,10 +643,11 @@ root@4411f56f1fbb:/usr/local/tomcat# exit
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker基础操作和配置配置阿里云Docker Yum源
+                            Docker基础操作和配置
+配置阿里云Docker Yum源
 shell
 # yum install -y yum-utils device-mapper-persistent-data lvm2 git
-# yum-config-manag
+# yum-config-mana
                         
                     </div>
                     <div class="publish-info">
@@ -672,13 +697,17 @@ shell
                     <div class="summary block-with-text">
                         
                             1.介绍
+
 官网：https://spring.io/
 
 
-Spring 让每个人都可以更快、更轻松、更安全地编写 Java。Spring 对速度、简单性和生产力的关注使其成为世界上最受欢迎的Java 框架。
+Spring 让每个人都可以更快、更轻松、更安全地编写 Java。Spring
+对速度、简单性和生产力的关注使其成为世界上最受欢迎的Java
+框架。
 
 
-我们使用了 Spring 框
+我们使用了 Spring
+
                         
                     </div>
                     <div class="publish-info">

@@ -427,10 +427,11 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    DTU和RTU是什么：​	DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。
+                                    DTU和RTU是什么：
+​ DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。
 
-
-DTU是数据传输单元（Data Transfer Unit）的缩写，是一种远程数据传输设备。它通常是安装在现场设备上的一种小型智能终端，可以采
+DTU是数据传输单元（Data Transfer
+Unit）的缩写，是一种远程数据传输设备。它通常是安装在现场设备上的一种小型智能终端，可以采
                                 
                             </div>
                             <div class="publish-info">
@@ -491,13 +492,14 @@ DTU是数据传输单元（Data Transfer Unit）的缩写，是一种远程数�
                                 
                                     下面是Nginx配置反向代理方式，当然不仅仅这一种方式
 
-server &amp;#123;
+server &#123;
 
 listen 80;
 
 server_name xx.xx; # 域名
 
-return 301 https://$host$request_ur
+return 301 https://$host$request_uri;
+&
                                 
                             </div>
                             <div class="publish-info">
@@ -562,10 +564,11 @@ return 301 https://$host$request_ur
                                 
                                     Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：
 
-登录到您的远程计算机     
+登录到您的远程计算机 
+
 打开您的SSH配置文件
 
-sudo nano /etc/ssh/sshd
+sudo nano /etc/ssh/sshd_co
                                 
                             </div>
                             <div class="publish-info">
@@ -629,20 +632,19 @@ sudo nano /etc/ssh/sshd
                             <div class="summary block-with-text">
                                 
                                     1、卸载Nginx
+
 停止 Nginx 服务：
 
 
 sudo systemctl stop nginx
 
-
 删除 Nginx：
 
 sudo apt-get remove nginx
 
-
 删除 Nginx 配置文件：
 
-sudo rm -rf 
+sudo rm -rf /
                                 
                             </div>
                             <div class="publish-info">
