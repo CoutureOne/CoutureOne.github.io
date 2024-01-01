@@ -34,7 +34,7 @@
 }
 
 body {
-    background-color: #eaeaea;
+    background-color: #f8f9fa;
     margin: 0;
     color: #34495e;
     overflow-x: hidden;
@@ -572,10 +572,10 @@ header .go-back i {
     height: 40vh !important;
 }
 
-.bg-cover:after {
-    -webkit-animation: rainbow 60s infinite;
-    animation: rainbow 60s infinite;
-}
+/*.bg-cover:after {*/
+/*    -webkit-animation: rainbow 60s infinite;*/
+/*    animation: rainbow 60s infinite;*/
+/*}*/
 
 .bg-cover:before,
 .bg-cover:after {
@@ -1578,7 +1578,7 @@ thead {
         top: 24px;
         left: auto;
         right: 100%;
-        border-color: #ffa726;
+        border-color: #007bff;
     }
 
     .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
@@ -2245,7 +2245,7 @@ body.DarkMode .theme-btn:hover {
     top: calc(50% - 1em);
 }
 .post-container .note.default {
-    border-left-color: #777;
+    border-left-color: #007bff;
 }
 .post-container .note.default h2, .post-container .note.default h3, .post-container .note.default h4, .post-container .note.default h5, .post-container .note.default h6 {
     color: #777;
@@ -2257,7 +2257,7 @@ body.DarkMode .theme-btn:hover {
     color: #777;
 }
 .post-container .note.primary {
-    border-left-color: #6f42c1;
+    border-left-color: #007bff;
 }
 .post-container .note.primary h2, .post-container .note.primary h3, .post-container .note.primary h4, .post-container .note.primary h5, .post-container .note.primary h6 {
     color: #6f42c1;
@@ -2269,7 +2269,7 @@ body.DarkMode .theme-btn:hover {
     color: #6f42c1;
 }
 .post-container .note.info {
-    border-left-color: #428bca;
+    border-left-color:#007bff;
 }
 .post-container .note.info h2, .post-container .note.info h3, .post-container .note.info h4, .post-container .note.info h5, .post-container .note.info h6 {
     color: #428bca;
@@ -2281,7 +2281,7 @@ body.DarkMode .theme-btn:hover {
     color: #428bca;
 }
 .post-container .note.success {
-    border-left-color: #5cb85c;
+    border-left-color: #007bff;
 }
 .post-container .note.success h2, .post-container .note.success h3, .post-container .note.success h4, .post-container .note.success h5, .post-container .note.success h6 {
     color: #5cb85c;
@@ -2293,7 +2293,7 @@ body.DarkMode .theme-btn:hover {
     color: #5cb85c;
 }
 .post-container .note.warning {
-    border-left-color: #f0ad4e;
+    border-left-color: #007bff;
 }
 .post-container .note.warning h2, .post-container .note.warning h3, .post-container .note.warning h4, .post-container .note.warning h5, .post-container .note.warning h6 {
     color: #f0ad4e;
@@ -2305,7 +2305,7 @@ body.DarkMode .theme-btn:hover {
     color: #f0ad4e;
 }
 .post-container .note.danger {
-    border-left-color: #d9534f;
+    border-left-color: #007bff;
 }
 .post-container .note.danger h2, .post-container .note.danger h3, .post-container .note.danger h4, .post-container .note.danger h5, .post-container .note.danger h6 {
     color: #d9534f;
