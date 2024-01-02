@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于Mac word缺少字体的解决方式</title>
+    <url>/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p> 
+本人也是很少用word，但是收到文件字体是<code>仿宋字体GB2312</code>,<code>Mac office 365 word</code>中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是<code>仿宋字体GB2312</code>,所以就找到了以下解决方案：</p>
+<p> 首先就是下载字体，当然我这已经找好合集了，我只需要传到网盘上面，有需要的自行下载即可（<a
+href="https://pan.baidu.com/s/1KRGAE_oOPLGgIa2Lm1r4gQ?pwd=9v3a">下载链接</a>）</p>
+<h3 id="第一步">第一步：</h3>
+<p> 
+找到<code>应用程序</code>中的<code>word</code>鼠标右键，显示包内容，然后回车</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122414174.png" /></p>
+<h3 id="第二步">第二步：</h3>
+<p> 
+一次打开文件夹：<code>/Contents/Resources/DFonts</code>这就是存放字体的路径，完成路径<code>/Applications/Microsoft Word.app/Contents/Resources/DFonts</code></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122650195.png" /></p>
+<h3 id="第三步">第三步：</h3>
+<p>  字体解压以后给你需要的字体直接拖进去即可：</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102123002189.png" /></p>
+<h3 id="最后">最后：</h3>
+<p> 
+一定需要进行电脑重启，这样字体才能生效，在打开<code>word</code>或者是之前未能识别字体的文档都能识别了，问题解决~</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo主题之hexo-theme-matery踩坑</title>
     <url>/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<h2 id="序言">1、序言：</h2>

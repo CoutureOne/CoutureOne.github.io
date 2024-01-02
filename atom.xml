@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-01-01T01:35:11.000Z</updated>
+  <updated>2024-01-02T05:13:25.472Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Mac word缺少字体的解决方式</title>
+    <link href="https://coutures.top/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
+    <id>https://coutures.top/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
+    <published>2024-01-02T05:07:41.000Z</published>
+    <updated>2024-01-02T05:13:25.472Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本人也是很少用word，但是收到文件字体是<code>仿宋字体GB2312</code>,<code>Mac office 365 word</code>中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是<code>仿宋字体GB2312</code>,所以就找到了以下解决方案：</p><p> 首先就是下载字体，当然我这已经找好合集了，我只需要传到网盘上面，有需要的自行下载即可（<ahref="https://pan.baidu.com/s/1KRGAE_oOPLGgIa2Lm1r4gQ?pwd=9v3a">下载链接</a>）</p><h3 id="第一步">第一步：</h3><p> 找到<code>应用程序</code>中的<code>word</code>鼠标右键，显示包内容，然后回车</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122414174.png" /></p><h3 id="第二步">第二步：</h3><p> 一次打开文件夹：<code>/Contents/Resources/DFonts</code>这就是存放字体的路径，完成路径<code>/Applications/Microsoft Word.app/Contents/Resources/DFonts</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122650195.png" /></p><h3 id="第三步">第三步：</h3><p>  字体解压以后给你需要的字体直接拖进去即可：</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102123002189.png" /></p><h3 id="最后">最后：</h3><p> 一定需要进行电脑重启，这样字体才能生效，在打开<code>word</code>或者是之前未能识别字体的文档都能识别了，问题解决~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; 
+本人也是很少用word，但是收到文件字体是&lt;code&gt;仿宋字体GB2312&lt;/code&gt;,&lt;code&gt;Mac office 365 word&lt;/code&gt;中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是&lt;code&gt;仿宋字体GB2312&lt;</summary>
+      
+    
+    
+    
+    <category term="Hexo" scheme="https://coutures.top/categories/Hexo/"/>
+    
+    <category term="Mac" scheme="https://coutures.top/categories/Hexo/Mac/"/>
+    
+    
+    <category term="Hexo" scheme="https://coutures.top/tags/Hexo/"/>
+    
+    <category term="Mac" scheme="https://coutures.top/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo主题之hexo-theme-matery踩坑</title>
@@ -474,33 +503,6 @@ class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&
     
     
     <category term="Nginx - 运维" scheme="https://coutures.top/tags/Nginx-%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CLOUDFLARE关闭缓存</title>
-    <link href="https://coutures.top/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/"/>
-    <id>https://coutures.top/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/</id>
-    <published>2023-04-29T13:53:57.000Z</published>
-    <updated>2023-12-31T04:12:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>​关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p><p>下面是关闭CLOUDFLARE缓存。 <span id="more"></span></p><p><strong>打开域名管理界面，选择界面规则，然后创建页面规则，页面需要创建两次。</strong></p><p><img src="https://s2.loli.net/2023/04/29/ks1eIC9AWdpwlqz.png" /></p><p><strong>URL填写你的域名地址，创建页面第一次</strong></p><p><strong>模板:</strong></p><pre><code>(你的域名)/*</code></pre><p><img src="https://s2.loli.net/2023/04/29/T3G9lrQFto8dahf.png" /></p><p><strong>重复上面的操作再来一次。</strong></p><p><strong>第二次模版：</strong></p><pre><code>*.(你的域名)/*</code></pre><p><img src="https://s2.loli.net/2023/04/29/v2j5zm1eTPwbISE.png" /></p><p><strong>配置完成以后的结果：</strong></p><p><img src="https://s2.loli.net/2023/04/29/ZWnsuk7IrB1JTi6.png" /></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;​
-关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。&lt;/p&gt;
-&lt;p&gt;下面是关闭CLOUDFLARE缓存。</summary>
-    
-    
-    
-    <category term="Cloudflare" scheme="https://coutures.top/categories/Cloudflare/"/>
-    
-    <category term="Cloud" scheme="https://coutures.top/categories/Cloudflare/Cloud/"/>
-    
-    
-    <category term="Cloudflare" scheme="https://coutures.top/tags/Cloudflare/"/>
-    
-    <category term="Cloud" scheme="https://coutures.top/tags/Cloud/"/>
     
   </entry>
   
