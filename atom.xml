@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-01-02T05:44:38.216Z</updated>
+  <updated>2024-01-04T00:10:54.382Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS 7.8安装Vmware-tools</title>
+    <link href="https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/"/>
+    <id>https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/</id>
+    <published>2024-01-04T00:09:08.000Z</published>
+    <updated>2024-01-04T00:10:54.382Z</updated>
+    
+    <content type="html"><![CDATA[<h6id="首先要进入挂载目录下面看看有没有挂载"><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png" /></p><p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p><ol type="1"><li><p>如果有，创建一个新的目录来复制文件：</p><div class="sourceCode" id="cb1"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/vmware-tools</span></code></pre></div></li><li><p>复制文件到您的家目录下的新文件夹：</p><div class="sourceCode" id="cb2"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /mnt/<span class="pp">*</span> ~/vmware-tools</span></code></pre></div></li><li><p>进入该目录：</p><div class="sourceCode" id="cb3"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/vmware-tools</span></code></pre></div></li><li><p>如果 VMware Tools 是压缩的 tar 文件，解压它：</p><div class="sourceCode" id="cb4"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxvf</span> VMwareTools-x.x.x-xxxxxx.tar.gz</span></code></pre></div><p>确保将 <code>x.x.x-xxxxxx</code> 替换为实际的文件名。</p></li><li><p>进入解压后的目录（通常是<code>vmware-tools-distrib</code>）：</p><div class="sourceCode" id="cb5"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> vmware-tools-distrib</span></code></pre></div></li><li><p>以 root 用户运行安装脚本：</p><div class="sourceCode" id="cb6"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./vmware-install.pl</span></code></pre></div></li><li><p>安装完成以后重启，之后执行命令：</p><div class="sourceCode" id="cb7"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status vmware-tools</span></code></pre></div></li></ol><p>运行结果</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231225122556587.png" /></p><p>安装完成~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h6
+id=&quot;首先要进入挂载目录下面看看有没有挂载&quot;&gt;&lt;strong&gt;首先要进入挂载目录下面，看看有没有挂载&lt;/strong&gt;&lt;/h6&gt;
+&lt;p&gt;&lt;img
+src=&quot;https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a90</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于Mac word缺少字体的解决方式</title>
@@ -475,34 +498,6 @@ class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&
     
     
     <category term="Ubuntu - SSH" scheme="https://coutures.top/tags/Ubuntu-SSH/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu卸载Nginx和替换配置文件</title>
-    <link href="https://coutures.top/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>https://coutures.top/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
-    <published>2023-05-04T12:42:40.000Z</published>
-    <updated>2023-12-30T11:01:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="卸载nginx">1、卸载Nginx</h3><ol type="1"><li>停止 Nginx 服务：</li></ol><span id="more"></span><div class="sourceCode" id="cb1"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span></code></pre></div><ol type="1"><li>删除 Nginx：</li></ol><div class="sourceCode" id="cb2"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get remove nginx</span></code></pre></div><ol type="1"><li>删除 Nginx 配置文件：</li></ol><div class="sourceCode" id="cb3"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /etc/nginx/</span></code></pre></div><ol type="1"><li>删除 Nginx 日志文件：</li></ol><div class="sourceCode" id="cb4"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /var/log/nginx/</span></code></pre></div><ol type="1"><li>最后，删除 Nginx 用户和用户组：</li></ol><div class="sourceCode" id="cb5"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> deluser <span class="at">--remove-home</span> nginx</span><span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> delgroup nginx</span></code></pre></div><p>完成以上步骤后，就成功卸载 Nginx。</p><h3 id="配置文件替换重置配置文件">2、配置文件替换（重置配置文件）</h3><p>1.打开终端，输入以下命令停止NGINX服务：</p><div class="sourceCode" id="cb6"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span></code></pre></div><p>2.备份NGINX的当前配置文件：</p><div class="sourceCode" id="cb7"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak</span></code></pre></div><p>3.恢复默认的NGINX配置文件：</p><div class="sourceCode" id="cb8"><preclass="sourceCode awk"><code class="sourceCode awk"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sudo cp <span class="op">/</span>etc<span class="op">/</span>nginx<span class="op">/</span>nginx.conf.<span class="cf">default</span> <span class="op">/</span>etc<span class="op">/</span>nginx<span class="op">/</span>nginx.conf</span></code></pre></div><p>4.检查配置文件是否有错误：</p><div class="sourceCode" id="cb9"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nginx <span class="at">-t</span></span></code></pre></div><p>5.如果没有错误，则重新启动NGINX服务：</p><div class="sourceCode" id="cb10"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span></code></pre></div><p>现在，您的NGINX服务应该已经重置并重新启动。</p><h3 id="安装nginx">3、安装Nginx</h3><ol type="1"><li>打开命令终端，更新软件仓库信息：</li></ol><div class="sourceCode" id="cb11"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code></pre></div><pre><code>sudo apt install nginx</code></pre><ol type="1"><li>安装完成后，您可以启动NGINX并将其添加到启动项：</li></ol><div class="sourceCode" id="cb13"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx<span class="kw">`</span> <span class="kw">`</span>sudo systemctl enable nginx</span></code></pre></div><ol type="1"><li>检查NGINX是否正在运行：</li></ol><div class="sourceCode" id="cb14"><preclass="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status nginx</span></code></pre></div><p>如果看到“Active: active(running)”的状态，则说明NGINX已成功安装并正在运行。</p>]]></content>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;卸载nginx&quot;&gt;1、卸载Nginx&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
-&lt;li&gt;停止 Nginx 服务：&lt;/li&gt;
-&lt;/ol&gt;</summary>
-    
-    
-    
-    <category term="nginx" scheme="https://coutures.top/categories/nginx/"/>
-    
-    <category term="运维" scheme="https://coutures.top/categories/nginx/%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="Ubuntu" scheme="https://coutures.top/categories/nginx/%E8%BF%90%E7%BB%B4/Ubuntu/"/>
-    
-    
-    <category term="Nginx - 运维" scheme="https://coutures.top/tags/Nginx-%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
