@@ -338,13 +338,14 @@
 <p>打开终端应用</p>
 <p>如果过启动关闭MySQL，输入以下命令：</p>
 <span id="more"></span>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> launchctl disable system/com.oracle.oss.mysql.mysqld</span></code></pre></div>
+
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> launchctl disable system/com.oracle.oss.mysql.mysqld
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>系统会提示输入管理员密码，输入密码后按下回车键。</p>
 <p>执行命令后，MySQL将会停止运行，你可以在终端中确认MySQL已被成功关闭。</p>
 <p>如果想要启动自动开机MySQL，可以使用以下命令：</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> launchctl enable system/com.oracle.oss.mysql.mysqld</span></code></pre></div>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> launchctl <span class="token function">enable</span> system/com.oracle.oss.mysql.mysqld
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样可以启动MySQL并开始运行~</p>
 
                 

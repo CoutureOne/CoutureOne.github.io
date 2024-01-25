@@ -344,29 +344,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="报错内容">报错内容：</h3>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[28000][1698]</span> Access denied for user <span class="st">&#39;root&#39;</span>@<span class="st">&#39;10.211.55.22&#39;</span></span></code></pre></div>
+                <h3 id="报错内容："><a href="#报错内容：" class="headerlink" title="报错内容："></a>报错内容：</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>28000<span class="token punctuation">]</span><span class="token punctuation">[</span>1698<span class="token punctuation">]</span> Access denied <span class="token keyword">for</span> user <span class="token string">'root'</span>@<span class="token string">'10.211.55.22'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <span id="more"></span>
-<p><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png" /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png" /></p>
-<h3 id="导致问题出现的原因">导致问题出现的原因：</h3>
-<p>​ 在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止
-<code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL
-时选择了默认配置，则在远程主机上使用 <code>root</code>
-用户名和密码连接到 MySQL 服务器时将会失败。</p>
-<h3 id="解决方式">解决方式：</h3>
-<p>​
-首先你得防火墙规则要放通端口<code>3306</code>,如果是虚拟机内网的情况，也可以直接给防火墙关掉。</p>
-<p>​ 然后可以直接新添加一个用户，用来管理MySQL。</p>
-<pre class="mysql"><code>CREATE USER &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;; # username 你的用户名  password 你要设置的密码
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/b1ec3ad37670b94ee13ae571d0dc9f7f.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/e92246d9f5d9f15c20b70b597ccb6d2c.png"></p>
+<h3 id="导致问题出现的原因："><a href="#导致问题出现的原因：" class="headerlink" title="导致问题出现的原因："></a>导致问题出现的原因：</h3><p>​	在 MySQL 5.7.6 及以上版本中，为了提高安全性，MySQL 将默认禁止 <code>root</code> 用户从远程主机登录。因此，如果你在安装 MySQL 时选择了默认配置，则在远程主机上使用 <code>root</code> 用户名和密码连接到 MySQL 服务器时将会失败。</p>
+<h3 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h3><p>​	首先你得防火墙规则要放通端口<code>3306</code>,如果是虚拟机内网的情况，也可以直接给防火墙关掉。</p>
+<p>​	然后可以直接新添加一个用户，用来管理MySQL。</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">CREATE USER 'username'@'%' IDENTIFIED BY 'password'; # username 你的用户名  password 你要设置的密码
 
-FLUSH PRIVILEGES; # 刷新</code></pre>
+FLUSH PRIVILEGES; # 刷新
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这时候再次连接就能连接成功了~</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/MacPicuture/image/image-20230417123523144.png"></p>
 <p> </p>
 
                 
