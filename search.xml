@@ -8,40 +8,20 @@
 </blockquote>
 <h3 id="第一步">第一步：</h3>
 <p> <code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p>
-<figure>
-<img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png"
-alt="image-20240227130332524" />
-<figcaption aria-hidden="true">image-20240227130332524</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png"
-alt="image-20240227130351806" />
-<figcaption aria-hidden="true">image-20240227130351806</figcaption>
-</figure>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png" /></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png" /></p>
 <h3 id="第二步">第二步：</h3>
 <p> 搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p>
-<figure>
-<img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png"
-alt="image-20240227130619030" />
-<figcaption aria-hidden="true">image-20240227130619030</figcaption>
-</figure>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png" /></p>
 <h3 id="第三步">第三步：</h3>
 <p> 鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p>
-<figure>
-<img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png"
-alt="image-20240227130833814" />
-<figcaption aria-hidden="true">image-20240227130833814</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png"
-alt="image-20240227130904059" />
-<figcaption aria-hidden="true">image-20240227130904059</figcaption>
-</figure>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png" /></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png" /></p>
 <h3 id="第四步">第四步：</h3>
 <p> 重启电脑！问题解决</p>
 <p><code>注意，共享和接受打印机都要修改！！！！</code></p>
@@ -170,8 +150,8 @@ src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102123002189
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>Hexo</tag>
+        <tag>Mac</tag>
       </tags>
   </entry>
   <entry>
@@ -1858,8 +1838,8 @@ id="第六步等待u盘写入百分之百成功以后会有提示u盘制作完�
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 11</tag>
         <tag>Windows 10</tag>
+        <tag>Windows 11</tag>
       </tags>
   </entry>
   <entry>

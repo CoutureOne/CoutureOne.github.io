@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-02-27T10:42:04.877Z</updated>
+  <updated>2024-02-27T10:57:06.065Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://coutures.top/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
     <id>https://coutures.top/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
     <published>2024-02-27T10:39:37.000Z</published>
-    <updated>2024-02-27T10:42:04.877Z</updated>
+    <updated>2024-02-27T10:57:06.065Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。</p></blockquote><h3 id="第一步">第一步：</h3><p> <code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p><figure><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png"alt="image-20240227130332524" /><figcaption aria-hidden="true">image-20240227130332524</figcaption></figure><figure><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png"alt="image-20240227130351806" /><figcaption aria-hidden="true">image-20240227130351806</figcaption></figure><h3 id="第二步">第二步：</h3><p> 搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p><figure><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png"alt="image-20240227130619030" /><figcaption aria-hidden="true">image-20240227130619030</figcaption></figure><h3 id="第三步">第三步：</h3><p> 鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p><figure><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png"alt="image-20240227130833814" /><figcaption aria-hidden="true">image-20240227130833814</figcaption></figure><figure><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png"alt="image-20240227130904059" /><figcaption aria-hidden="true">image-20240227130904059</figcaption></figure><h3 id="第四步">第四步：</h3><p> 重启电脑！问题解决</p><p><code>注意，共享和接受打印机都要修改！！！！</code></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。</p></blockquote><h3 id="第一步">第一步：</h3><p> <code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png" /></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png" /></p><h3 id="第二步">第二步：</h3><p> 搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png" /></p><h3 id="第三步">第三步：</h3><p> 鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png" /></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png" /></p><h3 id="第四步">第四步：</h3><p> 重启电脑！问题解决</p><p><code>注意，共享和接受打印机都要修改！！！！</code></p>]]></content>
     
     
       
@@ -146,9 +146,9 @@ src=&quot;https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a90</summary>
     <category term="Mac" scheme="https://coutures.top/categories/Hexo/Mac/"/>
     
     
-    <category term="Mac" scheme="https://coutures.top/tags/Mac/"/>
-    
     <category term="Hexo" scheme="https://coutures.top/tags/Hexo/"/>
+    
+    <category term="Mac" scheme="https://coutures.top/tags/Mac/"/>
     
   </entry>
   
