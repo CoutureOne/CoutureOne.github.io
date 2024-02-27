@@ -337,44 +337,40 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
-<ol>
-<li>登录到您的远程计算机<span id="more"></span>     </li>
+<ol type="1">
+<li>登录到您的远程计算机 <span id="more"></span><br />
+</li>
 <li>打开您的<code>SSH</code>配置文件</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">nano</span> /etc/ssh/sshd_config
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano /etc/ssh/sshd_config</span></code></pre></div>
+<ol start="3" type="1">
 <li>将以下行添加到配置文件的末尾：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">PermitUserEnvironment <span class="token function">yes</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新启动<code>SSH</code>服务器</p>
-</li>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">PermitUserEnvironment</span> yes</span></code></pre></div>
+<ol start="4" type="1">
+<li><p>保存并关闭文件</p></li>
+<li><p>重新启动<code>SSH</code>服务器</p></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">service</span> <span class="token function">ssh</span> restart
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="6">
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> service ssh restart</span></code></pre></div>
+<ol start="6" type="1">
 <li>创建一个<code>.bashrc</code>文件并添加一些变量</li>
 </ol>
-<pre><code>nano ~/.bashrc
-</code></pre>
-<ol start="7">
+<pre><code>nano ~/.bashrc</code></pre>
+<ol start="7" type="1">
 <li>添加以下行到文本中：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">export</span> PS1<span class="token operator">=</span><span class="token string">"\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PS1</span><span class="op">=</span><span class="st">&quot;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]</span><span class="dt">\$</span><span class="st"> &quot;</span></span></code></pre></div>
 <p>这会设置您的提示符。</p>
-<ol start="8">
-<li><p>保存并关闭文件</p>
-</li>
-<li><p>重新加载<code>bashrc</code>文件</p>
-</li>
+<ol start="8" type="1">
+<li><p>保存并关闭文件</p></li>
+<li><p>重新加载<code>bashrc</code>文件</p></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> ~/.bashrc
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div>
 <p>这能确保让<code>.bashrc</code>的变更生效。</p>
 <p>从现在开始，在使用<code>SSH</code>连接到远程计算机时，您应该会在输入命令时获得提示。</p>
 

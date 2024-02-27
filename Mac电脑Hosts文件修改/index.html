@@ -319,19 +319,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&ensp;&ensp;因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p>
-<p>&ensp;问题如图所示：</p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png"></p>
-<p>&ensp;为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p>
-<p>&ensp;<strong>锁死<code>hosts</code>文件：</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags uchg /etc/hosts
-<span class="token function">sudo</span> chflags schg /etc/hosts
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>&ensp;<strong>解锁<code>hosts</code>文件：</strong></p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags -hv noschg /etc/hosts
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>&ensp;推荐自带终端<code>YYDS</code>!!!</p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png"><br>最后找到一个开源的修改hosts文件的软件<a target="_blank" rel="noopener" href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>
+                <p>  因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p>
+<p> 问题如图所示：</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png" /></p>
+<p> 为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p>
+<p> <strong>锁死<code>hosts</code>文件：</strong></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags uchg /etc/hosts</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags schg /etc/hosts</span></code></pre></div>
+<p> <strong>解锁<code>hosts</code>文件：</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags <span class="at">-hv</span> noschg /etc/hosts</span></code></pre></div>
+<p> 推荐自带终端<code>YYDS</code>!!!</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png" />
+最后找到一个开源的修改hosts文件的软件<a
+target="_blank" rel="noopener" href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>
 
                 
             </div>
@@ -439,39 +443,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/">
+                <a href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="局域网共享打印机出现0x0000011b错误解决方式">
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Mac电脑Hosts文件修改">
-                        
-                        <span class="card-title">Mac电脑Hosts文件修改</span>
+                        <span class="card-title">局域网共享打印机出现0x0000011b错误解决方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Mac hosts文件修改遇到的问题
+                            0x0000011b错误解决方式
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-27
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Couture
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" class="post-category">
+                                    共享打印机
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/">
+                        <span class="chip bg-color">共享打印机</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

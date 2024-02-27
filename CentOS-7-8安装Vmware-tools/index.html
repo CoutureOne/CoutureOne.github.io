@@ -336,41 +336,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h6 id="首先要进入挂载目录下面，看看有没有挂载"><a href="#首先要进入挂载目录下面，看看有没有挂载" class="headerlink" title="首先要进入挂载目录下面，看看有没有挂载"></a><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png"></p>
-<p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools 的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p>
-<ol>
+                <h6
+id="首先要进入挂载目录下面看看有没有挂载"><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png" /></p>
+<p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools
+的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p>
+<ol type="1">
 <li><p>如果有，创建一个新的目录来复制文件：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/vmware-tools</span></code></pre></div></li>
 <li><p>复制文件到您的家目录下的新文件夹：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r /mnt/* ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /mnt/<span class="pp">*</span> ~/vmware-tools</span></code></pre></div></li>
 <li><p>进入该目录：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/vmware-tools</span></code></pre></div></li>
 <li><p>如果 VMware Tools 是压缩的 tar 文件，解压它：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -zxvf VMwareTools-x.x.x-xxxxxx.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>确保将 <code>x.x.x-xxxxxx</code> 替换为实际的文件名。</p>
-</li>
-<li><p>进入解压后的目录（通常是 <code>vmware-tools-distrib</code>）：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> vmware-tools-distrib
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxvf</span> VMwareTools-x.x.x-xxxxxx.tar.gz</span></code></pre></div>
+<p>确保将 <code>x.x.x-xxxxxx</code> 替换为实际的文件名。</p></li>
+<li><p>进入解压后的目录（通常是
+<code>vmware-tools-distrib</code>）：</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> vmware-tools-distrib</span></code></pre></div></li>
 <li><p>以 root 用户运行安装脚本：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> ./vmware-install.pl
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./vmware-install.pl</span></code></pre></div></li>
 <li><p>安装完成以后重启，之后执行命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl status vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status vmware-tools</span></code></pre></div></li>
 </ol>
 <p>运行结果</p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231225122556587.png"></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231225122556587.png" /></p>
 <p>安装完成~</p>
 
                 
@@ -572,12 +571,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
                     <a href="/tags/Mac/">
                         <span class="chip bg-color">Mac</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
                 </div>
