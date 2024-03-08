@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="阿里云Docker镜像加速, Couture&#39;s Blog">
-    <meta name="description" content="阿里云">
+    <meta name="keywords" content="CentOS 7.9修改远程端口号踩坑, Couture&#39;s Blog">
+    <meta name="description" content="远程端口号配置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>阿里云Docker镜像加速 | Couture&#39;s Blog</title>
+    <title>CentOS 7.9修改远程端口号踩坑 | Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -258,12 +258,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">阿里云Docker镜像加速</h1>
+                    <h1 class="description center-align post-title">CentOS 7.9修改远程端口号踩坑</h1>
                 </div>
             </div>
         </div>
@@ -287,12 +287,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                <span class="chip bg-color">运维</span>
+                            <a href="/tags/CentOS-Linux/">
+                                <span class="chip bg-color">CentOS - Linux</span>
                             </a>
                         
                     </div>
@@ -303,16 +299,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/docker/" class="post-category">
-                                docker
-                            </a>
-                        
-                            <a href="/categories/docker/%E8%BF%90%E7%BB%B4/" class="post-category">
-                                运维
-                            </a>
-                        
-                            <a href="/categories/docker/%E8%BF%90%E7%BB%B4/DevOps/" class="post-category">
-                                DevOps
+                            <a href="/categories/CentOS/" class="post-category">
+                                CentOS
                             </a>
                         
                     </div>
@@ -324,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-04-08
+                    2024-03-08
                 </div>
                 
 
@@ -344,35 +332,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="阿里云镜像源">阿里云镜像源</h4>
-<span id="more"></span>
+                <p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：
+<span id="more"></span></p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# mkdir <span class="at">-p</span> /etc/docker</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# sudo tee /etc/docker/daemon.json <span class="op">&lt;&lt;-&#39;EOF&#39;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; &#123;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;log-driver&quot;: &quot;json-file&quot;,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;log-opts&quot;: &#123;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;     &quot;max-size&quot;: &quot;100m&quot;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &#125;,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">&gt;   &quot;storage-driver&quot;: &quot;overlay2&quot;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; &#125;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; EOF</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;!--more--&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">&#123;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;log-driver&quot;: &quot;json-file&quot;,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;log-opts&quot;: &#123;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;max-size&quot;: &quot;100m&quot;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">  &#125;,</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">&#125;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# sudo systemctl daemon-reload</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# sudo systemctl restart docker</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">[root@VM-4-3-centos ~]# docker ps</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> ~]# cd /etc/selinux/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# ls</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span>  final  semanage.conf  targeted  tmp</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# vi config </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This file controls the state of SELinux on the system.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># SELINUX= can take one of these three values:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     enforcing - SELinux security policy is enforced.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     permissive - SELinux prints warnings instead of enforcing.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     disabled - No SELinux policy is loaded.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">SELINUX</span><span class="op">=</span>disabled <span class="co"># 修改远程端口号要关闭</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># SELINUXTYPE= can take one of three values:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     targeted - Targeted processes are protected,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     mls - Multi Level Security protection.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="va">SELINUXTYPE</span><span class="op">=</span>targeted                                                                              </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                               </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                               </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                                             </span></code></pre></div>
 
                 
             </div>
@@ -399,7 +382,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coutures.top/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">https://coutures.top/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/</a>
+                    <a href="https://coutures.top/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/">https://coutures.top/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -437,12 +420,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                    <span class="chip bg-color">运维</span>
+                                <a href="/tags/CentOS-Linux/">
+                                    <span class="chip bg-color">CentOS - Linux</span>
                                 </a>
                             
                         </div>
@@ -488,62 +467,47 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/CentOS-8-%E5%AE%89%E8%A3%85Docker/">
+                <a href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="CentOS 7.9修改远程端口号踩坑">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="CentOS 8 安装Docker">
-                        
-                        <span class="card-title">CentOS 8 安装Docker</span>
+                        <span class="card-title">CentOS 7.9修改远程端口号踩坑</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装过程
+                            远程端口号配置
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category">
-                                    Docker
-                                </a>
-                            
-                            <a href="/categories/Docker/DevOps/" class="post-category">
-                                    DevOps
-                                </a>
-                            
-                            <a href="/categories/Docker/DevOps/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/CentOS/" class="post-category">
+                                    CentOS
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
-                    </a>
-                    
-                    <a href="/tags/DevOps/">
-                        <span class="chip bg-color">DevOps</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/CentOS-Linux/">
+                        <span class="chip bg-color">CentOS - Linux</span>
                     </a>
                     
                 </div>
@@ -557,35 +521,30 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/">
+                <a href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="局域网共享打印机出现0x0000011b错误解决方式">
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Windows10&amp;11官方系统盘制作教程">
-                        
-                        <span class="card-title">Windows10&amp;11官方系统盘制作教程</span>
+                        <span class="card-title">局域网共享打印机出现0x0000011b错误解决方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            系统盘制作
+                            0x0000011b错误解决方式
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Windows10/" class="post-category">
-                                    Windows10
-                                </a>
-                            
-                            <a href="/categories/Windows10/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" class="post-category">
-                                    系统安装
+                            <a href="/categories/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" class="post-category">
+                                    共享打印机
                                 </a>
                             
                             
@@ -595,12 +554,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Windows-10/">
-                        <span class="chip bg-color">Windows 10</span>
-                    </a>
-                    
-                    <a href="/tags/Windows-11/">
-                        <span class="chip bg-color">Windows 11</span>
+                    <a href="/tags/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/">
+                        <span class="chip bg-color">共享打印机</span>
                     </a>
                     
                 </div>
