@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WinServer2019修改远程端口号</title>
+    <url>/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/</url>
+    <content><![CDATA[<ul>
+<li>先进入注册表</li>
+</ul>
+<p><code>Win+R</code>输入<code>regedit</code>回车，进入注册表</p>
+<pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/Wds/rdpwd/Tds/tcp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/WinStations/RDP-Tcp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改对应注册表中的<code>PortNumber</code>修改</p>
+<ul>
+<li>防火墙入站规则添加相应的端口</li>
+</ul>
+<blockquote>
+<p>一般情况下<code>Windows</code>服务器都是禁止<code>ping</code>的，所以如果想要<code>Windows</code>服务器能<code>ping</code>通，如果想要<code>ping</code>通，这时候需要给防火墙给关闭。</p>
+</blockquote>
+<p>&ensp;修改完成以后需要进行重启一次，这时候为了测试远程端口号是否修改成功，可以在终端测试：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">telnet 127.0.0.1 端口号
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果能进去，则说明通了，不行则说明还需要修改。</p>
+]]></content>
+      <categories>
+        <category>WinServer - Windows</category>
+      </categories>
+      <tags>
+        <tag>WinServer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS 7.9修改远程端口号踩坑</title>
     <url>/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：</p>
@@ -77,6 +107,12 @@ SELINUXTYPE<span class="token operator">=</span>targeted
 <p>&ensp;推荐自带终端<code>YYDS</code>!!!</p>
 <p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png"><br>最后找到一个开源的修改hosts文件的软件<a href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>
 ]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
   </entry>
   <entry>
     <title>关于Powertoys安装后，输入法打字卡顿解决方式</title>

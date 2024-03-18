@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-03-08T12:00:09.542Z</updated>
+  <updated>2024-03-18T13:59:38.178Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WinServer2019修改远程端口号</title>
+    <link href="https://coutures.top/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/"/>
+    <id>https://coutures.top/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/</id>
+    <published>2024-03-18T13:52:27.000Z</published>
+    <updated>2024-03-18T13:59:38.178Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>先进入注册表</li></ul><p><code>Win+R</code>输入<code>regedit</code>回车，进入注册表</p><pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/Wds/rdpwd/Tds/tcp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/WinStations/RDP-Tcp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>修改对应注册表中的<code>PortNumber</code>修改</p><ul><li>防火墙入站规则添加相应的端口</li></ul><blockquote><p>一般情况下<code>Windows</code>服务器都是禁止<code>ping</code>的，所以如果想要<code>Windows</code>服务器能<code>ping</code>通，如果想要<code>ping</code>通，这时候需要给防火墙给关闭。</p></blockquote><p>&ensp;修改完成以后需要进行重启一次，这时候为了测试远程端口号是否修改成功，可以在终端测试：</p><pre class="line-numbers language-shell"><code class="language-shell">telnet 127.0.0.1 端口号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果能进去，则说明通了，不行则说明还需要修改。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;先进入注册表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Win+R&lt;/code&gt;输入&lt;code&gt;regedit&lt;/code&gt;回车，进入注册表&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;lang</summary>
+      
+    
+    
+    
+    <category term="WinServer - Windows" scheme="https://coutures.top/categories/WinServer-Windows/"/>
+    
+    
+    <category term="WinServer" scheme="https://coutures.top/tags/WinServer/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS 7.9修改远程端口号踩坑</title>
@@ -69,7 +97,7 @@
     <link href="https://coutures.top/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
     <id>https://coutures.top/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
     <published>2024-01-25T12:25:02.000Z</published>
-    <updated>2024-01-25T12:31:34.472Z</updated>
+    <updated>2024-03-18T14:00:23.414Z</updated>
     
     <content type="html"><![CDATA[<p>&ensp;&ensp;因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p><p>&ensp;问题如图所示：</p><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png"></p><p>&ensp;为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p><p>&ensp;<strong>锁死<code>hosts</code>文件：</strong></p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags uchg /etc/hosts<span class="token function">sudo</span> chflags schg /etc/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>&ensp;<strong>解锁<code>hosts</code>文件：</strong></p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags -hv noschg /etc/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>&ensp;推荐自带终端<code>YYDS</code>!!!</p><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png"><br>最后找到一个开源的修改hosts文件的软件<a href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>]]></content>
     
@@ -82,6 +110,10 @@
     
     
     
+    <category term="Mac" scheme="https://coutures.top/categories/Mac/"/>
+    
+    
+    <category term="Mac" scheme="https://coutures.top/tags/Mac/"/>
     
   </entry>
   
@@ -466,31 +498,6 @@ sudo apt install ufw
     
     
     <category term="交换机 - 常见网络设备密码" scheme="https://coutures.top/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>交换机巡检命令</title>
-    <link href="https://coutures.top/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/"/>
-    <id>https://coutures.top/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</id>
-    <published>2023-06-17T10:00:16.000Z</published>
-    <updated>2023-12-30T11:01:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="交换机巡检命令"><a href="#交换机巡检命令" class="headerlink" title="交换机巡检命令"></a>交换机巡检命令</h1><h3 id="一、思科交换机"><a href="#一、思科交换机" class="headerlink" title="一、思科交换机"></a>一、思科交换机</h3><span id="more"></span><pre class="line-numbers language-powershell"><code class="language-powershell">show interface stats <span class="token comment" spellcheck="true"># 查看交换所有接口当前接口流量</span>show running<span class="token operator">-</span>config <span class="token comment" spellcheck="true">#  查看当前配置信息</span>show version <span class="token comment" spellcheck="true"># 查看ISO版本信息及设备正常运行时间</span>show clock <span class="token comment" spellcheck="true"># 查看设备时钟</span>show vtp status <span class="token comment" spellcheck="true"># 查看交换机vtp配置模式</span>show vtp password <span class="token comment" spellcheck="true"># 查看交换机vtp配置口令</span>show env all <span class="token comment" spellcheck="true"># 插卡设备温度，电源和风扇运转参数及是否报警</span>show inventory <span class="token comment" spellcheck="true"># 调取设备内部板卡出厂模块型号及序列号</span>show spanning<span class="token operator">-</span>tree root <span class="token comment" spellcheck="true"># 查看交换机生成树根位置</span>show interface summary <span class="token comment" spellcheck="true"># 查看交换接口当前接口流量</span>show interface <span class="token punctuation">|</span>ierrors<span class="token punctuation">|</span>FastEthernet<span class="token punctuation">|</span>GigabitEthernet <span class="token comment" spellcheck="true"># 查看接口是够存在大量input或output errors 包错误</span>show processses cpu <span class="token comment" spellcheck="true"># 查看设备CPU负载</span>show access<span class="token operator">-</span>list <span class="token comment" spellcheck="true">#查看访问控制列表配置及匹配数据包数量</span>show logging <span class="token comment" spellcheck="true"># 查看本机内部日志记录情况</span>show ip route <span class="token comment" spellcheck="true"># 查看路由表</span>show firewall <span class="token comment" spellcheck="true"># 检查防火墙的工作模式</span>show conn count <span class="token comment" spellcheck="true"># 检查防火墙并发数</span>show xlate count <span class="token comment" spellcheck="true"># 检查防火墙nat工作状态</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="二、华为-H3C交换机"><a href="#二、华为-H3C交换机" class="headerlink" title="二、华为&#x2F;H3C交换机"></a>二、华为&#x2F;H3C交换机</h3><pre class="line-numbers language-bash"><code class="language-bash">system-view <span class="token comment" spellcheck="true"># 进入系统视图</span>user-interface vty 0 4 <span class="token comment" spellcheck="true">#vty就是用telnet/ssh远程进入交换机的界面</span>screen-length 0 <span class="token comment" spellcheck="true"># 指定要在屏幕上显示行数，0默认是没有分页</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="1-硬件状态，ISO版本信息检查"><a href="#1-硬件状态，ISO版本信息检查" class="headerlink" title="1. 硬件状态，ISO版本信息检查"></a>1. 硬件状态，ISO版本信息检查</h4><pre class="line-numbers language-bash"><code class="language-bash">display clock <span class="token comment" spellcheck="true">#系统时间</span>display version <span class="token comment" spellcheck="true">#查看版本信息，最近i一次启动的时间</span>display environment <span class="token comment" spellcheck="true">#设备温度</span>display device <span class="token comment" spellcheck="true">#单板运行状态</span>display device manuinfor <span class="token comment" spellcheck="true">#查看设备序列号</span>display power <span class="token comment" spellcheck="true">#查看电源状况</span>display fan <span class="token comment" spellcheck="true">#查看风扇状况</span>disply cpu-usage task <span class="token comment" spellcheck="true">#查看CPU利用率</span>dispaly memory <span class="token comment" spellcheck="true">#查看内存大小和占用率</span>dispaly logbuffer <span class="token comment" spellcheck="true">#日志缓冲区</span><span class="token function">dir</span> flash <span class="token comment" spellcheck="true">#查看flash</span>dis boot-loader <span class="token comment" spellcheck="true">#显示软件映像文件</span>display arp <span class="token comment" spellcheck="true">#显示arp表（目的IP和目的Mac的映射关系）</span>display mac-address <span class="token comment" spellcheck="true">#查看mac地址表（二层转发通过mac地址表）</span>display ntp status <span class="token comment" spellcheck="true">#ntp状态信息</span>reset counters interface <span class="token comment" spellcheck="true">#清除接口统计信息，方便下次巡检查看接口错误包是否增加</span>display elabel <span class="token comment" spellcheck="true">#路由器设备命令—查看电子标签信息（华为）改用display device manuinfo</span>display ndp <span class="token comment" spellcheck="true">#路由器设备命令—华三V5版本支持，现在改用display lldp neighbor-information</span>display diagnostic-information <span class="token comment" spellcheck="true">#故障信息收集</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="2-系统运行配置状态检查"><a href="#2-系统运行配置状态检查" class="headerlink" title="2. 系统运行配置状态检查"></a>2. 系统运行配置状态检查</h4><pre class="line-numbers language-bash"><code class="language-bash">display interface <span class="token comment" spellcheck="true">#接口流量、链路状态</span>dis current-configuration inter <span class="token comment" spellcheck="true">#地址分配</span>dis current-configuration <span class="token operator">|</span>include ospf <span class="token comment" spellcheck="true">#路由扩散</span>display ip routing-table <span class="token comment" spellcheck="true">#路由信息</span>display ip interface <span class="token comment" spellcheck="true">#显示 vlan 端口统计数据</span>display saved-configuration <span class="token comment" spellcheck="true">#保存配置文件</span>display logbuffer <span class="token comment" spellcheck="true">#日志信息</span>display port trunk <span class="token comment" spellcheck="true">#查看参与 trunk 的端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="3-STP信息检查"><a href="#3-STP信息检查" class="headerlink" title="3. STP信息检查"></a>3. STP信息检查</h4><pre class="line-numbers language-bash"><code class="language-bash">display stp root <span class="token comment" spellcheck="true">#查看 stp 根情况</span>display stp brief <span class="token comment" spellcheck="true">#查看 stp 简单信息</span>display stp abnormal-port <span class="token comment" spellcheck="true">#查看是否有非正常端口</span>display stp region-configuration <span class="token comment" spellcheck="true">#生成树区域配置</span>display lldp neighbor-information <span class="token comment" spellcheck="true">#查看链路层邻居发现协议（邻居信息）</span>display tcp status <span class="token comment" spellcheck="true">#路由器设备命令—tcp统计数据</span>display tcp statistics <span class="token comment" spellcheck="true">#交换机设备命令—tcp统计数据</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="4-vrrp和端口聚合检查"><a href="#4-vrrp和端口聚合检查" class="headerlink" title="4.vrrp和端口聚合检查"></a>4.vrrp和端口聚合检查</h4><pre class="line-numbers language-bash"><code class="language-bash">display vrrp <span class="token comment" spellcheck="true">#查看虚拟路由冗余协议</span>display vrrp statistics <span class="token comment" spellcheck="true">#查看主备用状态</span>display link-aggregation summary <span class="token comment" spellcheck="true">#查看链路聚合组的情况</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;交换机巡检命令&quot;&gt;&lt;a href=&quot;#交换机巡检命令&quot; class=&quot;headerlink&quot; title=&quot;交换机巡检命令&quot;&gt;&lt;/a&gt;交换机巡检命令&lt;/h1&gt;&lt;h3 id=&quot;一、思科交换机&quot;&gt;&lt;a href=&quot;#一、思科交换机&quot; class=&quot;headerlink&quot; title=&quot;一、思科交换机&quot;&gt;&lt;/a&gt;一、思科交换机&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="Switch" scheme="https://coutures.top/categories/Switch/"/>
-    
-    <category term="交换机" scheme="https://coutures.top/categories/Switch/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
-    
-    
-    <category term="Switch" scheme="https://coutures.top/tags/Switch/"/>
-    
-    <category term="交换机" scheme="https://coutures.top/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
     
   </entry>
   
