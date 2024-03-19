@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-03-18T13:59:38.178Z</updated>
+  <updated>2024-03-19T06:42:55.861Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WinServer服务器之间如何最快拷贝文件</title>
+    <link href="https://coutures.top/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/"/>
+    <id>https://coutures.top/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/</id>
+    <published>2024-03-19T06:41:31.000Z</published>
+    <updated>2024-03-19T06:42:55.861Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>问题产生背景是同事希望在<code>Vsphere</code>虚拟机两台<code>Windows</code>服务器相互拷贝文件。</p></blockquote><ul><li>解决问题思路</li></ul><p>&ensp;一开始我的解决的思路是共享服务器里面的文件夹，按照这个思路自己解决问题是给想要共享的文件夹，然后通过网络共享的方式进行文件共享。</p><p>但是解决到最后，发现总是共享报错，网络设置里面的共享发现以及防火墙都关闭了，还是无法解决问题。</p><p>&ensp;下图是错误指示：</p><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40b78956307.png"></p><p>&ensp;然后排查了半天，不知道问题是出在那里，<code>Windows</code>在共享网络上有时候就是一种玄学，然后我就想用第二种解决方案。</p><p>&ensp;第二种解决方案其实就是利用<code>Windows</code>自带的远程工具，直接在虚拟机里面去远程另一台虚拟机就好了，这样文件可以相互拷贝，而且速度很快，问题就是这样得到解决的。</p><p>&ensp;第三种还有一种解决方式，就是如果两台虚拟机都能上外网的情况下，可以用远程工具，向日葵这种，当然没有<code>Windows</code>自带的远程工具方便。</p><blockquote><p>在Vsphere中，可以建立共享磁盘的方式，这样也可以进行文件之间的相互访问，一切的方法只是为了解决问题。</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;问题产生背景是同事希望在&lt;code&gt;Vsphere&lt;/code&gt;虚拟机两台&lt;code&gt;Windows&lt;/code&gt;服务器相互拷贝文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;解决问题思路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ensp;一开</summary>
+      
+    
+    
+    
+    <category term="WinServer - 服务器" scheme="https://coutures.top/categories/WinServer-%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="WinServer" scheme="https://coutures.top/tags/WinServer/"/>
+    
+  </entry>
   
   <entry>
     <title>WinServer2019修改远程端口号</title>
@@ -192,9 +222,9 @@
     <category term="Mac" scheme="https://coutures.top/categories/Hexo/Mac/"/>
     
     
-    <category term="Hexo" scheme="https://coutures.top/tags/Hexo/"/>
-    
     <category term="Mac" scheme="https://coutures.top/tags/Mac/"/>
+    
+    <category term="Hexo" scheme="https://coutures.top/tags/Hexo/"/>
     
   </entry>
   
@@ -473,31 +503,6 @@ sudo apt install ufw
     
     
     <category term="ufw - 防火墙" scheme="https://coutures.top/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见网络设备密码</title>
-    <link href="https://coutures.top/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
-    <id>https://coutures.top/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/</id>
-    <published>2023-06-20T00:22:01.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="H3C"><a href="#H3C" class="headerlink" title="H3C"></a><code>H3C</code></h3><p>（华三）路由器交换机默认用户名和密码</p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>admin</code>或<code>adminer</code></p></blockquote><span id="more"></span><h3 id="HUAWEI"><a href="#HUAWEI" class="headerlink" title="HUAWEI"></a><code>HUAWEI</code></h3><p><code>V2R900</code>之前版本</p><blockquote><p>无需使用用户名和密码</p></blockquote><p><code>V2R900</code>-<code>V2R10C00</code></p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>admin@huawei.com</code></p></blockquote><h3 id="Cisco"><a href="#Cisco" class="headerlink" title="Cisco"></a><code>Cisco</code></h3><p>思科路由器，交换机大多数默认用户名和密码：</p><blockquote><p>默认用户名：<code>admin</code>或<code>cisco</code></p><p>默认密码：<code>admin</code>或<code>cisco</code></p></blockquote><h3 id="Tp-Link"><a href="#Tp-Link" class="headerlink" title="Tp-Link"></a><code>Tp-Link</code></h3><p>中心ZTE路由器交换机默认用户名和密码</p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>admin</code></p></blockquote><h3 id="Juniper"><a href="#Juniper" class="headerlink" title="Juniper"></a><code>Juniper</code></h3><ul><li><code>Juniper</code>有两种默认用户名和密码</li></ul><p><code>netscreen</code>设备：</p><blockquote><p>默认用户名：<code>netscreen</code></p><p>默认密码：<code>netscreen</code></p></blockquote><p><code>SRX</code>设备：</p><blockquote><p>默认用户名：<code>root</code></p><p>默认密码：无（登录以后自己可以设置）</p></blockquote><h3 id="ZTE"><a href="#ZTE" class="headerlink" title="ZTE"></a><code>ZTE</code></h3><p>中心<code>ZTE</code>路由器交换机默认用户名和密码</p><blockquote><p>默认用户名：<code>ZXDSL</code></p><p>默认密码：<code>ZXDSL</code></p></blockquote><h3 id="深信服"><a href="#深信服" class="headerlink" title="深信服"></a><code>深信服</code></h3><p>下一代防火墙默认用户名和密码:</p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>admin</code></p></blockquote><p>全网行为管理AC默认用户名和密码</p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>switch</code></p></blockquote><h3 id="Alcatel"><a href="#Alcatel" class="headerlink" title="Alcatel"></a><code>Alcatel</code></h3><p><code>Alcatel</code>路由器默认用户名和密码：</p><blockquote><p>默认用户名：<code>admin</code></p><p>默认密码：<code>switch</code></p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;H3C&quot;&gt;&lt;a href=&quot;#H3C&quot; class=&quot;headerlink&quot; title=&quot;H3C&quot;&gt;&lt;/a&gt;&lt;code&gt;H3C&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;（华三）路由器交换机默认用户名和密码&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;默认用户名：&lt;code&gt;admin&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;默认密码：&lt;code&gt;admin&lt;/code&gt;或&lt;code&gt;adminer&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="网络设备" scheme="https://coutures.top/categories/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
-    
-    
-    <category term="交换机 - 常见网络设备密码" scheme="https://coutures.top/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/"/>
     
   </entry>
   

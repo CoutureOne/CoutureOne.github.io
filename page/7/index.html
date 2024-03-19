@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CentOS 7.8安装Vmware-tools, Couture&#39;s Blog">
-    <meta name="description" content="CentOS 在vcenter中安装vm-tools">
+    <meta name="keywords" content="Couture&#39;s Blog">
+    <meta name="description" content="Couture&#39;s Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CentOS 7.8安装Vmware-tools | Couture&#39;s Blog</title>
+    <title>Couture&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -52,8 +52,6 @@
 
 
 
-
-    
 
 
 
@@ -255,450 +253,154 @@
 </header>
 
     
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">CentOS 7.8安装Vmware-tools</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
     <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/CentOS/">
-                                <span class="chip bg-color">CentOS</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/CentOS/" class="post-category">
-                                CentOS
-                            </a>
-                        
-                            <a href="/categories/CentOS/NetWork/" class="post-category">
-                                NetWork
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-01-04
-                </div>
-                
-
-                
-
-                
-
-                
-
+                不忘初心 方得始终
                 
             </div>
-        </div>
-        <hr class="clearfix">
 
-        
-
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h6 id="首先要进入挂载目录下面，看看有没有挂载"><a href="#首先要进入挂载目录下面，看看有没有挂载" class="headerlink" title="首先要进入挂载目录下面，看看有没有挂载"></a><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png"></p>
-<p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools 的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p>
-<ol>
-<li><p>如果有，创建一个新的目录来复制文件：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>复制文件到您的家目录下的新文件夹：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r /mnt/* ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>进入该目录：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~/vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>如果 VMware Tools 是压缩的 tar 文件，解压它：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -zxvf VMwareTools-x.x.x-xxxxxx.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>确保将 <code>x.x.x-xxxxxx</code> 替换为实际的文件名。</p>
-</li>
-<li><p>进入解压后的目录（通常是 <code>vmware-tools-distrib</code>）：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> vmware-tools-distrib
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>以 root 用户运行安装脚本：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> ./vmware-install.pl
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>安装完成以后重启，之后执行命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl status vmware-tools
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ol>
-<p>运行结果</p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231225122556587.png"></p>
-<p>安装完成~</p>
-
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="/libs/typed/typed.js"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "忽有故人心上过,回首山河已是秋,恰有相思同沐雪,此生已算共白头",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
                 
             </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Couture</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/">https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Couture</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/CentOS/">
-                                    <span class="chip bg-color">CentOS</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/%E5%85%B3%E4%BA%8EPowertoys%E5%AE%89%E8%A3%85%E5%90%8E%EF%BC%8C%E8%BE%93%E5%85%A5%E6%B3%95%E6%89%93%E5%AD%97%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="关于Powertoys安装后，输入法打字卡顿解决方式">
-                        
-                        <span class="card-title">关于Powertoys安装后，输入法打字卡顿解决方式</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Powertoys打字卡顿解决
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Windows/" class="post-category">
-                                    Windows
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Windows-Powertoys/">
-                        <span class="chip bg-color">Windows - Powertoys</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="关于Mac word缺少字体的解决方式">
-                        
-                        <span class="card-title">关于Mac word缺少字体的解决方式</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            安装需要的字体
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-02
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
-                                </a>
-                            
-                            <a href="/categories/Hexo/Mac/" class="post-category">
-                                    Mac
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Mac/">
-                        <span class="chip bg-color">Mac</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-
-        
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
         </div>
     </div>
 </div>
 
-<!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
+
+    </div>
+</div>
+
+
+<main class="content">
+
     
 
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/Spring%EF%BC%88%E4%B8%80%EF%BC%89/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring（一）">
+                            
+                            <span class="card-title">Spring（一）</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Spring
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-29
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    后端学习
+                                </a>
+                                
+                                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/spring/">
+                            <span class="chip bg-color">spring</span>
+                        </a>
+                        
+                        <a href="/tags/ssm/">
+                            <span class="chip bg-color">ssm</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+        </div>
+    </article>
+
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/6/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">7 / 7</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a class="right btn-floating btn-large disabled">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 
