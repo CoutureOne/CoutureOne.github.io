@@ -341,22 +341,18 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>安装命令：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">brew install telnet
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="shell"><code>brew install telnet</code></pre>
 <span id="more"></span>
 <p>打印报错信息：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">fatal: not in a git directory
+<pre class="shell"><code>fatal: not in a git directory
 
-Error: Command failed with exit 128: git
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+Error: Command failed with exit 128: git</code></pre>
 <p>解决方式：</p>
 <p>首先执行命令：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">unset HOMEBREW_BOTTLE_DOMAIN
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="shell"><code>unset HOMEBREW_BOTTLE_DOMAIN</code></pre>
 <p>然后执行命令：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
-git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="shell"><code>git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
+git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask</code></pre>
 <p>当然执行这个两个命令是不分前后的，都可以，但是都要执行，然后就是成功解决了报错问题!</p>
 
                 

@@ -336,10 +336,10 @@
 <li>先进入注册表</li>
 </ul>
 <p><code>Win+R</code>输入<code>regedit</code>回车，进入注册表</p>
-<pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/Wds/rdpwd/Tds/tcp
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/WinStations/RDP-Tcp
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal</span> Server/Wds/rdpwd/Tds/tcp</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal</span> Server/WinStations/RDP-Tcp</span></code></pre></div>
 <p>修改对应注册表中的<code>PortNumber</code>修改</p>
 <ul>
 <li>防火墙入站规则添加相应的端口</li>
@@ -347,9 +347,8 @@
 <blockquote>
 <p>一般情况下<code>Windows</code>服务器都是禁止<code>ping</code>的，所以如果想要<code>Windows</code>服务器能<code>ping</code>通，如果想要<code>ping</code>通，这时候需要给防火墙给关闭。</p>
 </blockquote>
-<p>&ensp;修改完成以后需要进行重启一次，这时候为了测试远程端口号是否修改成功，可以在终端测试：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">telnet 127.0.0.1 端口号
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> 修改完成以后需要进行重启一次，这时候为了测试远程端口号是否修改成功，可以在终端测试：</p>
+<pre class="shell"><code>telnet 127.0.0.1 端口号</code></pre>
 <p>如果能进去，则说明通了，不行则说明还需要修改。</p>
 
                 
@@ -477,7 +476,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            WinServer文件互相访问
                         
                     </div>
                     <div class="publish-info">
