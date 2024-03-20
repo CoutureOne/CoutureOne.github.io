@@ -317,12 +317,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-03-18
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    207
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -332,23 +352,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>  因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p>
-<p> 问题如图所示：</p>
-<p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png" /></p>
-<p> 为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p>
-<p> <strong>锁死<code>hosts</code>文件：</strong></p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags uchg /etc/hosts</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags schg /etc/hosts</span></code></pre></div>
-<p> <strong>解锁<code>hosts</code>文件：</strong></p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chflags <span class="at">-hv</span> noschg /etc/hosts</span></code></pre></div>
-<p> 推荐自带终端<code>YYDS</code>!!!</p>
-<p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png" />
-最后找到一个开源的修改hosts文件的软件<a
-target="_blank" rel="noopener" href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>
+                <p>&ensp;&ensp;因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p>
+<p>&ensp;问题如图所示：</p>
+<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png"></p>
+<p>&ensp;为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p>
+<p>&ensp;<strong>锁死<code>hosts</code>文件：</strong></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags uchg /etc/hosts
+<span class="token function">sudo</span> chflags schg /etc/hosts
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>&ensp;<strong>解锁<code>hosts</code>文件：</strong></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> chflags -hv noschg /etc/hosts
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>&ensp;推荐自带终端<code>YYDS</code>!!!</p>
+<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png"><br>最后找到一个开源的修改hosts文件的软件<a target="_blank" rel="noopener" href="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>
 
                 
             </div>
@@ -687,6 +703,9 @@ target="_blank" rel="noopener" href="https://github.com/oldj/SwitchHosts">Switch
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">59.9k</span>
             
             
             

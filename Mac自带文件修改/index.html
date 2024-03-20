@@ -317,12 +317,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-03-16
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    156
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -332,31 +352,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题所在">问题所在：</h3>
-<span id="more"></span>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" /></p>
+                <h3 id="问题所在："><a href="#问题所在：" class="headerlink" title="问题所在："></a>问题所在：</h3><span id="more"></span>
+<img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" />
+
 <p>想要修改<code>Mac</code>系统的文件，但是上图来看，没有操作权限</p>
-<h3 id="解决方案">解决方案：</h3>
-<ol type="1">
-<li><h5 id="禁用sip并删除文件"><strong>禁用SIP并删除文件：</strong></h5>
-<ul>
-<li><p>重启电脑，并在启动时按住<code>Command + R</code>
-进入恢复模式。</p></li>
-<li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p></li>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol>
+<li><h5 id="禁用SIP并删除文件："><a href="#禁用SIP并删除文件：" class="headerlink" title="禁用SIP并删除文件："></a><strong>禁用SIP并删除文件：</strong></h5><ul>
+<li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p>
+</li>
+<li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p>
+</li>
 <li><p>在终端中输入以下命令来禁用SIP：</p>
-<pre><code>csrutil disable</code></pre></li>
-<li><p>重启电脑。</p></li>
+<pre><code>csrutil disable
+</code></pre>
+</li>
+<li><p>重启电脑。</p>
+</li>
 <li><p>重新尝试删除文件：</p>
-<pre><code>sudo rm -rf ~/Desktop/hosts</code></pre></li>
-</ul></li>
-<li><h5 id="重新启用sip"><strong>重新启用SIP：</strong></h5>
-<ul>
-<li><p>重启电脑，并在启动时按住<code>Command + R</code>
-进入恢复模式。</p></li>
+<pre><code>sudo rm -rf ~/Desktop/hosts
+</code></pre>
+</li>
+</ul>
+</li>
+<li><h5 id="重新启用SIP："><a href="#重新启用SIP：" class="headerlink" title="重新启用SIP："></a><strong>重新启用SIP：</strong></h5><ul>
+<li><p>重启电脑，并在启动时按住<code>Command + R</code> 进入恢复模式。</p>
+</li>
 <li><p>打开终端，输入以下命令来重新启用SIP：</p>
-<pre><code>csrutil enable</code></pre></li>
-<li><p>重启电脑。</p></li>
-</ul></li>
+<pre><code>csrutil enable
+</code></pre>
+</li>
+<li><p>重启电脑。</p>
+</li>
+</ul>
+</li>
 </ol>
 <p>问题解决!!!</p>
 
@@ -699,6 +727,9 @@
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">59.9k</span>
             
             
             

@@ -325,12 +325,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-01-04
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    192
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -342,17 +362,18 @@
             <div id="articleContent">
                 <p>1.在mac系统的活动监视器里面找到mysqld的进程选择将它关闭掉，然后打开mac上的命令行去执行命令。</p>
 <span id="more"></span>
+
 <p>2.在命令行之中执行命令去给mysql数据库的安装目录赋予一个可以进行读写和执行任意操作的权限，在服务能够运行的情况下无法启动的原因基本上都是因为权限和配置文件的问题所导致的，命令如下：</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> mysql /usr/local/mysql/data</span></code></pre></div>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chown</span> -R mysql /usr/local/mysql/data
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3.命令执行完毕之后再次输入命令去启动mysql数据库，命令如下：</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/local/mysql/support-files/mysql.server start</span></code></pre></div>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> /usr/local/mysql/support-files/mysql.server start
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4.执行完毕成功以后出现：</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Starting</span> MySQL</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.Logging</span> to <span class="st">&#39;/usr/local/mysql/data/couturedeMacBook-Pro.local.err&#39;</span>.</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">SUCCESS!</span></span></code></pre></div>
+<pre class="line-numbers language-bash"><code class="language-bash">Starting MySQL
+.Logging to <span class="token string">'/usr/local/mysql/data/couturedeMacBook-Pro.local.err'</span><span class="token keyword">.</span>
+ SUCCESS<span class="token operator">!</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -484,8 +505,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            交换机巡检命令
-一、思科交换机
+                            交换机巡检命令一、思科交换机
                         
                     </div>
                     <div class="publish-info">
@@ -542,8 +562,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DTU和RTU是什么：
-​ DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。
+                            DTU和RTU是什么：​	DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。
                         
                     </div>
                     <div class="publish-info">
@@ -707,6 +726,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">59.9k</span>
             
             
             

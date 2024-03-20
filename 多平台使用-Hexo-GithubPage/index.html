@@ -308,12 +308,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-01-04
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    188
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -323,23 +343,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面 <span id="more"></span></p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">couture@MacPro</span>  ~/MyBlog  </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">位于分支</span> main</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">无文件要提交，干净的工作区</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">git@github.com:</span> Permission denied <span class="er">(</span><span class="ex">publickey</span><span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">致命错误：无法读取远程仓库。</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">请确认您有正确的访问权限并且仓库存在。</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> Something<span class="st">&#39;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">Error: Spawn failed</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess.emit (node:events:514:28)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span></code></pre></div>
+                <p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面</p>
+<span id="more"></span>
+
+<pre class="line-numbers language-bash"><code class="language-bash">couture@MacPro  ~/MyBlog  
+位于分支 main
+无文件要提交，干净的工作区
+git@github.com: Permission denied <span class="token punctuation">(</span>publickey<span class="token punctuation">)</span>.
+致命错误：无法读取远程仓库。
+
+请确认您有正确的访问权限并且仓库存在。
+FATAL Something's wrong. Maybe you can <span class="token function">find</span> the solution here: https://hexo.io/docs/troubleshooting.html
+Error: Spawn failed
+    at ChildProcess.<span class="token operator">&lt;</span>anonymous<span class="token operator">></span> <span class="token punctuation">(</span>/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21<span class="token punctuation">)</span>
+    at ChildProcess.emit <span class="token punctuation">(</span>node:events:514:28<span class="token punctuation">)</span>
+    at ChildProcess._handle.onexit <span class="token punctuation">(</span>node:internal/child_process:291:12<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个问题属于电脑没有当前GitHub的账户的ssh公钥，然后给公钥添加到当前电脑即可，添加方式:</p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40047019/article/details/122898308">添加方式连接</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40047019/article/details/122898308">添加方式连接</a></p>
 <p>添加完成以后，即可正常更新博客~</p>
 
                 
@@ -681,6 +702,9 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40047019/article/d
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">59.9k</span>
             
             
             
