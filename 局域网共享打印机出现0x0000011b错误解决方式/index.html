@@ -317,16 +317,11 @@
                 
 
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-02-27
-                </div>
-                
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    138
+                    134
                 </div>
                 
 
@@ -355,15 +350,24 @@
                 <blockquote>
 <p>网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。</p>
 </blockquote>
-<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>&ensp;<code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png"></p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png"></p>
-<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>&ensp;搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png"></p>
-<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>&ensp;鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png"></p>
-<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png"></p>
-<h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><p>&ensp;重启电脑！问题解决</p>
+<h3 id="第一步">第一步：</h3>
+<p> <code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png" /></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png" /></p>
+<h3 id="第二步">第二步：</h3>
+<p> 搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png" /></p>
+<h3 id="第三步">第三步：</h3>
+<p> 鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png" /></p>
+<p><img
+src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png" /></p>
+<h3 id="第四步">第四步：</h3>
+<p> 重启电脑！问题解决</p>
 <p><code>注意，共享和接受打印机都要修改！！！！</code></p>
 
                 
@@ -706,7 +710,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">59.9k</span>
+                        class="white-color">61.7k</span>
             
             
             
@@ -994,8 +998,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

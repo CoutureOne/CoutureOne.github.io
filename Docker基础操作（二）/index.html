@@ -317,16 +317,11 @@
                 
 
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-04
-                </div>
-                
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    349
+                    332
                 </div>
                 
 
@@ -352,20 +347,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Docker基础操作和配置"><a href="#Docker基础操作和配置" class="headerlink" title="Docker基础操作和配置"></a>Docker基础操作和配置</h2><p>配置阿里云Docker Yum源</p>
+                <h2 id="docker基础操作和配置">Docker基础操作和配置</h2>
+<p>配置阿里云Docker Yum源</p>
 <p>shell</p>
-<pre class="line-numbers language-shell"><code class="language-shell"># yum install -y yum-utils device-mapper-persistent-data lvm2 git
-# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="shell"><code># yum install -y yum-utils device-mapper-persistent-data lvm2 git
+# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre>
 <p>安装指定版本</p>
 <p>shell</p>
-<pre class="line-numbers language-shell"><code class="language-shell">  查看Docker版本：
-# yum list docker-ce --showduplicates
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="shell"><code>  查看Docker版本：
+# yum list docker-ce --showduplicates</code></pre>
 <span id="more"></span>
-<p>安装较旧版本（比如Docker 17.03.2) ：<br>FROM：指定基础镜像<br>MAINTAINER：作者的信息<br>RUN：执行什么命令<br>EXPOSE：容器对外暴露的端口<br>WORKDIR：进入到容器后进入到哪个目录<br>ENV：配置环境变量<br>ADD：将文件拷贝到镜像中并解压<br>COPY：将文件拷贝到镜像中<br>VOLUME：配置数据卷<br>CMD：容器启动时候执行的命令<br>ENTRYPOINT：容器启动时候执行的命令</p>
-<p>————————–Dockerfile参考配置———————————</p>
-<p>FROM <a target="_blank" rel="noopener" href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io&#x2F;library&#x2F;tomcat:8.5.15-jre8</a> #指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM<br>COPY music.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps #拷贝工程到tomcat指定目录<br>MAINTAINER <a href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁<br>RUN mkdir -p &#x2F;datas&#x2F;<br>ADD jdk-8u60-linux-x64.tar.gz &#x2F;datas&#x2F; #将文件拷贝到镜像中并解压<br>ENV JAVA_HOME&#x3D;&#x2F;datas&#x2F;jdk1.8.0_60 #配置JAVA_HOME<br>ENV PATH&#x3D;JAVA_HOME&#x2F;bin:JAVAH​OME&#x2F;bin:PATH #配置PATH<br>WORKDIR &#x2F;dev&#x2F; #启动容器后，如果启动交互模式，直接进入到哪个目录<br>CMD [“&#x2F;bin&#x2F;bash”] #启动容器的时候，进入到&#x2F;bin&#x2F;bash这种命令行</p>
+<p>安装较旧版本（比如Docker 17.03.2) ： FROM：指定基础镜像
+MAINTAINER：作者的信息 RUN：执行什么命令 EXPOSE：容器对外暴露的端口
+WORKDIR：进入到容器后进入到哪个目录 ENV：配置环境变量
+ADD：将文件拷贝到镜像中并解压 COPY：将文件拷贝到镜像中
+VOLUME：配置数据卷 CMD：容器启动时候执行的命令
+ENTRYPOINT：容器启动时候执行的命令</p>
+<p>--------------------------Dockerfile参考配置---------------------------------</p>
+<p>FROM <a
+target="_blank" rel="noopener" href="http://daocloud.io/library/tomcat:8.5.15-jre8">daocloud.io/library/tomcat:8.5.15-jre8</a>
+#指定要生成的镜像的基础镜像，开头第一句话必须也只能是FROM COPY music.war
+/usr/local/tomcat/webapps #拷贝工程到tomcat指定目录 MAINTAINER <a
+href="mailto:scouture@163.com">scouture@163.com</a> #指定作者是谁 RUN
+mkdir -p /datas/ ADD jdk-8u60-linux-x64.tar.gz /datas/
+#将文件拷贝到镜像中并解压 ENV JAVA_HOME=/datas/jdk1.8.0_60
+#配置JAVA_HOME ENV PATH=JAVA_HOME/bin:JAVAH​OME/bin:PATH #配置PATH
+WORKDIR /dev/ #启动容器后，如果启动交互模式，直接进入到哪个目录 CMD
+[“/bin/bash”] #启动容器的时候，进入到/bin/bash这种命令行</p>
 
                 
             </div>
@@ -716,7 +724,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">59.9k</span>
+                        class="white-color">61.7k</span>
             
             
             
@@ -1004,8 +1012,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

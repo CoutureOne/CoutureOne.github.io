@@ -317,11 +317,6 @@
                 
 
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-08
-                </div>
-                
 
                 
                 <div class="info-break-policy">
@@ -352,31 +347,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：</p>
-<span id="more"></span>
-
-<pre class="line-numbers language-bash"><code class="language-bash">
-<span class="token punctuation">[</span>root@centos7 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd /etc/selinux/</span>
-<span class="token punctuation">[</span>root@centos7 selinux<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls</span>
-config  final  semanage.conf  targeted  tmp
-<span class="token punctuation">[</span>root@centos7 selinux<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vi config </span>
-<span class="token punctuation">[</span>root@centos7 selinux<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># </span>
-
-<span class="token comment" spellcheck="true"># This file controls the state of SELinux on the system.</span>
-<span class="token comment" spellcheck="true"># SELINUX= can take one of these three values:</span>
-<span class="token comment" spellcheck="true">#     enforcing - SELinux security policy is enforced.</span>
-<span class="token comment" spellcheck="true">#     permissive - SELinux prints warnings instead of enforcing.</span>
-<span class="token comment" spellcheck="true">#     disabled - No SELinux policy is loaded.</span>
-SELINUX<span class="token operator">=</span>disabled <span class="token comment" spellcheck="true"># 修改远程端口号要关闭</span>
-<span class="token comment" spellcheck="true"># SELINUXTYPE= can take one of three values:</span>
-<span class="token comment" spellcheck="true">#     targeted - Targeted processes are protected,</span>
-<span class="token comment" spellcheck="true">#     minimum - Modification of targeted policy. Only selected processes are protected.</span>
-<span class="token comment" spellcheck="true">#     mls - Multi Level Security protection.</span>
-SELINUXTYPE<span class="token operator">=</span>targeted                                                                              
-~                                                                               
-~                                                                               
-~                                                                                             
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：
+<span id="more"></span></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> ~]# cd /etc/selinux/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# ls</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span>  final  semanage.conf  targeted  tmp</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# vi config </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@centos7</span> selinux]# </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This file controls the state of SELinux on the system.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># SELINUX= can take one of these three values:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     enforcing - SELinux security policy is enforced.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     permissive - SELinux prints warnings instead of enforcing.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     disabled - No SELinux policy is loaded.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">SELINUX</span><span class="op">=</span>disabled <span class="co"># 修改远程端口号要关闭</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># SELINUXTYPE= can take one of three values:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     targeted - Targeted processes are protected,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     mls - Multi Level Security protection.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="va">SELINUXTYPE</span><span class="op">=</span>targeted                                                                              </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                               </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                               </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span>                                                                                             </span></code></pre></div>
 
                 
             </div>
@@ -717,7 +711,7 @@ SELINUXTYPE<span class="token operator">=</span>targeted
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">59.9k</span>
+                        class="white-color">61.7k</span>
             
             
             
@@ -1005,8 +999,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
