@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    356
+                    361
                 </div>
                 
 
@@ -353,14 +353,13 @@
 <ul>
 <li>解决问题思路</li>
 </ul>
-<p> 一开始我的解决的思路是共享服务器里面的文件夹，按照这个思路自己解决问题是给想要共享的文件夹，然后通过网络共享的方式进行文件共享。</p>
+<p>&ensp;一开始我的解决的思路是共享服务器里面的文件夹，按照这个思路自己解决问题是给想要共享的文件夹，然后通过网络共享的方式进行文件共享。</p>
 <p>但是解决到最后，发现总是共享报错，网络设置里面的共享发现以及防火墙都关闭了，还是无法解决问题。</p>
-<p> 下图是错误指示：</p>
-<p><img
-src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40b78956307.png" /></p>
-<p> 然后排查了半天，不知道问题是出在那里，<code>Windows</code>在共享网络上有时候就是一种玄学，然后我就想用第二种解决方案。</p>
-<p> 第二种解决方案其实就是利用<code>Windows</code>自带的远程工具，直接在虚拟机里面去远程另一台虚拟机就好了，这样文件可以相互拷贝，而且速度很快，问题就是这样得到解决的。</p>
-<p> 第三种还有一种解决方式，就是如果两台虚拟机都能上外网的情况下，可以用远程工具，向日葵这种，当然没有<code>Windows</code>自带的远程工具方便。</p>
+<p>&ensp;下图是错误指示：</p>
+<p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40b78956307.png"></p>
+<p>&ensp;然后排查了半天，不知道问题是出在那里，<code>Windows</code>在共享网络上有时候就是一种玄学，然后我就想用第二种解决方案。</p>
+<p>&ensp;第二种解决方案其实就是利用<code>Windows</code>自带的远程工具，直接在虚拟机里面去远程另一台虚拟机就好了，这样文件可以相互拷贝，而且速度很快，问题就是这样得到解决的。</p>
+<p>&ensp;第三种还有一种解决方式，就是如果两台虚拟机都能上外网的情况下，可以用远程工具，向日葵这种，当然没有<code>Windows</code>自带的远程工具方便。</p>
 <blockquote>
 <p>在Vsphere中，可以建立共享磁盘的方式，这样也可以进行文件之间的相互访问，一切的方法只是为了解决问题。</p>
 </blockquote>
@@ -475,47 +474,49 @@ src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/">
+                <a href="/Rocky-Linux/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="WinServer服务器之间如何最快拷贝文件">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Rocky Linux">
                         
-                        <span class="card-title">WinServer服务器之间如何最快拷贝文件</span>
+                        <span class="card-title">Rocky Linux</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WinServer文件互相访问
+                            Rocky配置的一些基本操作
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/WinServer-%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
-                                    WinServer - 服务器
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WinServer/">
-                        <span class="chip bg-color">WinServer</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Rocky/">
+                        <span class="chip bg-color">Rocky</span>
                     </a>
                     
                 </div>
@@ -706,7 +707,7 @@ src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">61.7k</span>
+                        class="white-color">60.5k</span>
             
             
             
