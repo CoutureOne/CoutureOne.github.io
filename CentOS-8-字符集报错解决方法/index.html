@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="CentOS 8 字符集报错解决方法, Couture&#39;s Blog">
-    <meta name="description" content="首先是错误如下：[root@VM-4-3-centos ~]# yum install -y yum-utils
-Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8字">
+    <meta name="description" content="首先是错误如下：
+[root@VM-4-3-centos ~]# yum install -y yum-utils
+Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -334,7 +335,7 @@ Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8字">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    104
+                    112
                 </div>
                 
 
@@ -360,16 +361,18 @@ Failed to set locale, defaulting to C.UTF-8     # 这里是出现了 UTF-8字">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="首先是错误如下："><a href="#首先是错误如下：" class="headerlink" title="首先是错误如下："></a>首先是错误如下：</h5><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@VM-4-3-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># yum install -y yum-utils</span>
-Failed to <span class="token keyword">set</span> locale, defaulting to C.UTF-8     <span class="token comment" spellcheck="true"># 这里是出现了 UTF-8字符集的问题</span>
-Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                <h5 id="首先是错误如下">首先是错误如下：</h5>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@VM-4-3-centos</span> ~]# yum install <span class="at">-y</span> yum-utils</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Failed</span> to set locale, defaulting to C.UTF-8     <span class="co"># 这里是出现了 UTF-8字符集的问题</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Last</span> metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span></code></pre></div>
 <span id="more"></span>
-<h5 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h5><p>执行一下命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"export LC_ALL=en_US.UTF-8"</span>  <span class="token operator">>></span>  /etc/profile
-<span class="token keyword">echo</span> <span class="token string">"export LC_CTYPE=en_US.UTF-8"</span>  <span class="token operator">>></span>  /etc/profile
-<span class="token function">source</span> /etc/profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="解决方式">解决方式：</h5>
+<p>执行一下命令：</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;export LC_ALL=en_US.UTF-8&quot;</span>  <span class="op">&gt;&gt;</span>  /etc/profile</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;export LC_CTYPE=en_US.UTF-8&quot;</span>  <span class="op">&gt;&gt;</span>  /etc/profile</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/profile</span></code></pre></div>
 <p>在安装软件，不会有报错提示，问题得到了解决~</p>
 
                 
@@ -593,16 +596,16 @@ Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/Docker/">
                         <span class="chip bg-color">Docker</span>
                     </a>
                     
                     <a href="/tags/DevOps/">
                         <span class="chip bg-color">DevOps</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -638,8 +641,31 @@ Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.
 
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-        
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+    </style>
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
@@ -745,7 +771,7 @@ Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60.5k</span>
+                        class="white-color">62.3k</span>
             
             
             

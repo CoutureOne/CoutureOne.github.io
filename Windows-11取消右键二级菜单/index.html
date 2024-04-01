@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    162
+                    164
                 </div>
                 
 
@@ -350,18 +350,17 @@
                 <p>因为不习惯<code>Windows11</code>鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉</p>
 <p>修改成<code>Windows10</code>样式</p>
 <p><strong>搜索<code>CMD</code>，然后点击管理员运行</strong></p>
-<pre class="line-numbers language-改win10："><code class="language-改win10：">reg add "HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32" /f /ve
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="改win10："><code>reg add &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /f /ve</code></pre>
 <span id="more"></span>
 <p><strong>然后回车执行，会提示<code>successful</code></strong></p>
 <p><strong>然后去任务管理里面去重启<code>Windows资源管理器</code></strong></p>
-<p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png"></p>
+<p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png" /></p>
 <p><strong>重启完成以后打开，鼠标右键如下，成功</strong></p>
-<p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png"></p>
+<p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png" /></p>
 <p>如果想改回原始的，命令如下，重复上面一样的操，作执行<code>命令</code>-&gt;<code>重启Windows资源管理器</code></p>
 <p><code>Windows11</code>命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">reg delete <span class="token string">"HKCU\Software\Classes\CLSID\&amp;#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&amp;#125;"</span> /f
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">reg</span> delete <span class="st">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;&quot;</span> /f</span></code></pre></div>
 
                 
             </div>
@@ -535,7 +534,8 @@
                     <div class="summary block-with-text">
                         
                             下面是一些在 Vim 编辑器中常用的快捷键：
-插入模式（Insert Mode）：
+插入模式（Insert
+Mode）：
                         
                     </div>
                     <div class="publish-info">
@@ -598,8 +598,31 @@
 
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-        
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+    </style>
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
@@ -705,7 +728,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60.5k</span>
+                        class="white-color">62.3k</span>
             
             
             

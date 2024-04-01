@@ -325,14 +325,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    607
+                    628
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -351,95 +351,117 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-修改默认远程端口号"><a href="#1-修改默认远程端口号" class="headerlink" title="1.修改默认远程端口号"></a>1.修改默认远程端口号</h3><h4 id="1-1-关闭SELINUX"><a href="#1-1-关闭SELINUX" class="headerlink" title="1.1 关闭SELINUX"></a>1.1 关闭<code>SELINUX</code></h4><p>如果不关闭<code>SELINUX</code>修改远程端口号无法生效(天坑之一)</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/sysconfig/selinux</span>
-<span class="token comment" spellcheck="true"># SELINUX=enforcing 修改为</span>
-SELINUX<span class="token operator">=</span>disabled
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># reboot</span>
-
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># setstatus</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="1-2-修改防火墙"><a href="#1-2-修改防火墙" class="headerlink" title="1.2 修改防火墙"></a>1.2 修改防火墙</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --zone=public --add-port=11111/tcp --permanent</span>
-success
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --reload</span>
-success
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># more /etc/firewalld/zones/public.xml</span>
-<span class="token operator">&lt;</span>?xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span>?<span class="token operator">></span>
-<span class="token operator">&lt;</span>zone<span class="token operator">></span>
-  <span class="token operator">&lt;</span>short<span class="token operator">></span>Public<span class="token operator">&lt;</span>/short<span class="token operator">></span>
-  <span class="token operator">&lt;</span>description<span class="token operator">></span>For use <span class="token keyword">in</span> public areas. You <span class="token keyword">do</span> not trust the other computers on 
-  networks to not harm your computer. Only selected incoming connections are accepted.<span class="token operator">&lt;</span>/description<span class="token operator">></span>
-  <span class="token operator">&lt;</span>port port<span class="token operator">=</span><span class="token string">"11111"</span> protocol<span class="token operator">=</span><span class="token string">"tcp"</span>/<span class="token operator">></span>
-  <span class="token operator">&lt;</span>forward/<span class="token operator">></span>
-<span class="token operator">&lt;</span>/zone<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="1-3-修改sshd的配置"><a href="#1-3-修改sshd的配置" class="headerlink" title="1.3 修改sshd的配置"></a>1.3 修改<code>sshd</code>的配置</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd /etc/ssh/</span>
-<span class="token punctuation">[</span>root@localhost ssh<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vi sshd_config</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="1-4-修改端口port"><a href="#1-4-修改端口port" class="headerlink" title="1.4 修改端口port"></a>1.4 修改端口<code>port</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#Port 22</span>
-Port 31234
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="1-5-配置文件的有效性和密钥的完整性测试"><a href="#1-5-配置文件的有效性和密钥的完整性测试" class="headerlink" title="1.5 配置文件的有效性和密钥的完整性测试"></a>1.5 配置文件的有效性和密钥的完整性测试</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># sshd -t</span>
-<span class="token comment" spellcheck="true"># 没有问题的情况下就是显示</span>
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># </span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="1-6-重启sshd服务"><a href="#1-6-重启sshd服务" class="headerlink" title="1.6 重启sshd服务"></a>1.6 重启<code>sshd</code>服务</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart sshd.service</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="1-7-测试"><a href="#1-7-测试" class="headerlink" title="1.7 测试"></a>1.7 测试</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ss -lntp</span>
-State      Recv-Q    Send-Q   Local Address:Port     Peer Address:Port    Process
-LISTEN     0         128      0.0.0.0:31234          0.0.0.0:*            users:<span class="token punctuation">((</span><span class="token string">"sshd"</span>,pid<span class="token operator">=</span>11111,fd<span class="token operator">=</span>3<span class="token punctuation">))</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>&ensp;如果出现上面的结果说默认远程端口号明修改已经成功完成</p>
-<h3 id="2-网卡固定IP地址"><a href="#2-网卡固定IP地址" class="headerlink" title="2.网卡固定IP地址"></a>2.网卡固定<code>IP</code>地址</h3><h4 id="2-1-找到网卡信息并且修改配置文件"><a href="#2-1-找到网卡信息并且修改配置文件" class="headerlink" title="2.1 找到网卡信息并且修改配置文件"></a>2.1 找到网卡信息并且修改配置文件</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd /etc/sysconfig/network-scripts/</span>
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls</span>
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ifcfg-ens192</span>
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vi ifcfg-ens192</span>
-
-BOOTPROTO<span class="token operator">=</span>none
-ONBOOT<span class="token operator">=</span>yes
-IPADDR<span class="token operator">=</span>你的静态IP地址
-NETMASK<span class="token operator">=</span>你的子网掩码
-GATEWAY<span class="token operator">=</span>你的默认网关
-DNS1<span class="token operator">=</span>首选DNS服务器
-DNS2<span class="token operator">=</span>备用DNS服务器
-
-DEVICE<span class="token operator">=</span>eth0
-NAME<span class="token operator">=</span>eth0
-BOOTPROTO<span class="token operator">=</span>none
-ONBOOT<span class="token operator">=</span>yes
-IPADDR<span class="token operator">=</span>192.168.1.100
-NETMASK<span class="token operator">=</span>255.255.255.0
-GATEWAY<span class="token operator">=</span>192.168.1.1
-DNS1<span class="token operator">=</span>8.8.8.8
-DNS2<span class="token operator">=</span>8.8.4.4
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2-2-重启网路服务命令"><a href="#2-2-重启网路服务命令" class="headerlink" title="2.2 重启网路服务命令"></a>2.2 重启网路服务命令</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl restart NetworkManager
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="2-3-重启整个系统"><a href="#2-3-重启整个系统" class="headerlink" title="2.3 重启整个系统"></a>2.3 重启整个系统</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">reboot</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h3 id="修改默认远程端口号">1.修改默认远程端口号</h3>
+<h4 id="关闭selinux">1.1 关闭<code>SELINUX</code></h4>
+<p>如果不关闭<code>SELINUX</code>修改远程端口号无法生效(天坑之一)</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# vim /etc/sysconfig/selinux</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># SELINUX=enforcing 修改为</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">SELINUX</span><span class="op">=</span>disabled</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# reboot</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# setstatus</span></code></pre></div>
+<h4 id="修改防火墙">1.2 修改防火墙</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# firewall-cmd <span class="at">--zone</span><span class="op">=</span>public <span class="at">--add-port</span><span class="op">=</span>11111/tcp <span class="at">--permanent</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">success</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# firewall-cmd <span class="at">--reload</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">success</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# more /etc/firewalld/zones/public.xml</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="ex">?xml</span> version=<span class="st">&quot;1.0&quot;</span> encoding=<span class="st">&quot;utf-8&quot;</span><span class="pp">?</span><span class="op">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>zone<span class="op">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>short<span class="op">&gt;</span>Public<span class="op">&lt;</span>/short<span class="op">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>description<span class="op">&gt;</span>For <span class="ex">use</span> in public areas. You do not trust the other computers on </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">networks</span> to not harm your computer. Only selected incoming connections are accepted.<span class="op">&lt;</span>/description<span class="op">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>port <span class="va">port</span><span class="op">=</span><span class="st">&quot;11111&quot;</span> <span class="va">protocol</span><span class="op">=</span><span class="st">&quot;tcp&quot;</span>/<span class="op">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>forward/<span class="op">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>/zone<span class="op">&gt;</span></span></code></pre></div>
+<h4 id="修改sshd的配置">1.3 修改<code>sshd</code>的配置</h4>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# cd /etc/ssh/</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ssh]# vi sshd_config</span></code></pre></div>
+<h4 id="修改端口port">1.4 修改端口<code>port</code></h4>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Port 22</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Port</span> 31234</span></code></pre></div>
+<h4 id="配置文件的有效性和密钥的完整性测试">1.5
+配置文件的有效性和密钥的完整性测试</h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# sshd <span class="at">-t</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 没有问题的情况下就是显示</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# </span></code></pre></div>
+<h4 id="重启sshd服务">1.6 重启<code>sshd</code>服务</h4>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# systemctl restart sshd.service</span></code></pre></div>
+<h4 id="测试">1.7 测试</h4>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# ss <span class="at">-lntp</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">State</span>      Recv-Q    Send-Q   Local Address:Port     Peer Address:Port    Process</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LISTEN</span>     0         128      0.0.0.0:31234          0.0.0.0:<span class="pp">*</span>            users:<span class="er">(</span><span class="kw">(</span><span class="st">&quot;sshd&quot;</span><span class="ex">,pid=11111,fd=3</span><span class="kw">))</span></span></code></pre></div>
+<p> 如果出现上面的结果说默认远程端口号明修改已经成功完成</p>
+<h3 id="网卡固定ip地址">2.网卡固定<code>IP</code>地址</h3>
+<h4 id="找到网卡信息并且修改配置文件">2.1
+找到网卡信息并且修改配置文件</h4>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# cd /etc/sysconfig/network-scripts/</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# ls</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# ifcfg-ens192</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> ~]# vi ifcfg-ens192</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="va">BOOTPROTO</span><span class="op">=</span>none</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">ONBOOT</span><span class="op">=</span>yes</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="va">IPADDR</span><span class="op">=</span>你的静态IP地址</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="va">NETMASK</span><span class="op">=</span>你的子网掩码</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="va">GATEWAY</span><span class="op">=</span>你的默认网关</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="va">DNS1</span><span class="op">=</span>首选DNS服务器</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="va">DNS2</span><span class="op">=</span>备用DNS服务器</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="va">DEVICE</span><span class="op">=</span>eth0</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="va">NAME</span><span class="op">=</span>eth0</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="va">BOOTPROTO</span><span class="op">=</span>none</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="va">ONBOOT</span><span class="op">=</span>yes</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="va">IPADDR</span><span class="op">=</span>192.168.1.100</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="va">NETMASK</span><span class="op">=</span>255.255.255.0</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="va">GATEWAY</span><span class="op">=</span>192.168.1.1</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="va">DNS1</span><span class="op">=</span>8.8.8.8</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="va">DNS2</span><span class="op">=</span>8.8.4.4</span></code></pre></div>
+<h4 id="重启网路服务命令">2.2 重启网路服务命令</h4>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart NetworkManager</span></code></pre></div>
+<h4 id="重启整个系统">2.3 重启整个系统</h4>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> reboot</span></code></pre></div>
 <p>测试正常访问或者是<code>ping</code>通网络，说明修改成功</p>
-<h3 id="3-安装VMware-Tools"><a href="#3-安装VMware-Tools" class="headerlink" title="3.安装VMware Tools"></a>3.安装<code>VMware Tools</code></h3><h4 id="3-1-挂载VMware-Tools"><a href="#3-1-挂载VMware-Tools" class="headerlink" title="3.1 挂载VMware Tools"></a>3.1 挂载<code>VMware Tools</code></h4><blockquote>
-<p>在安装VMware Tools之前，确保系统中已安装所需的构建工具和依赖项。在Rocky Linux中，可以使用以下命令安装所需软件包：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> dnf <span class="token function">install</span> gcc kernel-devel kernel-headers <span class="token function">make</span> perl elfutils-libelf-devel
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="安装vmware-tools">3.安装<code>VMware Tools</code></h3>
+<h4 id="挂载vmware-tools">3.1 挂载<code>VMware Tools</code></h4>
+<blockquote>
+<p>在安装VMware
+Tools之前，确保系统中已安装所需的构建工具和依赖项。在Rocky
+Linux中，可以使用以下命令安装所需软件包：</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install gcc kernel-devel kernel-headers make perl elfutils-libelf-devel</span></code></pre></div>
 </blockquote>
 <ul>
 <li>在<code>Rocky Linux</code>中，打开终端并创建一个用于挂载的目录：</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> /mnt/cdrom
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir /mnt/cdrom</span></code></pre></div>
 <ul>
 <li>然后将<code>VMware Tools</code>安装介质挂载到该目录：</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/cdrom /mnt/cdrom
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="3-2-将VMware-Tools安装文件解压到临时目录中："><a href="#3-2-将VMware-Tools安装文件解压到临时目录中：" class="headerlink" title="3.2 将VMware Tools安装文件解压到临时目录中："></a>3.2 将VMware Tools安装文件解压到临时目录中：</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -zxvf /mnt/cdrom/VMwareTools-*.tar.gz -C /tmp/
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="3-3-运行安装程序："><a href="#3-3-运行安装程序：" class="headerlink" title="3.3 运行安装程序："></a>3.3 <strong>运行安装程序</strong>：</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /tmp/vmware-tools-distrib/
-<span class="token function">sudo</span> ./vmware-install.pl
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="3-4-重启系统"><a href="#3-4-重启系统" class="headerlink" title="3.4 重启系统"></a>3.4 重启系统</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">reboot</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mount /dev/cdrom /mnt/cdrom</span></code></pre></div>
+<h4 id="将vmware-tools安装文件解压到临时目录中">3.2 将VMware
+Tools安装文件解压到临时目录中：</h4>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxvf</span> /mnt/cdrom/VMwareTools-<span class="pp">*</span>.tar.gz <span class="at">-C</span> /tmp/</span></code></pre></div>
+<h4 id="运行安装程序">3.3 <strong>运行安装程序</strong>：</h4>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /tmp/vmware-tools-distrib/</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./vmware-install.pl</span></code></pre></div>
+<h4 id="重启系统">3.4 重启系统</h4>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> reboot</span></code></pre></div>
 
                 
             </div>
@@ -683,8 +705,31 @@ DNS2<span class="token operator">=</span>8.8.4.4
 
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-        
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+    </style>
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
@@ -790,7 +835,7 @@ DNS2<span class="token operator">=</span>8.8.4.4
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60.5k</span>
+                        class="white-color">62.3k</span>
             
             
             

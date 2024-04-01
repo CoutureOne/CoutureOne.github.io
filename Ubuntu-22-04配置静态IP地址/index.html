@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    129
+                    131
                 </div>
                 
 
@@ -348,33 +348,35 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>进入系统以后：</p>
-<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
-<span id="more"></span>
-<pre class="line-numbers language-bash"><code class="language-bash">couture@couture:~$ <span class="token function">sudo</span> vim /etc/netplan/00-installer-config.yaml 
-
-<span class="token comment" spellcheck="true"># This is the network config written by 'subiquity'</span>
-network:
-  ethernets:
-    ens33:
-      dhcp4: <span class="token boolean">true</span>
-  version: 2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>将 <code>dhcp4: true</code> 修改为 <code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%9D%99%E6%80%81IP&spm=1001.2101.3001.7020">静态IP</a>配置</p>
-<pre class="line-numbers language-bash"><code class="language-bash">network:
-  ethernets:
-    enp0s3:
-      dhcp4: <span class="token boolean">false</span>
-      addresses: <span class="token punctuation">[</span>192.168.1.10/24<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 静态IP和子网掩码</span>
-      gateway4: 192.168.1.1  <span class="token comment" spellcheck="true"># 默认网关</span>
-      nameservers:
-        addresses: <span class="token punctuation">[</span>8.8.8.8, 8.8.4.4<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># DNS服务器</span>
-  version: 2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）
+<span id="more"></span></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">couture@couture:~$</span> sudo vim /etc/netplan/00-installer-config.yaml </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the network config written by &#39;subiquity&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">network:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ethernets:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ens33:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">dhcp4:</span> true</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version:</span> 2</span></code></pre></div>
+<p>将 <code>dhcp4: true</code> 修改为
+<code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=静态IP&amp;spm=1001.2101.3001.7020">静态IP</a>配置</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">network:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ethernets:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">enp0s3:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="ex">dhcp4:</span> false</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="ex">addresses:</span> <span class="pp">[</span><span class="ss">192.168.1.10/24</span><span class="pp">]</span>  <span class="co"># 静态IP和子网掩码</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="ex">gateway4:</span> 192.168.1.1  <span class="co"># 默认网关</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">nameservers:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">addresses:</span> [8.8.8.8, 8.8.4.4]  <span class="co"># DNS服务器</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version:</span> 2</span></code></pre></div>
 <p>关闭并且保存文件,然后重启网络</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> netplan apply
-
-<span class="token function">sudo</span> systemctl restart network-manager
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> netplan apply</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart network-manager</span></code></pre></div>
 
                 
             </div>
@@ -610,8 +612,31 @@ network:
 
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-        
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+    </style>
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
@@ -717,7 +742,7 @@ network:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60.5k</span>
+                        class="white-color">62.3k</span>
             
             
             
