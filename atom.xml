@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Couture&#39;s Blog</title>
+  <title>Couture</title>
   
   <subtitle>不忘初心 方得始终</subtitle>
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-03-29T11:15:44.258Z</updated>
+  <updated>2024-04-09T14:17:15.605Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -21,18 +21,12 @@
     <link href="https://coutures.top/Rocky-Linux/"/>
     <id>https://coutures.top/Rocky-Linux/</id>
     <published>2024-03-29T11:06:32.000Z</published>
-    <updated>2024-03-29T11:15:44.258Z</updated>
+    <updated>2024-04-09T14:17:15.605Z</updated>
     
     <content type="html"><![CDATA[<h3 id="修改默认远程端口号">1.修改默认远程端口号</h3><h4 id="关闭selinux">1.1 关闭<code>SELINUX</code></h4><p>如果不关闭<code>SELINUX</code>修改远程端口号无法生效(天坑之一)</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># vim /etc/sysconfig/selinux</span></span><br><span class="line"><span class="comment"># SELINUX=enforcing 修改为</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line">[root@localhost ~]<span class="comment"># reboot</span></span><br><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># setstatus</span></span><br></pre></td></tr></table></figure><h4 id="修改防火墙">1.2 修改防火墙</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --zone=public --add-port=11111/tcp --permanent</span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># firewall-cmd --reload</span></span><br><span class="line">success</span><br><span class="line">[root@localhost ~]<span class="comment"># more /etc/firewalld/zones/public.xml</span></span><br><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;zone&gt;</span><br><span class="line">  &lt;short&gt;Public&lt;/short&gt;</span><br><span class="line">  &lt;description&gt;For use <span class="keyword">in</span> public areas. You <span class="keyword">do</span> not trust the other computers on </span><br><span class="line">  networks to not harm your computer. Only selected incoming connections are accepted.&lt;/description&gt;</span><br><span class="line">  &lt;port port=<span class="string">&quot;11111&quot;</span> protocol=<span class="string">&quot;tcp&quot;</span>/&gt;</span><br><span class="line">  &lt;forward/&gt;</span><br><span class="line">&lt;/zone&gt;</span><br></pre></td></tr></table></figure><h4 id="修改sshd的配置">1.3 修改<code>sshd</code>的配置</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cd /etc/ssh/</span></span><br><span class="line">[root@localhost ssh]<span class="comment"># vi sshd_config</span></span><br></pre></td></tr></table></figure><h4 id="修改端口port">1.4 修改端口<code>port</code></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Port 22</span></span><br><span class="line">Port 31234</span><br></pre></td></tr></table></figure><h4 id="配置文件的有效性和密钥的完整性测试">1.5配置文件的有效性和密钥的完整性测试</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># sshd -t</span></span><br><span class="line"><span class="comment"># 没有问题的情况下就是显示</span></span><br><span class="line">[root@localhost ~]<span class="comment"># </span></span><br></pre></td></tr></table></figure><h4 id="重启sshd服务">1.6 重启<code>sshd</code>服务</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># systemctl restart sshd.service</span></span><br></pre></td></tr></table></figure><h4 id="测试">1.7 测试</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># ss -lntp</span></span><br><span class="line">State      Recv-Q    Send-Q   Local Address:Port     Peer Address:Port    Process</span><br><span class="line">LISTEN     0         128      0.0.0.0:31234          0.0.0.0:*            <span class="built_in">users</span>:((&quot;sshd&quot;,pid=<span class="number">11111</span>,fd=<span class="number">3</span>))</span><br></pre></td></tr></table></figure><p> 如果出现上面的结果说默认远程端口号明修改已经成功完成</p><h3 id="网卡固定ip地址">2.网卡固定<code>IP</code>地址</h3><h4 id="找到网卡信息并且修改配置文件">2.1找到网卡信息并且修改配置文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cd /etc/sysconfig/network-scripts/</span></span><br><span class="line">[root@localhost ~]<span class="comment"># ls</span></span><br><span class="line">[root@localhost ~]<span class="comment"># ifcfg-ens192</span></span><br><span class="line">[root@localhost ~]<span class="comment"># vi ifcfg-ens192</span></span><br><span class="line"></span><br><span class="line">BOOTPROTO=none</span><br><span class="line">ONBOOT=<span class="built_in">yes</span></span><br><span class="line">IPADDR=你的静态IP地址</span><br><span class="line">NETMASK=你的子网掩码</span><br><span class="line">GATEWAY=你的默认网关</span><br><span class="line">DNS1=首选DNS服务器</span><br><span class="line">DNS2=备用DNS服务器</span><br><span class="line"></span><br><span class="line">DEVICE=eth0</span><br><span class="line">NAME=eth0</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">ONBOOT=<span class="built_in">yes</span></span><br><span class="line">IPADDR=192.168.1.100</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.1.1</span><br><span class="line">DNS1=8.8.8.8</span><br><span class="line">DNS2=8.8.4.4</span><br></pre></td></tr></table></figure><h4 id="重启网路服务命令">2.2 重启网路服务命令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart NetworkManager</span><br></pre></td></tr></table></figure><h4 id="重启整个系统">2.3 重启整个系统</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure><p>测试正常访问或者是<code>ping</code>通网络，说明修改成功</p><h3 id="安装vmware-tools">3.安装<code>VMware Tools</code></h3><h4 id="挂载vmware-tools">3.1 挂载<code>VMware Tools</code></h4><blockquote><p>在安装VMwareTools之前，确保系统中已安装所需的构建工具和依赖项。在RockyLinux中，可以使用以下命令安装所需软件包：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;sudo dnf install gcc kernel-devel kernel-headers make perl elfutils-libelf-devel</span><br></pre></td></tr></table></figure></blockquote><ul><li>在<code>Rocky Linux</code>中，打开终端并创建一个用于挂载的目录：</li></ul><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /mnt/cdrom</span><br></pre></td></tr></table></figure><ul><li>然后将<code>VMware Tools</code>安装介质挂载到该目录：</li></ul><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount /dev/cdrom /mnt/cdrom</span><br></pre></td></tr></table></figure><h4 id="将vmware-tools安装文件解压到临时目录中">3.2 将VMwareTools安装文件解压到临时目录中：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf /mnt/cdrom/VMwareTools-*.tar.gz -C /tmp/</span><br></pre></td></tr></table></figure><h4 id="运行安装程序">3.3 <strong>运行安装程序</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp/vmware-tools-distrib/</span><br><span class="line">sudo ./vmware-install.pl</span><br></pre></td></tr></table></figure><h4 id="重启系统">3.4 重启系统</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h3 id=&quot;修改默认远程端口号&quot;&gt;1.修改默认远程端口号&lt;/h3&gt;
-&lt;h4 id=&quot;关闭selinux&quot;&gt;1.1 关闭&lt;code&gt;SELINUX&lt;/code&gt;&lt;/h4&gt;
-&lt;p&gt;如果不关闭&lt;code&gt;SELINUX&lt;/code&gt;修改远程端口号无法生效(天坑之一)&lt;/p&gt;
-&lt;fi</summary>
-      
+    <summary type="html">Rocky配置的一些基本操作</summary>
     
     
     
@@ -50,21 +44,12 @@
     <link href="https://coutures.top/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/"/>
     <id>https://coutures.top/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/</id>
     <published>2024-03-19T06:41:31.000Z</published>
-    <updated>2024-03-19T06:44:58.317Z</updated>
+    <updated>2024-04-09T14:24:00.317Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>问题产生背景是同事希望在<code>Vsphere</code>虚拟机两台<code>Windows</code>服务器相互拷贝文件。</p></blockquote><ul><li>解决问题思路</li></ul><p> 一开始我的解决的思路是共享服务器里面的文件夹，按照这个思路自己解决问题是给想要共享的文件夹，然后通过网络共享的方式进行文件共享。</p><p>但是解决到最后，发现总是共享报错，网络设置里面的共享发现以及防火墙都关闭了，还是无法解决问题。</p><p> 下图是错误指示：</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40b78956307.png" /></p><p> 然后排查了半天，不知道问题是出在那里，<code>Windows</code>在共享网络上有时候就是一种玄学，然后我就想用第二种解决方案。</p><p> 第二种解决方案其实就是利用<code>Windows</code>自带的远程工具，直接在虚拟机里面去远程另一台虚拟机就好了，这样文件可以相互拷贝，而且速度很快，问题就是这样得到解决的。</p><p> 第三种还有一种解决方式，就是如果两台虚拟机都能上外网的情况下，可以用远程工具，向日葵这种，当然没有<code>Windows</code>自带的远程工具方便。</p><blockquote><p>在Vsphere中，可以建立共享磁盘的方式，这样也可以进行文件之间的相互访问，一切的方法只是为了解决问题。</p></blockquote>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;问题产生背景是同事希望在&lt;code&gt;Vsphere&lt;/code&gt;虚拟机两台&lt;code&gt;Windows&lt;/code&gt;服务器相互拷贝文件。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;解决问题思路&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt; 一开始我的解决</summary>
-      
+    <summary type="html">WinServer文件互相访问</summary>
     
     
     
@@ -80,19 +65,12 @@
     <link href="https://coutures.top/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/"/>
     <id>https://coutures.top/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/</id>
     <published>2024-03-18T13:52:27.000Z</published>
-    <updated>2024-03-25T11:08:40.144Z</updated>
+    <updated>2024-04-09T14:24:00.306Z</updated>
     
     <content type="html"><![CDATA[<ul><li>先进入注册表</li></ul><p><code>Win+R</code>输入<code>regedit</code>回车，进入注册表</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/Wds/rdpwd/Tds/tcp</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Terminal Server/WinStations/RDP-Tcp</span><br></pre></td></tr></table></figure><p>修改对应注册表中的<code>PortNumber</code>修改</p><ul><li>防火墙入站规则添加相应的端口</li></ul><blockquote><p>一般情况下<code>Windows</code>服务器都是禁止<code>ping</code>的，所以如果想要<code>Windows</code>服务器能<code>ping</code>通，如果想要<code>ping</code>通，这时候需要给防火墙给关闭。</p></blockquote><p> 修改完成以后需要进行重启一次，这时候为了测试远程端口号是否修改成功，可以在终端测试：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">telnet 127.0.0.1 端口号</span><br></pre></td></tr></table></figure><p>如果能进去，则说明通了，不行则说明还需要修改。</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;先进入注册表&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;Win+R&lt;/code&gt;输入&lt;code&gt;regedit&lt;/code&gt;回车，进入注册表&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code</summary>
-      
+    <summary type="html">WinServer 默认远程端口修改</summary>
     
     
     
@@ -108,12 +86,12 @@
     <link href="https://coutures.top/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/"/>
     <id>https://coutures.top/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/</id>
     <published>2024-03-08T11:56:56.000Z</published>
-    <updated>2024-03-08T12:00:09.542Z</updated>
+    <updated>2024-04-09T14:20:10.586Z</updated>
     
     <content type="html"><![CDATA[<p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：<span id="more"></span></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /etc/selinux/</span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># ls</span></span><br><span class="line">config  final  semanage.conf  targeted  tmp</span><br><span class="line">[root@centos7 selinux]<span class="comment"># vi config </span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="comment">#     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment">#     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment">#     disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled <span class="comment"># 修改远程端口号要关闭</span></span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of three values:</span></span><br><span class="line"><span class="comment">#     targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="comment">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span><br><span class="line"><span class="comment">#     mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted                                                                              </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                                             </span><br></pre></td></tr></table></figure>]]></content>
     
     
-    <summary type="html">&lt;p&gt;&lt;code&gt;sshd_config&lt;/code&gt;配置文件里面修改端口以后不通，注意下面：</summary>
+    <summary type="html">远程端口号配置</summary>
     
     
     
@@ -129,19 +107,12 @@
     <link href="https://coutures.top/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
     <id>https://coutures.top/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
     <published>2024-02-27T10:39:37.000Z</published>
-    <updated>2024-02-27T10:57:06.065Z</updated>
+    <updated>2024-04-09T14:24:00.303Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。</p></blockquote><h3 id="第一步">第一步：</h3><p> <code>Win</code>+<code>R</code>启动“运行”，然后输入<code>regedit</code>回车，进入注册表</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130332524.png" /></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130351806.png" /></p><h3 id="第二步">第二步：</h3><p> 搜索<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130619030.png" /></p><h3 id="第三步">第三步：</h3><p> 鼠标右键，新建<code>DWORD(32位)</code>值，然后重新命名为<code>RpcAuthnLevelPrivacyEnabled</code>修改值为<code>0</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130833814.png" /></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240227130904059.png" /></p><h3 id="第四步">第四步：</h3><p> 重启电脑！问题解决</p><p><code>注意，共享和接受打印机都要修改！！！！</code></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;第一步&quot;&gt;第一步：&lt;/h3&gt;
-&lt;p&gt; &lt;code&gt;Win&lt;/code&gt;+&lt;</summary>
-      
+    <summary type="html">0x0000011b错误解决方式</summary>
     
     
     
@@ -157,18 +128,12 @@
     <link href="https://coutures.top/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
     <id>https://coutures.top/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
     <published>2024-01-25T12:25:02.000Z</published>
-    <updated>2024-03-18T14:00:23.414Z</updated>
+    <updated>2024-04-09T14:27:17.084Z</updated>
     
     <content type="html"><![CDATA[<p>  因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p><p> 问题如图所示：</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png" /></p><p> 为什么我在终端中使用命令别人都能执行，为什么我无法解锁呢？然后发现是终端<code>iterm2</code>的原因，给命令复制到<code>Mac</code>自带终端，问题都解决了。</p><p> <strong>锁死<code>hosts</code>文件：</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chflags uchg /etc/hosts</span><br><span class="line">sudo chflags schg /etc/hosts</span><br></pre></td></tr></table></figure><p> <strong>解锁<code>hosts</code>文件：</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chflags -hv noschg /etc/hosts</span><br></pre></td></tr></table></figure><p> 推荐自带终端<code>YYDS</code>!!!</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240125202358864.png" />最后找到一个开源的修改hosts文件的软件<ahref="https://github.com/oldj/SwitchHosts">SwitchHosts</a></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;  因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。&lt;/p&gt;
-&lt;p&gt; 问题如图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img
-</summary>
-      
+    <summary type="html">Mac hosts文件修改遇到的问题</summary>
     
     
     
@@ -184,18 +149,12 @@
     <link href="https://coutures.top/%E5%85%B3%E4%BA%8EPowertoys%E5%AE%89%E8%A3%85%E5%90%8E%EF%BC%8C%E8%BE%93%E5%85%A5%E6%B3%95%E6%89%93%E5%AD%97%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
     <id>https://coutures.top/%E5%85%B3%E4%BA%8EPowertoys%E5%AE%89%E8%A3%85%E5%90%8E%EF%BC%8C%E8%BE%93%E5%85%A5%E6%B3%95%E6%89%93%E5%AD%97%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
     <published>2024-01-12T00:47:41.000Z</published>
-    <updated>2024-01-12T00:50:08.000Z</updated>
+    <updated>2024-04-09T14:24:00.280Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>安装这个<code>Powertoys</code>以后打字总是不跟手，打字很卡，特别是喜欢用空格作为确定按键，后来找了很多资料，发现也有很多人有类似的问题，经过研究找到了问题所在：</p></blockquote><p>  <strong>在<code>Powertoys</code>设置里面安装完成以后会默认开启<code>快速重音</code>这个东西，需要给这个东西给关闭，然后打字就没有过卡顿了。</strong></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240112082845958.png" /></p><h3 id="问题得到完美解决">  问题得到完美解决！！！</h3>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;安装这个&lt;code&gt;Powertoys&lt;/code&gt;以后打字总是不跟手，打字很卡，特别是喜欢用空格作为确定按键，后来找了很多资料，发现也有很多人有类似的问题，经过研究找到了问题所在：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;  &lt;strong&gt;在</summary>
-      
+    <summary type="html">Powertoys打字卡顿解决</summary>
     
     
     
@@ -211,18 +170,12 @@
     <link href="https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/"/>
     <id>https://coutures.top/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/</id>
     <published>2024-01-04T00:09:08.000Z</published>
-    <updated>2024-01-04T02:39:10.000Z</updated>
+    <updated>2024-04-09T14:20:10.594Z</updated>
     
     <content type="html"><![CDATA[<h6id="首先要进入挂载目录下面看看有没有挂载"><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png" /></p><p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p><ol type="1"><li><p>如果有，创建一个新的目录来复制文件：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/vmware-tools</span><br></pre></td></tr></table></figure></li><li><p>复制文件到您的家目录下的新文件夹：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -r /mnt/* ~/vmware-tools</span><br></pre></td></tr></table></figure></li><li><p>进入该目录：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/vmware-tools</span><br></pre></td></tr></table></figure></li><li><p>如果 VMware Tools 是压缩的 tar 文件，解压它：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf VMwareTools-x.x.x-xxxxxx.tar.gz</span><br></pre></td></tr></table></figure><p>确保将 <code>x.x.x-xxxxxx</code> 替换为实际的文件名。</p></li><li><p>进入解压后的目录（通常是<code>vmware-tools-distrib</code>）：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> vmware-tools-distrib</span><br></pre></td></tr></table></figure></li><li><p>以 root 用户运行安装脚本：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ./vmware-install.pl</span><br></pre></td></tr></table></figure></li><li><p>安装完成以后重启，之后执行命令：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl status vmware-tools</span><br></pre></td></tr></table></figure></li></ol><p>运行结果</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231225122556587.png" /></p><p>安装完成~</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h6
-id=&quot;首先要进入挂载目录下面看看有没有挂载&quot;&gt;&lt;strong&gt;首先要进入挂载目录下面，看看有没有挂载&lt;/strong&gt;&lt;/h6&gt;
-&lt;p&gt;&lt;img
-src=&quot;https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a90</summary>
-      
+    <summary type="html">CentOS 在vcenter中安装vm-tools</summary>
     
     
     
@@ -240,16 +193,12 @@ src=&quot;https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a90</summary>
     <link href="https://coutures.top/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
     <id>https://coutures.top/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</id>
     <published>2024-01-02T05:07:41.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
+    <updated>2024-04-09T14:24:00.322Z</updated>
     
     <content type="html"><![CDATA[<p> 本人也是很少用word，但是收到文件字体是<code>仿宋字体GB2312</code>,<code>Mac office 365 word</code>中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是<code>仿宋字体GB2312</code>,所以就找到了以下解决方案：</p><p> 首先就是下载字体，当然我这已经找好合集了，我只需要传到网盘上面，有需要的自行下载即可（<ahref="https://pan.baidu.com/s/1KRGAE_oOPLGgIa2Lm1r4gQ?pwd=9v3a">下载链接</a>）</p><h3 id="第一步">第一步：</h3><p> 找到<code>应用程序</code>中的<code>word</code>鼠标右键，显示包内容，然后回车</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122414174.png" /></p><h3 id="第二步">第二步：</h3><p> 一次打开文件夹：<code>/Contents/Resources/DFonts</code>这就是存放字体的路径，完成路径<code>/Applications/Microsoft Word.app/Contents/Resources/DFonts</code></p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102122650195.png" /></p><h3 id="第三步">第三步：</h3><p>  字体解压以后给你需要的字体直接拖进去即可：</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20240102123002189.png" /></p><h3 id="最后">最后：</h3><p> 一定需要进行电脑重启，这样字体才能生效，在打开<code>word</code>或者是之前未能识别字体的文档都能识别了，问题解决~</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt; 
-本人也是很少用word，但是收到文件字体是&lt;code&gt;仿宋字体GB2312&lt;/code&gt;,&lt;code&gt;Mac office 365 word&lt;/code&gt;中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是&lt;code&gt;仿宋字体GB2312&lt;</summary>
-      
+    <summary type="html">安装需要的字体</summary>
     
     
     
@@ -269,18 +218,12 @@ src=&quot;https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a90</summary>
     <link href="https://coutures.top/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/"/>
     <id>https://coutures.top/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/</id>
     <published>2023-12-31T13:47:39.000Z</published>
-    <updated>2024-01-01T01:35:12.000Z</updated>
+    <updated>2024-04-09T14:20:10.593Z</updated>
     
     <content type="html"><![CDATA[<h2 id="序言">1、序言：</h2><blockquote><p>最近元旦放假，想着自己也没啥事情要做的，自己博客也是好久没有更新过了，自己想换一个主题，然后参照了很多主题，最后选择了github上面的开源主题<ahref="https://github.com/blinkfox/hexo-theme-matery">hexo-thme-matery</a>这个主题，然后就有了下面就是自己遇到的一些坑了~</p></blockquote><h2 id="踩坑">2、踩坑</h2><h3 id="标题">2.1 标题</h3><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222639509.png" /></p><p>上图箭头指的就是我踩坑的第一个点了，这个其实也是怪我自己没有好好去看官方文档，其实这里就是你想要的博客名称，但是这个配置文件里面是没有显示的，这个需要你手动去添加，在根目录配置文件里面修改<code>themes/hexo-theme-matery/_config.yml</code>在<code>_config.yml</code>配置文件里面进行添加：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title: Couture<span class="string">&#x27;s Blog       # title后面就是你的博客名字，也就是我上面箭头指的地方</span></span><br></pre></td></tr></table></figure><p>修改完成以后，就是下面这样的了，第一个坑算是解决了</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222609248.png" /></p><h3 id="副标题">2.2 副标题</h3><p>先说明这个问题如何产生，如下图（当然这个是我已经修改好了），没有修改的话上面这段话显示的是<code>subtitle</code>,我一直以为副标题在配置文件中修改：</p><p><code>subtitle</code>配置文件：</p><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">subtitle:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">loop:</span> <span class="literal">true</span> <span class="comment"># 是否循环</span></span><br><span class="line">  <span class="attr">showCursor:</span> <span class="literal">true</span> <span class="comment"># 是否显示光标</span></span><br><span class="line">  <span class="attr">startDelay:</span> <span class="number">300</span> <span class="comment"># 开始延迟</span></span><br><span class="line">  <span class="attr">typeSpeed:</span> <span class="number">100</span> <span class="comment"># 打字速度</span></span><br><span class="line">  <span class="attr">backSpeed:</span> <span class="number">50</span> <span class="comment"># 删除速度</span></span><br><span class="line">  <span class="attr">sub:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">忽有故人心上过,回首山河已是秋,恰有相思同沐雪,此生已算共白头</span></span><br></pre></td></tr></table></figure><p>但是我发现问题根本不是在这里，而是在<code>themes/hexo-theme-matery/layout/_partial/bg-cover-content.ejs</code>在博客主题里面的<code>bg-cover-content.ejs</code>这个文件夹里面，第7行8行之间，下面我也给配置文件内容给列出来，对应修改就行了，第二个坑也算是给解决了。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;col s10 offset-s1 m8 offset-m2 l8 offset-l2&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;brand&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;title center-align&quot;&gt;</span><br><span class="line">                &lt;% if (config.subtitle &amp;&amp; config.subtitle.length &gt; 0) &#123; %&gt;</span><br><span class="line">                &lt;%= config.subtitle %&gt;</span><br><span class="line">                &lt;% &#125; else &#123; %&gt;</span><br><span class="line">                        物来顺应，未来不迎，当时不杂，既过不恋  </span><br><span class="line">                &lt;% &#125; %&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222711587.png" /></p><p>上面是我修改这个副标题的方式，可能看到这篇博客的大佬们还有更好的修改方式，我可能只是用了一种最笨的方式了。</p><h3 id="代码块之究极大坑">2.3 代码块之究极大坑</h3><p>问题产生，如图所示的代码块显示出了明显的问题：</p><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/11111.png" /></p><p>我最开始想着是我在<code>_config.yml</code>配置文件中没有设置好，但是我看配置文件中的相关的是<code>code</code>,没有代码块的样式设置，只有一些开关如下：</p><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 代码块相关</span></span><br><span class="line"><span class="attr">code:</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="literal">true</span> <span class="comment"># 代码块是否显示名称</span></span><br><span class="line">  <span class="attr">copy:</span> <span class="literal">true</span> <span class="comment"># 代码块是否可复制</span></span><br><span class="line">  <span class="attr">shrink:</span> <span class="literal">true</span> <span class="comment"># 代码块是否可以收缩</span></span><br><span class="line">  <span class="attr">break:</span> <span class="literal">false</span> <span class="comment"># 代码是否折行</span></span><br></pre></td></tr></table></figure><p>这些显示，我是怎么设置都不能解决问题，然后就开始百度查询问题解决方式，最后经过不懈努力，终于是找到了方式，这个<code>github</code>的<code>issue</code>中也有其他的小伙伴提到过，我的解决方案：</p><h5 id="首先要安装插件hexo-prism-plugin">2.3.1首先要安装插件<code>hexo-prism-plugin</code>：</h5><p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-prism-plugin --save</span><br><span class="line"></span><br></pre></td></tr></table></figure></p><h5 id="因为hexo主题自带有highlight语法高亮插件这个插件要禁用">2.3.2因为<code>hexo</code>主题自带有<code>highlight</code>语法高亮插件，这个插件要禁用</h5><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span>  <span class="comment"># 禁用</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># 禁用以后下面的这些都不用管的</span></span><br></pre></td></tr></table></figure><p>2.3.3开始配置<code>hexo-prism-plugin</code>插件，然后插件的配置用途我在下面也进行解释说明</p><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">prism_plugin:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># 插件是否开启</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">&#x27;tomorrow&#x27;</span> <span class="comment"># 插件主题</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span>  <span class="comment"># 预加载功能是否开启</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span> <span class="comment"># 行号是否开启</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure><h5 id="看最后的显示效果">2.3.4 看最后的显示效果</h5><p><imgsrc="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231231222806955.png" /></p><h5 id="到此这个坑已经是解决了">2.4.5 到此这个坑已经是解决了。</h5><h3 id="致谢">3、致谢</h3><p>感谢开源作者<a href="https://github.com/blinkfox"><spanclass="citation"data-cites="Blinkfox">@Blinkfox</span></a>的贡献精美主题</p><p>对我来说这个主题里面的很多功能我是没有启用的，目前看来也已经是够用了，记录一些琐碎的东西，也希望更多伙伴能一起讨论关于这个主题的一些东西，共同学习和进步，希望我的这篇记录也能给你带来些许的帮助~</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;序言&quot;&gt;1、序言：&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;最近元旦放假，想着自己也没啥事情要做的，自己博客也是好久没有更新过了，自己想换一个主题，然后参照了很多主题，最后选择了github上面的开源主题&lt;a
-href=&quot;https://github.com/b</summary>
-      
+    <summary type="html">hexo主题的完善之一</summary>
     
     
     
@@ -296,12 +239,12 @@ href=&quot;https://github.com/b</summary>
     <link href="https://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/"/>
     <id>https://coutures.top/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</id>
     <published>2023-11-12T07:23:34.000Z</published>
-    <updated>2024-03-16T01:00:38.558Z</updated>
+    <updated>2024-04-09T14:27:17.087Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题所在">问题所在：</h3><span id="more"></span><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" /></p><p>想要修改<code>Mac</code>系统的文件，但是上图来看，没有操作权限</p><h3 id="解决方案">解决方案：</h3><ol type="1"><li><h5 id="禁用sip并删除文件"><strong>禁用SIP并删除文件：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code>进入恢复模式。</p></li><li><p>打开终端（在“实用工具”菜单中选择“终端”）。</p></li><li><p>在终端中输入以下命令来禁用SIP：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li><li><p>重新尝试删除文件：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo rm -rf ~/Desktop/hosts</span><br></pre></td></tr></table></figure></li></ul></li><li><h5 id="重新启用sip"><strong>重新启用SIP：</strong></h5><ul><li><p>重启电脑，并在启动时按住<code>Command + R</code>进入恢复模式。</p></li><li><p>打开终端，输入以下命令来重新启用SIP：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">csrutil enable</span><br></pre></td></tr></table></figure></li><li><p>重启电脑。</p></li></ul></li></ol><p>问题解决!!!</p>]]></content>
     
     
-    <summary type="html">&lt;h3 id=&quot;问题所在&quot;&gt;问题所在：&lt;/h3&gt;</summary>
+    <summary type="html">删除hosts复制到本地的文件</summary>
     
     
     
@@ -317,13 +260,12 @@ href=&quot;https://github.com/b</summary>
     <link href="https://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/"/>
     <id>https://coutures.top/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</id>
     <published>2023-11-08T12:15:24.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
+    <updated>2024-04-09T14:24:00.314Z</updated>
     
     <content type="html"><![CDATA[<p>进入系统以后：</p><p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>） <span id="more"></span><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">couture@couture:~$ sudo vim /etc/netplan/00-installer-config.yaml </span><br><span class="line"></span><br><span class="line"><span class="comment"># This is the network config written by &#x27;subiquity&#x27;</span></span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure></p><p>将 <code>dhcp4: true</code> 修改为<code>dhcp4: false</code>，然后在<code>ethernets</code>下添加您的<ahref="https://so.csdn.net/so/search?q=静态IP&amp;spm=1001.2101.3001.7020">静态IP</a>配置</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    enp0s3:</span><br><span class="line">      dhcp4: <span class="literal">false</span></span><br><span class="line">      addresses: [192.168.1.10/24]  <span class="comment"># 静态IP和子网掩码</span></span><br><span class="line">      gateway4: 192.168.1.1  <span class="comment"># 默认网关</span></span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [8.8.8.8, 8.8.4.4]  <span class="comment"># DNS服务器</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure><p>关闭并且保存文件,然后重启网络</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo netplan apply</span><br><span class="line"></span><br><span class="line">sudo systemctl restart network-manager</span><br></pre></td></tr></table></figure>]]></content>
     
     
-    <summary type="html">&lt;p&gt;进入系统以后：&lt;/p&gt;
-&lt;p&gt;编辑网络配置文件（&lt;code&gt;nano&lt;/code&gt;或者&lt;code&gt;vim&lt;/code&gt;）</summary>
+    <summary type="html">网卡配置</summary>
     
     
     
@@ -339,12 +281,12 @@ href=&quot;https://github.com/b</summary>
     <link href="https://coutures.top/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/"/>
     <id>https://coutures.top/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/</id>
     <published>2023-11-07T13:49:27.000Z</published>
-    <updated>2024-01-04T02:34:54.000Z</updated>
+    <updated>2024-04-09T14:20:10.589Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[rootClocalhost~]<span class="comment"># cd /etc/sysconf ig/network-scripts/</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># ls</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># vi ifcfg-ens160</span></span><br></pre></td></tr></table></figure><span id="more"></span><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cd /etc/sysconfig/network-scripts/</span></span><br><span class="line">[root@localhost network-scripts]<span class="comment"># vim ifcfg-ens160 </span></span><br><span class="line"></span><br><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;ens160&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;c203d758-1006-4fed-85cf-b485feac9682&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;ens160&quot;</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPADDR=192.168.200.181</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.200.2</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启网卡 </span></span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
     
     
-    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[rootClocalhost~]&lt;span class=&quot;comment&quot;&gt;# cd /etc/sysconf ig/network-scripts/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[rootClocalhost~]&lt;span class=&quot;comment&quot;&gt;# ls&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[rootClocalhost~]&lt;span class=&quot;comment&quot;&gt;# vi ifcfg-ens160&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">网卡配置</summary>
     
     
     
@@ -383,12 +325,12 @@ href=&quot;https://github.com/b</summary>
     <link href="https://coutures.top/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/"/>
     <id>https://coutures.top/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</id>
     <published>2023-08-20T07:48:52.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
+    <updated>2024-04-09T14:24:00.312Z</updated>
     
     <content type="html"><![CDATA[<p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面 <span id="more"></span></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">couture@MacPro  ~/MyBlog  </span><br><span class="line">位于分支 main</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">致命错误：无法读取远程仓库。</span><br><span class="line"></span><br><span class="line">请确认您有正确的访问权限并且仓库存在。</span><br><span class="line">FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="string">Error: Spawn failed</span></span><br><span class="line"><span class="string">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span><br><span class="line"><span class="string">    at ChildProcess.emit (node:events:514:28)</span></span><br><span class="line"><span class="string">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span><br></pre></td></tr></table></figure><p>这个问题属于电脑没有当前GitHub的账户的ssh公钥，然后给公钥添加到当前电脑即可，添加方式:</p><p><ahref="https://blog.csdn.net/qq_40047019/article/details/122898308">添加方式连接</a></p><p>添加完成以后，即可正常更新博客~</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;将一台电脑的博客所有目录直接拷贝到另一台电脑上面</summary>
+    <summary type="html">hexo迁移</summary>
     
     
     
@@ -402,15 +344,12 @@ href=&quot;https://github.com/b</summary>
     <link href="https://coutures.top/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/"/>
     <id>https://coutures.top/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</id>
     <published>2023-07-21T08:19:28.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
+    <updated>2024-04-09T14:24:00.295Z</updated>
     
     <content type="html"><![CDATA[<p>因为不习惯<code>Windows11</code>鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉</p><p>修改成<code>Windows10</code>样式</p><p><strong>搜索<code>CMD</code>，然后点击管理员运行</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reg add &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /f /ve</span><br></pre></td></tr></table></figure><span id="more"></span><p><strong>然后回车执行，会提示<code>successful</code></strong></p><p><strong>然后去任务管理里面去重启<code>Windows资源管理器</code></strong></p><p><img src="https://s2.loli.net/2023/07/21/p3aCJT6njeslfFH.png" /></p><p><strong>重启完成以后打开，鼠标右键如下，成功</strong></p><p><img src="https://s2.loli.net/2023/07/21/vxnXSlNf8Hp7zsk.png" /></p><p>如果想改回原始的，命令如下，重复上面一样的操，作执行<code>命令</code>-&gt;<code>重启Windows资源管理器</code></p><p><code>Windows11</code>命令：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reg delete <span class="string">&quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;&quot;</span> /f</span><br></pre></td></tr></table></figure>]]></content>
     
     
-    <summary type="html">&lt;p&gt;因为不习惯&lt;code&gt;Windows11&lt;/code&gt;鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉&lt;/p&gt;
-&lt;p&gt;修改成&lt;code&gt;Windows10&lt;/code&gt;样式&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;搜索&lt;code&gt;CMD&lt;/code&gt;，然后点击管理员运行&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;reg add &amp;quot;HKCU&#92;Software&#92;Classes&#92;CLSID&#92;&amp;#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&amp;#125;&#92;InprocServer32&amp;quot; /f /ve&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">注册表</summary>
     
     
     
@@ -474,12 +413,12 @@ Mode）：&lt;/h4&gt;</summary>
     <link href="https://coutures.top/Hexo-pandoc-exited-with-code-null/"/>
     <id>https://coutures.top/Hexo-pandoc-exited-with-code-null/</id>
     <published>2023-07-06T05:26:52.000Z</published>
-    <updated>2024-01-04T02:34:16.000Z</updated>
+    <updated>2024-04-09T14:20:10.596Z</updated>
     
     <content type="html"><![CDATA[<h4 id="在hexo更新文章遇到的问题">在hexo更新文章遇到的问题：</h4><span id="more"></span><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FATAL Something&#x27;</span>s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error:</span><br><span class="line">[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md</span><br><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span><br><span class="line">at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)</span><br><span class="line">at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Hexo.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22</span><br><span class="line">at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)</span><br><span class="line">at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)</span><br><span class="line">at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)</span><br><span class="line">at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)</span><br><span class="line">at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)</span><br><span class="line">at process.processImmediate (node:internal/timers:478:21)</span><br></pre></td></tr></table></figure><!--more--><h4 id="解决方式">解决方式：</h4><h5id="重新安装hexo-renderer-pandoc模块">重新安装<code>hexo-renderer-pandoc</code>模块</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure><h5id="如不成功用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器">如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure><p><strong>问题解决~</strong></p>]]></content>
     
     
-    <summary type="html">&lt;h4 id=&quot;在hexo更新文章遇到的问题&quot;&gt;在hexo更新文章遇到的问题：&lt;/h4&gt;</summary>
+    <summary type="html">Hexo更新问题解决</summary>
     
     
     
