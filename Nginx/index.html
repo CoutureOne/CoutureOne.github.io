@@ -1,357 +1,132 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nginx | Couture's Blog</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.7.12"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><!-- swiper--><!-- Open Graph--><meta name="description" content="[TOC] 一、引言 1.1 代理问题 客户端到底要将请求发送给哪台服务器。 | 发送给服务器1还是服务器2 | | :----------------------------------------------------------: | | | #### 1.2 负载均衡问题"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
 
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
 
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Nginx, Couture&#39;s Blog">
-    <meta name="description" content="学习NGINX">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
 
-
-    <title>Nginx | Couture&#39;s Blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-    <style>
-        body{
-            background-image: url(https://typora-couture.oss-cn-hangzhou.aliyuncs.com/%E9%A3%8E%E6%99%AF.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
         }
-    </style>
 
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
 
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
 
-    <!-- bg-cover style     -->
+        win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+            const link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = url
+            if (id) link.id = id
+            link.onerror = reject
+            link.onload = link.onreadystatechange = function () {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+            }
+            document.head.appendChild(link)
+        })
 
+        win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+            const script = document.createElement('script')
+            script.src = url
+            script.async = true
+            script.onerror = reject
+            script.onload = script.onreadystatechange = function () {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+            }
 
+            Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+            })
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+            document.head.appendChild(script)
+        })
+    }
+)(window)
 
-
-
-
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
-
-
-
-
-    
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.7.12",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "border-radius:0 5px 5px 0;padding: 5px 10px;background:#0084ff;color:white;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.png'
+    },
+    copyright: {"limit":50,"author":"作者: Couture","link":"链接: ","source":"来源: Couture's Blog","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/favicon.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Couture&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/favicon.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Couture&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            好记性不如烂笔头
-            
-        </div>
-    </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Nginx</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
-    <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Nginx/">
-                                <span class="chip bg-color">Nginx</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                后端学习
-                            </a>
-                        
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/java/" class="post-category">
-                                java
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-29
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
-        </div>
-        <hr class="clearfix">
-
-        
-
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <hr />
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/">后端<sup>3</sup></a><a href="/tags/C/">C#<sup>2</sup></a><a href="/tags/CentOS-Linux/">CentOS - Linux<sup>2</sup></a><a href="/tags/Debian-Docker/">Debian - Docker<sup>1</sup></a><a href="/tags/Docker/">Docker<sup>3</sup></a><a href="/tags/DevOps/">DevOps<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>7</sup></a><a href="/tags/docker/">docker<sup>2</sup></a><a href="/tags/CentOS-8/">CentOS 8<sup>1</sup></a><a href="/tags/hexo/">hexo<sup>1</sup></a><a href="/tags/Mac/">Mac<sup>5</sup></a><a href="/tags/homebrew/">homebrew<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/Cloudflare/">Cloudflare<sup>1</sup></a><a href="/tags/Cloud/">Cloud<sup>1</sup></a><a href="/tags/MySQL/">MySQL<sup>2</sup></a><a href="/tags/Switch/">Switch<sup>2</sup></a><a href="/tags/MySQL-Mac/">MySQL - Mac<sup>1</sup></a><a href="/tags/Mac-Linux/">Mac - Linux<sup>1</sup></a><a href="/tags/redis/">redis<sup>1</sup></a><a href="/tags/Homebrew/">Homebrew<sup>1</sup></a><a href="/tags/Nginx/">Nginx<sup>1</sup></a><a href="/tags/java/">java<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Rocky/">Rocky<sup>1</sup></a><a href="/tags/Ubuntu-Linux/">Ubuntu - Linux<sup>1</sup></a><a href="/tags/RabbitMQ/">RabbitMQ<sup>1</sup></a><a href="/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/">ufw - 防火墙<sup>1</sup></a><a href="/tags/Ubuntu-SSH/">Ubuntu - SSH<sup>1</sup></a><a href="/tags/WinServer/">WinServer<sup>2</sup></a><a href="/tags/Windows-11/">Windows 11<sup>2</sup></a><a href="/tags/Windows-10/">Windows 10<sup>1</sup></a><a href="/tags/Nginx-%E8%BF%90%E7%BB%B4/">Nginx - 运维<sup>1</sup></a><a href="/tags/Windows-11-%E8%BF%90%E7%BB%B4/">Windows 11 - 运维<sup>1</sup></a><a href="/tags/Windows/">Windows<sup>2</sup></a><a href="/tags/IP/">IP<sup>2</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/">网络<sup>1</sup></a><a href="/tags/YML-Hexo/">YML - Hexo<sup>1</sup></a><a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机<sup>1</sup></a><a href="/tags/spring/">spring<sup>1</sup></a><a href="/tags/ssm/">ssm<sup>1</sup></a><a href="/tags/Windows-Command/">Windows Command<sup>1</sup></a><a href="/tags/Windows-Powertoys/">Windows - Powertoys<sup>1</sup></a><a href="/tags/hexo-%E5%8D%9A%E5%AE%A2/">hexo - 博客<sup>1</sup></a><a href="/tags/Agreement/">Agreement<sup>1</sup></a><a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/">交换机 - 常见网络设备密码<sup>1</sup></a><a href="/tags/Windows10-Windows11/">Windows10&amp;Windows11<sup>1</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/">共享打印机<sup>1</sup></a><a href="/tags/ChatGPT-NGINX/">ChatGPT - NGINX<sup>1</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4/">运维<sup>3</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器<sup>1</sup></a><a href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/">打印机<sup>2</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Solitude</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Nginx</a></div></div><div id="menus"></div><div id="nav-left"></div><div id="nav-right"><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.png" alt="Nginx"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nginx/"><span class="tags-name tags-punctuation">Nginx</span></a></div></div></div></div><h1 class="post-title">Nginx</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr />
 <p>[TOC]</p>
 <h3 id="一引言">一、引言</h3>
 <hr />
@@ -456,31 +231,8 @@ alt="1586502874584" /></td>
 <blockquote>
 <p>使用Docker-Compose安装，创建docker-compose.yml写入以下内容：</p>
 </blockquote>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode yml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.1&#39;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">nginx</span><span class="kw">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> daocloud.io/library/nginx:latest</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> nginx</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 80:80</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ~]# cd /opt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# mkdir docker_nginx</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# cd docker_nginx/</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# vim docker-compose.yml</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose up <span class="at">-d</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> network <span class="st">&quot;docker_nginx_default&quot;</span> with the default driver</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Pulling</span> nginx <span class="er">(</span><span class="ex">daocloud.io/library/nginx:latest</span><span class="kw">)</span><span class="ex">...</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">latest:</span> Pulling from library/nginx</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">45b42c59be33:</span> Pull complete</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">d0d9e9ea897e:</span> Pull complete</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">66e650438339:</span> Pull complete</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">76a3dfe4406b:</span> Pull complete</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">410ff9d97480:</span> Pull complete</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Digest:</span> sha256:1a53eb723d17523512bd25c27299046cfa034cce309f4ed330c943a304513f59</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Status:</span> Downloaded newer image for daocloud.io/library/nginx:latest</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> nginx ... done</span></code></pre></div>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 ~]<span class="comment"># cd /opt</span></span><br><span class="line">[root@192 opt]<span class="comment"># mkdir docker_nginx</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Pulling nginx (daocloud.io/library/nginx:latest)...</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">45b42c59be33: Pull complete</span><br><span class="line">d0d9e9ea897e: Pull complete</span><br><span class="line">66e650438339: Pull complete</span><br><span class="line">76a3dfe4406b: Pull complete</span><br><span class="line">410ff9d97480: Pull complete</span><br><span class="line">Digest: sha256:1a53eb723d17523512bd25c27299046cfa034cce309f4ed330c943a304513f59</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> daocloud.io/library/nginx:latest</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>浏览器访问即可（80端口可以省略不写，云服务器记得去开放80端口）</p>
 </blockquote>
@@ -490,176 +242,31 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071024665.png
 <blockquote>
 <p>关于Nginx的核心配置文件nginx.conf</p>
 </blockquote>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker ps</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CONTAINER</span> ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                               NAMES</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">617da0b0dbbb</span>   daocloud.io/library/nginx:latest   <span class="st">&quot;/docker-entrypoint.…&quot;</span>   8 minutes ago   Up 8 minutes   0.0.0.0:80-<span class="op">&gt;</span>80/tcp, :::80-<span class="op">&gt;</span>80/tcp   nginx</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker exec <span class="at">-it</span> 617 bash</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/#</span> cd /etc/nginx</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx#</span> ls</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>      koi-utf  mime.types  nginx.conf   uwsgi_params</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">fastcgi_params</span>  koi-win  modules     scgi_params  win-utf</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx#</span> cat nginx.conf </span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                               NAMES</span><br><span class="line">617da0b0dbbb   daocloud.io/library/nginx:latest   <span class="string">&quot;/docker-entrypoint.…&quot;</span>   8 minutes ago   Up 8 minutes   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker exec -it 617 bash</span></span><br><span class="line">root@617da0b0dbbb:/<span class="comment"># cd /etc/nginx</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cat nginx.conf </span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>查看nginx.conf 配置文件</p>
 </blockquote>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">user</span>  nginx<span class="kw">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">worker_processes</span>  1<span class="kw">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">error_log</span>  /var/log/nginx/error.log warn<span class="kw">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pid</span>        /var/run/nginx.pid<span class="kw">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数说明</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 以上统称为全局块， </span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># worker_processes的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># error_log 代表Nginx的错误日志存放的位置</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">events</span> &#123;</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">worker_connections</span>  1024<span class="kw">;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数说明</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># events块</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># worker_connections的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">http</span> &#123;</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">include</span>       /etc/nginx/mime.types<span class="kw">;</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">default_type</span>  application/octet-stream<span class="kw">;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">log_format</span>  main  <span class="st">&#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;</span><span class="kw">;</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">access_log</span>  /var/log/nginx/access.log  main<span class="kw">;</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="ex">sendfile</span>        on<span class="kw">;</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">#tcp_nopush     on;</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="ex">keepalive_timeout</span>  65<span class="kw">;</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#gzip  on;</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="ex">include</span> /etc/nginx/conf.d/<span class="pp">*</span>.conf<span class="kw">;</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数说明</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># http块</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># include代表引入一个外部的文件 -&gt; /mime.types中放着大量的媒体类型</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># include /etc/nginx/conf.d/*.conf; -&gt; 引入了conf.d目录下的以.conf为结尾的配置文件</span></span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># 以上统称为全局块， </span></span><br><span class="line"><span class="comment"># worker_processes的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"><span class="comment"># error_log 代表Nginx的错误日志存放的位置</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># events块</span></span><br><span class="line"><span class="comment"># worker_connections的数值越大，Nginx的并发能力就越强（由运维人员修改）</span></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># http块</span></span><br><span class="line"><span class="comment"># include代表引入一个外部的文件 -&gt; /mime.types中放着大量的媒体类型</span></span><br><span class="line"><span class="comment"># include /etc/nginx/conf.d/*.conf; -&gt; 引入了conf.d目录下的以.conf为结尾的配置文件</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>nginx.conf 配置文件中发现，最后一行引入了conf.d目录下的*.conf文件</p>
 </blockquote>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx#</span> ls</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>      koi-utf  mime.types  nginx.conf   uwsgi_params</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fastcgi_params</span>  koi-win  modules     scgi_params  win-utf</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx#</span> cd conf.d/</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx/conf.d#</span> ls</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">default.conf</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx/conf.d#</span> cat default.conf </span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># ls</span></span><br><span class="line">conf.d		koi-utf  mime.types  nginx.conf   uwsgi_params</span><br><span class="line">fastcgi_params	koi-win  modules     scgi_params  win-utf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx<span class="comment"># cd conf.d/</span></span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># cat default.conf </span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>查看default.conf 配置文件</p>
 </blockquote>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数说明</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># server块</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># listen： 代表Nginx监听的端口号</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># localhost：代表Nginx接收请求的ip</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">listen</span>       80<span class="kw">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">listen</span>  <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80<span class="kw">;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">server_name</span>  localhost<span class="kw">;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#charset koi8-r;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#access_log  /var/log/nginx/host.access.log  main;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">location</span> / &#123;</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">root</span>   /usr/share/nginx/html<span class="kw">;</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">index</span>  index.html index.htm<span class="kw">;</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="er">&#125;</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 参数说明</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># location块</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># root：将接收到的请求根据/usr/share/nginx/html去查找静态资源</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># index： 默认去上述的路径中找到index.html或者index.htm</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#error_page  404              /404.html;</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># redirect server error pages to the static page /50x.html</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">error_page</span>   500 502 503 504  /50x.html<span class="kw">;</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="ex">location</span> = /50x.html &#123;</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        <span class="ex">root</span>   /usr/share/nginx/html<span class="kw">;</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="er">&#125;</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#location ~ \.php$ &#123;</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    proxy_pass   http://127.0.0.1;</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">#&#125;</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="co">#location ~ \.php$ &#123;</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    root           html;</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    fastcgi_pass   127.0.0.1:9000;</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    fastcgi_index  index.php;</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    include        fastcgi_params;</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">#&#125;</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># deny access to .htaccess files, if Apache&#39;s document root</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># concurs with nginx&#39;s one</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    <span class="co">#location ~ /\.ht &#123;</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">#    deny  all;</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    <span class="co">#&#125;</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"><span class="comment"># server块</span></span><br><span class="line"><span class="comment"># listen： 代表Nginx监听的端口号</span></span><br><span class="line"><span class="comment"># localhost：代表Nginx接收请求的ip</span></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line">    <span class="comment">#access_log  /var/log/nginx/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 参数说明</span></span><br><span class="line">    <span class="comment"># location块</span></span><br><span class="line">	<span class="comment"># root：将接收到的请求根据/usr/share/nginx/html去查找静态资源</span></span><br><span class="line">	<span class="comment"># index： 默认去上述的路径中找到index.html或者index.htm</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">    <span class="comment">#    root           html;</span></span><br><span class="line">    <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">    <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">    <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">    <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># deny access to .htaccess files, if Apache&#x27;s document root</span></span><br><span class="line">    <span class="comment"># concurs with nginx&#x27;s one</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">    <span class="comment">#    deny  all;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="配置数据卷操作nginx">3.3 配置数据卷操作Nginx</h4>
 <blockquote>
 <p>为了方便修改Nginx配置，修改docker-compose.yml文件，设置 volumes
 ，重新启动</p>
 </blockquote>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode yml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.1&#39;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">nginx</span><span class="kw">:</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> daocloud.io/library/nginx:latest</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> nginx</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 80:80</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@617da0b0dbbb:/etc/nginx/conf.d#</span> exit </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# vim docker-compose.yml </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose down</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Stopping</span> nginx ... done</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Removing</span> nginx ... done</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Removing</span> network docker_nginx_default</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose up <span class="at">-d</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> network <span class="st">&quot;docker_nginx_default&quot;</span> with the default driver</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> nginx ... done</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# ls</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>  docker-compose.yml</span></code></pre></div>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">daocloud.io/library/nginx:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@617da0b0dbbb:/etc/nginx/conf.d<span class="comment"># exit </span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>此时再使用浏览器访问则无法访问nginx.html页面了，此时需要在conf.d目录下创建default.conf文件，配置一个server，再重新启动即可</p>
 </blockquote>
-<pre><code>server &#123;
-    listen       80;
-    listen  [::]:80;
-    server_name  localhost;
-
-    location / &#123;
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-    &#125;
-&#125;</code></pre>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# cd conf.d/</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# vim default.conf</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# cd ..</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose restart</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Restarting</span> nginx ... done</span></code></pre></div>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h3
 id="四nginx的反向代理重点">四、Nginx的反向代理【<code>重点</code>】</h3>
 <hr />
@@ -708,94 +315,16 @@ alt="1586512751639" /></td>
 <blockquote>
 <p>docker-compose.yml内容如下：</p>
 </blockquote>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">version:</span> <span class="st">&#39;3.1&#39;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">services:</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tomcat1:</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">restart:</span> always</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">image:</span> daocloud.io/library/tomcat:8.5.15-jre8</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">container_name:</span> tomcat8081</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ports:</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> 8081:8080</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">environment:</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">TZ:</span> Asia/Shanghai</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_tomcats/tomcat_webapps8081:/usr/local/tomcat/webapps</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tomcat2:</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">restart:</span> always</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">image:</span> daocloud.io/library/tomcat:8.5.15-jre8</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">container_name:</span> tomcat8082</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ports:</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> 8082:8080</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">environment:</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">TZ:</span> Asia/Shanghai</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_tomcats/tomcat_webapps8082:/usr/local/tomcat/webapps</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tomcat3:</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">restart:</span> always</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">image:</span> daocloud.io/library/tomcat:8.5.15-jre8</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">container_name:</span> tomcat8083</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ports:</span></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> 8083:8080</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="ex">environment:</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>      <span class="ex">TZ:</span> Asia/Shanghai</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_tomcats/tomcat_webapps8083:/usr/local/tomcat/webapps</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  tomcat1:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8081</span><br><span class="line">    ports:</span><br><span class="line">      - 8081:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8081:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat2:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8082</span><br><span class="line">    ports:</span><br><span class="line">      - 8082:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8082:/usr/local/tomcat/webapps</span><br><span class="line">  tomcat3:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/tomcat:8.5.15-jre8</span><br><span class="line">    container_name: tomcat8083</span><br><span class="line">    ports:</span><br><span class="line">      - 8083:8080</span><br><span class="line">    environment:</span><br><span class="line">      TZ: Asia/Shanghai</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_tomcats/tomcat_webapps8083:/usr/local/tomcat/webapps</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>具体步骤如下：</p>
 </blockquote>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# mkdir docker_tomcats</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# cd docker_tomcats/</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# vim docker-compose.yml </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# docker-compose up <span class="at">-d</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> network <span class="st">&quot;docker_tomcats_default&quot;</span> with the default driver</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> tomcat8082 ... done</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> tomcat8081 ... done</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> tomcat8083 ... done</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# ls</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose.yml</span>  tomcat_webapps8081  tomcat_webapps8082  tomcat_webapps8083</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# cd tomcat_webapps8081</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8081]# mkdir ROOT</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8081]# cd ROOT</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ROOT]# vim index.html</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ROOT]# cd ..</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8081]# cd ..</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# cd tomcat_webapps8082</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8082]# mkdir ROOT</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8082]# cd ROOT</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ROOT]# vim index.html</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ROOT]# cd ..</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8082]# cd ..</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_tomcats]# cd tomcat_webapps8083</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8083]# mkdir ROOT</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> tomcat_webapps8083]# cd ROOT</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> ROOT]# vim index.html</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># mkdir docker_tomcats</span></span><br><span class="line">[root@192 opt]<span class="comment"># cd docker_tomcats/</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># vim docker-compose.yml </span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_tomcats_default&quot;</span> with the default driver</span><br><span class="line">Creating tomcat8082 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8081 ... <span class="keyword">done</span></span><br><span class="line">Creating tomcat8083 ... <span class="keyword">done</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># ls</span></span><br><span class="line">docker-compose.yml  tomcat_webapps8081  tomcat_webapps8082  tomcat_webapps8083</span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8081</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8081]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8082</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 tomcat_webapps8082]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_tomcats]<span class="comment"># cd tomcat_webapps8083</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># mkdir ROOT</span></span><br><span class="line">[root@192 tomcat_webapps8083]<span class="comment"># cd ROOT</span></span><br><span class="line">[root@192 ROOT]<span class="comment"># vim index.html</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>然后修改nginx的default.conf配置文件，使其通过Nginx访问到tomcat服务器。</p>
 </blockquote>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">listen</span>       80<span class="kw">;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">listen</span>  <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80<span class="kw">;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">server_name</span>  localhost<span class="kw">;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 基于反向代理访问到Tomcat服务器</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">location</span> / &#123;</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">proxy_pass</span> http://192.168.25.132:8081/<span class="kw">;</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">&#125;</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# cd docker_nginx/</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# ls</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>  docker-compose.yml</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# cd conf.d/</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# ls</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">default.conf</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# vim default.conf </span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# cd ..</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose restart</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Restarting</span> nginx ... done</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 基于反向代理访问到Tomcat服务器</span></span><br><span class="line">    location / &#123;</span><br><span class="line">      proxy_pass http://192.168.25.132:8081/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>再次访问时，nginx主页直接显示到对应tomcat的页面了</p>
 </blockquote>
@@ -804,36 +333,7 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#
 <blockquote>
 <p>优先级关系如下：</p>
 </blockquote>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode json"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">1.</span> <span class="er">直接匹配</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">=</span> <span class="er">/</span> <span class="fu">&#123;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">精准匹配，主机名后面不能带任何的字符串</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">2.</span> <span class="er">通用匹配</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">/xxx</span> <span class="fu">&#123;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">匹配所有以/xxx开头的路径</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">3.</span> <span class="er">正则匹配</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">~</span> <span class="er">/xxx</span> <span class="fu">&#123;</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">匹配所有以/xxx开头的路径</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">4.</span> <span class="er">匹配开头路径</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">^~</span> <span class="er">/images/</span> <span class="fu">&#123;</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">匹配所有以/images开头的路径</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">5.</span> <span class="er">匹配后缀</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">~*</span> <span class="er">\.(gif|jpg|png)$</span> <span class="fu">&#123;</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">匹配以gif或者jpg或者png为结尾的路径</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="er">#</span> <span class="er">6.</span> <span class="er">全部通配</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="er">location</span> <span class="er">/</span> <span class="fu">&#123;</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="er">#</span> <span class="er">匹配全部路径</span>  </span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span></code></pre></div>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"># <span class="number">1.</span> 直接匹配</span><br><span class="line">location = / <span class="punctuation">&#123;</span></span><br><span class="line">  # 精准匹配，主机名后面不能带任何的字符串</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span> 通用匹配</span><br><span class="line">location /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span> 正则匹配</span><br><span class="line">location ~ /xxx <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/xxx开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">4.</span> 匹配开头路径</span><br><span class="line">location ^~ /images/ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配所有以/images开头的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">5.</span> 匹配后缀</span><br><span class="line">location ~* \.(gif|jpg|png)$ <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配以gif或者jpg或者png为结尾的路径</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"># <span class="number">6.</span> 全部通配</span><br><span class="line">location / <span class="punctuation">&#123;</span></span><br><span class="line">  # 匹配全部路径  </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="五nginx负载均衡重点">五、Nginx负载均衡【<code>重点</code>】</h3>
 <hr />
 <blockquote>
@@ -849,50 +349,12 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071025043.png
 <blockquote>
 <p>想实现Nginx轮询负载均衡机制需要修改default.conf配置文件中的内容：</p>
 </blockquote>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode json"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="er">upstream</span> <span class="er">名字</span> <span class="fu">&#123;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">server</span> <span class="er">ip</span><span class="fu">:</span><span class="er">port;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">server</span> <span class="er">ip:port;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">...</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="er">server</span> <span class="fu">&#123;</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="er">listen</span> <span class="er">80;</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">listen</span>  <span class="er">[</span><span class="fu">:</span><span class="er">:]:</span><span class="dv">80</span><span class="er">;</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">server_name</span> <span class="er">localhost;</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="er">location</span> <span class="er">/</span> <span class="fu">&#123;</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">proxy_pass</span> <span class="er">http</span><span class="fu">:</span><span class="er">//upstream的名字/;</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&#125;</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span></code></pre></div>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  server ip<span class="punctuation">:</span>port;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  <span class="punctuation">[</span><span class="punctuation">:</span><span class="punctuation">:</span><span class="punctuation">]</span><span class="punctuation">:</span><span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>例如：（注意：upstream的名字不要使用下划线）</p>
 </blockquote>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>upstream my<span class="op">-</span>server <span class="op">&#123;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  server <span class="fl">47.100.241.89</span><span class="op">:</span><span class="dv">8081</span><span class="op">;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  server <span class="fl">47.100.241.89</span><span class="op">:</span><span class="dv">8082</span><span class="op">;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  server <span class="fl">47.100.241.89</span><span class="op">:</span><span class="dv">8083</span><span class="op">;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>server <span class="op">&#123;</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  listen <span class="dv">80</span><span class="op">;</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  listen  <span class="op">[::]:</span><span class="dv">80</span><span class="op">;</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  server_name localhost<span class="op">;</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  location <span class="op">/</span> <span class="op">&#123;</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    proxy_pass http<span class="op">:</span><span class="co">//my-server/;</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">&#125;</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> opt]# cd docker_nginx/</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# ls</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>  docker-compose.yml</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# cd conf.d/</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# ls</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">default.conf</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# vim default.conf </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# cd ..</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose restart</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Restarting</span> nginx ... done</span></code></pre></div>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8081</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8082</span>;</span><br><span class="line">  server <span class="number">47.100</span><span class="number">.241</span><span class="number">.89</span>:<span class="number">8083</span>;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  listen  [::]:<span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http:<span class="comment">//my-server/;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 opt]<span class="comment"># cd docker_nginx/</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：若轮询无法实现，把nginx.conf核心配置文件中的 keepalive_timeout 65
 改为 keepalive_timeout 0 即可！</p>
@@ -901,85 +363,22 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#
 <blockquote>
 <p>实现权重的方式</p>
 </blockquote>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode json"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="er">upstream</span> <span class="er">名字</span> <span class="fu">&#123;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">server</span> <span class="er">ip</span><span class="fu">:</span><span class="er">port</span> <span class="er">weight=权重比例;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">server</span> <span class="er">ip:port</span> <span class="er">weight=权重比例;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">...</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">&#125;</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="er">server</span> <span class="fu">&#123;</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="er">listen</span> <span class="er">80;</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">server_name</span> <span class="er">localhost;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="er">location</span> <span class="er">/</span> <span class="er">&#123;</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">proxy_pass</span> <span class="er">http</span><span class="fu">:</span><span class="er">//upstream的名字/;</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&#125;</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">upstream 名字 <span class="punctuation">&#123;</span></span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  server ip<span class="punctuation">:</span>port weight=权重比例;</span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">server <span class="punctuation">&#123;</span></span><br><span class="line">  listen <span class="number">80</span>;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / <span class="punctuation">&#123;</span></span><br><span class="line">    proxy_pass http<span class="punctuation">:</span><span class="comment">//upstream的名字/;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>例如：</p>
 </blockquote>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">upstream</span> my-server &#123;</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 47.100.241.89:8081 weight=10<span class="kw">;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 47.100.241.89:8082 weight=5<span class="kw">;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 47.100.241.89:80 weight=1<span class="kw">;</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span> 80<span class="kw">;</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span>  <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80<span class="kw">;</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server_name</span> localhost<span class="kw">;</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">location</span> / &#123;</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">proxy_pass</span> http://my-server/<span class="kw">;</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="er">&#125;</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# cd conf.d/</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# ls</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">default.conf</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# vim default.conf </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> conf.d]# cd ..</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@192</span> docker_nginx]# docker-compose restart</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Restarting</span> nginx ... done</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  server 47.100.241.89:8081 weight=10;</span><br><span class="line">  server 47.100.241.89:8082 weight=5;</span><br><span class="line">  server 47.100.241.89:80 weight=1;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@192 docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@192 conf.d]<span class="comment"># ls</span></span><br><span class="line">default.conf</span><br><span class="line">[root@192 conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@192 conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@192 docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h4 id="ip_hash">5.3 ip_hash</h4>
 <blockquote>
 <p>ip_hash实现，只需要添加一个 ip_hash
 配置即可，在暂时不使用的服务器后面添加down即可</p>
 </blockquote>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">upstream</span> 名字 &#123;</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ip_hash</span><span class="kw">;</span> <span class="co"># 配置ip_hash</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> ip:port down<span class="kw">;</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> ip:port<span class="kw">;</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">...</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span> 80<span class="kw">;</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server_name</span> localhost<span class="kw">;</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">location</span> / &#123;</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">proxy_pass</span> http://upstream的名字/<span class="kw">;</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="er">&#125;</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream 名字 &#123;</span><br><span class="line">  ip_hash; <span class="comment"># 配置ip_hash</span></span><br><span class="line">  server ip:port down;</span><br><span class="line">  server ip:port;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://upstream的名字/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>例如：</p>
 </blockquote>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">upstream</span> my-server &#123;</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ip_hash</span><span class="kw">;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 192.168.25.140:8081<span class="kw">;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 192.168.25.140:8082 down<span class="kw">;</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server</span> 192.168.25.140:8083 down<span class="kw">;</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span> 80<span class="kw">;</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span>  <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80<span class="kw">;</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server_name</span> localhost<span class="kw">;</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">location</span> / &#123;</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">proxy_pass</span> http://my-server/<span class="kw">;</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="er">&#125;</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">upstream my-server &#123;</span><br><span class="line">  ip_hash;</span><br><span class="line">  server 192.168.25.140:8081;</span><br><span class="line">  server 192.168.25.140:8082 down;</span><br><span class="line">  server 192.168.25.140:8083 down;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://my-server/;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="六nginx动静分离重点">六、Nginx动静分离【<code>重点</code>】</h3>
 <hr />
 <blockquote>
@@ -993,87 +392,27 @@ Nginx最终的并发能力</p>
 <blockquote>
 <p>使用proxy_pass动态代理</p>
 </blockquote>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 配置如下</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">location</span> / &#123;</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">proxy_pass</span> 路径<span class="kw">;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  proxy_pass 路径;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="静态资源代理">6.2 静态资源代理</h4>
 <blockquote>
 <p>使用root静态代理</p>
 </blockquote>
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 配置如下</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">location</span> / &#123;</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">root</span> 静态资源路径<span class="kw">;</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">index</span> 默认访问路径下的什么资源<span class="kw">;</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">autoindex</span> on<span class="kw">;</span> <span class="co"># 代表展示静态资源全的全部内容，以列表的形式展开。</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 先修改docker，添加一个数据卷，映射到Nginx服务器的一个目录</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加了index.html和1.jpg静态资源</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 修改配置文件</span></span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# ls</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>  docker-compose.yml</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# vim docker-compose.yml </span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置如下</span></span><br><span class="line">location / &#123;</span><br><span class="line">  root 静态资源路径;</span><br><span class="line">  index 默认访问路径下的什么资源;</span><br><span class="line">  autoindex on; <span class="comment"># 代表展示静态资源全的全部内容，以列表的形式展开。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 先修改docker，添加一个数据卷，映射到Nginx服务器的一个目录</span></span><br><span class="line"><span class="comment"># 添加了index.html和1.jpg静态资源</span></span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># vim docker-compose.yml </span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>修改docker-compose.yml为如下内容：</p>
 </blockquote>
-<div class="sourceCode" id="cb27"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">version:</span> <span class="st">&#39;3.1&#39;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">services:</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx:</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">restart:</span> always</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">image:</span> daocloud.io/library/nginx:latest</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">container_name:</span> nginx</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ports:</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> 80:80</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_nginx/img/:/data/img</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> /opt/docker_nginx/html/:/data/html</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line">services:</span><br><span class="line">  nginx:</span><br><span class="line">    restart: always</span><br><span class="line">    image: daocloud.io/library/nginx:latest</span><br><span class="line">    container_name: nginx</span><br><span class="line">    ports:</span><br><span class="line">      - 80:80</span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker_nginx/conf.d/:/etc/nginx/conf.d</span><br><span class="line">      - /opt/docker_nginx/img/:/data/img</span><br><span class="line">      - /opt/docker_nginx/html/:/data/html</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>重启再查看，目录已经创建</p>
 </blockquote>
-<div class="sourceCode" id="cb28"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# docker-compose down</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Stopping</span> nginx ... done</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Removing</span> nginx ... done</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Removing</span> network docker_nginx_default</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# docker-compose up <span class="at">-d</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> network <span class="st">&quot;docker_nginx_default&quot;</span> with the default driver</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Creating</span> nginx ... done</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# ls</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conf.d</span>  docker-compose.yml  html  img</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose down</span></span><br><span class="line">Stopping nginx ... <span class="keyword">done</span></span><br><span class="line">Removing nginx ... <span class="keyword">done</span></span><br><span class="line">Removing network docker_nginx_default</span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;docker_nginx_default&quot;</span> with the default driver</span><br><span class="line">Creating nginx ... <span class="keyword">done</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># ls</span></span><br><span class="line">conf.d  docker-compose.yml  html  img</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>分别在 html 以及 img 目录中拷贝对应的 html 页面和图片即可，然后修改
 Nginx 的 default.conf 配置文件</p>
 </blockquote>
-<div class="sourceCode" id="cb29"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">server</span> &#123;</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span> 80<span class="kw">;</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">listen</span>  <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80<span class="kw">;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">server_name</span> localhost<span class="kw">;</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 代理到html的静态资源</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">location</span> /html &#123;</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">root</span> /data<span class="kw">;</span>   <span class="co">#由于location后面写的是/html，所以root后的路径就不用写成/data/html，/html会默认放在/data后面</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">index</span> student.html<span class="kw">;</span><span class="co">#默认访问student.html</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="er">&#125;</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 代理到img的静态资源</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">location</span> /img &#123;</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">root</span> /data<span class="kw">;</span></span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">autoindex</span> on<span class="kw">;</span><span class="co">#以列表的形式展开</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="er">&#125;</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="er">&#125;</span></span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# cd conf.d/</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> conf.d]# vim default.conf </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> conf.d]# cd ..</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@localhost</span> docker_nginx]# docker-compose restart</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Restarting</span> nginx ... done</span></code></pre></div>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen  [::]:80;</span><br><span class="line">  server_name localhost;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到html的静态资源</span></span><br><span class="line">  location /html &#123;</span><br><span class="line">    root /data;   <span class="comment">#由于location后面写的是/html，所以root后的路径就不用写成/data/html，/html会默认放在/data后面</span></span><br><span class="line">    index student.html;<span class="comment">#默认访问student.html</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代理到img的静态资源</span></span><br><span class="line">  location /img &#123;</span><br><span class="line">    root /data;</span><br><span class="line">    autoindex on;<span class="comment">#以列表的形式展开</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@localhost docker_nginx]<span class="comment"># cd conf.d/</span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># vim default.conf </span></span><br><span class="line">[root@localhost conf.d]<span class="comment"># cd ..</span></span><br><span class="line">[root@localhost docker_nginx]<span class="comment"># docker-compose restart</span></span><br><span class="line">Restarting nginx ... <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>浏览器分别访问以下地址进行测试：</p>
 <p>​ http://39.98.132.196/html/ （查看之前拷贝的student.html页面）</p>
@@ -1105,695 +444,58 @@ alt="1588755548570" /></td>
 </tr>
 </tbody>
 </table>
-
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Couture</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://coutures.top/Nginx/">https://coutures.top/Nginx/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Couture</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/Nginx/">
-                                    <span class="chip bg-color">Nginx</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="关于网络打印机教程（一）">
-                        
-                        <span class="card-title">关于网络打印机教程（一）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            局域网
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    运维
-                                </a>
-                            
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/%E6%89%93%E5%8D%B0%E6%9C%BA/" class="post-category">
-                                    打印机
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/">
-                        <span class="chip bg-color">打印机</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="关于Windows一些常用Command">
-                        
-                        <span class="card-title">关于Windows一些常用Command</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            关机、重启、注销、休眠、定时
-
-关机：shutdown /s
-重启：shutdown /r
-注销：shutdown /l
-休眠：shutdown /h /f
-取消关机：shutdown /a
-定时关机：shutdown /s /t 3600
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Windows/" class="post-category">
-                                    Windows
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Windows-Command/">
-                        <span class="chip bg-color">Windows Command</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-    <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-    </style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-
-    <div class="container row center-align"
-         style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2020-2024</span>
-            
-            <a href="/about" target="_blank">Couture</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            
-            <br>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">62.3k</span>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-                <span id="sitetime"> Loading ...</span>
-                <script>
-                    var calcSiteTime = function () {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2020";
-                        var startMonth = "10";
-                        var startDate = "1";
-                        var startHour = "0";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-
-                        // 区分是否有年份.
-                        var language = 'zh-CN';
-                        if (startYear === String(todayYear)) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            var daysTip = 'This site has been running for ' + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                daysTip = '本站已运行 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                daysTip = '本站已運行 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = daysTip;
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
-                                + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
-                        }
-                    }
-
-                    calcSiteTime();
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/coutureone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:couturecome@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">Couture's Blog</div><div class="post-copyright__author_desc">不忘初心 方得始终</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">Couture's Blog</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nginx/"><span class="tags-punctuation"></span>Nginx<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于网络打印机教程（一）</div></div></a></div><div class="next-post pull-right"><a href="/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">关于Windows一些常用Command</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">Couture</div><div class="author-info__desc">不忘初心 方得始终</div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%BC%95%E8%A8%80"><span class="toc-text">一、引言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E9%97%AE%E9%A2%98"><span class="toc-text">1.1 代理问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E4%BC%98%E5%8C%96"><span class="toc-text">1.3 资源优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx%E5%A4%84%E7%90%86"><span class="toc-text">1.4 Nginx处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8Cnginx%E6%A6%82%E8%BF%B0"><span class="toc-text">二、Nginx概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89nginx%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">三、Nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-text">3.1 安装Nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.2 Nginx的配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8D%B7%E6%93%8D%E4%BD%9Cnginx"><span class="toc-text">3.3 配置数据卷操作Nginx</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9Bnginx%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%87%8D%E7%82%B9"><span class="toc-text">四、Nginx的反向代理【重点】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="toc-text">4.1 正向代理和反向代理介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Enginx%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">4.2 基于Nginx实现反向代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Enginx%E7%9A%84location%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84"><span class="toc-text">4.3
+关于Nginx的location路径映射</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E9%87%8D%E7%82%B9"><span class="toc-text">五、Nginx负载均衡【重点】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2"><span class="toc-text">5.1 轮询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%83%E9%87%8D"><span class="toc-text">5.2 权重</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ip_hash"><span class="toc-text">5.3 ip_hash</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%ADnginx%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB%E9%87%8D%E7%82%B9"><span class="toc-text">六、Nginx动静分离【重点】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86"><span class="toc-text">6.1 动态资源代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86"><span class="toc-text">6.2 静态资源代理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83nginx%E9%9B%86%E7%BE%A4"><span class="toc-text">七、Nginx集群</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Rocky-Linux/" title="Rocky Linux"><img alt="Rocky Linux" src="/img/default.png"></a><div class="content"><a class="title" href="/Rocky-Linux/" title="Rocky Linux">Rocky Linux</a><a class="article-recent_post_categories" href="/Rocky-Linux/">Linux</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" title="WinServer服务器之间如何最快拷贝文件"><img alt="WinServer服务器之间如何最快拷贝文件" src="/img/default.png"></a><div class="content"><a class="title" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" title="WinServer服务器之间如何最快拷贝文件">WinServer服务器之间如何最快拷贝文件</a><a class="article-recent_post_categories" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/">WinServer - 服务器</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/" title="WinServer2019修改远程端口号"><img alt="WinServer2019修改远程端口号" src="/img/default.png"></a><div class="content"><a class="title" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/" title="WinServer2019修改远程端口号">WinServer2019修改远程端口号</a><a class="article-recent_post_categories" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/">WinServer - Windows</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/" title="CentOS 7.9修改远程端口号踩坑"><img alt="CentOS 7.9修改远程端口号踩坑" src="/img/default.png"></a><div class="content"><a class="title" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/" title="CentOS 7.9修改远程端口号踩坑">CentOS 7.9修改远程端口号踩坑</a><a class="article-recent_post_categories" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/">CentOS</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="局域网共享打印机出现0x0000011b错误解决方式"><img alt="局域网共享打印机出现0x0000011b错误解决方式" src="/img/default.png"></a><div class="content"><a class="title" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="局域网共享打印机出现0x0000011b错误解决方式">局域网共享打印机出现0x0000011b错误解决方式</a><a class="article-recent_post_categories" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">共享打印机</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span class="solitude">Solitude</span></div><div class="footer-bar-description">来自Couture's Blog - 不忘初心 方得始终的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><div class="nolazyload footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src="/img/pwa/favicon.ico" alt="返回顶部"></div></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">Couture</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/valor-x/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/main.js?v=1.7.12"></script><script src="/js/utils.js?v=1.7.12"></script><script src="/js/third_party/waterfall.min.js?v=1.7.12"></script><script src="https://cdn.staticfile.net/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.7.12"></script><script>dark()
+</script><script src="https://cdn.staticfile.net/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.net/pace/1.2.4/pace.min.js"></script></div><div id="js-pjax"><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: false,
+}
+</script></div><!-- newest comment--><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
     }
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    
-
-    
-    
-    
-
-    <!-- 雪花特效 -->
-    
-
-    <!-- 鼠标星星特效 -->
-    
-
-     
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="/libs/others/TencentCaptcha.js"></script>
-        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
-    
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
-
-</body>
-
-</html>
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- google adsense--><!-- search--><!-- music--></body></html><script>const posts=["Rocky-Linux/","WinServer服务器之间如何最快拷贝文件/","WinServer2019修改远程端口号/","CentOS-7-9修改远程端口号踩坑/","局域网共享打印机出现0x0000011b错误解决方式/","Mac电脑Hosts文件修改/","关于Powertoys安装后，输入法打字卡顿解决方式/","CentOS-7-8安装Vmware-tools/","关于Mac-word缺少字体的解决方式/","Hexo主题之hexo-theme-matery踩坑/","Mac自带文件修改/","Ubuntu-22-04配置静态IP地址/","CentOS网配置模板/","YMAL文章语法/","多平台使用-Hexo-GithubPage/","Windows-11取消右键二级菜单/","VIM常快捷键/","Linux常用命令/","Hexo-pandoc-exited-with-code-null/","Debian11-安装-Docker/","Ubuntu-UFW-防火墙/","常见网络设备密码/","交换机巡检命令/","Mac-MacBookPro-M1-MySQL无法打开解决方式/","小知识/","搭建ChatGPT关闭NGINX缓存实现官方回答效果/","Ubuntu使用ssh连接有输入命令有提示/","Ubuntu卸载Nginx和替换配置文件/","CLOUDFLARE关闭缓存/","Docker-优化/","Windows11跳过开机联网/","Mac-设置开机自动（关闭）启动MySQL/","Ubuntu-SSH连接MySQL报错/","Mac（M1Pro安装Redis）/","CentOS-8-字符集报错解决方法/","CentOS-8-安装Docker/","阿里云Docker镜像加速/","Windows10-11官方系统盘制作教程/","Homebrew安装报错Error-Command-failed-with-exit-128-git/","Windows修改固定IP和网络/","查询Windows-IP/","Mac-Console连接交换机/","新装的Windows10-11-系统和Office-2016激活教程/","关于网络打印机教程（二）/","关于网络打印机教程（一）/","Nginx/","关于Windows一些常用Command/","关于Rider引入nuget无法加载包依赖解方式/","服务器（一）/","C-windows-环境搭建/","Redis/","RabbitMQ/","Shiro/","Docker基础操作（二）/","Docker基础操作（一）/","Spring（一）/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>

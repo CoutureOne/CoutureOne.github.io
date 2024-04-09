@@ -1,361 +1,132 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Redis | Couture's Blog</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.7.12"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><!-- swiper--><!-- Open Graph--><meta name="description" content="[TOC] 一、引言 1.1 数据库压力过大 由于用户量增大，请求数量也随之增大，数据压力过大 1.2 数据不同步 多台服务器之间，数据不同步 1.3 传统锁失效 多台服务器之间的锁，已经不存在互斥性了。 二、Redis介绍 2.1 关于关系型数据库和NOSQL数据库（键值对存储"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
 
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
 
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Redis, Couture&#39;s Blog">
-    <meta name="description" content="Redis学习">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
 
-
-    <title>Redis | Couture&#39;s Blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-    <style>
-        body{
-            background-image: url(https://typora-couture.oss-cn-hangzhou.aliyuncs.com/%E9%A3%8E%E6%99%AF.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
         }
-    </style>
 
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
 
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
 
-    <!-- bg-cover style     -->
+        win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+            const link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = url
+            if (id) link.id = id
+            link.onerror = reject
+            link.onload = link.onreadystatechange = function () {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+            }
+            document.head.appendChild(link)
+        })
 
+        win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+            const script = document.createElement('script')
+            script.src = url
+            script.async = true
+            script.onerror = reject
+            script.onload = script.onreadystatechange = function () {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+            }
 
+            Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+            })
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+            document.head.appendChild(script)
+        })
+    }
+)(window)
 
-
-
-
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
-
-
-
-
-    
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
+console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.7.12",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "border-radius:0 5px 5px 0;padding: 5px 10px;background:#0084ff;color:white;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.png'
+    },
+    copyright: {"limit":50,"author":"作者: Couture","link":"链接: ","source":"来源: Couture's Blog","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Couture's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/favicon.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Couture&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/favicon.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Couture&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            好记性不如烂笔头
-            
-        </div>
-    </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Redis</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
-    <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                后端学习
-                            </a>
-                        
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/redis/" class="post-category">
-                                redis
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-05
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.5k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    37 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
-        </div>
-        <hr class="clearfix">
-
-        
-
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <p><img
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/">后端<sup>3</sup></a><a href="/tags/C/">C#<sup>2</sup></a><a href="/tags/CentOS-Linux/">CentOS - Linux<sup>2</sup></a><a href="/tags/Debian-Docker/">Debian - Docker<sup>1</sup></a><a href="/tags/Docker/">Docker<sup>3</sup></a><a href="/tags/DevOps/">DevOps<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>7</sup></a><a href="/tags/docker/">docker<sup>2</sup></a><a href="/tags/CentOS-8/">CentOS 8<sup>1</sup></a><a href="/tags/hexo/">hexo<sup>1</sup></a><a href="/tags/Mac/">Mac<sup>5</sup></a><a href="/tags/homebrew/">homebrew<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/Cloudflare/">Cloudflare<sup>1</sup></a><a href="/tags/Cloud/">Cloud<sup>1</sup></a><a href="/tags/MySQL/">MySQL<sup>2</sup></a><a href="/tags/Switch/">Switch<sup>2</sup></a><a href="/tags/MySQL-Mac/">MySQL - Mac<sup>1</sup></a><a href="/tags/Mac-Linux/">Mac - Linux<sup>1</sup></a><a href="/tags/redis/">redis<sup>1</sup></a><a href="/tags/Homebrew/">Homebrew<sup>1</sup></a><a href="/tags/Nginx/">Nginx<sup>1</sup></a><a href="/tags/java/">java<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Rocky/">Rocky<sup>1</sup></a><a href="/tags/Ubuntu-Linux/">Ubuntu - Linux<sup>1</sup></a><a href="/tags/RabbitMQ/">RabbitMQ<sup>1</sup></a><a href="/tags/ufw-%E9%98%B2%E7%81%AB%E5%A2%99/">ufw - 防火墙<sup>1</sup></a><a href="/tags/Ubuntu-SSH/">Ubuntu - SSH<sup>1</sup></a><a href="/tags/WinServer/">WinServer<sup>2</sup></a><a href="/tags/Windows-11/">Windows 11<sup>2</sup></a><a href="/tags/Windows-10/">Windows 10<sup>1</sup></a><a href="/tags/Nginx-%E8%BF%90%E7%BB%B4/">Nginx - 运维<sup>1</sup></a><a href="/tags/Windows-11-%E8%BF%90%E7%BB%B4/">Windows 11 - 运维<sup>1</sup></a><a href="/tags/Windows/">Windows<sup>2</sup></a><a href="/tags/IP/">IP<sup>2</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/">网络<sup>1</sup></a><a href="/tags/YML-Hexo/">YML - Hexo<sup>1</sup></a><a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机<sup>1</sup></a><a href="/tags/spring/">spring<sup>1</sup></a><a href="/tags/ssm/">ssm<sup>1</sup></a><a href="/tags/Windows-Command/">Windows Command<sup>1</sup></a><a href="/tags/Windows-Powertoys/">Windows - Powertoys<sup>1</sup></a><a href="/tags/hexo-%E5%8D%9A%E5%AE%A2/">hexo - 博客<sup>1</sup></a><a href="/tags/Agreement/">Agreement<sup>1</sup></a><a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/">交换机 - 常见网络设备密码<sup>1</sup></a><a href="/tags/Windows10-Windows11/">Windows10&amp;Windows11<sup>1</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/">共享打印机<sup>1</sup></a><a href="/tags/ChatGPT-NGINX/">ChatGPT - NGINX<sup>1</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4/">运维<sup>3</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器<sup>1</sup></a><a href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/">打印机<sup>2</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Solitude</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Redis</a></div></div><div id="menus"></div><div id="nav-left"></div><div id="nav-right"><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.png" alt="Redis"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/"><span class="tags-name tags-punctuation">java</span></a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tags-name tags-punctuation">数据库</span></a></div></div></div></div><h1 class="post-title">Redis</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238373.jfif" /></p>
 <span id="more"></span>
 <p>[TOC]</p>
@@ -447,43 +218,41 @@ directory. Run Redis with:</p>
 <h4 id="安装步骤">3.3 安装步骤</h4>
 <blockquote>
 <p>1.把下载好的redis-6.2.6.tar.gz安装包拷贝到当前虚拟机root目录下，解压到/usr/local下</p>
-<pre class="shell"><code>[root@localhost ~]# tar -zxvf redis-6.2.6.tar.gz -C /usr/local</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# tar -zxvf redis-6.2.6.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
 <p>2.编译的c环境，注：安装时如果显示yum正在运行，需要先将yum进程kill后再执行该命令</p>
-<pre class="shell"><code>[root@localhost ~]# yum install gcc-c++</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# yum install gcc-c++</span><br></pre></td></tr></table></figure>
 <p>3.进入redis-6.2.6目录 使用make命令编译redis（若报错，先make
 distclean，再make）</p>
-<pre class="shell"><code>[root@localhost redis-6.2.6]# make</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make</span><br></pre></td></tr></table></figure>
 <p>4.使用make PREFIX=/usr/local/redis-6.2.6
 install命令安装（安装后会出现bin目录）</p>
-<pre class="shell"><code>[root@localhost redis-6.2.6]# make PREFIX=/usr/local/redis-6.2.6 install</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make PREFIX=/usr/local/redis-6.2.6 install</span><br></pre></td></tr></table></figure>
 <p>5.启动redis服务端（前台启动）</p>
-<pre class="shell"><code>[root@localhost redis-6.2.6]# cd bin</code></pre>
-<pre class="shell"><code>[root@localhost bin]# ./redis-server </code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cd bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-server </span><br></pre></td></tr></table></figure>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238861.png" /></p>
 <p>启动后看到如上欢迎页面，但此窗口不能关闭，窗口关闭就认为redis也关闭了，所以我们需要在后台启动，然后再启动客户端进行连接，所以首先Ctrl+C退出。</p>
 <p>解决：可以通过修改配置文件配置redis的后台启动（即服务器启动了但不会创建控制台窗口）</p>
 <p>步骤如下：</p>
 <p>1.切换到redis-6.2.6目录下，把当前目录下的redis.conf文件拷贝到bin目录下</p>
-<pre class="shell"><code>[root@localhost bin]# cd ../</code></pre>
-<pre class="shell"><code>[root@localhost redis-6.2.6]# cp redis.conf bin/redis.conf</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# cd ../</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cp redis.conf bin/redis.conf</span><br></pre></td></tr></table></figure>
 <p>2.切换到bin目录下，修改redis.conf文件</p>
-<pre class="shell"><code>[root@localhost redis-6.2.6]# cd bin</code></pre>
-<pre class="shell"><code>[root@localhost bin]# vim redis.conf </code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cd bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# vim redis.conf </span><br></pre></td></tr></table></figure>
 <p>3.将redis.conf文件中的daemonize的值从no修改成yes表示后台启动</p>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238640.png" /></p>
 <p>4.启动redis服务端（后台启动）</p>
-<pre class="shell"><code>[root@localhost bin]# ./redis-server redis.conf</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-server redis.conf</span><br></pre></td></tr></table></figure>
 <p>5.查看是否启动成功</p>
-<pre class="shell"><code>[root@localhost bin]# ps -ef | grep redis</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ps -ef | grep redis</span><br></pre></td></tr></table></figure>
 <p>6.启动客户端</p>
-<pre class="shell"><code>[root@localhost bin]# ./redis-cli</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-cli</span><br></pre></td></tr></table></figure>
 <p>7.存取数据进行测试</p>
-<pre class="shell"><code>127.0.0.1:6379&gt; set name jack
-OK</code></pre>
-<pre class="shell"><code>127.0.0.1:6379&gt; get name
-&quot;jack&quot;</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name jack</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&quot;jack&quot;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h4 id="redis的配置文件">3.4 Redis的配置文件</h4>
 <table>
@@ -595,7 +364,7 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238733.png
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238626.png" /></p>
 <blockquote>
 <p>测试：100个并发，十万个请求，单机测试</p>
-<pre class="shell"><code>[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000</span><br></pre></td></tr></table></figure>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238323.png" /></p>
 <p>====== SET ======<br />
@@ -613,7 +382,7 @@ keep alive: 1 只有一台服务器处理请求 host configuration "save": 3600 
 <p>另一种写法：</p>
 <p>只测试 set 和 get 命令后退出</p>
 </blockquote>
-<pre class="shell"><code>[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -t set,get -n 10000 -q</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-benchmark -h 127.0.0.1 -p 6379 -t set,get -n 10000 -q</span><br></pre></td></tr></table></figure>
 <h3 id="五redis的数据类型重点">五、Redis的数据类型【重点】</h3>
 <hr />
 <blockquote>
@@ -861,129 +630,15 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071240709.png
 <blockquote>
 <p>2.创建Maven工程，导入依赖</p>
 </blockquote>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dependencies</span>&gt;</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- jedis客户端 --&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;redis.clients&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;jedis&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;4.2.3&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;lombok&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;1.18.24&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;com.alibaba&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;fastjson&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;2.0.2&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">groupId</span>&gt;junit&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">artifactId</span>&gt;junit&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">version</span>&gt;4.13.2&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">scope</span>&gt;compile&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">dependencies</span>&gt;</span></code></pre></div>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- jedis客户端 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.24<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>3.编写实体类</p>
 </blockquote>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">pojo</span><span class="op">;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Data</span><span class="op">;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="at">@Data</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> User <span class="op">&#123;</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">Integer</span> id<span class="op">;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> password<span class="op">;</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qf.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>4.编写测试类</p>
 </blockquote>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">jedis</span><span class="op">;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">alibaba</span><span class="op">.</span><span class="im">fastjson2</span><span class="op">.</span><span class="im">JSON</span><span class="op">;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">qf</span><span class="op">.</span><span class="im">pojo</span><span class="op">.</span><span class="im">User</span><span class="op">;</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">Jedis</span><span class="op">;</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">JedisPool</span><span class="op">;</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">redis</span><span class="op">.</span><span class="im">clients</span><span class="op">.</span><span class="im">jedis</span><span class="op">.</span><span class="im">JedisPoolConfig</span><span class="op">;</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> JedisTest <span class="op">&#123;</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">test1</span><span class="op">()&#123;</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">//获取客户端对象</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        Jedis jedis <span class="op">=</span> <span class="kw">new</span> <span class="fu">Jedis</span><span class="op">(</span><span class="st">&quot;192.168.126.129&quot;</span><span class="op">,</span><span class="dv">6379</span><span class="op">);</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">//如果有密码，必须设置</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">//jedis.auth(&quot;root&quot;);</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">//存储String类型数据</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="st">&quot;content&quot;</span><span class="op">,</span><span class="st">&quot;java2203&quot;</span><span class="op">);</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">//取String值</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;content&quot;</span><span class="op">));</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">//存对象</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>        User user <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">();</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setId</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setName</span><span class="op">(</span><span class="st">&quot;张三&quot;</span><span class="op">);</span></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>        user<span class="op">.</span><span class="fu">setPassword</span><span class="op">(</span><span class="st">&quot;123&quot;</span><span class="op">);</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> userJson <span class="op">=</span> JSON<span class="op">.</span><span class="fu">toJSONString</span><span class="op">(</span>user<span class="op">);</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">,</span>userJson<span class="op">);</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">//取对象</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> jsonStringUser <span class="op">=</span> jedis<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">);</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jsonStringUser<span class="op">);</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>        User db_user <span class="op">=</span> JSON<span class="op">.</span><span class="fu">parseObject</span><span class="op">(</span>jsonStringUser<span class="op">,</span> User<span class="op">.</span><span class="fu">class</span><span class="op">);</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>db_user<span class="op">);</span></span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        <span class="co">//关闭</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">test2</span><span class="op">()&#123;</span></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">//通过池拿jedis对象</span></span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>        <span class="co">//配置一些参数</span></span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>        JedisPoolConfig jedisPoolConfig <span class="op">=</span> <span class="kw">new</span> <span class="fu">JedisPoolConfig</span><span class="op">();</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>        <span class="co">//配置参数</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMaxTotal</span><span class="op">(</span><span class="dv">200</span><span class="op">);</span><span class="co">//最大连接数</span></span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMaxIdle</span><span class="op">(</span><span class="dv">20</span><span class="op">);</span><span class="co">//最大空闲</span></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>        jedisPoolConfig<span class="op">.</span><span class="fu">setMinIdle</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span><span class="co">//最小空闲</span></span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>        <span class="co">//创建JedisPool对象</span></span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>        JedisPool jedisPool <span class="op">=</span> <span class="kw">new</span> <span class="fu">JedisPool</span><span class="op">(</span>jedisPoolConfig<span class="op">,</span><span class="st">&quot;192.168.126.129&quot;</span><span class="op">,</span><span class="dv">6379</span><span class="op">);</span></span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>        <span class="co">//获取jedis对象</span></span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>        Jedis jedis <span class="op">=</span> jedisPool<span class="op">.</span><span class="fu">getResource</span><span class="op">();</span></span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>        <span class="co">//如果有密码，必须设置</span></span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>        <span class="co">//jedis.auth(&quot;root&quot;);</span></span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>        <span class="co">//操作List集合</span></span>
-<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">lpush</span><span class="op">(</span><span class="st">&quot;sina001&quot;</span><span class="op">,</span><span class="st">&quot;今天中午吃什么？&quot;</span><span class="op">,</span><span class="st">&quot;今天晚上喝什么&quot;</span><span class="op">);</span></span>
-<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">lrange</span><span class="op">(</span><span class="st">&quot;sina001&quot;</span><span class="op">,</span><span class="dv">0</span><span class="op">,-</span><span class="dv">1</span><span class="op">));</span></span>
-<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>        <span class="co">//操作Set集合</span></span>
-<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">sadd</span><span class="op">(</span><span class="st">&quot;userList&quot;</span><span class="op">,</span><span class="st">&quot;jack&quot;</span><span class="op">,</span><span class="st">&quot;rose&quot;</span><span class="op">,</span><span class="st">&quot;jack&quot;</span><span class="op">);</span></span>
-<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>jedis<span class="op">.</span><span class="fu">smembers</span><span class="op">(</span><span class="st">&quot;userList&quot;</span><span class="op">));</span></span>
-<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>        <span class="co">//有序Set以及Hash</span></span>
-<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>        <span class="co">//....</span></span>
-<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>        <span class="co">//关闭</span></span>
-<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>        jedis<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
-<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qf.jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson2.JSON;</span><br><span class="line"><span class="keyword">import</span> com.qf.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPool;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPoolConfig;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JedisTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//获取客户端对象</span></span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.126.129&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="comment">//如果有密码，必须设置</span></span><br><span class="line">        <span class="comment">//jedis.auth(&quot;root&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//存储String类型数据</span></span><br><span class="line">        jedis.set(<span class="string">&quot;content&quot;</span>,<span class="string">&quot;java2203&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//取String值</span></span><br><span class="line">        System.out.println(jedis.get(<span class="string">&quot;content&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//存对象</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setId(<span class="number">1</span>);</span><br><span class="line">        user.setName(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">        user.setPassword(<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">userJson</span> <span class="operator">=</span> JSON.toJSONString(user);</span><br><span class="line">        jedis.set(<span class="string">&quot;user&quot;</span>,userJson);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//取对象</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">jsonStringUser</span> <span class="operator">=</span> jedis.get(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        System.out.println(jsonStringUser);</span><br><span class="line">        <span class="type">User</span> <span class="variable">db_user</span> <span class="operator">=</span> JSON.parseObject(jsonStringUser, User.class);</span><br><span class="line">        System.out.println(db_user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//通过池拿jedis对象</span></span><br><span class="line">        <span class="comment">//配置一些参数</span></span><br><span class="line">        <span class="type">JedisPoolConfig</span> <span class="variable">jedisPoolConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPoolConfig</span>();</span><br><span class="line">        <span class="comment">//配置参数</span></span><br><span class="line">        jedisPoolConfig.setMaxTotal(<span class="number">200</span>);<span class="comment">//最大连接数</span></span><br><span class="line">        jedisPoolConfig.setMaxIdle(<span class="number">20</span>);<span class="comment">//最大空闲</span></span><br><span class="line">        jedisPoolConfig.setMinIdle(<span class="number">1</span>);<span class="comment">//最小空闲</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建JedisPool对象</span></span><br><span class="line">        <span class="type">JedisPool</span> <span class="variable">jedisPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPool</span>(jedisPoolConfig,<span class="string">&quot;192.168.126.129&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="comment">//获取jedis对象</span></span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> jedisPool.getResource();</span><br><span class="line">        <span class="comment">//如果有密码，必须设置</span></span><br><span class="line">        <span class="comment">//jedis.auth(&quot;root&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//操作List集合</span></span><br><span class="line">        jedis.lpush(<span class="string">&quot;sina001&quot;</span>,<span class="string">&quot;今天中午吃什么？&quot;</span>,<span class="string">&quot;今天晚上喝什么&quot;</span>);</span><br><span class="line">        System.out.println(jedis.lrange(<span class="string">&quot;sina001&quot;</span>,<span class="number">0</span>,-<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//操作Set集合</span></span><br><span class="line">        jedis.sadd(<span class="string">&quot;userList&quot;</span>,<span class="string">&quot;jack&quot;</span>,<span class="string">&quot;rose&quot;</span>,<span class="string">&quot;jack&quot;</span>);</span><br><span class="line">        System.out.println(jedis.smembers(<span class="string">&quot;userList&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//有序Set以及Hash</span></span><br><span class="line">        <span class="comment">//....</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="七redis中的事务了解">七、Redis中的事务【了解】</h3>
 <hr />
 <blockquote>
@@ -1116,7 +771,7 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071240740.png
 <blockquote>
 <p><strong>配置步骤：</strong></p>
 <p>1.查看当前库的信息：</p>
-<pre class="shell"><code>127.0.0.1:6379&gt; info replication</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; info replication</span><br></pre></td></tr></table></figure>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241232.png" /></p>
 <p>2.关闭当前运行的redis，打开四个链接，进行测试，拷贝三个redis.conf文件（改成6379，6380，6381）</p>
@@ -1146,9 +801,7 @@ src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241022.png
 <p>5.配置一主二从</p>
 <p>默认情况下，每台Redis都是主节点，我们只需要配置从机即可，我们这里使用6379为主机，6380和6381为从机.</p>
 <p>在对应6380的链接中进行配置：</p>
-<pre class="shell"><code>[root@localhost bin]# ./redis-cli -p 6380
-
-127.0.0.1:6380&gt; slaveof 127.0.0.1 6379</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-cli -p 6380</span><br><span class="line"></span><br><span class="line">127.0.0.1:6380&gt; slaveof 127.0.0.1 6379</span><br></pre></td></tr></table></figure>
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241702.png" /></p>
 <p>6380从机配置成功之后，可以去主机中查看对应信息</p>
@@ -1201,7 +854,7 @@ Sentinel 会开始一次自动故障迁移操作，
 <blockquote>
 <p><strong>配置步骤：</strong></p>
 <p>1.创建哨兵配置文件</p>
-<pre class="shell"><code>[root@localhost bin]# vim sentinel.conf</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# vim sentinel.conf</span><br></pre></td></tr></table></figure>
 <p>sentinel.conf文件内容如下：（格式：sentinel monitor 被监控名称 host
 port 1）</p>
 <p>sentinel monitor myredis 127.0.0.1 6379 1</p>
@@ -1211,7 +864,7 @@ monitor myredis 主机IP地址 6379
 <p><img
 src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071241771.png" /></p>
 <p>2.启动哨兵</p>
-<pre class="shell"><code>[root@localhost bin]# ./redis-sentinel sentinel.conf</code></pre>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# ./redis-sentinel sentinel.conf</span><br></pre></td></tr></table></figure>
 <p><img src="Pictures\59.png" /></p>
 <p>3.如果Master节点断开了（主机宕机了），过一会，会发送哨兵日志，并自动通过算法在其他两个从机中选择一个成为主机.</p>
 <p><img
@@ -1321,692 +974,62 @@ volatile-ttl：在内存不足时，Redis会在设置过了生存时间的key中
 <p>方案：指定淘汰机制的方式：maxmemory-policy具体策略，设置Redis的最大内存：maxmemory
 字节大小</p>
 </blockquote>
-
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Couture</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://coutures.top/Redis/">https://coutures.top/Redis/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Couture</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="C# windows 环境搭建">
-                        
-                        <span class="card-title">C# windows 环境搭建</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            环境安装
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category">
-                                    C#
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
-                    </a>
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C#</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/RabbitMQ/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="RabbitMQ">
-                        
-                        <span class="card-title">RabbitMQ</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            学习RabbitMQ
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/RabbitMQ/" class="post-category">
-                                    RabbitMQ
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
-                    </a>
-                    
-                    <a href="/tags/RabbitMQ/">
-                        <span class="chip bg-color">RabbitMQ</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-    <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-    </style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-
-    <div class="container row center-align"
-         style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2020-2024</span>
-            
-            <a href="/about" target="_blank">Couture</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            
-            <br>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">62.3k</span>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-                <span id="sitetime"> Loading ...</span>
-                <script>
-                    var calcSiteTime = function () {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2020";
-                        var startMonth = "10";
-                        var startDate = "1";
-                        var startHour = "0";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-
-                        // 区分是否有年份.
-                        var language = 'zh-CN';
-                        if (startYear === String(todayYear)) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            var daysTip = 'This site has been running for ' + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                daysTip = '本站已运行 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                daysTip = '本站已運行 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = daysTip;
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
-                                + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
-                        }
-                    }
-
-                    calcSiteTime();
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/coutureone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:couturecome@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">Couture's Blog</div><div class="post-copyright__author_desc">不忘初心 方得始终</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">Couture's Blog</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/"><span class="tags-punctuation"></span>java<span class="tagsPageCount">3</span></a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tags-punctuation"></span>数据库<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C# windows 环境搭建</div></div></a></div><div class="next-post pull-right"><a href="/RabbitMQ/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RabbitMQ</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">Couture</div><div class="author-info__desc">不忘初心 方得始终</div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%BC%95%E8%A8%80"><span class="toc-text">一、引言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%8B%E5%8A%9B%E8%BF%87%E5%A4%A7"><span class="toc-text">1.1 数据库压力过大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%90%8C%E6%AD%A5"><span class="toc-text">1.2 数据不同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E9%94%81%E5%A4%B1%E6%95%88"><span class="toc-text">1.3 传统锁失效</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8Credis%E4%BB%8B%E7%BB%8D"><span class="toc-text">二、Redis介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8Cnosql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%AE%E5%80%BC%E5%AF%B9%E5%AD%98%E5%82%A8"><span class="toc-text">2.1
+关于关系型数据库和NOSQL数据库（键值对存储）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89redis%E5%AE%89%E8%A3%85"><span class="toc-text">三、Redis安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85redis"><span class="toc-text">3.1 安装Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">3.3 安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redis%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.4 Redis的配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9Bredis-benchmark%E5%AE%98%E6%96%B9%E8%87%AA%E5%B8%A6%E7%9A%84%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">四、redis-benchmark官方自带的性能测试工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%AE%89%E8%A3%85%E7%9A%84redis%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0redis-benchmark"><span class="toc-text">4.1
+在安装的redis中可以看到redis-benchmark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Eredis-benchmark-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="toc-text">4.2 关于redis-benchmark
+的一些参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%87%8D%E7%82%B9"><span class="toc-text">五、Redis的数据类型【重点】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2string"><span class="toc-text">5.1 字符串(String)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8list"><span class="toc-text">5.2 列表(List)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88set%E4%B8%8D%E5%85%81%E8%AE%B8%E5%87%BA%E7%8E%B0%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-text">5.3
+集合(Set，不允许出现重复的元素)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88sorted-set"><span class="toc-text">5.4 有序集合(sorted set)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8Chash"><span class="toc-text">5.5 哈希(Hash)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">5.6 通用操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%ADjedis%E7%9A%84%E4%BD%BF%E7%94%A8%E9%87%8D%E7%82%B9"><span class="toc-text">六、Jedis的使用【重点】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83redis%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E4%BA%86%E8%A7%A3"><span class="toc-text">七、Redis中的事务【了解】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%ABredis%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E4%B8%8E%E5%8F%91%E5%B8%83%E4%BA%86%E8%A7%A3"><span class="toc-text">八、Redis消息订阅与发布【了解】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9Dredis%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%A8%8B%E5%BA%8F%E7%95%8C%E9%9D%A2%E4%BA%86%E8%A7%A3"><span class="toc-text">九、Redis图形化程序界面【了解】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81redis%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E9%87%8D%E7%82%B9"><span class="toc-text">十、Redis中的持久化【重点】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rdbredis-database"><span class="toc-text">1.RDB（Redis DataBase）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#aofappend-of-file"><span class="toc-text">2.AOF（Append Of File）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">3.总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6-%E9%87%8D%E7%82%B9"><span class="toc-text">十一、Redis的主从复制 【重点】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8Credis%E7%9A%84%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F%E9%87%8D%E7%82%B9"><span class="toc-text">十二、Redis的哨兵模式【重点】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%89redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%87%BB%E7%A9%BF%E9%9B%AA%E5%B4%A9%E5%80%BE%E6%96%9C"><span class="toc-text">十三、Redis缓存穿透，击穿，雪崩，倾斜</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E6%9F%A5%E4%B8%8D%E5%88%B0"><span class="toc-text">1.1 缓存穿透（查不到）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E8%AE%BF%E9%97%AE%E9%87%8F%E5%A4%A7%E7%BC%93%E5%AD%98%E8%BF%87%E6%9C%9F"><span class="toc-text">1.2
+缓存击穿（访问量大，缓存过期）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-text">1.3 缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%80%BE%E6%96%9C"><span class="toc-text">1.4 缓存倾斜</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%9B%9Bredis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="toc-text">十四、Redis集群搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%94redis%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">十五、Redis其他常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#key%E7%9A%84%E7%94%9F%E5%AD%98%E6%97%B6%E9%97%B4%E5%88%B0%E4%BA%86redis%E4%BC%9A%E7%AB%8B%E5%8D%B3%E5%88%A0%E9%99%A4%E5%90%97"><span class="toc-text">1.key的生存时间到了，Redis会立即删除吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redis%E7%9A%84%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">2.Redis的淘汰机制</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Rocky-Linux/" title="Rocky Linux"><img alt="Rocky Linux" src="/img/default.png"></a><div class="content"><a class="title" href="/Rocky-Linux/" title="Rocky Linux">Rocky Linux</a><a class="article-recent_post_categories" href="/Rocky-Linux/">Linux</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" title="WinServer服务器之间如何最快拷贝文件"><img alt="WinServer服务器之间如何最快拷贝文件" src="/img/default.png"></a><div class="content"><a class="title" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" title="WinServer服务器之间如何最快拷贝文件">WinServer服务器之间如何最快拷贝文件</a><a class="article-recent_post_categories" href="/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/">WinServer - 服务器</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/" title="WinServer2019修改远程端口号"><img alt="WinServer2019修改远程端口号" src="/img/default.png"></a><div class="content"><a class="title" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/" title="WinServer2019修改远程端口号">WinServer2019修改远程端口号</a><a class="article-recent_post_categories" href="/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/">WinServer - Windows</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/" title="CentOS 7.9修改远程端口号踩坑"><img alt="CentOS 7.9修改远程端口号踩坑" src="/img/default.png"></a><div class="content"><a class="title" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/" title="CentOS 7.9修改远程端口号踩坑">CentOS 7.9修改远程端口号踩坑</a><a class="article-recent_post_categories" href="/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/">CentOS</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="局域网共享打印机出现0x0000011b错误解决方式"><img alt="局域网共享打印机出现0x0000011b错误解决方式" src="/img/default.png"></a><div class="content"><a class="title" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="局域网共享打印机出现0x0000011b错误解决方式">局域网共享打印机出现0x0000011b错误解决方式</a><a class="article-recent_post_categories" href="/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">共享打印机</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span class="solitude">Solitude</span></div><div class="footer-bar-description">来自Couture's Blog - 不忘初心 方得始终的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><div class="nolazyload footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src="/img/pwa/favicon.ico" alt="返回顶部"></div></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">Couture</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/valor-x/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/main.js?v=1.7.12"></script><script src="/js/utils.js?v=1.7.12"></script><script src="/js/third_party/waterfall.min.js?v=1.7.12"></script><script src="https://cdn.staticfile.net/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.7.12"></script><script>dark()
+</script><script src="https://cdn.staticfile.net/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.net/pace/1.2.4/pace.min.js"></script></div><div id="js-pjax"><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: false,
+}
+</script></div><!-- newest comment--><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
     }
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    
-
-    
-    
-    
-
-    <!-- 雪花特效 -->
-    
-
-    <!-- 鼠标星星特效 -->
-    
-
-     
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="/libs/others/TencentCaptcha.js"></script>
-        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
-    
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
-
-</body>
-
-</html>
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- google adsense--><!-- search--><!-- music--></body></html><script>const posts=["Rocky-Linux/","WinServer服务器之间如何最快拷贝文件/","WinServer2019修改远程端口号/","CentOS-7-9修改远程端口号踩坑/","局域网共享打印机出现0x0000011b错误解决方式/","Mac电脑Hosts文件修改/","关于Powertoys安装后，输入法打字卡顿解决方式/","CentOS-7-8安装Vmware-tools/","关于Mac-word缺少字体的解决方式/","Hexo主题之hexo-theme-matery踩坑/","Mac自带文件修改/","Ubuntu-22-04配置静态IP地址/","CentOS网配置模板/","YMAL文章语法/","多平台使用-Hexo-GithubPage/","Windows-11取消右键二级菜单/","VIM常快捷键/","Linux常用命令/","Hexo-pandoc-exited-with-code-null/","Debian11-安装-Docker/","Ubuntu-UFW-防火墙/","常见网络设备密码/","交换机巡检命令/","Mac-MacBookPro-M1-MySQL无法打开解决方式/","小知识/","搭建ChatGPT关闭NGINX缓存实现官方回答效果/","Ubuntu使用ssh连接有输入命令有提示/","Ubuntu卸载Nginx和替换配置文件/","CLOUDFLARE关闭缓存/","Docker-优化/","Windows11跳过开机联网/","Mac-设置开机自动（关闭）启动MySQL/","Ubuntu-SSH连接MySQL报错/","Mac（M1Pro安装Redis）/","CentOS-8-字符集报错解决方法/","CentOS-8-安装Docker/","阿里云Docker镜像加速/","Windows10-11官方系统盘制作教程/","Homebrew安装报错Error-Command-failed-with-exit-128-git/","Windows修改固定IP和网络/","查询Windows-IP/","Mac-Console连接交换机/","新装的Windows10-11-系统和Office-2016激活教程/","关于网络打印机教程（二）/","关于网络打印机教程（一）/","Nginx/","关于Windows一些常用Command/","关于Rider引入nuget无法加载包依赖解方式/","服务器（一）/","C-windows-环境搭建/","Redis/","RabbitMQ/","Shiro/","Docker基础操作（二）/","Docker基础操作（一）/","Spring（一）/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>

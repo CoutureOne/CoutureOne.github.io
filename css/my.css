@@ -1,9 +1,0 @@
-/* Here is your custom css styles. */
-@font-face{
-    font-family: 'JetBrainsMono-Regular.ttf';
-    src: url('../font/JetBrainsMono-Regular.ttf');
-}
-
-body{
-    font-family: 'JetBrainsMono-Regular.ttf';
-}
