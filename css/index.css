@@ -4054,6 +4054,16 @@ span.tags-punctuation::before {
 #page-header.no-top-img {
   margin-bottom: 0;
 }
+#page-header:not(.nav-fixed) #percent {
+  transition: 0.3s;
+}
+#page-header:not(.nav-fixed) #nav-right #nav-totop {
+  width: 0;
+  transform: scale(0);
+  margin-left: 0;
+  overflow: hidden;
+  transition: 0.3s ease-in;
+}
 #page-header #scroll-down .scroll-down-effects,
 #page-header #site-subtitle,
 #page-header #site-title {
@@ -4369,6 +4379,56 @@ span.tags-punctuation::before {
 #site-logo {
   width: 121px;
 }
+#nav-totop {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  border-radius: 40px;
+  transition: all 0.3s ease-in-out;
+  align-items: center;
+}
+#nav-totop.long {
+  width: 80px;
+}
+#nav-totop .totopbtn {
+  padding-top: 0;
+}
+#nav-totop .totopbtn i {
+  position: absolute;
+  display: flex;
+  font-size: 22px;
+  opacity: 0;
+  line-height: 1;
+}
+#nav-totop:hover .totopbtn i {
+  opacity: 1;
+  color: var(--efu-card-bg);
+  transition: 0.3s;
+}
+#nav-totop:hover #percent {
+  opacity: 0;
+  font-weight: 700;
+}
+#nav-totop #percent {
+  font-size: 12px;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+.nav-fixed #nav-totop #percent,
+.page #nav-totop #percent {
+  font-size: 12px;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  white-space: nowrap;
+}
 .nav-fixed #nav a {
   color: var(--efu-fontcolor);
   transition: 0.3s;
@@ -4522,6 +4582,11 @@ span.tags-punctuation::before {
     position: absolute;
     overflow: hidden;
     left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  #nav-console {
+    display: none;
   }
 }
 span.tags-punctuation {
