@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Rocky Linux</title>
-    <url>/Rocky-Linux/</url>
+    <url>/posts/50278.html</url>
     <content><![CDATA[<h3 id="1-修改默认远程端口号"><a class="headerlink" href="#1-修改默认远程端口号"></a>1.修改默认远程端口号</h3>
 <h4 id="1-1-关闭SELINUX"><a class="headerlink" href="#1-1-关闭SELINUX"></a>1.1 关闭SELINUX</h4>
 <p>如果不关闭SELINUX修改远程端口号无法生效(天坑之一)</p>
@@ -59,7 +59,7 @@
   </entry>
   <entry>
     <title>WinServer服务器之间如何最快拷贝文件</title>
-    <url>/WinServer%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/</url>
+    <url>/posts/39676.html</url>
     <content><![CDATA[<blockquote>
 <p>问题产生背景是同事希望在<code>Vsphere</code>虚拟机两台<code>Windows</code>服务器相互拷贝文件。</p>
 </blockquote>
@@ -86,7 +86,7 @@
   </entry>
   <entry>
     <title>WinServer2019修改远程端口号</title>
-    <url>/WinServer2019%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7/</url>
+    <url>/posts/27080.html</url>
     <content><![CDATA[<ul>
 <li>先进入注册表</li>
 </ul>
@@ -113,7 +113,7 @@
   </entry>
   <entry>
     <title>CentOS 7.9修改远程端口号踩坑</title>
-    <url>/CentOS-7-9%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%B8%A9%E5%9D%91/</url>
+    <url>/posts/16524.html</url>
     <content><![CDATA[<p><code>sshd_config</code>配置文件里面修改端口以后不通，注意下面：</p>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /etc/selinux/</span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># ls</span></span><br><span class="line">config  final  semanage.conf  targeted  tmp</span><br><span class="line">[root@centos7 selinux]<span class="comment"># vi config </span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="comment">#     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment">#     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment">#     disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled <span class="comment"># 修改远程端口号要关闭</span></span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of three values:</span></span><br><span class="line"><span class="comment">#     targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="comment">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span><br><span class="line"><span class="comment">#     mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted                                                                              </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                                             </span><br></pre></td></tr></table></figure>
@@ -127,7 +127,7 @@
   </entry>
   <entry>
     <title>局域网共享打印机出现0x0000011b错误解决方式</title>
-    <url>/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E5%87%BA%E7%8E%B00x0000011b%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <url>/posts/47132.html</url>
     <content><![CDATA[<blockquote>
 <p>网上的教程有很多，除了软件（软件不知道是否好坏，是否有病毒），最快最稳定的方式还是修改注册表，不需要卸载更新等其他方式。</p>
 </blockquote>
@@ -155,7 +155,7 @@
   </entry>
   <entry>
     <title>Mac电脑Hosts文件修改</title>
-    <url>/Mac%E7%94%B5%E8%84%91Hosts%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</url>
+    <url>/posts/23239.html</url>
     <content><![CDATA[<p>  因为一些原因想着修改mac的hosts文件，我给文件复制到桌面上一份，但是在桌面上以后，无论如何都删不掉，也无法给权限，一直都是上锁的状态，也查了很多解锁的方式，但是都无法解锁，经过自己的踩坑，找到了问题的原因。</p>
 <p> 问题如图所示：</p>
 <p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/.png" alt="" loading="lazy"></p>
@@ -177,7 +177,7 @@
   </entry>
   <entry>
     <title>关于Powertoys安装后，输入法打字卡顿解决方式</title>
-    <url>/%E5%85%B3%E4%BA%8EPowertoys%E5%AE%89%E8%A3%85%E5%90%8E%EF%BC%8C%E8%BE%93%E5%85%A5%E6%B3%95%E6%89%93%E5%AD%97%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <url>/posts/47989.html</url>
     <content><![CDATA[<blockquote>
 <p>安装这个<code>Powertoys</code>以后打字总是不跟手，打字很卡，特别是喜欢用空格作为确定按键，后来找了很多资料，发现也有很多人有类似的问题，经过研究找到了问题所在：</p>
 </blockquote>
@@ -194,7 +194,7 @@
   </entry>
   <entry>
     <title>CentOS 7.8安装Vmware-tools</title>
-    <url>/CentOS-7-8%E5%AE%89%E8%A3%85Vmware-tools/</url>
+    <url>/posts/25680.html</url>
     <content><![CDATA[<h6 id="首先要进入挂载目录下面，看看有没有挂载"><a class="headerlink" href="#首先要进入挂载目录下面，看看有没有挂载"></a><strong>首先要进入挂载目录下面，看看有没有挂载</strong></h6>
 <p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/33a9072df8752e7880ebb38a91b0431a.png" alt="" loading="lazy"></p>
 <p><strong>首先确认 <code>/mnt</code> 目录下是否有 VMware Tools 的内容。使用 <code>ls /mnt</code> 命令来列出内容。</strong></p>
@@ -243,7 +243,7 @@
   </entry>
   <entry>
     <title>关于Mac word缺少字体的解决方式</title>
-    <url>/%E5%85%B3%E4%BA%8EMac-word%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <url>/posts/37230.html</url>
     <content><![CDATA[<p>  本人也是很少用word，但是收到文件字体是<code>仿宋字体GB2312</code>,<code>Mac office 365 word</code>中不能识别到字体，然后打印出来的字体完全是变了格式，因为自动识别成了宋体黑体，不是<code>仿宋字体GB2312</code>,所以就找到了以下解决方案：</p>
 <p> 首先就是下载字体，当然我这已经找好合集了，我只需要传到网盘上面，有需要的自行下载即可（<a href="https://pan.baidu.com/s/1KRGAE_oOPLGgIa2Lm1r4gQ?pwd=9v3a">下载链接</a>）</p>
 <h3 id="第一步："><a class="headerlink" href="#第一步："></a>第一步：</h3>
@@ -269,7 +269,7 @@
   </entry>
   <entry>
     <title>Hexo主题之hexo-theme-matery踩坑</title>
-    <url>/Hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bhexo-theme-matery%E8%B8%A9%E5%9D%91/</url>
+    <url>/posts/57178.html</url>
     <content><![CDATA[<h2 id="1、序言："><a class="headerlink" href="#1、序言："></a>1、序言：</h2>
 <blockquote>
 <p>最近元旦放假，想着自己也没啥事情要做的，自己博客也是好久没有更新过了，自己想换一个主题，然后参照了很多主题，最后选择了github上面的开源主题<a href="https://github.com/blinkfox/hexo-theme-matery">hexo-thme-matery</a>这个主题，然后就有了下面就是自己遇到的一些坑了~</p>
@@ -317,7 +317,7 @@
   </entry>
   <entry>
     <title>Mac自带文件修改</title>
-    <url>/Mac%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9/</url>
+    <url>/posts/65189.html</url>
     <content><![CDATA[<h3 id="问题所在："><a class="headerlink" href="#问题所在："></a>问题所在：</h3>
 <span id="more"></span>
 <img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/image-20231112151723433.png" alt="image-20231112151723433" style="zoom:50%;" />
@@ -373,7 +373,7 @@
   </entry>
   <entry>
     <title>Ubuntu 22.04配置静态IP地址</title>
-    <url>/Ubuntu-22-04%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/</url>
+    <url>/posts/475.html</url>
     <content><![CDATA[<p>进入系统以后：</p>
 <p>编辑网络配置文件（<code>nano</code>或者<code>vim</code>）</p>
 <span id="more"></span>
@@ -392,7 +392,7 @@
   </entry>
   <entry>
     <title>CentOS网配置模板</title>
-    <url>/CentOS%E7%BD%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF/</url>
+    <url>/posts/5232.html</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[rootClocalhost~]<span class="comment"># cd /etc/sysconf ig/network-scripts/</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># ls</span></span><br><span class="line">[rootClocalhost~]<span class="comment"># vi ifcfg-ens160</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cd /etc/sysconfig/network-scripts/</span></span><br><span class="line">[root@localhost network-scripts]<span class="comment"># vim ifcfg-ens160 </span></span><br><span class="line"></span><br><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;ens160&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;c203d758-1006-4fed-85cf-b485feac9682&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;ens160&quot;</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPADDR=192.168.200.181</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.200.2</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启网卡 </span></span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -406,7 +406,7 @@
   </entry>
   <entry>
     <title>YMAL文章语法</title>
-    <url>/YMAL%E6%96%87%E7%AB%A0%E8%AF%AD%E6%B3%95/</url>
+    <url>/posts/23989.html</url>
     <content><![CDATA[<ul>
 <li><code>title</code>：文档或博文的标题。</li>
 <li><code>date</code>：文档或博文创建或发布的日期和时间。</li>
@@ -427,7 +427,7 @@
   </entry>
   <entry>
     <title>多平台使用 Hexo+GithubPage</title>
-    <url>/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8-Hexo-GithubPage/</url>
+    <url>/posts/49547.html</url>
     <content><![CDATA[<p>将一台电脑的博客所有目录直接拷贝到另一台电脑上面</p>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">couture@MacPro  ~/MyBlog  </span><br><span class="line">位于分支 main</span><br><span class="line">无文件要提交，干净的工作区</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">致命错误：无法读取远程仓库。</span><br><span class="line"></span><br><span class="line">请确认您有正确的访问权限并且仓库存在。</span><br><span class="line">FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="string">Error: Spawn failed</span></span><br><span class="line"><span class="string">    at ChildProcess.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/hexo-util/lib/spawn.js:51:21)</span></span><br><span class="line"><span class="string">    at ChildProcess.emit (node:events:514:28)</span></span><br><span class="line"><span class="string">    at ChildProcess._handle.onexit (node:internal/child_process:291:12)</span></span><br></pre></td></tr></table></figure>
@@ -441,7 +441,7 @@
   </entry>
   <entry>
     <title>Windows 11取消右键二级菜单</title>
-    <url>/Windows-11%E5%8F%96%E6%B6%88%E5%8F%B3%E9%94%AE%E4%BA%8C%E7%BA%A7%E8%8F%9C%E5%8D%95/</url>
+    <url>/posts/64385.html</url>
     <content><![CDATA[<p>因为不习惯<code>Windows11</code>鼠标右键反人类的二级菜单方式，采用命令的方式给屏蔽掉</p>
 <p>修改成<code>Windows10</code>样式</p>
 <p><strong>搜索<code>CMD</code>，然后点击管理员运行</strong></p>
@@ -465,7 +465,7 @@
   </entry>
   <entry>
     <title>VIM常快捷键</title>
-    <url>/VIM%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <url>/posts/55427.html</url>
     <content><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p>
 <h4 id="插入模式（Insert-Mode）："><a class="headerlink" href="#插入模式（Insert-Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4>
 <span id="more"></span>
@@ -530,7 +530,7 @@
   </entry>
   <entry>
     <title>Linux常用命令</title>
-    <url>/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <url>/posts/48230.html</url>
     <content><![CDATA[<h1>Linux常用命令</h1>
 <ol>
 <li><strong>ls</strong>：列出目录内容。</li>
@@ -572,7 +572,7 @@
   </entry>
   <entry>
     <title>Hexo:pandoc exited with code null</title>
-    <url>/Hexo-pandoc-exited-with-code-null/</url>
+    <url>/posts/24427.html</url>
     <content><![CDATA[<h4 id="在hexo更新文章遇到的问题："><a class="headerlink" href="#在hexo更新文章遇到的问题："></a>在hexo更新文章遇到的问题：</h4>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FATAL Something&#x27;</span>s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error:</span><br><span class="line">[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md</span><br><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span><br><span class="line">at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)</span><br><span class="line">at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Hexo.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22</span><br><span class="line">at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)</span><br><span class="line">at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)</span><br><span class="line">at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)</span><br><span class="line">at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)</span><br><span class="line">at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)</span><br><span class="line">at process.processImmediate (node:internal/timers:478:21)</span><br></pre></td></tr></table></figure>
@@ -593,7 +593,7 @@
   </entry>
   <entry>
     <title>Debian11 安装 Docker</title>
-    <url>/Debian11-%E5%AE%89%E8%A3%85-Docker/</url>
+    <url>/posts/24202.html</url>
     <content><![CDATA[<h3 id="一、安装Docker"><a class="headerlink" href="#一、安装Docker"></a>一、安装<code>Docker</code></h3>
 <h4 id="1-更新系统软件包"><a class="headerlink" href="#1-更新系统软件包"></a>1.更新系统软件包</h4>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
@@ -630,7 +630,7 @@
   </entry>
   <entry>
     <title>Ubuntu UFW 防火墙</title>
-    <url>/Ubuntu-UFW-%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <url>/posts/2647.html</url>
     <content><![CDATA[<p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p>
 <h3 id="一、安装UFW"><a class="headerlink" href="#一、安装UFW"></a>一、安装<code>UFW</code></h3>
 <p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p>
@@ -679,7 +679,7 @@
   </entry>
   <entry>
     <title>常见网络设备密码</title>
-    <url>/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%AF%86%E7%A0%81/</url>
+    <url>/posts/32531.html</url>
     <content><![CDATA[<h3 id="H3C"><a class="headerlink" href="#H3C"></a><code>H3C</code></h3>
 <p>（华三）路由器交换机默认用户名和密码</p>
 <blockquote>
@@ -756,7 +756,7 @@
   </entry>
   <entry>
     <title>交换机巡检命令</title>
-    <url>/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</url>
+    <url>/posts/35045.html</url>
     <content><![CDATA[<h1>交换机巡检命令</h1>
 <h3 id="一、思科交换机"><a class="headerlink" href="#一、思科交换机"></a>一、思科交换机</h3>
 <span id="more"></span>
@@ -783,7 +783,7 @@
   </entry>
   <entry>
     <title>Mac(MacBookPro M1)MySQL无法打开解决方式</title>
-    <url>/Mac-MacBookPro-M1-MySQL%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</url>
+    <url>/posts/52684.html</url>
     <content><![CDATA[<p>1.在mac系统的活动监视器里面找到mysqld的进程选择将它关闭掉，然后打开mac上的命令行去执行命令。</p>
 <span id="more"></span>
 <p>2.在命令行之中执行命令去给mysql数据库的安装目录赋予一个可以进行读写和执行任意操作的权限，在服务能够运行的情况下无法启动的原因基本上都是因为权限和配置文件的问题所导致的，命令如下：</p>
@@ -804,7 +804,7 @@
   </entry>
   <entry>
     <title>小知识</title>
-    <url>/%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+    <url>/posts/18782.html</url>
     <content><![CDATA[<h3 id="DTU和RTU是什么："><a class="headerlink" href="#DTU和RTU是什么："></a>DTU和RTU是什么：</h3>
 <p>​	DTU和RTU都是指用于远程监控和控制的设备，但它们有不同的含义。</p>
 <span id="more"></span>
@@ -824,7 +824,7 @@
   </entry>
   <entry>
     <title>搭建ChatGPT关闭NGINX缓存实现官方回答效果</title>
-    <url>/%E6%90%AD%E5%BB%BAChatGPT%E5%85%B3%E9%97%ADNGINX%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0%E5%AE%98%E6%96%B9%E5%9B%9E%E7%AD%94%E6%95%88%E6%9E%9C/</url>
+    <url>/posts/2952.html</url>
     <content><![CDATA[<p>下面是Nginx配置反向代理方式，当然不仅仅这一种方式</p>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">listen 80;</span><br><span class="line"></span><br><span class="line">server_name xx.xx; <span class="comment"># 域名</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">return</span> 301 https://$host<span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">listen 443 ssl http2;</span><br><span class="line"></span><br><span class="line">server_name xx.cn; <span class="comment"># 域名</span></span><br><span class="line"></span><br><span class="line">ssl_certificate /etc/nginx/certs/cert08.pem;</span><br><span class="line"></span><br><span class="line">ssl_certificate_key /etc/nginx/certs/key08.pem;</span><br><span class="line"></span><br><span class="line">location /&#123;</span><br><span class="line"></span><br><span class="line">  proxy_pass http://zxx.xx.xx:3000; <span class="comment"># 服务器的地址</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 这里是重点，在这里是关闭缓存方式</span></span><br><span class="line">  proxy_buffering off; <span class="comment"># 禁用缓存</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line"></span><br><span class="line">  proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line"></span><br><span class="line">  proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -839,7 +839,7 @@
   </entry>
   <entry>
     <title>Ubuntu使用ssh连接有输入命令有提示</title>
-    <url>/Ubuntu%E4%BD%BF%E7%94%A8ssh%E8%BF%9E%E6%8E%A5%E6%9C%89%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E6%9C%89%E6%8F%90%E7%A4%BA/</url>
+    <url>/posts/10164.html</url>
     <content><![CDATA[<p>Ubuntu使用默认的OpenSSH服务作为SSH服务器，当您使用SSH连接到远程计算机时，如果需要有命令提示，您需要完成以下步骤：</p>
 <ol>
 <li>登录到您的远程计算机</li>
@@ -893,7 +893,7 @@
   </entry>
   <entry>
     <title>Ubuntu卸载Nginx和替换配置文件</title>
-    <url>/Ubuntu%E5%8D%B8%E8%BD%BDNginx%E5%92%8C%E6%9B%BF%E6%8D%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <url>/posts/35350.html</url>
     <content><![CDATA[<h3 id="1、卸载Nginx"><a class="headerlink" href="#1、卸载Nginx"></a>1、卸载Nginx</h3>
 <ol>
 <li>停止 Nginx 服务：</li>
@@ -956,7 +956,7 @@
   </entry>
   <entry>
     <title>CLOUDFLARE关闭缓存</title>
-    <url>/CLOUDFLARE%E5%85%B3%E9%97%AD%E7%BC%93%E5%AD%98/</url>
+    <url>/posts/28465.html</url>
     <content><![CDATA[<p>​	关于CLOUDFLARE注册托管什么我就不在这里做过多的介绍了，按照官方指引一步步来就行了，给你的域名托管进去即可。</p>
 <p>下面是关闭CLOUDFLARE缓存。</p>
 <span id="more"></span>
@@ -984,7 +984,7 @@
   </entry>
   <entry>
     <title>Docker 优化</title>
-    <url>/Docker-%E4%BC%98%E5%8C%96/</url>
+    <url>/posts/42315.html</url>
     <content><![CDATA[<blockquote>
 <p>由于<code>Docker</code>部署项目之后访问有些慢，考虑到服务器的性能比较弱， <code>Docker</code>优化方案解决</p>
 </blockquote>
@@ -1026,7 +1026,7 @@
   </entry>
   <entry>
     <title>Windows11跳过开机联网</title>
-    <url>/Windows11%E8%B7%B3%E8%BF%87%E5%BC%80%E6%9C%BA%E8%81%94%E7%BD%91/</url>
+    <url>/posts/13213.html</url>
     <content><![CDATA[<p>这时候在激活界面调出<code>CMD</code>界面,输入命令：</p>
 <blockquote>
 <p>调出CMD界面的快捷键是：<code>Shift+F10</code>或者是<code>Fn+Shift+F10</code></p>
@@ -1044,7 +1044,7 @@
   </entry>
   <entry>
     <title>Mac 设置开机自动（关闭）启动MySQL</title>
-    <url>/Mac-%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%EF%BC%88%E5%85%B3%E9%97%AD%EF%BC%89%E5%90%AF%E5%8A%A8MySQL/</url>
+    <url>/posts/969.html</url>
     <content><![CDATA[<blockquote>
 <p>注意：本次设备是MacBookPro M1Pro版本</p>
 </blockquote>
@@ -1067,7 +1067,7 @@
   </entry>
   <entry>
     <title>Ubuntu SSH连接MySQL报错</title>
-    <url>/Ubuntu-SSH%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E9%94%99/</url>
+    <url>/posts/57106.html</url>
     <content><![CDATA[<h3 id="报错内容："><a class="headerlink" href="#报错内容："></a>报错内容：</h3>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[28000][1698] Access denied <span class="keyword">for</span> user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;10.211.55.22&#x27;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
@@ -1095,7 +1095,7 @@
   </entry>
   <entry>
     <title>Mac（M1Pro安装Redis）</title>
-    <url>/Mac%EF%BC%88M1Pro%E5%AE%89%E8%A3%85Redis%EF%BC%89/</url>
+    <url>/posts/58156.html</url>
     <content><![CDATA[<p>采用<code>homebrew</code>安装Redis，前提是Mac已经安装Redis</p>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ brew install redis <span class="comment"># 执行这个命令来安装Redis</span></span><br><span class="line">Running `brew update --auto-update`...</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"></span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Fetching redis</span><br><span class="line">==&gt; Downloading https://mirrors.aliyun.com/homebrew/homebrew-bottles/redis-7.0.1</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-7.0.10.arm64_monterey.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /opt/homebrew/Cellar/redis/7.0.10: 14 files, 2.7MB</span><br><span class="line">==&gt; Running `brew cleanup redis`...</span><br><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br><span class="line">➜  ~ brew services start redis</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="comment">##O=#  #</span></span><br><span class="line">Warning: Calling formula.plist_path is deprecated! Use formula.launchd_service_path instead.</span><br><span class="line">Please report this issue to the homebrew/services tap (not Homebrew/brew or Homebrew/homebrew-core), or even better, submit a PR to fix it:</span><br><span class="line">  /opt/homebrew/Library/Taps/homebrew/homebrew-services/lib/service/formula_wrapper.rb:58</span><br></pre></td></tr></table></figure>
@@ -1119,7 +1119,7 @@
   </entry>
   <entry>
     <title>CentOS 8 字符集报错解决方法</title>
-    <url>/CentOS-8-%E5%AD%97%E7%AC%A6%E9%9B%86%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <url>/posts/54987.html</url>
     <content><![CDATA[<h5 id="首先是错误如下："><a class="headerlink" href="#首先是错误如下："></a>首先是错误如下：</h5>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum install -y yum-utils</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8     <span class="comment"># 这里是出现了 UTF-8字符集的问题</span></span><br><span class="line">Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
@@ -1140,7 +1140,7 @@
   </entry>
   <entry>
     <title>CentOS 8 安装Docker</title>
-    <url>/CentOS-8-%E5%AE%89%E8%A3%85Docker/</url>
+    <url>/posts/46537.html</url>
     <content><![CDATA[<h3 id="安装过程"><a class="headerlink" href="#安装过程"></a>安装过程</h3>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum remove docker</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8</span><br><span class="line">No match <span class="keyword">for</span> argument: docker</span><br><span class="line">No packages marked <span class="keyword">for</span> removal.</span><br><span class="line">Dependencies resolved.</span><br><span class="line">Nothing to <span class="keyword">do</span>.</span><br><span class="line">Complete!</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum remove docker *</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8</span><br><span class="line">No match <span class="keyword">for</span> argument: docker</span><br><span class="line">Error:</span><br><span class="line">Problem: The operation would result <span class="keyword">in</span> removing the following protected packages: dnf, kernel-core, setup, sudo, systemd, systemd-udev, yum</span><br><span class="line">(try to add <span class="string">&#x27;--skip-broken&#x27;</span> to skip uninstallable packages or <span class="string">&#x27;--nobest&#x27;</span> to use not only best candidate packages)</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum install -y yum-utils</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8</span><br><span class="line">Last metadata expiration check: 0:02:34 ago on Fri Apr  7 17:29:02 2023.</span><br><span class="line">Dependencies resolved.</span><br><span class="line">================================================================================================</span><br><span class="line">Package                          Architecture   Version                Repository         Size</span><br><span class="line">================================================================================================</span><br><span class="line">Installing:</span><br><span class="line">yum-utils                        noarch         4.0.21-18.el8          baseos             75 k</span><br><span class="line">Upgrading:</span><br><span class="line">dnf                              noarch         4.7.0-15.el8           baseos            542 k</span><br><span class="line">dnf-data                         noarch         4.7.0-15.el8           baseos            156 k</span><br><span class="line">dnf-plugins-core                 noarch         4.0.21-18.el8          baseos             75 k</span><br><span class="line">libdnf                           x86_64         0.63.0-13.el8          baseos            704 k</span><br><span class="line">libsolv                          x86_64         0.7.20-4.el8           baseos            376 k</span><br><span class="line">python3-dnf                      noarch         4.7.0-15.el8           baseos            550 k</span><br><span class="line">python3-dnf-plugins-core         noarch         4.0.21-18.el8          baseos            258 k</span><br><span class="line">python3-hawkey                   x86_64         0.63.0-13.el8          baseos            117 k</span><br><span class="line">python3-libdnf                   x86_64         0.63.0-13.el8          baseos            779 k</span><br><span class="line">yum                              noarch         4.7.0-15.el8           baseos            208 k</span><br><span class="line">Installing dependencies:</span><br><span class="line">python3-systemd                  x86_64         234-8.el8              appstream          81 k</span><br><span class="line"></span><br><span class="line">Transaction Summary</span><br><span class="line">================================================================================================</span><br><span class="line">Install   2 Packages</span><br><span class="line">Upgrade  10 Packages</span><br><span class="line"></span><br><span class="line">Total download size: 3.8 M</span><br><span class="line">Downloading Packages:</span><br><span class="line">(1/12): python3-systemd-234-8.el8.x86_64.rpm                    2.9 MB/s |  81 kB     00:00</span><br><span class="line">(2/12): yum-utils-4.0.21-18.el8.noarch.rpm                      2.2 MB/s |  75 kB     00:00</span><br><span class="line">(3/12): dnf-plugins-core-4.0.21-18.el8.noarch.rpm               4.2 MB/s |  75 kB     00:00</span><br><span class="line">(4/12): dnf-4.7.0-15.el8.noarch.rpm                             8.0 MB/s | 542 kB     00:00</span><br><span class="line">(5/12): dnf-data-4.7.0-15.el8.noarch.rpm                        3.1 MB/s | 156 kB     00:00</span><br><span class="line">(6/12): libsolv-0.7.20-4.el8.x86_64.rpm                          10 MB/s | 376 kB     00:00</span><br><span class="line">(7/12): python3-dnf-plugins-core-4.0.21-18.el8.noarch.rpm       8.2 MB/s | 258 kB     00:00</span><br><span class="line">(8/12): libdnf-0.63.0-13.el8.x86_64.rpm                         6.5 MB/s | 704 kB     00:00</span><br><span class="line">(9/12): python3-hawkey-0.63.0-13.el8.x86_64.rpm                 3.2 MB/s | 117 kB     00:00</span><br><span class="line">(10/12): python3-dnf-4.7.0-15.el8.noarch.rpm                    4.7 MB/s | 550 kB     00:00</span><br><span class="line">(11/12): yum-4.7.0-15.el8.noarch.rpm                            5.4 MB/s | 208 kB     00:00</span><br><span class="line">(12/12): python3-libdnf-0.63.0-13.el8.x86_64.rpm                9.5 MB/s | 779 kB     00:00</span><br><span class="line">------------------------------------------------------------------------------------------------</span><br><span class="line">Total                                                            16 MB/s | 3.8 MB     00:00</span><br><span class="line">Running transaction check</span><br><span class="line">Transaction check succeeded.</span><br><span class="line">Running transaction <span class="built_in">test</span></span><br><span class="line">Transaction <span class="built_in">test</span> succeeded.</span><br><span class="line">Running transaction</span><br><span class="line">Preparing        :                                                                        1/1</span><br><span class="line">Running scriptlet: libsolv-0.7.20-4.el8.x86_64                                            1/1</span><br><span class="line">Upgrading        : libsolv-0.7.20-4.el8.x86_64                                           1/22</span><br><span class="line">Upgrading        : libdnf-0.63.0-13.el8.x86_64                                           2/22</span><br><span class="line">Upgrading        : python3-libdnf-0.63.0-13.el8.x86_64                                   3/22</span><br><span class="line">Upgrading        : python3-hawkey-0.63.0-13.el8.x86_64                                   4/22</span><br><span class="line">Upgrading        : dnf-data-4.7.0-15.el8.noarch                                          5/22</span><br><span class="line">Upgrading        : python3-dnf-4.7.0-15.el8.noarch                                       6/22</span><br><span class="line">Upgrading        : dnf-4.7.0-15.el8.noarch                                               7/22</span><br><span class="line">Running scriptlet: dnf-4.7.0-15.el8.noarch                                               7/22</span><br><span class="line">Installing       : python3-systemd-234-8.el8.x86_64                                      8/22</span><br><span class="line">Upgrading        : python3-dnf-plugins-core-4.0.21-18.el8.noarch                         9/22</span><br><span class="line">Upgrading        : dnf-plugins-core-4.0.21-18.el8.noarch                                10/22</span><br><span class="line">Installing       : yum-utils-4.0.21-18.el8.noarch                                       11/22</span><br><span class="line">Upgrading        : yum-4.7.0-15.el8.noarch                                              12/22</span><br><span class="line">Cleanup          : yum-4.7.0-5.el8.noarch                                               13/22</span><br><span class="line">Running scriptlet: dnf-4.7.0-5.el8.noarch                                               14/22</span><br><span class="line">Cleanup          : dnf-4.7.0-5.el8.noarch                                               14/22</span><br><span class="line">Running scriptlet: dnf-4.7.0-5.el8.noarch                                               14/22</span><br><span class="line">Cleanup          : dnf-plugins-core-4.0.21-7.el8.noarch                                 15/22</span><br><span class="line">Cleanup          : python3-dnf-plugins-core-4.0.21-7.el8.noarch                         16/22</span><br><span class="line">Cleanup          : python3-dnf-4.7.0-5.el8.noarch                                       17/22</span><br><span class="line">Cleanup          : python3-hawkey-0.63.0-5.el8.x86_64                                   18/22</span><br><span class="line">Cleanup          : dnf-data-4.7.0-5.el8.noarch                                          19/22</span><br><span class="line">Cleanup          : python3-libdnf-0.63.0-5.el8.x86_64                                   20/22</span><br><span class="line">Cleanup          : libdnf-0.63.0-5.el8.x86_64                                           21/22</span><br><span class="line">Cleanup          : libsolv-0.7.20-1.el8.x86_64                                          22/22</span><br><span class="line">Running scriptlet: libsolv-0.7.20-1.el8.x86_64                                          22/22</span><br><span class="line">Verifying        : python3-systemd-234-8.el8.x86_64                                      1/22</span><br><span class="line">Verifying        : yum-utils-4.0.21-18.el8.noarch                                        2/22</span><br><span class="line">Verifying        : dnf-4.7.0-15.el8.noarch                                               3/22</span><br><span class="line">Verifying        : dnf-4.7.0-5.el8.noarch                                                4/22</span><br><span class="line">Verifying        : dnf-data-4.7.0-15.el8.noarch                                          5/22</span><br><span class="line">Verifying        : dnf-data-4.7.0-5.el8.noarch                                           6/22</span><br><span class="line">Verifying        : dnf-plugins-core-4.0.21-18.el8.noarch                                 7/22</span><br><span class="line">Verifying        : dnf-plugins-core-4.0.21-7.el8.noarch                                  8/22</span><br><span class="line">Verifying        : libdnf-0.63.0-13.el8.x86_64                                           9/22</span><br><span class="line">Verifying        : libdnf-0.63.0-5.el8.x86_64                                           10/22</span><br><span class="line">Verifying        : libsolv-0.7.20-4.el8.x86_64                                          11/22</span><br><span class="line">Verifying        : libsolv-0.7.20-1.el8.x86_64                                          12/22</span><br><span class="line">Verifying        : python3-dnf-4.7.0-15.el8.noarch                                      13/22</span><br><span class="line">Verifying        : python3-dnf-4.7.0-5.el8.noarch                                       14/22</span><br><span class="line">Verifying        : python3-dnf-plugins-core-4.0.21-18.el8.noarch                        15/22</span><br><span class="line">Verifying        : python3-dnf-plugins-core-4.0.21-7.el8.noarch                         16/22</span><br><span class="line">Verifying        : python3-hawkey-0.63.0-13.el8.x86_64                                  17/22</span><br><span class="line">Verifying        : python3-hawkey-0.63.0-5.el8.x86_64                                   18/22</span><br><span class="line">Verifying        : python3-libdnf-0.63.0-13.el8.x86_64                                  19/22</span><br><span class="line">Verifying        : python3-libdnf-0.63.0-5.el8.x86_64                                   20/22</span><br><span class="line">Verifying        : yum-4.7.0-15.el8.noarch                                              21/22</span><br><span class="line">Verifying        : yum-4.7.0-5.el8.noarch                                               22/22</span><br><span class="line"></span><br><span class="line">Upgraded:</span><br><span class="line">dnf-4.7.0-15.el8.noarch                             dnf-data-4.7.0-15.el8.noarch</span><br><span class="line">dnf-plugins-core-4.0.21-18.el8.noarch               libdnf-0.63.0-13.el8.x86_64</span><br><span class="line">libsolv-0.7.20-4.el8.x86_64                         python3-dnf-4.7.0-15.el8.noarch</span><br><span class="line">python3-dnf-plugins-core-4.0.21-18.el8.noarch       python3-hawkey-0.63.0-13.el8.x86_64</span><br><span class="line">python3-libdnf-0.63.0-13.el8.x86_64                 yum-4.7.0-15.el8.noarch</span><br><span class="line">Installed:</span><br><span class="line">python3-systemd-234-8.el8.x86_64                yum-utils-4.0.21-18.el8.noarch</span><br><span class="line"></span><br><span class="line">Complete!</span><br><span class="line"></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># yum-config-manager \</span></span><br><span class="line">&gt; --add-repo \</span><br><span class="line">&gt; http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8</span><br><span class="line">Adding repo from: http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo yum install -y docker-ce docker-ce-cli containerd.io</span></span><br><span class="line">Failed to <span class="built_in">set</span> locale, defaulting to C.UTF-8</span><br><span class="line">Docker CE Stable - x86_64                                       153 kB/s |  40 kB     00:00</span><br><span class="line">Dependencies resolved.</span><br><span class="line">================================================================================================</span><br><span class="line">Package                 Arch   Version                                  Repository        Size</span><br><span class="line">================================================================================================</span><br><span class="line">Installing:</span><br><span class="line">containerd.io           x86_64 1.6.20-3.1.el8                           docker-ce-stable  34 M</span><br><span class="line">docker-ce               x86_64 3:23.0.3-1.el8                           docker-ce-stable  23 M</span><br><span class="line">docker-ce-cli           x86_64 1:23.0.3-1.el8                           docker-ce-stable 7.1 M</span><br><span class="line">Installing dependencies:</span><br><span class="line">checkpolicy             x86_64 2.9-1.el8                                baseos           348 k</span><br><span class="line">container-selinux       noarch 2:2.195.1-1.module_el8.8.0+1254+78119b6e appstream         63 k</span><br><span class="line">docker-ce-rootless-extras</span><br><span class="line">x86_64 23.0.3-1.el8                             docker-ce-stable 4.8 M</span><br><span class="line">fuse-common             x86_64 3.3.0-16.el8                             baseos            22 k</span><br><span class="line">fuse-overlayfs          x86_64 1.10-1.module_el8.8.0+1254+78119b6e      appstream         74 k</span><br><span class="line">fuse3                   x86_64 3.3.0-16.el8                             baseos            54 k</span><br><span class="line">fuse3-libs              x86_64 3.3.0-16.el8                             baseos            95 k</span><br><span class="line">libcgroup               x86_64 0.41-19.el8                              baseos            70 k</span><br><span class="line">libslirp                x86_64 4.4.0-1.module_el8.7.0+1216+b022c01d     appstream         70 k</span><br><span class="line">policycoreutils-python-utils</span><br><span class="line">noarch 2.9-17.el8                               baseos           252 k</span><br><span class="line">python3-audit           x86_64 3.0-0.17.20191104git1c2f876.el8          baseos            86 k</span><br><span class="line">python3-libsemanage     x86_64 2.9-6.el8                                baseos           127 k</span><br><span class="line">python3-policycoreutils noarch 2.9-17.el8                               baseos           2.2 M</span><br><span class="line">python3-setools         x86_64 4.3.0-3.el8                              baseos           624 k</span><br><span class="line">slirp4netns             x86_64 1.2.0-2.module_el8.7.0+1216+b022c01d     appstream         54 k</span><br><span class="line">Installing weak dependencies:</span><br><span class="line">docker-buildx-plugin    x86_64 0.10.4-1.el8                             docker-ce-stable  12 M</span><br><span class="line">docker-compose-plugin   x86_64 2.17.2-1.el8                             docker-ce-stable  12 M</span><br><span class="line">Enabling module streams:</span><br><span class="line">container-tools                rhel8</span><br><span class="line"></span><br><span class="line">Transaction Summary</span><br><span class="line">================================================================================================</span><br><span class="line">Install  20 Packages</span><br><span class="line"></span><br><span class="line">Total download size: 97 M</span><br><span class="line">Installed size: 367 M</span><br><span class="line">Downloading Packages:</span><br><span class="line">(1/20): container-selinux-2.195.1-1.module_el8.8.0+1254+78119b6 1.6 MB/s |  63 kB     00:00</span><br><span class="line">(2/20): fuse-overlayfs-1.10-1.module_el8.8.0+1254+78119b6e.x86_ 1.6 MB/s |  74 kB     00:00</span><br><span class="line">(3/20): libslirp-4.4.0-1.module_el8.7.0+1216+b022c01d.x86_64.rp 1.3 MB/s |  70 kB     00:00</span><br><span class="line">(4/20): slirp4netns-1.2.0-2.module_el8.7.0+1216+b022c01d.x86_64 2.6 MB/s |  54 kB     00:00</span><br><span class="line">(5/20): fuse-common-3.3.0-16.el8.x86_64.rpm                     1.6 MB/s |  22 kB     00:00</span><br><span class="line">(6/20): fuse3-3.3.0-16.el8.x86_64.rpm                           3.2 MB/s |  54 kB     00:00</span><br><span class="line">(7/20): fuse3-libs-3.3.0-16.el8.x86_64.rpm                      4.0 MB/s |  95 kB     00:00</span><br><span class="line">(8/20): libcgroup-0.41-19.el8.x86_64.rpm                        3.0 MB/s |  70 kB     00:00</span><br><span class="line">(9/20): checkpolicy-2.9-1.el8.x86_64.rpm                        4.3 MB/s | 348 kB     00:00</span><br><span class="line">(10/20): python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64.r 2.8 MB/s |  86 kB     00:00</span><br><span class="line">(11/20): policycoreutils-python-utils-2.9-17.el8.noarch.rpm     4.6 MB/s | 252 kB     00:00</span><br><span class="line">(12/20): python3-libsemanage-2.9-6.el8.x86_64.rpm               3.6 MB/s | 127 kB     00:00</span><br><span class="line">(13/20): python3-setools-4.3.0-3.el8.x86_64.rpm                 6.8 MB/s | 624 kB     00:00</span><br><span class="line">(14/20): python3-policycoreutils-2.9-17.el8.noarch.rpm          7.9 MB/s | 2.2 MB     00:00</span><br><span class="line">(15/20): docker-buildx-plugin-0.10.4-1.el8.x86_64.rpm           634 kB/s |  12 MB     00:19</span><br><span class="line">(16/20): docker-ce-cli-23.0.3-1.el8.x86_64.rpm                  623 kB/s | 7.1 MB     00:11</span><br><span class="line">(17/20): docker-ce-23.0.3-1.el8.x86_64.rpm                      661 kB/s |  23 MB     00:36</span><br><span class="line">(18/20): docker-ce-rootless-extras-23.0.3-1.el8.x86_64.rpm      676 kB/s | 4.8 MB     00:07</span><br><span class="line">(19/20): containerd.io-1.6.20-3.1.el8.x86_64.rpm                714 kB/s |  34 MB     00:48</span><br><span class="line">(20/20): docker-compose-plugin-2.17.2-1.el8.x86_64.rpm          761 kB/s |  12 MB     00:15</span><br><span class="line">------------------------------------------------------------------------------------------------</span><br><span class="line">Total                                                           1.9 MB/s |  97 MB     00:52</span><br><span class="line">Docker CE Stable - x86_64                                        18 kB/s | 1.6 kB     00:00</span><br><span class="line">Importing GPG key 0x621E9F35:</span><br><span class="line">Userid     : <span class="string">&quot;Docker Release (CE rpm) &lt;docker@docker.com&gt;&quot;</span></span><br><span class="line">Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35</span><br><span class="line">From       : https://mirrors.aliyun.com/docker-ce/linux/centos/gpg</span><br><span class="line">Key imported successfully</span><br><span class="line">Running transaction check</span><br><span class="line">Transaction check succeeded.</span><br><span class="line">Running transaction <span class="built_in">test</span></span><br><span class="line">Transaction <span class="built_in">test</span> succeeded.</span><br><span class="line">Running transaction</span><br><span class="line">Preparing        :                                                                        1/1</span><br><span class="line">Installing       : docker-compose-plugin-2.17.2-1.el8.x86_64                             1/20</span><br><span class="line">Running scriptlet: docker-compose-plugin-2.17.2-1.el8.x86_64                             1/20</span><br><span class="line">Installing       : fuse3-libs-3.3.0-16.el8.x86_64                                        2/20</span><br><span class="line">Running scriptlet: fuse3-libs-3.3.0-16.el8.x86_64                                        2/20</span><br><span class="line">Installing       : docker-buildx-plugin-0.10.4-1.el8.x86_64                              3/20</span><br><span class="line">Running scriptlet: docker-buildx-plugin-0.10.4-1.el8.x86_64                              3/20</span><br><span class="line">Installing       : docker-ce-cli-1:23.0.3-1.el8.x86_64                                   4/20</span><br><span class="line">Running scriptlet: docker-ce-cli-1:23.0.3-1.el8.x86_64                                   4/20</span><br><span class="line">Installing       : python3-setools-4.3.0-3.el8.x86_64                                    5/20</span><br><span class="line">Installing       : python3-libsemanage-2.9-6.el8.x86_64                                  6/20</span><br><span class="line">Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                  7/20</span><br><span class="line">Running scriptlet: libcgroup-0.41-19.el8.x86_64                                          8/20</span><br><span class="line">Installing       : libcgroup-0.41-19.el8.x86_64                                          8/20</span><br><span class="line">Running scriptlet: libcgroup-0.41-19.el8.x86_64                                          8/20</span><br><span class="line">Installing       : fuse-common-3.3.0-16.el8.x86_64                                       9/20</span><br><span class="line">Installing       : fuse3-3.3.0-16.el8.x86_64                                            10/20</span><br><span class="line">Installing       : fuse-overlayfs-1.10-1.module_el8.8.0+1254+78119b6e.x86_64            11/20</span><br><span class="line">Running scriptlet: fuse-overlayfs-1.10-1.module_el8.8.0+1254+78119b6e.x86_64            11/20</span><br><span class="line">Installing       : checkpolicy-2.9-1.el8.x86_64                                         12/20</span><br><span class="line">Installing       : python3-policycoreutils-2.9-17.el8.noarch                            13/20</span><br><span class="line">Installing       : policycoreutils-python-utils-2.9-17.el8.noarch                       14/20</span><br><span class="line">Running scriptlet: container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch    15/20</span><br><span class="line">Installing       : container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch    15/20</span><br><span class="line">Running scriptlet: container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch    15/20</span><br><span class="line"></span><br><span class="line">Installing       : containerd.io-1.6.20-3.1.el8.x86_64                                  16/20</span><br><span class="line">Running scriptlet: containerd.io-1.6.20-3.1.el8.x86_64                                  16/20</span><br><span class="line">Installing       : libslirp-4.4.0-1.module_el8.7.0+1216+b022c01d.x86_64                 17/20</span><br><span class="line">Installing       : slirp4netns-1.2.0-2.module_el8.7.0+1216+b022c01d.x86_64              18/20</span><br><span class="line">Installing       : docker-ce-rootless-extras-23.0.3-1.el8.x86_64                        19/20</span><br><span class="line">Running scriptlet: docker-ce-rootless-extras-23.0.3-1.el8.x86_64                        19/20</span><br><span class="line">Installing       : docker-ce-3:23.0.3-1.el8.x86_64                                      20/20</span><br><span class="line">Running scriptlet: docker-ce-3:23.0.3-1.el8.x86_64                                      20/20</span><br><span class="line">Running scriptlet: container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch    20/20</span><br><span class="line">Running scriptlet: docker-ce-3:23.0.3-1.el8.x86_64                                      20/20</span><br><span class="line">Verifying        : container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch     1/20</span><br><span class="line">Verifying        : fuse-overlayfs-1.10-1.module_el8.8.0+1254+78119b6e.x86_64             2/20</span><br><span class="line">Verifying        : libslirp-4.4.0-1.module_el8.7.0+1216+b022c01d.x86_64                  3/20</span><br><span class="line">Verifying        : slirp4netns-1.2.0-2.module_el8.7.0+1216+b022c01d.x86_64               4/20</span><br><span class="line">Verifying        : checkpolicy-2.9-1.el8.x86_64                                          5/20</span><br><span class="line">Verifying        : fuse-common-3.3.0-16.el8.x86_64                                       6/20</span><br><span class="line">Verifying        : fuse3-3.3.0-16.el8.x86_64                                             7/20</span><br><span class="line">Verifying        : fuse3-libs-3.3.0-16.el8.x86_64                                        8/20</span><br><span class="line">Verifying        : libcgroup-0.41-19.el8.x86_64                                          9/20</span><br><span class="line">Verifying        : policycoreutils-python-utils-2.9-17.el8.noarch                       10/20</span><br><span class="line">Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                 11/20</span><br><span class="line">Verifying        : python3-libsemanage-2.9-6.el8.x86_64                                 12/20</span><br><span class="line">Verifying        : python3-policycoreutils-2.9-17.el8.noarch                            13/20</span><br><span class="line">Verifying        : python3-setools-4.3.0-3.el8.x86_64                                   14/20</span><br><span class="line">Verifying        : containerd.io-1.6.20-3.1.el8.x86_64                                  15/20</span><br><span class="line">Verifying        : docker-buildx-plugin-0.10.4-1.el8.x86_64                             16/20</span><br><span class="line">Verifying        : docker-ce-3:23.0.3-1.el8.x86_64                                      17/20</span><br><span class="line">Verifying        : docker-ce-cli-1:23.0.3-1.el8.x86_64                                  18/20</span><br><span class="line">Verifying        : docker-ce-rootless-extras-23.0.3-1.el8.x86_64                        19/20</span><br><span class="line">Verifying        : docker-compose-plugin-2.17.2-1.el8.x86_64                            20/20</span><br><span class="line"></span><br><span class="line">Installed:</span><br><span class="line">checkpolicy-2.9-1.el8.x86_64</span><br><span class="line">container-selinux-2:2.195.1-1.module_el8.8.0+1254+78119b6e.noarch</span><br><span class="line">containerd.io-1.6.20-3.1.el8.x86_64</span><br><span class="line">docker-buildx-plugin-0.10.4-1.el8.x86_64</span><br><span class="line">docker-ce-3:23.0.3-1.el8.x86_64</span><br><span class="line">docker-ce-cli-1:23.0.3-1.el8.x86_64</span><br><span class="line">docker-ce-rootless-extras-23.0.3-1.el8.x86_64</span><br><span class="line">docker-compose-plugin-2.17.2-1.el8.x86_64</span><br><span class="line">fuse-common-3.3.0-16.el8.x86_64</span><br><span class="line">fuse-overlayfs-1.10-1.module_el8.8.0+1254+78119b6e.x86_64</span><br><span class="line">fuse3-3.3.0-16.el8.x86_64</span><br><span class="line">fuse3-libs-3.3.0-16.el8.x86_64</span><br><span class="line">libcgroup-0.41-19.el8.x86_64</span><br><span class="line">libslirp-4.4.0-1.module_el8.7.0+1216+b022c01d.x86_64</span><br><span class="line">policycoreutils-python-utils-2.9-17.el8.noarch</span><br><span class="line">python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64</span><br><span class="line">python3-libsemanage-2.9-6.el8.x86_64</span><br><span class="line">python3-policycoreutils-2.9-17.el8.noarch</span><br><span class="line">python3-setools-4.3.0-3.el8.x86_64</span><br><span class="line">slirp4netns-1.2.0-2.module_el8.7.0+1216+b022c01d.x86_64</span><br><span class="line"></span><br><span class="line">Complete!</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment">#</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># systemctl enable docker --now</span></span><br><span class="line">Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># echo &quot;export LC_ALL=en_US.UTF8&quot; &gt;&gt; /etc/profile</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># source /etc/profile</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY   TAG       IMAGE ID   CREATED   SIZE</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;   <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">&gt;   <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">&gt;     <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">&gt;   &#125;,</span><br><span class="line">&gt;   <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; EOF</span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line"><span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line"><span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line"><span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line"><span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl daemon-reload</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl restart docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment">#</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1151,14 +1151,14 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>Docker</tag>
         <tag>DevOps</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
     <title>阿里云Docker镜像加速</title>
-    <url>/%E9%98%BF%E9%87%8C%E4%BA%91Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/</url>
+    <url>/posts/46395.html</url>
     <content><![CDATA[<h4 id="阿里云镜像源"><a class="headerlink" href="#阿里云镜像源"></a>阿里云镜像源</h4>
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-4-3-centos ~]<span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;   <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">&gt;   <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">&gt;   <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">&gt;     <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">&gt;   &#125;,</span><br><span class="line">&gt;   <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; EOF</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">  <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">  <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl daemon-reload</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># sudo systemctl restart docker</span></span><br><span class="line">[root@VM-4-3-centos ~]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br></pre></td></tr></table></figure>]]></content>
@@ -1174,7 +1174,7 @@
   </entry>
   <entry>
     <title>Windows10&amp;11官方系统盘制作教程</title>
-    <url>/Windows10-11%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9B%98%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/</url>
+    <url>/posts/33213.html</url>
     <content><![CDATA[<blockquote>
 <p>本次做系统盘，采用官方的方式制作：</p>
 <p>注意：U盘最少要<code>8G</code>及其以上的空U盘，为了避免出错，在开展一下步骤之前还是先给U盘数据备份好，然后对U盘进行格式化</p>
@@ -1208,13 +1208,13 @@
         <category>系统安装</category>
       </categories>
       <tags>
-        <tag>Windows 10</tag>
         <tag>Windows 11</tag>
+        <tag>Windows 10</tag>
       </tags>
   </entry>
   <entry>
     <title>Homebrew安装报错Error:Command failed with exit 128: git</title>
-    <url>/Homebrew%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Error-Command-failed-with-exit-128-git/</url>
+    <url>/posts/60291.html</url>
     <content><![CDATA[<p>安装命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install telnet</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
@@ -1238,7 +1238,7 @@
   </entry>
   <entry>
     <title>Windows修改固定IP和网络</title>
-    <url>/Windows%E4%BF%AE%E6%94%B9%E5%9B%BA%E5%AE%9AIP%E5%92%8C%E7%BD%91%E7%BB%9C/</url>
+    <url>/posts/30745.html</url>
     <content><![CDATA[<h2 id="修改固定IP"><a class="headerlink" href="#修改固定IP"></a>修改固定IP</h2>
 <p>​	<strong>修改和固定<code>IP</code>，就是查找的IP的第二种方式的基础上进行操作</strong></p>
 <span id="more"></span>
@@ -1273,7 +1273,7 @@
   </entry>
   <entry>
     <title>查询Windows IP</title>
-    <url>/%E6%9F%A5%E8%AF%A2Windows-IP/</url>
+    <url>/posts/48204.html</url>
     <content><![CDATA[<h2 id="方式一："><a class="headerlink" href="#方式一："></a>方式一：</h2>
 <h3 id="一、如何知道我们本机的IP地址"><a class="headerlink" href="#一、如何知道我们本机的IP地址"></a>一、如何知道我们本机的IP地址</h3>
 <h4 id="第一步：首先电脑上面的快捷键win-R"><a class="headerlink" href="#第一步：首先电脑上面的快捷键win-R"></a>第一步：<strong>首先电脑上面的快捷键<code>win</code> + <code>R</code></strong></h4>
@@ -1310,7 +1310,7 @@
   </entry>
   <entry>
     <title>Mac Console连接交换机</title>
-    <url>/Mac-Console%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BA/</url>
+    <url>/posts/655.html</url>
     <content><![CDATA[<h3 id="一、Mac使用console连接交换机"><a class="headerlink" href="#一、Mac使用console连接交换机"></a>一、Mac使用console连接交换机</h3>
 <p>首先使用console线和Mac连接，这时候需要用到转换器typeC转USB-A</p>
 <span id="more"></span>
@@ -1355,7 +1355,7 @@
   </entry>
   <entry>
     <title>新装的Windows10,11系统和Office激活教程</title>
-    <url>/%E6%96%B0%E8%A3%85%E7%9A%84Windows10-11-%E7%B3%BB%E7%BB%9F%E5%92%8COffice-2016%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/</url>
+    <url>/posts/55611.html</url>
     <content><![CDATA[<h3 id="第一步："><a class="headerlink" href="#第一步："></a>第一步：</h3>
 <p>首先我们要准备好激活软件，<code>HEU_KMS_Activator</code>这个软件的下载地址如下：<a href="https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0">https://github.com/zbezj/HEU_KMS_Activator/releases/tag/26.1.0</a></p>
 <span id="more"></span>
@@ -1382,7 +1382,7 @@
   </entry>
   <entry>
     <title>关于网络打印机教程（二）</title>
-    <url>/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/posts/9259.html</url>
     <content><![CDATA[<blockquote>
 <p>本次教程主要是针对于<code>Windows11</code>打印机连接，以及扫描仪的相关问题解答</p>
 </blockquote>
@@ -1406,7 +1406,7 @@
   </entry>
   <entry>
     <title>关于网络打印机教程（一）</title>
-    <url>/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C%E6%89%93%E5%8D%B0%E6%9C%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/posts/46161.html</url>
     <content><![CDATA[<blockquote>
 <p>注意：本教程只适合网络打印机且同一局域网打印机</p>
 </blockquote>
@@ -1454,7 +1454,7 @@
   </entry>
   <entry>
     <title>Nginx</title>
-    <url>/Nginx/</url>
+    <url>/posts/9355.html</url>
     <content><![CDATA[<hr>
 <p>[TOC]</p>
 <h3 id="一、引言"><a class="headerlink" href="#一、引言"></a>一、引言</h3>
@@ -1754,7 +1754,7 @@
   </entry>
   <entry>
     <title>关于Windows一些常用Command</title>
-    <url>/%E5%85%B3%E4%BA%8EWindows%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8Command/</url>
+    <url>/posts/31435.html</url>
     <content><![CDATA[<h3 id="关机、重启、注销、休眠、定时"><a class="headerlink" href="#关机、重启、注销、休眠、定时"></a>关机、重启、注销、休眠、定时</h3>
 <ul>
 <li>关机：<code>shutdown /s</code></li>
@@ -1826,7 +1826,7 @@
   </entry>
   <entry>
     <title>关于Rider引入nuget无法加载包依赖解方式</title>
-    <url>/%E5%85%B3%E4%BA%8ERider%E5%BC%95%E5%85%A5nuget%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%8C%85%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%96%B9%E5%BC%8F/</url>
+    <url>/posts/20039.html</url>
     <content><![CDATA[<blockquote>
 <p>这个问题已经是困扰我三天了，因为<code>C#</code>使用<code>ride</code>r开发的人相对较少，也可能是我自身遇到这个问题比较特殊，终于找到了<code>nuget</code>无法引入包的解决方案</p>
 </blockquote>
@@ -1862,7 +1862,7 @@
   </entry>
   <entry>
     <title>服务器（一）</title>
-    <url>/%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/posts/61624.html</url>
     <content><![CDATA[<h3 id="1-服务器的概述"><a class="headerlink" href="#1-服务器的概述"></a>1.服务器的概述</h3>
 <h4 id="1-什么是服务器"><a class="headerlink" href="#1-什么是服务器"></a>1.什么是服务器</h4>
 <blockquote>
@@ -1948,7 +1948,7 @@
   </entry>
   <entry>
     <title>C# windows 环境搭建</title>
-    <url>/C-windows-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <url>/posts/62191.html</url>
     <content><![CDATA[<blockquote>
 <p>注：本次学习开发使用的软件<code>jetbrians Rider</code></p>
 </blockquote>
@@ -1989,7 +1989,7 @@
   </entry>
   <entry>
     <title>Redis</title>
-    <url>/Redis/</url>
+    <url>/posts/27273.html</url>
     <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071238373.jfif" alt="" loading="lazy"></p>
 <span id="more"></span>
 <p>[TOC]</p>
@@ -2705,7 +2705,7 @@ multi-thread: no		多线程未开启</p>
   </entry>
   <entry>
     <title>RabbitMQ</title>
-    <url>/RabbitMQ/</url>
+    <url>/posts/33708.html</url>
     <content><![CDATA[<p>[TOC]</p>
 <h3 id="一、引言"><a class="headerlink" href="#一、引言"></a>一、引言</h3>
 <blockquote>
@@ -3322,7 +3322,7 @@ BindingKey是Exchange和Queue绑定的规则描述，这个描述用来解析当
   </entry>
   <entry>
     <title>Shiro</title>
-    <url>/Shiro/</url>
+    <url>/posts/64556.html</url>
     <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/CoutureOne/blogimg@main/img/202211071249775.png" alt="" loading="lazy"></p>
 <p>[TOC]</p>
 <h3 id="一、RBAC介绍"><a class="headerlink" href="#一、RBAC介绍"></a>一、RBAC介绍</h3>
@@ -3658,7 +3658,7 @@ BindingKey是Exchange和Queue绑定的规则描述，这个描述用来解析当
   </entry>
   <entry>
     <title>Docker基础操作（二）</title>
-    <url>/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/posts/42050.html</url>
     <content><![CDATA[<h2 id="Docker基础操作和配置"><a class="headerlink" href="#Docker基础操作和配置"></a>Docker基础操作和配置</h2>
 <p>配置阿里云Docker Yum源</p>
 <p>shell</p>
@@ -3699,7 +3699,7 @@ CMD [“/bin/bash”] #启动容器的时候，进入到/bin/bash这种命令行
   </entry>
   <entry>
     <title>Docker基础操作（一）</title>
-    <url>/Docker%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/posts/13368.html</url>
     <content><![CDATA[<h2 id="Docker基本命令"><a class="headerlink" href="#Docker基本命令"></a>Docker基本命令</h2>
 <h3 id="一、Docker的安装"><a class="headerlink" href="#一、Docker的安装"></a>一、Docker的安装</h3>
 <hr>
@@ -3811,7 +3811,7 @@ CMD [“/bin/bash”] #启动容器的时候，进入到/bin/bash这种命令行
   </entry>
   <entry>
     <title>Spring（一）</title>
-    <url>/Spring%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/posts/24491.html</url>
     <content><![CDATA[<h3 id="1-介绍"><a class="headerlink" href="#1-介绍"></a>1.介绍</h3>
 <blockquote>
 <p>官网：<a href="https://spring.io/">https://spring.io/</a></p>
