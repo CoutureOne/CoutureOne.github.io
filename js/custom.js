@@ -277,7 +277,7 @@
         else timeChange = "<span class='welcome-time'>夜深了，早点休息，少熬夜</span>";
 
         document.getElementById("welcome-info").innerHTML =
-            `<span>热烈欢迎来自~</span><br><b>${pos}</b> 的朋友</span><br><b>${posdesc}</b><br>您当前位置距博主约 <b>${dist}</b> 公里！<br><span>您的IP地址为：<b class="ip">${ip}</b></span><br>${timeChange}`;
+            `<span>热烈欢迎来自~</span><br><b>${pos}</b> 的朋友</span><br><b>${posdesc}</b><br>您当前位置距博主约 <b>${dist}</b> 公里！<br>您的IP地址为：${ip}<br>${timeChange}`;
     }
 
     const isWelcome = () => document.getElementById("welcome-info") && showWelcome();
