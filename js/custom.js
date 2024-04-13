@@ -1,6 +1,6 @@
 (function () {
-    const lng = '112.8455033596802'; // 经度
-    const lat = '26.430308353457896'; // 纬度
+    const lng = '120.3246545611'; // 经度
+    const lat = '30.26454515454'; // 纬度
     let ipStore = saveToLocal.get('location');
 
     (async function () {
@@ -8,10 +8,10 @@
             await fetch(`https://api.qjqq.cn/api/Local`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.code === "200") {
+                    if (data.code === 200) { // 根据实际API返回修改
                         ipStore = data;
-                        saveToLocal.set('location', ipStore, 1);
-                        showWelcome();
+                        saveToLocal.set('location', ipStore, 1); // 保存位置信息1小时
+                        showWelcome(); // 调用显示欢迎信息的函数
                     }
                 })
                 .catch(err => console.log(err));
@@ -38,7 +38,7 @@
     function showWelcome() {
         let dist = getDistance(lng, lat, ipStore.data.lng, ipStore.data.lat); //这里换成自己的经纬度
         let pos = ipStore.data.continent;
-        let ip = ipStore.ip || "未知";
+        let ip = ipStore.data.ip || "未知";
         let posdesc;
         //根据国家、省份、城市信息自定义欢迎语
         switch (ipStore.data.country) {
