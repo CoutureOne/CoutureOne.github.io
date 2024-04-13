@@ -110,7 +110,17 @@
                         }
                         break;
                     case "浙江省":
-                        posdesc = "东风渐绿西湖柳，雁已还人未南归";
+                        switch (ipStore.data.city) {
+                            case "杭州市":
+                                posdesc = "东风渐绿西湖柳，雁已还人未南归";
+                                break;
+                            case "宁波市":
+                                posdesc = "风摇野帻去复去，雨浥乳窦深复深";
+                                break;
+                            default:
+                                posdesc = "人尽说江南好，游人只合江南老";
+                                break;
+                        }
                         break;
                     case "河南省":
                         switch (ipStore.data.city) {
