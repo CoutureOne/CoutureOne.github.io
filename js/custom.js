@@ -8,7 +8,7 @@
             await fetch(`https://api.qjqq.cn/api/Local`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.code === "Success") {
+                    if (data.code === "200") {
                         ipStore = data;
                         saveToLocal.set('location', ipStore, 1);
                         showWelcome();
