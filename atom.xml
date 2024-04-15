@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-04-12T00:02:28.925Z</updated>
+  <updated>2024-04-15T11:29:39.927Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>免费使用ChatGPT4</title>
+    <link href="https://coutures.top/posts/1648.html"/>
+    <id>https://coutures.top/posts/1648.html</id>
+    <published>2024-04-15T11:16:22.000Z</published>
+    <updated>2024-04-15T11:29:39.927Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>因为OpenAI服务器是在国外，所以不管怎么样都要需要VPN才能访问，如果你不会，可以忽略这篇教程。</p></blockquote><p> 网站连接<a href="https://www.coze.com/">点击这里</a></p><h3 id="1-注册"><a class="headerlink" href="#1-注册"></a>1. 注册</h3><p> 上面已经给出注册网址，如何注册都可以，手机号（或者谷歌邮箱），建议最好还是谷歌邮箱直接登录。</p><p><img src="https://7.isyangs.cn/45/661ce0a7be75b-45.png" alt="" loading="lazy"></p><p> 注册好以后的页面是这样的</p><p><img src="https://7.isyangs.cn/45/661ce0bb18638-45.png" alt="" loading="lazy"></p><h3 id="2-创建bot"><a class="headerlink" href="#2-创建bot"></a>2. 创建bot</h3><p><img src="https://7.isyangs.cn/45/661cf524a56bd-45.png" alt="" loading="lazy"></p><h3 id="3-选择插件"><a class="headerlink" href="#3-选择插件"></a>3.选择插件</h3><p><img src="https://7.isyangs.cn/45/661ce0c0b7d84-45.png" alt="" loading="lazy"></p><h3 id="4-创建成功"><a class="headerlink" href="#4-创建成功"></a>4.创建成功</h3><p><img src="https://7.isyangs.cn/45/661ce0c86c118-45.png" alt="" loading="lazy"></p><p> 以上就是免费使用<code>ChatGPT4</code>的教程，网络越好,回答响应的效果也就是越好。</p>]]></content>
+    
+    
+    <summary type="html">免费试用ChatGPT4等相关大模型</summary>
+    
+    
+    
+    <category term="AI" scheme="https://coutures.top/categories/AI/"/>
+    
+    
+    <category term="ChatGPT" scheme="https://coutures.top/tags/ChatGPT/"/>
+    
+  </entry>
   
   <entry>
     <title>Rocky Linux</title>
@@ -396,27 +417,6 @@
     
     
     <category term="Docker" scheme="https://coutures.top/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu UFW 防火墙</title>
-    <link href="https://coutures.top/posts/2647.html"/>
-    <id>https://coutures.top/posts/2647.html</id>
-    <published>2023-07-01T02:35:36.000Z</published>
-    <updated>2024-04-12T00:02:28.933Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>Ubuntu</code>防火墙（<code>Uncomplicated</code> <code>Firewall</code>，简称<code>ufw</code>）是一个用户友好的前端工具，用于配置底层的<code>iptables</code>防火墙规则。它旨在简化防火墙的配置过程，使其适用于不熟悉<code>iptables</code>命令的用户。</p><h3 id="一、安装UFW"><a class="headerlink" href="#一、安装UFW"></a>一、安装<code>UFW</code></h3><p><code>UFW</code> 是标准<code> Ubuntu 20.04</code> 安装过程中的一部分，它应该已经在你的系统上存在。如果因为某些原因，它没有被安装，你可以通过输入下面的命令安装它：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ufw</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="二、检查UFW的状态"><a class="headerlink" href="#二、检查UFW的状态"></a>二、检查<code>UFW</code>的状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure><h3 id="三、防火墙的基本命令"><a class="headerlink" href="#三、防火墙的基本命令"></a>三、防火墙的基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span> <span class="comment"># 启用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw <span class="built_in">disable</span> <span class="comment"># 禁用防火墙</span></span><br><span class="line"></span><br><span class="line">sudo ufw status <span class="comment"># 查看防火墙状态</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow &lt;端口号&gt; <span class="comment"># 允许特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny &lt;端口号&gt; <span class="comment"># 禁止特定端口</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; <span class="comment"># 允许特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw deny from &lt;IP地址&gt; <span class="comment"># 禁止特定IP地址访问</span></span><br><span class="line"></span><br><span class="line">sudo ufw allow from &lt;IP地址&gt; to any port &lt;端口号&gt; <span class="comment"># 允许特定IP地址访问特定端口号 </span></span><br><span class="line"></span><br><span class="line">sudo ufw status numbered <span class="comment"># 查看规则编号</span></span><br><span class="line"></span><br><span class="line">sudo ufw delete &lt;规则编号&gt; <span class="comment"># 删除规则</span></span><br></pre></td></tr></table></figure><h3 id="四、校园网的案例"><a class="headerlink" href="#四、校园网的案例"></a>四、校园网的案例</h3><p>校园网访问在国外服务器上部署的网站，并使用<code>ufw</code>进行限制，您可以按照以下步骤进行操作：</p><ol><li><p>获取校园网的公网<code>IP</code>地址范围：首先，您需要获取校园网的公网<code>IP</code>地址范围。您可以联系您的网络管理员或查阅校园网相关的文档或资料以获取这些信息。</p></li><li><p>添加允许规则：使用以下命令，将校园网的公网IP地址范围添加到允许访问的规则中。将 <code>&lt;校园网公网IP范围&gt;</code> 替换为您实际校园网的公网IP地址范围：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from &lt;校园网公网IP范围&gt; to any</span><br></pre></td></tr></table></figure><p>例如，如果校园网的公网IP地址范围是 203.0.113.0/24，可以执行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 203.0.113.0/24 to any</span><br></pre></td></tr></table></figure><p>这将允许来自校园网公网IP范围的流量访问任何端口。</p></li><li><p>添加拒绝规则：为了确保只有校园网的公网IP地址可以访问您的网站，您可以添加一条拒绝规则来阻止其他IP地址的访问。使用以下命令添加拒绝规则：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny from any to any</span><br></pre></td></tr></table></figure><p>这将拒绝来自任何其他IP地址的流量访问任何端口。</p></li><li><p>确认规则设置：您可以使用以下命令确认规则已正确设置：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure><p>此命令将显示当前的<code>ufw</code>规则列表，包括允许和拒绝的规则。</p></li><li><p>测试访问：在完成配置后，您可以尝试使用校园网以外的公网<code>IP</code>地址访问您的网站，以确保它们被正确地拒绝访问。只有来自校园网公网IP范围的流量才应该能够访问您的网站。</p></li></ol><p>请注意，确保在配置之前备份重要的配置文件，并在完成后验证规则已成功设置。同时，了解校园网的公网<code>IP</code>地址范围非常重要，以确保只有受限制的IP地址可以访问您的网站。</p>]]></content>
-    
-    
-    <summary type="html">防火墙</summary>
-    
-    
-    
-    <category term="Ubuntu" scheme="https://coutures.top/categories/Ubuntu/"/>
-    
-    
-    <category term="Ubuntu" scheme="https://coutures.top/tags/Ubuntu/"/>
     
   </entry>
   
