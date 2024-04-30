@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Couture</title>
   
-  
+  <subtitle>不忘初心方得始终</subtitle>
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
@@ -63,7 +63,7 @@
     <link href="https://coutures.top/posts/39676.html"/>
     <id>https://coutures.top/posts/39676.html</id>
     <published>2024-03-19T06:41:31.000Z</published>
-    <updated>2024-04-11T14:09:55.342Z</updated>
+    <updated>2024-04-30T09:14:29.520Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>问题产生背景是同事希望在<code>Vsphere</code>虚拟机两台<code>Windows</code>服务器相互拷贝文件。</p></blockquote><ul><li>解决问题思路</li></ul><p> 一开始我的解决的思路是共享服务器里面的文件夹，按照这个思路自己解决问题是给想要共享的文件夹，然后通过网络共享的方式进行文件共享。</p><p>但是解决到最后，发现总是共享报错，网络设置里面的共享发现以及防火墙都关闭了，还是无法解决问题。</p><p> 下图是错误指示：</p><p><img src="https://typora-couture.oss-cn-hangzhou.aliyuncs.com/987f08efe5748e6f7222d40b78956307.png" alt="" loading="lazy"></p><p> 然后排查了半天，不知道问题是出在那里，<code>Windows</code>在共享网络上有时候就是一种玄学，然后我就想用第二种解决方案。</p><p> 第二种解决方案其实就是利用<code>Windows</code>自带的远程工具，直接在虚拟机里面去远程另一台虚拟机就好了，这样文件可以相互拷贝，而且速度很快，问题就是这样得到解决的。</p><p> 第三种还有一种解决方式，就是如果两台虚拟机都能上外网的情况下，可以用远程工具，向日葵这种，当然没有<code>Windows</code>自带的远程工具方便。</p><blockquote><p>在Vsphere中，可以建立共享磁盘的方式，这样也可以进行文件之间的相互访问，一切的方法只是为了解决问题。</p></blockquote>]]></content>
     
