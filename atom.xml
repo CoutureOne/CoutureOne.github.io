@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-05-07T11:29:13.770Z</updated>
+  <updated>2024-05-08T12:24:21.597Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://coutures.top/posts/17342.html"/>
     <id>https://coutures.top/posts/17342.html</id>
     <published>2024-05-06T06:54:22.000Z</published>
-    <updated>2024-05-07T11:29:13.770Z</updated>
+    <updated>2024-05-08T12:24:21.597Z</updated>
     
     <content type="html"><![CDATA[<h4 id="问题"><a class="headerlink" href="#问题"></a>问题</h4><p> 如果直接安装，会有下面的报错，无法安装成功</p><p><img src="https://7.isyangs.cn/45/6638bea94c55b-45.png" alt="" loading="lazy"></p><h4 id="解决方式："><a class="headerlink" href="#解决方式："></a>解决方式：</h4><p> 上面这种情况都属于缺少补丁去网站：<a href="https://www.catalog.update.microsoft.com/search.aspx?q=kb4474419">catalogupdate</a>这个补丁网站，然后下载补丁（这里下载的补丁的时候推荐使用<code>迅雷下载</code>，这样速度会很好多）：</p><p><img src="https://7.isyangs.cn/45/6638497040c9a-45.png" alt="" loading="lazy"></p><p> 将补丁下载完成以后，拷贝到对应的服务器进行双击安装即可，然后需要重启，在重启几次安装成功补丁以后，就可以对<code>VMTools</code>进行安装。</p><h4 id="安装成功："><a class="headerlink" href="#安装成功："></a>安装成功：</h4><p><img src="https://7.isyangs.cn/45/663849f26b84e-45.png" alt="" loading="lazy"></p>]]></content>
     
@@ -35,8 +35,8 @@
     
     
     
-    <category term="Windows" scheme="https://coutures.top/categories/Windows/"/>
     
+    <category term="WinServer" scheme="https://coutures.top/tags/WinServer/"/>
     
   </entry>
   
