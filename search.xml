@@ -97,6 +97,7 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>热门</tag>
         <tag>Rocky</tag>
       </tags>
   </entry>
@@ -155,9 +156,10 @@
 <span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /etc/selinux/</span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># ls</span></span><br><span class="line">config  final  semanage.conf  targeted  tmp</span><br><span class="line">[root@centos7 selinux]<span class="comment"># vi config </span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="comment">#     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment">#     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment">#     disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled <span class="comment"># 修改远程端口号要关闭</span></span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of three values:</span></span><br><span class="line"><span class="comment">#     targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="comment">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span><br><span class="line"><span class="comment">#     mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted                                                                              </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                                             </span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>CentOS</category>
-      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>教程</tag>
+      </tags>
   </entry>
   <entry>
     <title>局域网共享打印机出现0x0000011b错误解决方式</title>
@@ -267,6 +269,9 @@
       <categories>
         <category>CentOS</category>
       </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
   </entry>
   <entry>
     <title>关于Mac word缺少字体的解决方式</title>
@@ -1069,6 +1074,7 @@
 ]]></content>
       <tags>
         <tag>CentOS</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
@@ -1081,6 +1087,7 @@
       <categories>
         <category>Docker</category>
         <category>CentOS</category>
+        <category>教程</category>
       </categories>
   </entry>
   <entry>
@@ -1260,6 +1267,7 @@
       </categories>
       <tags>
         <tag>Switch</tag>
+        <tag>热门</tag>
       </tags>
   </entry>
   <entry>
@@ -1305,6 +1313,7 @@
 <p>重点是扫描仪，如果打印机带扫描仪功能，<code>Windows10</code>操作系统需要你去官网或者是打印机驱动网下载驱动安装，<code>Windows11</code>则是装完驱动以后，自动扫描，如果检测不到扫描仪，原因可能是打印机驱动问题，还有可能就是系统问题，因为这个不确定因素太多，需要逐一排查。</p>
 ]]></content>
       <tags>
+        <tag>教程</tag>
         <tag>运维</tag>
       </tags>
   </entry>
@@ -1348,6 +1357,7 @@
 <p>最后注意，这个教程只适合网络打印机，局域网的情况下，校园网的前提是IP端口没有限制，在同一个路由器下按理来说都可以用的，这篇文章也只是适合小白，或者是不懂计算机的人，如果你在连接有时候遇到什么问题可以联系我<code>QQ：2842888712</code>，如果你是一个高手，希望你可以批评指正，希望这篇文章对你来说有些许的帮助~</p>
 ]]></content>
       <tags>
+        <tag>教程</tag>
         <tag>运维</tag>
       </tags>
   </entry>
