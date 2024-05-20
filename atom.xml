@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-05-08T12:24:21.597Z</updated>
+  <updated>2024-05-20T12:59:37.599Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>罗技键鼠的使用体验</title>
+    <link href="https://coutures.top/posts/33276.html"/>
+    <id>https://coutures.top/posts/33276.html</id>
+    <published>2024-05-20T12:57:29.000Z</published>
+    <updated>2024-05-20T12:59:37.599Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>工欲善其事必先利其器，个人觉得应该算得上是最好的办公键盘和鼠标，兼容性极强。</p></blockquote><p> 我当前使用的键盘和鼠标分别识罗技的：<code>Master3S</code> + <code>MXkeys S</code>(软件是罗技的<code>Logi Options+</code>)</p><p><img src="https://7.isyangs.cn/45/664b472c04410-45.png" alt="" loading="lazy"></p><h3 id="鼠标：Master3S"><a class="headerlink" href="#鼠标：Master3S"></a>鼠标：<code>Master3S</code></h3><p><img src="https://7.isyangs.cn/45/664b472eb01b5-45.png" alt="" loading="lazy"></p><p> 因为的手比较大，鼠标又是符合人体工学设计，所以握在手里非常的舒服，而且兼容<code>Mac</code>系统和<code>Windows</code>系统，如果你有多台设备可以直接通过<code>FLOW</code>来无缝切换，非常的流畅，自定义快捷方式，机械的滚轮，切换起来看文档非常舒服，自己使用一年下来觉得这款鼠标是非常好，特别是自定义<code>DPI</code>最大到<code>8000</code>，打游戏我没有尝试过，毕竟这是主打办公的，如果你手比较小不建议购买，缺点：这个鼠标的续航不是太好，虽然也能用一个月左右吧，但是说实话没有之前的<code>Master2S</code>续航好，还有用<code>Mac</code>的建议通过转换器用<code>USB</code>连接，不建议使蓝牙，有时候可能触发延迟，感觉不流畅。整体来说还不错能推荐。</p><h3 id="键盘：MXkeys-S"><a class="headerlink" href="#键盘：MXkeys-S"></a>键盘：<code>MXkeys S</code></h3><p><img src="https://7.isyangs.cn/45/664b4730ee6ec-45.png" alt="" loading="lazy"></p><p> 在次之前我用过很多键盘，机械，薄膜，甚至苹果的键盘，但是和这个键盘比起来，其他的都是不够看，特别是这个新款的<code>MXkeys S</code>要比上一代的<code>MXkeys</code>手感上好太多了，而且也可以自定义快捷键，<code>Windows</code>和<code>Mac</code>快捷键都是原生兼容的，不需要改任何的修饰键，续航也是非常好，重度使用不开灯的情况下，三个月没啥太大问题。键盘灯光也是自适应的，键位间隔够大，也不会误触，目前最喜欢的办公键盘没有之一。</p><p> 以上也仅代表自己的个人看法和使用感受~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;工欲善其事必先利其器，个人觉得应该算得上是最好的办公键盘和鼠标，兼容性极强。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; 我当前使用的键盘和鼠标分别识罗技的：&lt;code&gt;Master3S&lt;/code&gt; + &lt;code&gt;MXkeys S&lt;/code&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="罗技" scheme="https://coutures.top/tags/%E7%BD%97%E6%8A%80/"/>
+    
+    <category term="杂谈" scheme="https://coutures.top/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>WinServer2008安装VM-Tools</title>
@@ -137,9 +164,9 @@
     
     
     
-    <category term="CentOS" scheme="https://coutures.top/tags/CentOS/"/>
-    
     <category term="教程" scheme="https://coutures.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="CentOS" scheme="https://coutures.top/tags/CentOS/"/>
     
   </entry>
   
@@ -405,27 +432,6 @@
     
     
     <category term="Linux" scheme="https://coutures.top/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo:pandoc exited with code null</title>
-    <link href="https://coutures.top/posts/24427.html"/>
-    <id>https://coutures.top/posts/24427.html</id>
-    <published>2023-07-06T05:26:52.000Z</published>
-    <updated>2024-04-11T23:57:30.528Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="在hexo更新文章遇到的问题："><a class="headerlink" href="#在hexo更新文章遇到的问题："></a>在hexo更新文章遇到的问题：</h4><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null. FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html Error: [ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md [ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FATAL Something&#x27;</span>s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error:</span><br><span class="line">[ERROR][hexo-renderer-pandoc] On /Users/couture/MyBlog/source/_posts/C-windows-环境搭建.md</span><br><span class="line">[ERROR][hexo-renderer-pandoc] pandoc exited with code null.</span><br><span class="line">at Hexo.pandocRenderer (/Users/couture/MyBlog/node_modules/hexo-renderer-pandoc/index.js:35:11)</span><br><span class="line">at Hexo.tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Hexo.&lt;anonymous&gt; (/Users/couture/MyBlog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">at /Users/couture/MyBlog/node_modules/hexo/lib/hexo/render.js:81:22</span><br><span class="line">at tryCatcher (/Users/couture/MyBlog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">at Promise._settlePromiseFromHandler (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">at Promise._settlePromise (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">at Promise._settlePromiseCtx (/Users/couture/MyBlog/node_modules/bluebird/js/release/promise.js:641:10)</span><br><span class="line">at _drainQueueStep (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:97:12)</span><br><span class="line">at _drainQueue (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:86:9)</span><br><span class="line">at Async._drainQueues (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:102:5)</span><br><span class="line">at Async.drainQueues [as _onImmediate] (/Users/couture/MyBlog/node_modules/bluebird/js/release/async.js:15:14)</span><br><span class="line">at process.processImmediate (node:internal/timers:478:21)</span><br></pre></td></tr></table></figure><!--more--><h4 id="解决方式："><a class="headerlink" href="#解决方式："></a>解决方式：</h4><h5 id="重新安装hexo-renderer-pandoc模块"><a class="headerlink" href="#重新安装hexo-renderer-pandoc模块"></a>重新安装<code>hexo-renderer-pandoc</code>模块</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure><h5 id="如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器"><a class="headerlink" href="#如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器"></a>如不成功，用hexo-renderer-marked代替hexo-renderer-pandoc模块渲染器</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-pandoc</span><br><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure><p><strong>问题解决~</strong></p>]]></content>
-    
-    
-    <summary type="html">Hexo更新问题解决</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://coutures.top/categories/Hexo/"/>
-    
-    
-    <category term="Hexo" scheme="https://coutures.top/tags/Hexo/"/>
     
   </entry>
   

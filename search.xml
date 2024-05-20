@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>罗技键鼠的使用体验</title>
+    <url>/posts/33276.html</url>
+    <content><![CDATA[<blockquote>
+<p>工欲善其事必先利其器，个人觉得应该算得上是最好的办公键盘和鼠标，兼容性极强。</p>
+</blockquote>
+<p> 我当前使用的键盘和鼠标分别识罗技的：<code>Master3S</code> + <code>MXkeys S</code>(软件是罗技的<code>Logi Options+</code>)</p>
+<p><img src="https://7.isyangs.cn/45/664b472c04410-45.png" alt="" loading="lazy"></p>
+<h3 id="鼠标：Master3S"><a class="headerlink" href="#鼠标：Master3S"></a>鼠标：<code>Master3S</code></h3>
+<p><img src="https://7.isyangs.cn/45/664b472eb01b5-45.png" alt="" loading="lazy"></p>
+<p> 因为的手比较大，鼠标又是符合人体工学设计，所以握在手里非常的舒服，而且兼容<code>Mac</code>系统和<code>Windows</code>系统，如果你有多台设备可以直接通过<code>FLOW</code>来无缝切换，非常的流畅，自定义快捷方式，机械的滚轮，切换起来看文档非常舒服，自己使用一年下来觉得这款鼠标是非常好，特别是自定义<code>DPI</code>最大到<code>8000</code>，打游戏我没有尝试过，毕竟这是主打办公的，如果你手比较小不建议购买，缺点：这个鼠标的续航不是太好，虽然也能用一个月左右吧，但是说实话没有之前的<code>Master2S</code>续航好，还有用<code>Mac</code>的建议通过转换器用<code>USB</code>连接，不建议使蓝牙，有时候可能触发延迟，感觉不流畅。整体来说还不错能推荐。</p>
+<h3 id="键盘：MXkeys-S"><a class="headerlink" href="#键盘：MXkeys-S"></a>键盘：<code>MXkeys S</code></h3>
+<p><img src="https://7.isyangs.cn/45/664b4730ee6ec-45.png" alt="" loading="lazy"></p>
+<p> 在次之前我用过很多键盘，机械，薄膜，甚至苹果的键盘，但是和这个键盘比起来，其他的都是不够看，特别是这个新款的<code>MXkeys S</code>要比上一代的<code>MXkeys</code>手感上好太多了，而且也可以自定义快捷键，<code>Windows</code>和<code>Mac</code>快捷键都是原生兼容的，不需要改任何的修饰键，续航也是非常好，重度使用不开灯的情况下，三个月没啥太大问题。键盘灯光也是自适应的，键位间隔够大，也不会误触，目前最喜欢的办公键盘没有之一。</p>
+<p> 以上也仅代表自己的个人看法和使用感受~</p>
+]]></content>
+      <tags>
+        <tag>罗技</tag>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WinServer2008安装VM-Tools</title>
     <url>/posts/17342.html</url>
     <content><![CDATA[<h4 id="问题"><a class="headerlink" href="#问题"></a>问题</h4>
@@ -157,8 +178,8 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[root@centos7 ~]<span class="comment"># cd /etc/selinux/</span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># ls</span></span><br><span class="line">config  final  semanage.conf  targeted  tmp</span><br><span class="line">[root@centos7 selinux]<span class="comment"># vi config </span></span><br><span class="line">[root@centos7 selinux]<span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="comment">#     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment">#     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment">#     disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled <span class="comment"># 修改远程端口号要关闭</span></span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of three values:</span></span><br><span class="line"><span class="comment">#     targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="comment">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span><br><span class="line"><span class="comment">#     mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted                                                                              </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                               </span><br><span class="line">~                                                                                             </span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>CentOS</tag>
         <tag>教程</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -1073,8 +1094,8 @@
 <p>在安装软件，不会有报错提示，问题得到了解决~</p>
 ]]></content>
       <tags>
-        <tag>CentOS</tag>
         <tag>教程</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
