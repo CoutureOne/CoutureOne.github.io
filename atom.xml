@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-05-20T12:59:37.599Z</updated>
+  <updated>2024-05-27T21:46:27.138Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈软考网络工程师中级</title>
+    <link href="https://coutures.top/posts/48583.html"/>
+    <id>https://coutures.top/posts/48583.html</id>
+    <published>2024-05-27T13:16:34.000Z</published>
+    <updated>2024-05-27T21:46:27.138Z</updated>
+    
+    <content type="html"><![CDATA[<h1>浅谈软考网络工程师中级</h1><blockquote><p>只是个人对于本次软考网络中级工程师的愚见，做一次小小的总结，希望自己能在下一次的考试中成功拿下！菜就得多练！！！</p></blockquote><p> 本次考试自己是没有准备的，自己工作也是和网络相关，但是不是那么深入，并不是一个纯技术，在网络上面的东西其实欠缺还是很多的，如果是认真复习，其实考过的概率很大，但是考试之前就是看了一些模拟题发现好像是有些原题和类似的题目，真后悔没有好好复习…呜呜呜~</p><p> 本次考试选择题和应用题两种类型，两门都是75分，然后45分算过，两门都要过45，而且这次的成绩不计入下一次考试，这个一直都没有变，之前是笔试，现在变成了机试，其他的都没变，如果没有网络相关的实际工作经验，我是真的不建议，除非你已经考到了厂商的证书，特别是华为的IP或者是IE，那我觉得这些应用题和场景题对你来说应该不是什么大问题。因为考试的交换机、路由、防火墙相关的命令都是华为的。写其他的估计应该是不得分。</p><p> 这次考了不少计算题，根据子网掩码算IP可分分配范围，网关去计算前面的等等，其次最多的就是协议各种网络协议，这个我觉得是最难的，不仅仅要会用，还要知道里面具体细则是干什么的，加密方式等等，<code>Linux</code>一些基础，法律条文相关的基本都是送分的，读题就行。应用题这次更多是考路由和防火墙，然后结合题目场景，其实也就是真实的场景，基本就是这些。选择最难的是各个协议了，其他的倒不是很难了。应用题完全就是看个人经验，经验多肯定能过，经验不足就难了。</p><p> 通过这次考试其实软考也没有自己想想的那么难，但是也不是很简单，要两门都过没有那么简单，特别是足够的网络实践，网络这个东西如果这些配置都是死记硬背太难了，相反有几次经验足够足够应对这些题目，特别是华为的防火墙和路由的命令，一些小众的还是用的比较多的。其他的主要是就是网络几个层，以及相关的协议，这些都要串联起来，特别是ssl和邮件的相关协议，安全上面的协议也是从这个上面出发的，软考通软件题库是应该好好刷刷，没记错的话，有些原题是在这个上面，虽然我在考试之前只刷了几十道题。下半年还有一次网络工程师中级，应该在11月份，在后面时间要准备好好备考准备下一次拿下~</p><p> 仅仅是通过一次考试做的一个小结，大家也都看个乐呵，软考这个东西不管是什么时候价值都挺大的，相对来说正规一点的国内企业都是依靠这个评职称，事业单位更不用说了，这个是可以评职称相对来说最简单的方式了，祝愿读过此篇文章的你们早日上岸~</p><p><img src="https://7.isyangs.cn/45/6654fe1a22f16-45.png" alt="" loading="lazy"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;浅谈软考网络工程师中级&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只是个人对于本次软考网络中级工程师的愚见，做一次小小的总结，希望自己能在下一次的考试中成功拿下！菜就得多练！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; 本次考试自己是没有准备的，自己工作也是和网络相关</summary>
+      
+    
+    
+    
+    
+    <category term="软考" scheme="https://coutures.top/tags/%E8%BD%AF%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://coutures.top/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>罗技键鼠的使用体验</title>
@@ -37,9 +65,9 @@
     
     
     
-    <category term="罗技" scheme="https://coutures.top/tags/%E7%BD%97%E6%8A%80/"/>
-    
     <category term="杂谈" scheme="https://coutures.top/tags/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="罗技" scheme="https://coutures.top/tags/%E7%BD%97%E6%8A%80/"/>
     
   </entry>
   
@@ -405,28 +433,6 @@
     
     <summary type="html">&lt;p&gt;下面是一些在 Vim 编辑器中常用的快捷键：&lt;/p&gt;
 &lt;h4 id=&quot;插入模式（Insert-Mode）：&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#插入模式（Insert-Mode）：&quot;&gt;&lt;/a&gt;&lt;strong&gt;插入模式&lt;/strong&gt;（Insert Mode）：&lt;/h4&gt;</summary>
-    
-    
-    
-    
-    <category term="Linux" scheme="https://coutures.top/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux常用命令</title>
-    <link href="https://coutures.top/posts/48230.html"/>
-    <id>https://coutures.top/posts/48230.html</id>
-    <published>2023-07-17T00:28:22.000Z</published>
-    <updated>2024-04-11T13:57:57.684Z</updated>
-    
-    <content type="html"><![CDATA[<h1>Linux常用命令</h1><ol><li><strong>ls</strong>：列出目录内容。</li></ol><span id="more"></span><ol start="2"><li><strong>cd</strong>：切换目录。</li><li><strong>pwd</strong>：显示当前工作目录的路径。</li><li><strong>mkdir</strong>：创建目录。</li><li><strong>rm</strong>：删除文件或目录。</li><li><strong>cp</strong>：复制文件或目录。</li><li><strong>mv</strong>：移动文件或目录，或重命名文件或目录。</li><li><strong>cat</strong>：显示文件内容。</li><li><strong>grep</strong>：在文件中搜索指定模式。</li><li><strong>chmod</strong>：修改文件或目录的权限。</li><li><strong>chown</strong>：修改文件或目录的所有者。</li><li><strong>chgrp</strong>：修改文件或目录的所属组。</li><li><strong>sudo</strong>：以超级用户权限执行命令。</li><li><strong>apt-get</strong>（Debian/Ubuntu）或 <strong>yum</strong>（CentOS/RHEL）：包管理器，用于安装、更新和卸载软件包。</li><li><strong>wget</strong>：从网络下载文件。</li><li><strong>ssh</strong>：远程登录到另一台计算机。</li><li><strong>tar</strong>：打包和解压文件。</li><li><strong>df</strong>：显示文件系统的磁盘使用情况。</li><li><strong>top</strong>：实时显示系统资源的使用情况和运行的进程。</li><li><strong>ps</strong>：显示当前运行的进程。</li><li><strong>kill</strong>：终止正在运行的进程。</li><li><strong>ifconfig</strong>（已被 ip 命令取代）：显示和配置网络接口。</li><li><strong>ping</strong>：发送 ICMP Echo 请求以测试网络连接。</li><li><strong>traceroute</strong>：跟踪数据包在网络中的路径。</li><li><strong>man</strong>：查看命令的手册页。</li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;h1&gt;Linux常用命令&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;ls&lt;/strong&gt;：列出目录内容。&lt;/li&gt;
-&lt;/ol&gt;</summary>
     
     
     
