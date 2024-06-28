@@ -6,7 +6,7 @@
   <link href="https://coutures.top/atom.xml" rel="self"/>
   
   <link href="https://coutures.top/"/>
-  <updated>2024-05-27T21:46:27.138Z</updated>
+  <updated>2024-06-28T13:26:08.574Z</updated>
   <id>https://coutures.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>莫问前程，及时行乐</title>
+    <link href="https://coutures.top/posts/367.html"/>
+    <id>https://coutures.top/posts/367.html</id>
+    <published>2024-06-28T13:02:08.000Z</published>
+    <updated>2024-06-28T13:26:08.574Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>总以为一辈子很长，生命却只有一次…</p></blockquote><p><img src="https://7.isyangs.cn/45/667eb41748aac-45.jpg" alt="" loading="lazy"> </p><p> 过去的一段时间，没有更新博客，亲人的离世，工作上面的动荡，感觉让人是诚惶诚恐，以前总觉得生老病死是理所应当，看到白发人送黑发人的那种情景，我才恍然大悟，还是怪自己太年轻了，莫问前程，及时行乐。</p><p> 对于我来说，在过去的两年的里我从来没有担心过自己会有失业的这个问题，工作上不能说是鞠躬精粹，但对得上自己的良心，拿多少钱，干过少事，也是在不断的虚心求教，各种人员关系也梳理的很好，但是随着部门可能的重新组建，我突然意识到自己好像真的要有失业的风险了，好像墨守成规的两年里不知道自己做了什么，学会了很多技能，也认识了很多朋友，但是好像自己又什么没有得到，忽然之间恍惚了一下。</p><p> 计划是永远赶不上变化，现在这个大环境还是提前要做一些准备，需要居安思危的思想。多走出去看看，过去的两年时间自己也没有怎么出去看看祖国的大好河山，不仅仅是自己，也要带着父母去看看。</p><p> 本来想写很多东西，但是一切尽在不言中…越努力约幸运 ~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;总以为一辈子很长，生命却只有一次…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://7.isyangs.cn/45/667eb41748aac-45.jpg&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt; &lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="杂谈" scheme="https://coutures.top/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>浅谈软考网络工程师中级</title>
@@ -418,26 +444,6 @@
     
     
     <category term="Windows 11" scheme="https://coutures.top/tags/Windows-11/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VIM常快捷键</title>
-    <link href="https://coutures.top/posts/55427.html"/>
-    <id>https://coutures.top/posts/55427.html</id>
-    <published>2023-07-17T00:31:50.000Z</published>
-    <updated>2024-04-11T14:06:41.829Z</updated>
-    
-    <content type="html"><![CDATA[<p>下面是一些在 Vim 编辑器中常用的快捷键：</p><h4 id="插入模式（Insert-Mode）："><a class="headerlink" href="#插入模式（Insert-Mode）："></a><strong>插入模式</strong>（Insert Mode）：</h4><span id="more"></span><ul><li><code>i</code>：在当前光标位置进入插入模式。</li><li><code>a</code>：在当前光标后插入文本。</li><li><code>I</code>：在当前行的开头插入文本。</li><li><code>A</code>：在当前行的末尾插入文本。</li><li><code>o</code>：在当前行的下方插入新行。</li><li><code>O</code>：在当前行的上方插入新行。</li></ul><h4 id="命令行模式（Command-Line-Mode）："><a class="headerlink" href="#命令行模式（Command-Line-Mode）："></a><strong>命令行模式</strong>（Command Line Mode）：</h4><ul><li><code>:</code>：进入命令行模式。</li><li><code>:w</code>：保存文件。</li><li><code>:q</code>：退出 Vim。</li><li><code>:wq</code>：保存文件并退出 Vim。</li><li><code>:q!</code>：强制退出 Vim，丢弃对文件的修改。</li></ul><h4 id="移动光标："><a class="headerlink" href="#移动光标："></a><strong>移动光标</strong>：</h4><ul><li><code>h</code>：向左移动光标。</li><li><code>j</code>：向下移动光标。</li><li><code>k</code>：向上移动光标。</li><li><code>l</code>：向右移动光标。</li><li><code>gg</code>：跳到文件开头。</li><li><code>G</code>：跳到文件末尾。</li><li><code>0</code>：跳到当前行的开头。</li><li><code>$</code>：跳到当前行的末尾。</li><li><code>w</code>：跳到下一个单词的开头。</li><li><code>b</code>：跳到上一个单词的开头。</li><li><code>Ctrl + f</code>：向下翻页。</li><li><code>Ctrl + b</code>：向上翻页。</li></ul><h4 id="复制、粘贴和删除："><a class="headerlink" href="#复制、粘贴和删除："></a><strong>复制、粘贴和删除</strong>：</h4><ul><li><code>yy</code>：复制当前行。</li><li><code>dd</code>：删除当前行。</li><li><code>p</code>：粘贴已复制或删除的文本。</li><li><code>x</code>：删除当前光标所在位置的字符。</li><li><code>u</code>：撤销上一次操作。</li><li><code>Ctrl + r</code>：重做上一次撤销的操作。</li></ul><h4 id="查找和替换："><a class="headerlink" href="#查找和替换："></a><strong>查找和替换</strong>：</h4><ul><li><code>/pattern</code>：向下查找匹配的模式。</li><li><code>?pattern</code>：向上查找匹配的模式。</li><li><code>n</code>：在当前方向上查找下一个匹配。</li><li><code>N</code>：在当前方向上查找上一个匹配。</li><li><code>:s/old/new</code>：替换当前行中第一个匹配的字符串。</li><li><code>:s/old/new/g</code>：替换当前行中所有匹配的字符串。</li><li><code>:%s/old/new/g</code>：替换整个文件中所有匹配的字符串。</li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;下面是一些在 Vim 编辑器中常用的快捷键：&lt;/p&gt;
-&lt;h4 id=&quot;插入模式（Insert-Mode）：&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#插入模式（Insert-Mode）：&quot;&gt;&lt;/a&gt;&lt;strong&gt;插入模式&lt;/strong&gt;（Insert Mode）：&lt;/h4&gt;</summary>
-    
-    
-    
-    
-    <category term="Linux" scheme="https://coutures.top/tags/Linux/"/>
     
   </entry>
   
