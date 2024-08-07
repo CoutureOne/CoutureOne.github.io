@@ -4693,6 +4693,11 @@ span.tags-punctuation i {
     left: 0;
   }
 }
+@media screen and (max-width: 768px) {
+  #nav-console {
+    display: none;
+  }
+}
 span.tags-punctuation {
   display: flex;
   align-items: center;
